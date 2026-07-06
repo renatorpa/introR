@@ -1,0 +1,149 @@
+/* ==================================================================
+   Introdução ao R e à Simulação Estatística
+   Folha de estilo — pensada para bs4_book (online) e gitbook.
+   ================================================================== */
+
+:root {
+  --cor-accent:        #10656d;   /* cor principal do livro (teal)      */
+  --cor-accent-escura: #0b4a50;
+  --cor-texto:         #24292e;
+
+  /* Caixas de destaque */
+  --nota-borda:     #2a6f97;   --nota-fundo:     #eef5fa;
+  --dica-borda:     #1b7f5b;   --dica-fundo:     #ecf7f1;
+  --atencao-borda:  #c77400;   --atencao-fundo:  #fff6e9;
+  --objetivo-borda: var(--cor-accent);  --objetivo-fundo: #e8f3f4;
+}
+
+/* ------------------------------------------------------------------
+   Legendas de figuras
+   ------------------------------------------------------------------ */
+p.caption {
+  color: #6a737d;
+  font-size: 0.9em;
+  margin-top: 10px;
+  text-align: center;
+}
+
+/* ------------------------------------------------------------------
+   Código: preservar quebras naturais dentro de blocos e em linha
+   ------------------------------------------------------------------ */
+p code { white-space: inherit; }
+pre { word-break: normal; word-wrap: normal; }
+pre code { white-space: inherit; }
+
+/* Realce suave para código inline */
+code:not(pre code) {
+  background-color: rgba(16, 101, 109, 0.08);
+  color: var(--cor-accent-escura);
+  padding: 0.12em 0.35em;
+  border-radius: 4px;
+  font-size: 0.9em;
+}
+
+/* Blocos de código com um filete lateral discreto */
+pre {
+  border-left: 3px solid var(--cor-accent);
+  border-radius: 6px;
+  padding: 0.85em 1em;
+}
+
+/* ------------------------------------------------------------------
+   CAIXAS DE DESTAQUE (fenced divs :::)
+   Uso nos capítulos: {.nota} {.dica} {.atencao} {.objetivo}
+   ------------------------------------------------------------------ */
+.nota, .dica, .atencao, .objetivo {
+  position: relative;
+  margin: 1.6em 0;
+  padding: 0.9em 1.1em 0.9em 1.15em;
+  border-left: 5px solid;
+  border-radius: 8px;
+  line-height: 1.55;
+}
+.nota    > :first-child,
+.dica    > :first-child,
+.atencao > :first-child,
+.objetivo > :first-child { margin-top: 0; }
+.nota    > :last-child,
+.dica    > :last-child,
+.atencao > :last-child,
+.objetivo > :last-child { margin-bottom: 0; }
+
+.nota     { border-color: var(--nota-borda);     background: var(--nota-fundo); }
+.dica     { border-color: var(--dica-borda);     background: var(--dica-fundo); }
+.atencao  { border-color: var(--atencao-borda);  background: var(--atencao-fundo); }
+.objetivo { border-color: var(--objetivo-borda); background: var(--objetivo-fundo); }
+
+/* Etiqueta discreta no topo de cada caixa */
+.nota::before, .dica::before, .atencao::before, .objetivo::before {
+  display: block;
+  font-size: 0.72em;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 0.35em;
+}
+.nota::before     { content: "Nota";     color: var(--nota-borda); }
+.dica::before     { content: "Dica";     color: var(--dica-borda); }
+.atencao::before  { content: "Atenção";  color: var(--atencao-borda); }
+.objetivo::before { content: "Objetivo"; color: var(--objetivo-borda); }
+
+/* Código dentro das caixas: fundo neutro para contrastar */
+.nota pre, .dica pre, .atencao pre, .objetivo pre {
+  background-color: rgba(255, 255, 255, 0.65);
+}
+
+/* ------------------------------------------------------------------
+   Tabelas — limpas e legíveis
+   ------------------------------------------------------------------ */
+table {
+  border-collapse: collapse;
+  margin: 1.2em 0;
+  width: 100%;
+}
+table th {
+  background-color: var(--cor-accent);
+  color: #fff;
+  font-weight: 600;
+  text-align: left;
+  padding: 0.5em 0.7em;
+}
+table td {
+  padding: 0.45em 0.7em;
+  border-bottom: 1px solid #e6e8ea;
+}
+table tr:nth-child(even) td { background-color: #f7f9fa; }
+
+/* ------------------------------------------------------------------
+   Citações / blockquotes
+   ------------------------------------------------------------------ */
+blockquote {
+  border-left: 4px solid var(--cor-accent);
+  color: #495057;
+  background: #f6f8f8;
+  padding: 0.4em 1em;
+  margin: 1.2em 0;
+  border-radius: 0 6px 6px 0;
+}
+
+/* ------------------------------------------------------------------
+   Refinamentos específicos do tema bs4_book
+   ------------------------------------------------------------------ */
+.book .book-body .page-inner section.normal h1,
+h1, h2 { color: var(--cor-accent-escura); }
+h3, h4 { color: #333; }
+
+a { color: var(--cor-accent); }
+a:hover { color: var(--cor-accent-escura); }
+
+/* ------------------------------------------------------------------
+   Impressão (PDF gerado a partir do HTML e visão de impressão)
+   ------------------------------------------------------------------ */
+@media print {
+  .nota, .dica, .atencao, .objetivo {
+    border: 1px solid #999;
+    border-left-width: 5px;
+    background: #fff !important;
+  }
+  pre { border-left: 1px solid #999; }
+}

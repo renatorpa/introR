@@ -1,0 +1,856 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Capítulo 15 Manipulação de dados | Introdução ao R e à Simulação Estatística</title>
+<meta name="author" content="Renato de Paula">
+<meta name="description" content="Ler dados para dentro do R (Capítulo 8) é apenas o começo. Antes de os analisar ou representar graficamente, quase sempre é preciso prepará-los: escolher colunas, filtrar linhas, criar variáveis...">
+<meta name="generator" content="bookdown 0.46 with bs4_book()">
+<meta property="og:title" content="Capítulo 15 Manipulação de dados | Introdução ao R e à Simulação Estatística">
+<meta property="og:type" content="book">
+<meta property="og:description" content="Ler dados para dentro do R (Capítulo 8) é apenas o começo. Antes de os analisar ou representar graficamente, quase sempre é preciso prepará-los: escolher colunas, filtrar linhas, criar variáveis...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Capítulo 15 Manipulação de dados | Introdução ao R e à Simulação Estatística">
+<meta name="twitter:description" content="Ler dados para dentro do R (Capítulo 8) é apenas o começo. Antes de os analisar ou representar graficamente, quase sempre é preciso prepará-los: escolher colunas, filtrar linhas, criar variáveis...">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.11.0/transition.js"></script><script src="libs/bs3compat-0.11.0/tabs.js"></script><script src="libs/bs3compat-0.11.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="Um Laboratório de Estatística Computacional">Introdução ao R e à Simulação Estatística</a>:
+        <small class="text-muted">Um Laboratório de Estatística Computacional</small>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">Prefácio</a></li>
+<li><a class="" href="intro.html"><span class="header-section-number">1</span> Estatística, computação e simulação</a></li>
+<li><a class="" href="rrstudio.html"><span class="header-section-number">2</span> O R e o RStudio</a></li>
+<li><a class="" href="calculadora.html"><span class="header-section-number">3</span> O R como calculadora</a></li>
+<li><a class="" href="estruturas.html"><span class="header-section-number">4</span> Estruturas de dados</a></li>
+<li><a class="" href="selecao.html"><span class="header-section-number">5</span> Estruturas de decisão</a></li>
+<li><a class="" href="funcoes.html"><span class="header-section-number">6</span> Funções</a></li>
+<li><a class="" href="scripts.html"><span class="header-section-number">7</span> Scripts em R</a></li>
+<li><a class="" href="leitura.html"><span class="header-section-number">8</span> Leitura de dados</a></li>
+<li><a class="" href="pipe.html"><span class="header-section-number">9</span> O operador pipe</a></li>
+<li><a class="" href="while.html"><span class="header-section-number">10</span> O ciclo while</a></li>
+<li><a class="" href="for.html"><span class="header-section-number">11</span> O ciclo for</a></li>
+<li><a class="" href="apply.html"><span class="header-section-number">12</span> A família apply</a></li>
+<li><a class="" href="revisao.html"><span class="header-section-number">13</span> Exercícios de revisão</a></li>
+<li><a class="" href="graficos.html"><span class="header-section-number">14</span> Gráficos com o R base</a></li>
+<li><a class="active" href="manipulacao.html"><span class="header-section-number">15</span> Manipulação de dados</a></li>
+<li><a class="" href="ggplot.html"><span class="header-section-number">16</span> O pacote ggplot2</a></li>
+<li><a class="" href="sample.html"><span class="header-section-number">17</span> A função sample()</a></li>
+<li><a class="" href="probabilidade.html"><span class="header-section-number">18</span> Probabilidade e variáveis aleatórias</a></li>
+<li><a class="" href="simulacao.html"><span class="header-section-number">19</span> Simulação</a></li>
+<li><a class="" href="distribuicoes.html"><span class="header-section-number">20</span> Distribuições de probabilidade</a></li>
+<li><a class="" href="exercicios-extra.html"><span class="header-section-number">21</span> Exercícios extra</a></li>
+<li><a class="" href="transformada.html"><span class="header-section-number">22</span> Método da transformada inversa</a></li>
+<li><a class="" href="aceitacao-rejeicao.html"><span class="header-section-number">23</span> Método da aceitação-rejeição</a></li>
+<li><a class="" href="teoremas-limites.html"><span class="header-section-number">24</span> Teoremas limites</a></li>
+<li><a class="" href="calculo-integrais.html"><span class="header-section-number">25</span> Cálculo de integrais por Monte Carlo</a></li>
+<li><a class="" href="solucoes.html"><span class="header-section-number">26</span> Resoluções dos exercícios</a></li>
+</ul>
+
+        <div class="book-extra">
+          
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="manipulacao" class="section level1" number="15">
+<h1>
+<span class="header-section-number">Capítulo 15</span> Manipulação de dados<a class="anchor" aria-label="anchor" href="#manipulacao"><i class="fas fa-link"></i></a>
+</h1>
+<p>Ler dados para dentro do R (Capítulo <a href="leitura.html#leitura">8</a>) é apenas o começo. Antes de os
+analisar ou representar graficamente, quase sempre é preciso <em>prepará-los</em>: escolher
+colunas, filtrar linhas, criar variáveis novas, resumir por grupos, juntar tabelas de
+origens diferentes. A este trabalho — que costuma ocupar a maior parte do tempo de uma
+análise — chama-se <strong>manipulação de dados</strong>.</p>
+<p>O R base já permite fazer tudo isto (vimo-lo no Capítulo <a href="estruturas.html#estruturas">4</a>), mas de
+forma por vezes verbosa. Neste capítulo conhecemos o <code>dplyr</code>, um pacote do
+<strong><code>tidyverse</code></strong> — a coleção de pacotes, criada em torno de Hadley Wickham, que
+uniformizou a ciência de dados em R. O <code>dplyr</code> oferece um pequeno conjunto de “verbos”,
+cada um com um nome que descreve o que faz, que se combinam com o operador <em>pipe</em>
+(Capítulo <a href="pipe.html#pipe">9</a>) para exprimir manipulações complexas de forma legível.</p>
+<div class="nota">
+<p>Este capítulo usa vários pacotes do <code>tidyverse</code>. Instale-os uma vez com
+<code>install.packages("tidyverse")</code> (ou, individualmente,
+<code>install.packages(c("tibble", "dplyr", "stringr"))</code>) e carregue-os no início da sessão.</p>
+</div>
+<div id="tibbles" class="section level2" number="15.1">
+<h2>
+<span class="header-section-number">15.1</span> Tibbles<a class="anchor" aria-label="anchor" href="#tibbles"><i class="fas fa-link"></i></a>
+</h2>
+<p>O <code>tidyverse</code> trabalha com uma versão modernizada do <em>data frame</em> chamada <strong>tibble</strong>.
+Um <em>tibble</em> guarda os mesmos dados de um <em>data frame</em> — é, na verdade, um <em>data frame</em> —
+mas com alguns comportamentos mais previsíveis e cómodos. As diferenças principais são:</p>
+<div class="inline-table"><table class="table table-sm">
+<colgroup>
+<col width="33%">
+<col width="33%">
+<col width="33%">
+</colgroup>
+<thead><tr class="header">
+<th>Característica</th>
+<th><em>Data frame</em></th>
+<th><em>Tibble</em></th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td>Impressão na consola</td>
+<td>Mostra todas as linhas</td>
+<td>Mostra um resumo (10 linhas) e o tipo de cada coluna</td>
+</tr>
+<tr class="even">
+<td>Texto → fatores</td>
+<td>Mantém texto como texto (desde o R 4.0)</td>
+<td>Mantém sempre texto como texto</td>
+</tr>
+<tr class="odd">
+<td>Nomes das colunas</td>
+<td>Torna-os únicos e sem espaços</td>
+<td>Aceita nomes não convencionais (com crases)</td>
+</tr>
+<tr class="even">
+<td>Indexação com <code>[</code>
+</td>
+<td>Pode devolver um vetor ou um <em>data frame</em>
+</td>
+<td>Devolve sempre um <em>tibble</em>
+</td>
+</tr>
+<tr class="odd">
+<td>Integração</td>
+<td>Base do R</td>
+<td>Otimizado para o <code>tidyverse</code>
+</td>
+</tr>
+</tbody>
+</table></div>
+<div class="atencao">
+<p>Lê-se com frequência que “os <em>data frames</em> convertem texto em fatores por omissão”.
+Isto foi verdade durante muitos anos, mas <strong>mudou no R 4.0</strong> (2020): desde então,
+<code><a href="https://rdrr.io/r/base/data.frame.html">data.frame()</a></code> e <code><a href="https://rdrr.io/r/utils/read.table.html">read.table()</a></code> usam <code>stringsAsFactors = FALSE</code>, ou seja, mantêm o
+texto como texto, tal como os <em>tibbles</em>. É um bom exemplo de como convém confirmar
+afirmações sobre a linguagem na documentação atual, e não confiar em material antigo.</p>
+</div>
+<p>Criar um <em>tibble</em> é como criar um <em>data frame</em>, mas a função permite referir colunas
+acabadas de definir:</p>
+<div class="sourceCode" id="cb199"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tibble.tidyverse.org/">tibble</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">tb</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span></span>
+<span>  x <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">5</span>,</span>
+<span>  y <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"A"</span>, <span class="st">"B"</span>, <span class="st">"C"</span>, <span class="st">"D"</span>, <span class="st">"E"</span><span class="op">)</span>,</span>
+<span>  z <span class="op">=</span> <span class="va">x</span> <span class="op">*</span> <span class="fl">2</span>                       <span class="co"># pode usar-se a coluna 'x' recém-criada</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">tb</span></span>
+<span><span class="co">## # A tibble: 5 × 3</span></span>
+<span><span class="co">##       x y         z</span></span>
+<span><span class="co">##   &lt;int&gt; &lt;chr&gt; &lt;dbl&gt;</span></span>
+<span><span class="co">## 1     1 A         2</span></span>
+<span><span class="co">## 2     2 B         4</span></span>
+<span><span class="co">## 3     3 C         6</span></span>
+<span><span class="co">## 4     4 D         8</span></span>
+<span><span class="co">## 5     5 E        10</span></span></code></pre></div>
+<p>Para converter um <em>data frame</em> já existente, usa-se <code><a href="https://tibble.tidyverse.org/reference/as_tibble.html">as_tibble()</a></code>.</p>
+</div>
+<div id="os-verbos-do-dplyr" class="section level2" number="15.2">
+<h2>
+<span class="header-section-number">15.2</span> Os verbos do <code>dplyr</code><a class="anchor" aria-label="anchor" href="#os-verbos-do-dplyr"><i class="fas fa-link"></i></a>
+</h2>
+<p>O <code>dplyr</code> organiza a manipulação em torno de um punhado de verbos, cada um com uma
+função clara:</p>
+<ul>
+<li>
+<code><a href="https://dplyr.tidyverse.org/reference/select.html">select()</a></code> — escolhe colunas;</li>
+<li>
+<code><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange()</a></code> — ordena linhas;</li>
+<li>
+<code><a href="https://dplyr.tidyverse.org/reference/filter.html">filter()</a></code> — filtra linhas por condições;</li>
+<li>
+<code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code> — cria ou modifica colunas;</li>
+<li>
+<code><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by()</a></code> — agrupa por categorias;</li>
+<li>
+<code><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize()</a></code> — resume os dados (em geral, após <code><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by()</a></code>).</li>
+</ul>
+<div class="objetivo">
+<p>Neste capítulo aprendemos a selecionar, ordenar, filtrar, transformar, agrupar e
+resumir dados com o <code>dplyr</code>, e a combinar tabelas com as funções de junção — sempre com
+o operador <em>pipe</em> a tornar as sequências de operações legíveis.</p>
+</div>
+<p>Vamos explorá-los com o conjunto <code>starwars</code>, que acompanha o <code>dplyr</code> e descreve as
+personagens da saga. Guardamo-lo em <code>sw</code>:</p>
+<div class="sourceCode" id="cb200"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">sw</span> <span class="op">&lt;-</span> <span class="va">starwars</span></span>
+<span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">sw</span><span class="op">)</span>   <span class="co"># visão geral das colunas e dos seus tipos</span></span>
+<span><span class="co">## Rows: 87</span></span>
+<span><span class="co">## Columns: 14</span></span>
+<span><span class="co">## $ name       &lt;chr&gt; "Luke Skywalker", "C-3PO", "R2-D2", "Darth Vader", "Leia Organa", "Owen Lars", "…</span></span>
+<span><span class="co">## $ height     &lt;int&gt; 172, 167, 96, 202, 150, 178, 165, 97, 183, 182, 188, 180, 228, 180, 173, 175, 17…</span></span>
+<span><span class="co">## $ mass       &lt;dbl&gt; 77.0, 75.0, 32.0, 136.0, 49.0, 120.0, 75.0, 32.0, 84.0, 77.0, 84.0, NA, 112.0, 8…</span></span>
+<span><span class="co">## $ hair_color &lt;chr&gt; "blond", NA, NA, "none", "brown", "brown, grey", "brown", NA, "black", "auburn, …</span></span>
+<span><span class="co">## $ skin_color &lt;chr&gt; "fair", "gold", "white, blue", "white", "light", "light", "light", "white, red",…</span></span>
+<span><span class="co">## $ eye_color  &lt;chr&gt; "blue", "yellow", "red", "yellow", "brown", "blue", "blue", "red", "brown", "blu…</span></span>
+<span><span class="co">## $ birth_year &lt;dbl&gt; 19.0, 112.0, 33.0, 41.9, 19.0, 52.0, 47.0, NA, 24.0, 57.0, 41.9, 64.0, 200.0, 29…</span></span>
+<span><span class="co">## $ sex        &lt;chr&gt; "male", "none", "none", "male", "female", "male", "female", "none", "male", "mal…</span></span>
+<span><span class="co">## $ gender     &lt;chr&gt; "masculine", "masculine", "masculine", "masculine", "feminine", "masculine", "fe…</span></span>
+<span><span class="co">## $ homeworld  &lt;chr&gt; "Tatooine", "Tatooine", "Naboo", "Tatooine", "Alderaan", "Tatooine", "Tatooine",…</span></span>
+<span><span class="co">## $ species    &lt;chr&gt; "Human", "Droid", "Droid", "Human", "Human", "Human", "Human", "Droid", "Human",…</span></span>
+<span><span class="co">## $ films      &lt;list&gt; &lt;"A New Hope", "The Empire Strikes Back", "Return of the Jedi", "Revenge of the…</span></span>
+<span><span class="co">## $ vehicles   &lt;list&gt; &lt;"Snowspeeder", "Imperial Speeder Bike"&gt;, &lt;&gt;, &lt;&gt;, &lt;&gt;, "Imperial Speeder Bike", …</span></span>
+<span><span class="co">## $ starships  &lt;list&gt; &lt;"X-wing", "Imperial shuttle"&gt;, &lt;&gt;, &lt;&gt;, "TIE Advanced x1", &lt;&gt;, &lt;&gt;, &lt;&gt;, &lt;&gt;, "X-w…</span></span></code></pre></div>
+<div id="selecionar-colunas-com-select" class="section level3" number="15.2.1">
+<h3>
+<span class="header-section-number">15.2.1</span> Selecionar colunas com <code>select()</code><a class="anchor" aria-label="anchor" href="#selecionar-colunas-com-select"><i class="fas fa-link"></i></a>
+</h3>
+<p>A <code><a href="https://dplyr.tidyverse.org/reference/select.html">select()</a></code> escolhe colunas pelo nome, sem aspas:</p>
+<div class="sourceCode" id="cb201"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">sw</span>, <span class="va">name</span><span class="op">)</span>                       <span class="co"># uma coluna</span></span>
+<span><span class="co">## # A tibble: 87 × 1</span></span>
+<span><span class="co">##    name              </span></span>
+<span><span class="co">##    &lt;chr&gt;             </span></span>
+<span><span class="co">##  1 Luke Skywalker    </span></span>
+<span><span class="co">##  2 C-3PO             </span></span>
+<span><span class="co">##  3 R2-D2             </span></span>
+<span><span class="co">##  4 Darth Vader       </span></span>
+<span><span class="co">##  5 Leia Organa       </span></span>
+<span><span class="co">##  6 Owen Lars         </span></span>
+<span><span class="co">##  7 Beru Whitesun Lars</span></span>
+<span><span class="co">##  8 R5-D4             </span></span>
+<span><span class="co">##  9 Biggs Darklighter </span></span>
+<span><span class="co">## 10 Obi-Wan Kenobi    </span></span>
+<span><span class="co">## # ℹ 77 more rows</span></span>
+<span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">sw</span>, <span class="va">name</span>, <span class="va">mass</span>, <span class="va">hair_color</span><span class="op">)</span>     <span class="co"># várias colunas</span></span>
+<span><span class="co">## # A tibble: 87 × 3</span></span>
+<span><span class="co">##    name                mass hair_color   </span></span>
+<span><span class="co">##    &lt;chr&gt;              &lt;dbl&gt; &lt;chr&gt;        </span></span>
+<span><span class="co">##  1 Luke Skywalker        77 blond        </span></span>
+<span><span class="co">##  2 C-3PO                 75 &lt;NA&gt;         </span></span>
+<span><span class="co">##  3 R2-D2                 32 &lt;NA&gt;         </span></span>
+<span><span class="co">##  4 Darth Vader          136 none         </span></span>
+<span><span class="co">##  5 Leia Organa           49 brown        </span></span>
+<span><span class="co">##  6 Owen Lars            120 brown, grey  </span></span>
+<span><span class="co">##  7 Beru Whitesun Lars    75 brown        </span></span>
+<span><span class="co">##  8 R5-D4                 32 &lt;NA&gt;         </span></span>
+<span><span class="co">##  9 Biggs Darklighter     84 black        </span></span>
+<span><span class="co">## 10 Obi-Wan Kenobi        77 auburn, white</span></span>
+<span><span class="co">## # ℹ 77 more rows</span></span>
+<span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">sw</span>, <span class="va">name</span><span class="op">:</span><span class="va">hair_color</span><span class="op">)</span>            <span class="co"># um intervalo de colunas</span></span>
+<span><span class="co">## # A tibble: 87 × 4</span></span>
+<span><span class="co">##    name               height  mass hair_color   </span></span>
+<span><span class="co">##    &lt;chr&gt;               &lt;int&gt; &lt;dbl&gt; &lt;chr&gt;        </span></span>
+<span><span class="co">##  1 Luke Skywalker        172    77 blond        </span></span>
+<span><span class="co">##  2 C-3PO                 167    75 &lt;NA&gt;         </span></span>
+<span><span class="co">##  3 R2-D2                  96    32 &lt;NA&gt;         </span></span>
+<span><span class="co">##  4 Darth Vader           202   136 none         </span></span>
+<span><span class="co">##  5 Leia Organa           150    49 brown        </span></span>
+<span><span class="co">##  6 Owen Lars             178   120 brown, grey  </span></span>
+<span><span class="co">##  7 Beru Whitesun Lars    165    75 brown        </span></span>
+<span><span class="co">##  8 R5-D4                  97    32 &lt;NA&gt;         </span></span>
+<span><span class="co">##  9 Biggs Darklighter     183    84 black        </span></span>
+<span><span class="co">## 10 Obi-Wan Kenobi        182    77 auburn, white</span></span>
+<span><span class="co">## # ℹ 77 more rows</span></span></code></pre></div>
+<p>Há funções auxiliares muito úteis: <code><a href="https://tidyselect.r-lib.org/reference/starts_with.html">starts_with()</a></code>, <code><a href="https://tidyselect.r-lib.org/reference/starts_with.html">ends_with()</a></code> e <code><a href="https://tidyselect.r-lib.org/reference/starts_with.html">contains()</a></code>
+selecionam colunas pelo nome. Um sinal <code>-</code> remove colunas:</p>
+<div class="sourceCode" id="cb202"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">sw</span>, <span class="fu"><a href="https://tidyselect.r-lib.org/reference/starts_with.html">ends_with</a></span><span class="op">(</span><span class="st">"color"</span><span class="op">)</span><span class="op">)</span>         <span class="co"># colunas terminadas em "color"</span></span>
+<span><span class="co">## # A tibble: 87 × 3</span></span>
+<span><span class="co">##    hair_color    skin_color  eye_color</span></span>
+<span><span class="co">##    &lt;chr&gt;         &lt;chr&gt;       &lt;chr&gt;    </span></span>
+<span><span class="co">##  1 blond         fair        blue     </span></span>
+<span><span class="co">##  2 &lt;NA&gt;          gold        yellow   </span></span>
+<span><span class="co">##  3 &lt;NA&gt;          white, blue red      </span></span>
+<span><span class="co">##  4 none          white       yellow   </span></span>
+<span><span class="co">##  5 brown         light       brown    </span></span>
+<span><span class="co">##  6 brown, grey   light       blue     </span></span>
+<span><span class="co">##  7 brown         light       blue     </span></span>
+<span><span class="co">##  8 &lt;NA&gt;          white, red  red      </span></span>
+<span><span class="co">##  9 black         light       brown    </span></span>
+<span><span class="co">## 10 auburn, white fair        blue-gray</span></span>
+<span><span class="co">## # ℹ 77 more rows</span></span>
+<span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">sw</span>, <span class="op">-</span><span class="fu"><a href="https://tidyselect.r-lib.org/reference/starts_with.html">ends_with</a></span><span class="op">(</span><span class="st">"color"</span><span class="op">)</span><span class="op">)</span>        <span class="co"># todas menos essas</span></span>
+<span><span class="co">## # A tibble: 87 × 11</span></span>
+<span><span class="co">##    name               height  mass birth_year sex   gender homeworld species films vehicles starships</span></span>
+<span><span class="co">##    &lt;chr&gt;               &lt;int&gt; &lt;dbl&gt;      &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;  &lt;chr&gt;     &lt;chr&gt;   &lt;lis&gt; &lt;list&gt;   &lt;list&gt;   </span></span>
+<span><span class="co">##  1 Luke Skywalker        172    77       19   male  mascu… Tatooine  Human   &lt;chr&gt; &lt;chr&gt;    &lt;chr [2]&gt;</span></span>
+<span><span class="co">##  2 C-3PO                 167    75      112   none  mascu… Tatooine  Droid   &lt;chr&gt; &lt;chr&gt;    &lt;chr [0]&gt;</span></span>
+<span><span class="co">##  3 R2-D2                  96    32       33   none  mascu… Naboo     Droid   &lt;chr&gt; &lt;chr&gt;    &lt;chr [0]&gt;</span></span>
+<span><span class="co">##  4 Darth Vader           202   136       41.9 male  mascu… Tatooine  Human   &lt;chr&gt; &lt;chr&gt;    &lt;chr [1]&gt;</span></span>
+<span><span class="co">##  5 Leia Organa           150    49       19   fema… femin… Alderaan  Human   &lt;chr&gt; &lt;chr&gt;    &lt;chr [0]&gt;</span></span>
+<span><span class="co">##  6 Owen Lars             178   120       52   male  mascu… Tatooine  Human   &lt;chr&gt; &lt;chr&gt;    &lt;chr [0]&gt;</span></span>
+<span><span class="co">##  7 Beru Whitesun Lars    165    75       47   fema… femin… Tatooine  Human   &lt;chr&gt; &lt;chr&gt;    &lt;chr [0]&gt;</span></span>
+<span><span class="co">##  8 R5-D4                  97    32       NA   none  mascu… Tatooine  Droid   &lt;chr&gt; &lt;chr&gt;    &lt;chr [0]&gt;</span></span>
+<span><span class="co">##  9 Biggs Darklighter     183    84       24   male  mascu… Tatooine  Human   &lt;chr&gt; &lt;chr&gt;    &lt;chr [1]&gt;</span></span>
+<span><span class="co">## 10 Obi-Wan Kenobi        182    77       57   male  mascu… Stewjon   Human   &lt;chr&gt; &lt;chr&gt;    &lt;chr [5]&gt;</span></span>
+<span><span class="co">## # ℹ 77 more rows</span></span></code></pre></div>
+<div id="exercícios-15" class="section level4" number="15.2.1.1">
+<h4>
+<span class="header-section-number">15.2.1.1</span> Exercícios<a class="anchor" aria-label="anchor" href="#exerc%C3%ADcios-15"><i class="fas fa-link"></i></a>
+</h4>
+<p>Use a base <code>sw</code> nos exercícios seguintes.</p>
+<p><strong>1.</strong> Aplique <code><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse()</a></code> à base <code>sw</code>. O que faz esta função?</p>
+<p><strong>2.</strong> Crie uma tabela <code>sw_simples</code> apenas com as colunas <code>name</code>, <code>gender</code> e <code>films</code>.</p>
+<p><strong>3.</strong> Selecione as colunas <code>hair_color</code>, <code>skin_color</code> e <code>eye_color</code> usando a função
+auxiliar <code><a href="https://tidyselect.r-lib.org/reference/starts_with.html">contains()</a></code>.</p>
+<p><strong>4.</strong> Escreva todas as formas diferentes que conseguir de devolver a base <code>sw</code> <strong>sem</strong>
+as colunas <code>hair_color</code>, <code>skin_color</code> e <code>eye_color</code>.</p>
+</div>
+</div>
+<div id="ordenar-com-arrange" class="section level3" number="15.2.2">
+<h3>
+<span class="header-section-number">15.2.2</span> Ordenar com <code>arrange()</code><a class="anchor" aria-label="anchor" href="#ordenar-com-arrange"><i class="fas fa-link"></i></a>
+</h3>
+<p>A <code><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange()</a></code> ordena as linhas por uma ou mais colunas; <code><a href="https://dplyr.tidyverse.org/reference/desc.html">desc()</a></code> inverte a ordem:</p>
+<div class="sourceCode" id="cb203"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="va">sw</span>, <span class="va">mass</span><span class="op">)</span>                        <span class="co"># massa crescente</span></span>
+<span><span class="co">## # A tibble: 87 × 14</span></span>
+<span><span class="co">##    name  height  mass hair_color skin_color eye_color birth_year sex   gender homeworld species films</span></span>
+<span><span class="co">##    &lt;chr&gt;  &lt;int&gt; &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;      &lt;chr&gt;          &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;  &lt;chr&gt;     &lt;chr&gt;   &lt;lis&gt;</span></span>
+<span><span class="co">##  1 Ratt…     79    15 none       grey, blue unknown           NA male  mascu… Aleen Mi… Aleena  &lt;chr&gt;</span></span>
+<span><span class="co">##  2 Yoda      66    17 white      green      brown            896 male  mascu… &lt;NA&gt;      Yoda's… &lt;chr&gt;</span></span>
+<span><span class="co">##  3 Wick…     88    20 brown      brown      brown              8 male  mascu… Endor     Ewok    &lt;chr&gt;</span></span>
+<span><span class="co">##  4 R2-D2     96    32 &lt;NA&gt;       white, bl… red               33 none  mascu… Naboo     Droid   &lt;chr&gt;</span></span>
+<span><span class="co">##  5 R5-D4     97    32 &lt;NA&gt;       white, red red               NA none  mascu… Tatooine  Droid   &lt;chr&gt;</span></span>
+<span><span class="co">##  6 Sebu…    112    40 none       grey, red  orange            NA male  mascu… Malastare Dug     &lt;chr&gt;</span></span>
+<span><span class="co">##  7 Padm…    185    45 brown      light      brown             46 fema… femin… Naboo     Human   &lt;chr&gt;</span></span>
+<span><span class="co">##  8 Dud …     94    45 none       blue, grey yellow            NA male  mascu… Vulpter   Vulpte… &lt;chr&gt;</span></span>
+<span><span class="co">##  9 Wat …    193    48 none       green, gr… unknown           NA male  mascu… Skako     Skakoan &lt;chr&gt;</span></span>
+<span><span class="co">## 10 Sly …    178    48 none       pale       white             NA &lt;NA&gt;  &lt;NA&gt;   Umbara    &lt;NA&gt;    &lt;chr&gt;</span></span>
+<span><span class="co">## # ℹ 77 more rows</span></span>
+<span><span class="co">## # ℹ 2 more variables: vehicles &lt;list&gt;, starships &lt;list&gt;</span></span>
+<span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="va">sw</span>, <span class="fu"><a href="https://dplyr.tidyverse.org/reference/desc.html">desc</a></span><span class="op">(</span><span class="va">mass</span><span class="op">)</span><span class="op">)</span>                  <span class="co"># massa decrescente</span></span>
+<span><span class="co">## # A tibble: 87 × 14</span></span>
+<span><span class="co">##    name  height  mass hair_color skin_color eye_color birth_year sex   gender homeworld species films</span></span>
+<span><span class="co">##    &lt;chr&gt;  &lt;int&gt; &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;      &lt;chr&gt;          &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;  &lt;chr&gt;     &lt;chr&gt;   &lt;lis&gt;</span></span>
+<span><span class="co">##  1 Jabb…    175  1358 &lt;NA&gt;       green-tan… orange         600   herm… mascu… Nal Hutta Hutt    &lt;chr&gt;</span></span>
+<span><span class="co">##  2 Grie…    216   159 none       brown, wh… green, y…       NA   male  mascu… Kalee     Kaleesh &lt;chr&gt;</span></span>
+<span><span class="co">##  3 IG-88    200   140 none       metal      red             15   none  mascu… &lt;NA&gt;      Droid   &lt;chr&gt;</span></span>
+<span><span class="co">##  4 Dart…    202   136 none       white      yellow          41.9 male  mascu… Tatooine  Human   &lt;chr&gt;</span></span>
+<span><span class="co">##  5 Tarf…    234   136 brown      brown      blue            NA   male  mascu… Kashyyyk  Wookiee &lt;chr&gt;</span></span>
+<span><span class="co">##  6 Owen…    178   120 brown, gr… light      blue            52   male  mascu… Tatooine  Human   &lt;chr&gt;</span></span>
+<span><span class="co">##  7 Bossk    190   113 none       green      red             53   male  mascu… Trandosha Trando… &lt;chr&gt;</span></span>
+<span><span class="co">##  8 Chew…    228   112 brown      unknown    blue           200   male  mascu… Kashyyyk  Wookiee &lt;chr&gt;</span></span>
+<span><span class="co">##  9 Jek …    180   110 brown      fair       blue            NA   &lt;NA&gt;  &lt;NA&gt;   Bestine … &lt;NA&gt;    &lt;chr&gt;</span></span>
+<span><span class="co">## 10 Dext…    198   102 none       brown      yellow          NA   male  mascu… Ojom      Besali… &lt;chr&gt;</span></span>
+<span><span class="co">## # ℹ 77 more rows</span></span>
+<span><span class="co">## # ℹ 2 more variables: vehicles &lt;list&gt;, starships &lt;list&gt;</span></span>
+<span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="va">sw</span>, <span class="fu"><a href="https://dplyr.tidyverse.org/reference/desc.html">desc</a></span><span class="op">(</span><span class="va">height</span><span class="op">)</span>, <span class="fu"><a href="https://dplyr.tidyverse.org/reference/desc.html">desc</a></span><span class="op">(</span><span class="va">mass</span><span class="op">)</span><span class="op">)</span>    <span class="co"># por altura e, em empate, por massa</span></span>
+<span><span class="co">## # A tibble: 87 × 14</span></span>
+<span><span class="co">##    name  height  mass hair_color skin_color eye_color birth_year sex   gender homeworld species films</span></span>
+<span><span class="co">##    &lt;chr&gt;  &lt;int&gt; &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;      &lt;chr&gt;          &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;  &lt;chr&gt;     &lt;chr&gt;   &lt;lis&gt;</span></span>
+<span><span class="co">##  1 Yara…    264    NA none       white      yellow          NA   male  mascu… Quermia   Quermi… &lt;chr&gt;</span></span>
+<span><span class="co">##  2 Tarf…    234   136 brown      brown      blue            NA   male  mascu… Kashyyyk  Wookiee &lt;chr&gt;</span></span>
+<span><span class="co">##  3 Lama…    229    88 none       grey       black           NA   male  mascu… Kamino    Kamino… &lt;chr&gt;</span></span>
+<span><span class="co">##  4 Chew…    228   112 brown      unknown    blue           200   male  mascu… Kashyyyk  Wookiee &lt;chr&gt;</span></span>
+<span><span class="co">##  5 Roos…    224    82 none       grey       orange          NA   male  mascu… Naboo     Gungan  &lt;chr&gt;</span></span>
+<span><span class="co">##  6 Grie…    216   159 none       brown, wh… green, y…       NA   male  mascu… Kalee     Kaleesh &lt;chr&gt;</span></span>
+<span><span class="co">##  7 Taun…    213    NA none       grey       black           NA   fema… femin… Kamino    Kamino… &lt;chr&gt;</span></span>
+<span><span class="co">##  8 Tion…    206    80 none       grey       black           NA   male  mascu… Utapau    Pau'an  &lt;chr&gt;</span></span>
+<span><span class="co">##  9 Rugo…    206    NA none       green      orange          NA   male  mascu… Naboo     Gungan  &lt;chr&gt;</span></span>
+<span><span class="co">## 10 Dart…    202   136 none       white      yellow          41.9 male  mascu… Tatooine  Human   &lt;chr&gt;</span></span>
+<span><span class="co">## # ℹ 77 more rows</span></span>
+<span><span class="co">## # ℹ 2 more variables: vehicles &lt;list&gt;, starships &lt;list&gt;</span></span></code></pre></div>
+<div id="exercícios-16" class="section level4" number="15.2.2.1">
+<h4>
+<span class="header-section-number">15.2.2.1</span> Exercícios<a class="anchor" aria-label="anchor" href="#exerc%C3%ADcios-16"><i class="fas fa-link"></i></a>
+</h4>
+<p><strong>1.</strong> Ordene <code>sw</code> por <code>mass</code> (crescente) e, em empate, por <code>birth_year</code>
+(decrescente). Guarde em <code>sw_ordenados</code>.</p>
+<p><strong>2.</strong> Selecione as colunas <code>name</code> e <code>birth_year</code> e ordene por <code>birth_year</code>
+decrescente. Faça-o de três formas: com funções aninhadas, com um objeto intermédio e
+com o <em>pipe</em>.</p>
+</div>
+</div>
+<div id="filtrar-linhas-com-filter" class="section level3" number="15.2.3">
+<h3>
+<span class="header-section-number">15.2.3</span> Filtrar linhas com <code>filter()</code><a class="anchor" aria-label="anchor" href="#filtrar-linhas-com-filter"><i class="fas fa-link"></i></a>
+</h3>
+<p>A <code><a href="https://dplyr.tidyverse.org/reference/filter.html">filter()</a></code> seleciona linhas que satisfazem uma ou mais condições lógicas:</p>
+<div class="sourceCode" id="cb204"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">sw</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">height</span> <span class="op">&gt;</span> <span class="fl">170</span><span class="op">)</span>                       <span class="co"># uma condição</span></span>
+<span><span class="co">## # A tibble: 55 × 14</span></span>
+<span><span class="co">##    name  height  mass hair_color skin_color eye_color birth_year sex   gender homeworld species films</span></span>
+<span><span class="co">##    &lt;chr&gt;  &lt;int&gt; &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;      &lt;chr&gt;          &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;  &lt;chr&gt;     &lt;chr&gt;   &lt;lis&gt;</span></span>
+<span><span class="co">##  1 Luke…    172    77 blond      fair       blue            19   male  mascu… Tatooine  Human   &lt;chr&gt;</span></span>
+<span><span class="co">##  2 Dart…    202   136 none       white      yellow          41.9 male  mascu… Tatooine  Human   &lt;chr&gt;</span></span>
+<span><span class="co">##  3 Owen…    178   120 brown, gr… light      blue            52   male  mascu… Tatooine  Human   &lt;chr&gt;</span></span>
+<span><span class="co">##  4 Bigg…    183    84 black      light      brown           24   male  mascu… Tatooine  Human   &lt;chr&gt;</span></span>
+<span><span class="co">##  5 Obi-…    182    77 auburn, w… fair       blue-gray       57   male  mascu… Stewjon   Human   &lt;chr&gt;</span></span>
+<span><span class="co">##  6 Anak…    188    84 blond      fair       blue            41.9 male  mascu… Tatooine  Human   &lt;chr&gt;</span></span>
+<span><span class="co">##  7 Wilh…    180    NA auburn, g… fair       blue            64   male  mascu… Eriadu    Human   &lt;chr&gt;</span></span>
+<span><span class="co">##  8 Chew…    228   112 brown      unknown    blue           200   male  mascu… Kashyyyk  Wookiee &lt;chr&gt;</span></span>
+<span><span class="co">##  9 Han …    180    80 brown      fair       brown           29   male  mascu… Corellia  Human   &lt;chr&gt;</span></span>
+<span><span class="co">## 10 Gree…    173    74 &lt;NA&gt;       green      black           44   male  mascu… Rodia     Rodian  &lt;chr&gt;</span></span>
+<span><span class="co">## # ℹ 45 more rows</span></span>
+<span><span class="co">## # ℹ 2 more variables: vehicles &lt;list&gt;, starships &lt;list&gt;</span></span>
+<span><span class="va">sw</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">height</span> <span class="op">&gt;</span> <span class="fl">170</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">name</span>, <span class="va">height</span><span class="op">)</span></span>
+<span><span class="co">## # A tibble: 55 × 2</span></span>
+<span><span class="co">##    name              height</span></span>
+<span><span class="co">##    &lt;chr&gt;              &lt;int&gt;</span></span>
+<span><span class="co">##  1 Luke Skywalker       172</span></span>
+<span><span class="co">##  2 Darth Vader          202</span></span>
+<span><span class="co">##  3 Owen Lars            178</span></span>
+<span><span class="co">##  4 Biggs Darklighter    183</span></span>
+<span><span class="co">##  5 Obi-Wan Kenobi       182</span></span>
+<span><span class="co">##  6 Anakin Skywalker     188</span></span>
+<span><span class="co">##  7 Wilhuff Tarkin       180</span></span>
+<span><span class="co">##  8 Chewbacca            228</span></span>
+<span><span class="co">##  9 Han Solo             180</span></span>
+<span><span class="co">## 10 Greedo               173</span></span>
+<span><span class="co">## # ℹ 45 more rows</span></span>
+<span><span class="va">sw</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">height</span> <span class="op">&gt;</span> <span class="fl">170</span>, <span class="va">mass</span> <span class="op">&gt;</span> <span class="fl">80</span><span class="op">)</span>            <span class="co"># duas condições (E lógico)</span></span>
+<span><span class="co">## # A tibble: 21 × 14</span></span>
+<span><span class="co">##    name  height  mass hair_color skin_color eye_color birth_year sex   gender homeworld species films</span></span>
+<span><span class="co">##    &lt;chr&gt;  &lt;int&gt; &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;      &lt;chr&gt;          &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;  &lt;chr&gt;     &lt;chr&gt;   &lt;lis&gt;</span></span>
+<span><span class="co">##  1 Dart…    202   136 none       white      yellow          41.9 male  mascu… Tatooine  Human   &lt;chr&gt;</span></span>
+<span><span class="co">##  2 Owen…    178   120 brown, gr… light      blue            52   male  mascu… Tatooine  Human   &lt;chr&gt;</span></span>
+<span><span class="co">##  3 Bigg…    183    84 black      light      brown           24   male  mascu… Tatooine  Human   &lt;chr&gt;</span></span>
+<span><span class="co">##  4 Anak…    188    84 blond      fair       blue            41.9 male  mascu… Tatooine  Human   &lt;chr&gt;</span></span>
+<span><span class="co">##  5 Chew…    228   112 brown      unknown    blue           200   male  mascu… Kashyyyk  Wookiee &lt;chr&gt;</span></span>
+<span><span class="co">##  6 Jabb…    175  1358 &lt;NA&gt;       green-tan… orange         600   herm… mascu… Nal Hutta Hutt    &lt;chr&gt;</span></span>
+<span><span class="co">##  7 Jek …    180   110 brown      fair       blue            NA   &lt;NA&gt;  &lt;NA&gt;   Bestine … &lt;NA&gt;    &lt;chr&gt;</span></span>
+<span><span class="co">##  8 IG-88    200   140 none       metal      red             15   none  mascu… &lt;NA&gt;      Droid   &lt;chr&gt;</span></span>
+<span><span class="co">##  9 Bossk    190   113 none       green      red             53   male  mascu… Trandosha Trando… &lt;chr&gt;</span></span>
+<span><span class="co">## 10 Ackb…    180    83 none       brown mot… orange          41   male  mascu… Mon Cala  Mon Ca… &lt;chr&gt;</span></span>
+<span><span class="co">## # ℹ 11 more rows</span></span>
+<span><span class="co">## # ℹ 2 more variables: vehicles &lt;list&gt;, starships &lt;list&gt;</span></span></code></pre></div>
+<p>Para variáveis categóricas, comparamos com <code>==</code> ou testamos a pertença a um conjunto
+com <code>%in%</code>:</p>
+<div class="sourceCode" id="cb205"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">sw</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">hair_color</span> <span class="op">==</span> <span class="st">"black"</span> <span class="op">|</span> <span class="va">hair_color</span> <span class="op">==</span> <span class="st">"brown"</span><span class="op">)</span></span>
+<span><span class="co">## # A tibble: 31 × 14</span></span>
+<span><span class="co">##    name  height  mass hair_color skin_color eye_color birth_year sex   gender homeworld species films</span></span>
+<span><span class="co">##    &lt;chr&gt;  &lt;int&gt; &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;      &lt;chr&gt;          &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;  &lt;chr&gt;     &lt;chr&gt;   &lt;lis&gt;</span></span>
+<span><span class="co">##  1 Leia…    150  49   brown      light      brown           19   fema… femin… Alderaan  Human   &lt;chr&gt;</span></span>
+<span><span class="co">##  2 Beru…    165  75   brown      light      blue            47   fema… femin… Tatooine  Human   &lt;chr&gt;</span></span>
+<span><span class="co">##  3 Bigg…    183  84   black      light      brown           24   male  mascu… Tatooine  Human   &lt;chr&gt;</span></span>
+<span><span class="co">##  4 Chew…    228 112   brown      unknown    blue           200   male  mascu… Kashyyyk  Wookiee &lt;chr&gt;</span></span>
+<span><span class="co">##  5 Han …    180  80   brown      fair       brown           29   male  mascu… Corellia  Human   &lt;chr&gt;</span></span>
+<span><span class="co">##  6 Wedg…    170  77   brown      fair       hazel           21   male  mascu… Corellia  Human   &lt;chr&gt;</span></span>
+<span><span class="co">##  7 Jek …    180 110   brown      fair       blue            NA   &lt;NA&gt;  &lt;NA&gt;   Bestine … &lt;NA&gt;    &lt;chr&gt;</span></span>
+<span><span class="co">##  8 Boba…    183  78.2 black      fair       brown           31.5 male  mascu… Kamino    Human   &lt;chr&gt;</span></span>
+<span><span class="co">##  9 Land…    177  79   black      dark       brown           31   male  mascu… Socorro   Human   &lt;chr&gt;</span></span>
+<span><span class="co">## 10 Arve…     NA  NA   brown      fair       brown           NA   male  mascu… &lt;NA&gt;      Human   &lt;chr&gt;</span></span>
+<span><span class="co">## # ℹ 21 more rows</span></span>
+<span><span class="co">## # ℹ 2 more variables: vehicles &lt;list&gt;, starships &lt;list&gt;</span></span>
+<span><span class="va">sw</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">hair_color</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"black"</span>, <span class="st">"brown"</span><span class="op">)</span><span class="op">)</span>   <span class="co"># forma equivalente, mais curta</span></span>
+<span><span class="co">## # A tibble: 31 × 14</span></span>
+<span><span class="co">##    name  height  mass hair_color skin_color eye_color birth_year sex   gender homeworld species films</span></span>
+<span><span class="co">##    &lt;chr&gt;  &lt;int&gt; &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;      &lt;chr&gt;          &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;  &lt;chr&gt;     &lt;chr&gt;   &lt;lis&gt;</span></span>
+<span><span class="co">##  1 Leia…    150  49   brown      light      brown           19   fema… femin… Alderaan  Human   &lt;chr&gt;</span></span>
+<span><span class="co">##  2 Beru…    165  75   brown      light      blue            47   fema… femin… Tatooine  Human   &lt;chr&gt;</span></span>
+<span><span class="co">##  3 Bigg…    183  84   black      light      brown           24   male  mascu… Tatooine  Human   &lt;chr&gt;</span></span>
+<span><span class="co">##  4 Chew…    228 112   brown      unknown    blue           200   male  mascu… Kashyyyk  Wookiee &lt;chr&gt;</span></span>
+<span><span class="co">##  5 Han …    180  80   brown      fair       brown           29   male  mascu… Corellia  Human   &lt;chr&gt;</span></span>
+<span><span class="co">##  6 Wedg…    170  77   brown      fair       hazel           21   male  mascu… Corellia  Human   &lt;chr&gt;</span></span>
+<span><span class="co">##  7 Jek …    180 110   brown      fair       blue            NA   &lt;NA&gt;  &lt;NA&gt;   Bestine … &lt;NA&gt;    &lt;chr&gt;</span></span>
+<span><span class="co">##  8 Boba…    183  78.2 black      fair       brown           31.5 male  mascu… Kamino    Human   &lt;chr&gt;</span></span>
+<span><span class="co">##  9 Land…    177  79   black      dark       brown           31   male  mascu… Socorro   Human   &lt;chr&gt;</span></span>
+<span><span class="co">## 10 Arve…     NA  NA   brown      fair       brown           NA   male  mascu… &lt;NA&gt;      Human   &lt;chr&gt;</span></span>
+<span><span class="co">## # ℹ 21 more rows</span></span>
+<span><span class="co">## # ℹ 2 more variables: vehicles &lt;list&gt;, starships &lt;list&gt;</span></span></code></pre></div>
+<p>Quando queremos procurar um padrão <em>dentro</em> do texto — e não uma correspondência
+exata — recorremos à <code><a href="https://stringr.tidyverse.org/reference/str_detect.html">str_detect()</a></code>, do pacote <code>stringr</code>, que indica, para cada
+elemento, se contém o padrão:</p>
+<div class="sourceCode" id="cb206"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://stringr.tidyverse.org">stringr</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">sw</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_detect.html">str_detect</a></span><span class="op">(</span><span class="va">hair_color</span>, <span class="st">"grey"</span><span class="op">)</span><span class="op">)</span>   <span class="co"># cabelo que contenha "grey"</span></span>
+<span><span class="co">## # A tibble: 3 × 14</span></span>
+<span><span class="co">##   name   height  mass hair_color skin_color eye_color birth_year sex   gender homeworld species films</span></span>
+<span><span class="co">##   &lt;chr&gt;   &lt;int&gt; &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;      &lt;chr&gt;          &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;  &lt;chr&gt;     &lt;chr&gt;   &lt;lis&gt;</span></span>
+<span><span class="co">## 1 Owen …    178   120 brown, gr… light      blue              52 male  mascu… Tatooine  Human   &lt;chr&gt;</span></span>
+<span><span class="co">## 2 Wilhu…    180    NA auburn, g… fair       blue              64 male  mascu… Eriadu    Human   &lt;chr&gt;</span></span>
+<span><span class="co">## 3 Palpa…    170    75 grey       pale       yellow            82 male  mascu… Naboo     Human   &lt;chr&gt;</span></span>
+<span><span class="co">## # ℹ 2 more variables: vehicles &lt;list&gt;, starships &lt;list&gt;</span></span></code></pre></div>
+<div id="exercícios-17" class="section level4" number="15.2.3.1">
+<h4>
+<span class="header-section-number">15.2.3.1</span> Exercícios<a class="anchor" aria-label="anchor" href="#exerc%C3%ADcios-17"><i class="fas fa-link"></i></a>
+</h4>
+<p>Use a base <code>sw</code>.</p>
+<p><strong>1.</strong> Crie um objeto <code>humanos</code> apenas com personagens humanas.</p>
+<p><strong>2.</strong> Crie um objeto <code>altos_fortes</code> com personagens de mais de 200 cm e mais de
+100 kg.</p>
+<p><strong>3.</strong> Devolva tabelas (<em>tibbles</em>) apenas com:</p>
+<ol style="list-style-type: lower-alpha">
+<li>personagens humanas nascidas mais de 100 anos antes da batalha de Yavin
+(<code>birth_year &gt; 100</code>);</li>
+<li>personagens cuja cor (de pele ou olhos) contenha <code>"light"</code> ou <code>"red"</code>;</li>
+<li>personagens com mais de 100 kg, ordenadas por altura decrescente, mostrando só
+<code>name</code>, <code>mass</code> e <code>height</code>;</li>
+<li>personagens da espécie <code>"Human"</code> ou <code>"Droid"</code> com mais de 170 cm;</li>
+<li>personagens sem informação de altura <strong>e</strong> de massa (<code>NA</code> em ambas).</li>
+</ol>
+</div>
+</div>
+<div id="criar-e-modificar-colunas-com-mutate" class="section level3" number="15.2.4">
+<h3>
+<span class="header-section-number">15.2.4</span> Criar e modificar colunas com <code>mutate()</code><a class="anchor" aria-label="anchor" href="#criar-e-modificar-colunas-com-mutate"><i class="fas fa-link"></i></a>
+</h3>
+<p>A <code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code> cria colunas novas ou altera colunas existentes. Se o nome já existir, a
+coluna é substituída; se for novo, a coluna é acrescentada no fim. Por exemplo, para
+converter a altura de centímetros para metros:</p>
+<div class="sourceCode" id="cb207"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">sw</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>height <span class="op">=</span> <span class="va">height</span> <span class="op">/</span> <span class="fl">100</span><span class="op">)</span>          <span class="co"># substitui a coluna existente</span></span>
+<span><span class="co">## # A tibble: 87 × 14</span></span>
+<span><span class="co">##    name  height  mass hair_color skin_color eye_color birth_year sex   gender homeworld species films</span></span>
+<span><span class="co">##    &lt;chr&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;      &lt;chr&gt;          &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;  &lt;chr&gt;     &lt;chr&gt;   &lt;lis&gt;</span></span>
+<span><span class="co">##  1 Luke…   1.72    77 blond      fair       blue            19   male  mascu… Tatooine  Human   &lt;chr&gt;</span></span>
+<span><span class="co">##  2 C-3PO   1.67    75 &lt;NA&gt;       gold       yellow         112   none  mascu… Tatooine  Droid   &lt;chr&gt;</span></span>
+<span><span class="co">##  3 R2-D2   0.96    32 &lt;NA&gt;       white, bl… red             33   none  mascu… Naboo     Droid   &lt;chr&gt;</span></span>
+<span><span class="co">##  4 Dart…   2.02   136 none       white      yellow          41.9 male  mascu… Tatooine  Human   &lt;chr&gt;</span></span>
+<span><span class="co">##  5 Leia…   1.5     49 brown      light      brown           19   fema… femin… Alderaan  Human   &lt;chr&gt;</span></span>
+<span><span class="co">##  6 Owen…   1.78   120 brown, gr… light      blue            52   male  mascu… Tatooine  Human   &lt;chr&gt;</span></span>
+<span><span class="co">##  7 Beru…   1.65    75 brown      light      blue            47   fema… femin… Tatooine  Human   &lt;chr&gt;</span></span>
+<span><span class="co">##  8 R5-D4   0.97    32 &lt;NA&gt;       white, red red             NA   none  mascu… Tatooine  Droid   &lt;chr&gt;</span></span>
+<span><span class="co">##  9 Bigg…   1.83    84 black      light      brown           24   male  mascu… Tatooine  Human   &lt;chr&gt;</span></span>
+<span><span class="co">## 10 Obi-…   1.82    77 auburn, w… fair       blue-gray       57   male  mascu… Stewjon   Human   &lt;chr&gt;</span></span>
+<span><span class="co">## # ℹ 77 more rows</span></span>
+<span><span class="co">## # ℹ 2 more variables: vehicles &lt;list&gt;, starships &lt;list&gt;</span></span>
+<span><span class="va">sw</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>height_meters <span class="op">=</span> <span class="va">height</span> <span class="op">/</span> <span class="fl">100</span><span class="op">)</span>   <span class="co"># cria uma nova coluna</span></span>
+<span><span class="co">## # A tibble: 87 × 15</span></span>
+<span><span class="co">##    name  height  mass hair_color skin_color eye_color birth_year sex   gender homeworld species films</span></span>
+<span><span class="co">##    &lt;chr&gt;  &lt;int&gt; &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;      &lt;chr&gt;          &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;  &lt;chr&gt;     &lt;chr&gt;   &lt;lis&gt;</span></span>
+<span><span class="co">##  1 Luke…    172    77 blond      fair       blue            19   male  mascu… Tatooine  Human   &lt;chr&gt;</span></span>
+<span><span class="co">##  2 C-3PO    167    75 &lt;NA&gt;       gold       yellow         112   none  mascu… Tatooine  Droid   &lt;chr&gt;</span></span>
+<span><span class="co">##  3 R2-D2     96    32 &lt;NA&gt;       white, bl… red             33   none  mascu… Naboo     Droid   &lt;chr&gt;</span></span>
+<span><span class="co">##  4 Dart…    202   136 none       white      yellow          41.9 male  mascu… Tatooine  Human   &lt;chr&gt;</span></span>
+<span><span class="co">##  5 Leia…    150    49 brown      light      brown           19   fema… femin… Alderaan  Human   &lt;chr&gt;</span></span>
+<span><span class="co">##  6 Owen…    178   120 brown, gr… light      blue            52   male  mascu… Tatooine  Human   &lt;chr&gt;</span></span>
+<span><span class="co">##  7 Beru…    165    75 brown      light      blue            47   fema… femin… Tatooine  Human   &lt;chr&gt;</span></span>
+<span><span class="co">##  8 R5-D4     97    32 &lt;NA&gt;       white, red red             NA   none  mascu… Tatooine  Droid   &lt;chr&gt;</span></span>
+<span><span class="co">##  9 Bigg…    183    84 black      light      brown           24   male  mascu… Tatooine  Human   &lt;chr&gt;</span></span>
+<span><span class="co">## 10 Obi-…    182    77 auburn, w… fair       blue-gray       57   male  mascu… Stewjon   Human   &lt;chr&gt;</span></span>
+<span><span class="co">## # ℹ 77 more rows</span></span>
+<span><span class="co">## # ℹ 3 more variables: vehicles &lt;list&gt;, starships &lt;list&gt;, height_meters &lt;dbl&gt;</span></span></code></pre></div>
+<p>Podemos combinar várias colunas numa expressão. Calculemos o índice de massa corporal
+(IMC) de cada personagem, <span class="math inline">\(\text{IMC} = \text{massa} / \text{altura}^2\)</span> (com a altura
+em metros), devolvendo <code>NA</code> sempre que falte a altura ou a massa:</p>
+<div class="sourceCode" id="cb208"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">sw</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>IMC <span class="op">=</span> <span class="va">mass</span> <span class="op">/</span> <span class="op">(</span><span class="va">height</span> <span class="op">/</span> <span class="fl">100</span><span class="op">)</span><span class="op">^</span><span class="fl">2</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">name</span>, <span class="va">height</span>, <span class="va">mass</span>, <span class="va">IMC</span><span class="op">)</span></span>
+<span><span class="co">## # A tibble: 87 × 4</span></span>
+<span><span class="co">##    name               height  mass   IMC</span></span>
+<span><span class="co">##    &lt;chr&gt;               &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt;</span></span>
+<span><span class="co">##  1 Luke Skywalker        172    77  26.0</span></span>
+<span><span class="co">##  2 C-3PO                 167    75  26.9</span></span>
+<span><span class="co">##  3 R2-D2                  96    32  34.7</span></span>
+<span><span class="co">##  4 Darth Vader           202   136  33.3</span></span>
+<span><span class="co">##  5 Leia Organa           150    49  21.8</span></span>
+<span><span class="co">##  6 Owen Lars             178   120  37.9</span></span>
+<span><span class="co">##  7 Beru Whitesun Lars    165    75  27.5</span></span>
+<span><span class="co">##  8 R5-D4                  97    32  34.0</span></span>
+<span><span class="co">##  9 Biggs Darklighter     183    84  25.1</span></span>
+<span><span class="co">## 10 Obi-Wan Kenobi        182    77  23.2</span></span>
+<span><span class="co">## # ℹ 77 more rows</span></span></code></pre></div>
+<div class="nota">
+<p>Não foi preciso tratar os <code>NA</code> explicitamente: qualquer operação aritmética que
+envolva um <code>NA</code> devolve <code>NA</code>, pelo que as personagens sem altura ou sem massa ficam
+automaticamente com <code>IMC</code> igual a <code>NA</code>. Esta propagação silenciosa dos valores em falta
+é uma característica do R que convém ter sempre presente.</p>
+</div>
+<div id="exercícios-18" class="section level4" number="15.2.4.1">
+<h4>
+<span class="header-section-number">15.2.4.1</span> Exercícios<a class="anchor" aria-label="anchor" href="#exerc%C3%ADcios-18"><i class="fas fa-link"></i></a>
+</h4>
+<p><strong>1.</strong> Crie a coluna <code>dif_altura_peso</code> (diferença entre altura e massa) e guarde a
+tabela em <code>starwars_dif</code>. Depois, filtre as personagens cuja altura excede a massa e
+ordene por <code>dif_altura_peso</code> crescente.</p>
+<p><strong>2.</strong> Crie as colunas: (a) <code>indice_massa_altura = mass / height</code>;
+(b) <code>indice_massa_medio = mean(mass, na.rm = TRUE)</code>;
+(c) <code>indice_relativo = (indice_massa_altura - indice_massa_medio) / indice_massa_medio</code>;
+(d) <code>acima_media = ifelse(indice_massa_altura &gt; indice_massa_medio, "sim", "não")</code>.</p>
+<p><strong>3.</strong> Crie uma coluna que classifique cada personagem como <code>"recente"</code> (nascida menos
+de 100 anos antes da batalha de Yavin) ou <code>"antiga"</code> (100 anos ou mais).</p>
+</div>
+</div>
+<div id="resumir-com-summarize-e-group_by" class="section level3" number="15.2.5">
+<h3>
+<span class="header-section-number">15.2.5</span> Resumir com <code>summarize()</code> e <code>group_by()</code><a class="anchor" aria-label="anchor" href="#resumir-com-summarize-e-group_by"><i class="fas fa-link"></i></a>
+</h3>
+<p>A <code><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize()</a></code> reduz uma ou mais colunas a estatísticas — uma média, uma mediana, uma
+variância. Combinada com <code><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by()</a></code>, calcula essas estatísticas <strong>para cada grupo</strong>,
+o que é a essência da análise por categorias:</p>
+<div class="sourceCode" id="cb209"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Uma estatística sobre toda a tabela</span></span>
+<span><span class="va">sw</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span>media_massa <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">mass</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">## # A tibble: 1 × 1</span></span>
+<span><span class="co">##   media_massa</span></span>
+<span><span class="co">##         &lt;dbl&gt;</span></span>
+<span><span class="co">## 1        97.3</span></span>
+<span></span>
+<span><span class="co"># A mesma estatística, agora por espécie</span></span>
+<span><span class="va">sw</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">species</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span>media_massa <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">mass</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">## # A tibble: 38 × 2</span></span>
+<span><span class="co">##    species   media_massa</span></span>
+<span><span class="co">##    &lt;chr&gt;           &lt;dbl&gt;</span></span>
+<span><span class="co">##  1 Aleena           15  </span></span>
+<span><span class="co">##  2 Besalisk        102  </span></span>
+<span><span class="co">##  3 Cerean           82  </span></span>
+<span><span class="co">##  4 Chagrian        NaN  </span></span>
+<span><span class="co">##  5 Clawdite         55  </span></span>
+<span><span class="co">##  6 Droid            69.8</span></span>
+<span><span class="co">##  7 Dug              40  </span></span>
+<span><span class="co">##  8 Ewok             20  </span></span>
+<span><span class="co">##  9 Geonosian        80  </span></span>
+<span><span class="co">## 10 Gungan           74  </span></span>
+<span><span class="co">## # ℹ 28 more rows</span></span></code></pre></div>
+<p>Podemos calcular várias estatísticas ao mesmo tempo:</p>
+<div class="sourceCode" id="cb210"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">sw</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span></span>
+<span>  media_massa     <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">mass</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
+<span>  mediana_massa   <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/median.html">median</a></span><span class="op">(</span><span class="va">mass</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
+<span>  variancia_massa <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/cor.html">var</a></span><span class="op">(</span><span class="va">mass</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="op">)</span></span>
+<span><span class="co">## # A tibble: 1 × 3</span></span>
+<span><span class="co">##   media_massa mediana_massa variancia_massa</span></span>
+<span><span class="co">##         &lt;dbl&gt;         &lt;dbl&gt;           &lt;dbl&gt;</span></span>
+<span><span class="co">## 1        97.3            79          28716.</span></span></code></pre></div>
+<p>E resumir uma variável dentro de cada categoria de outra — aqui, a altura média por cor
+de cabelo:</p>
+<div class="sourceCode" id="cb211"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">sw</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">hair_color</span><span class="op">)</span>, <span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">height</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">hair_color</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span>media_altura <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">height</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">## # A tibble: 11 × 2</span></span>
+<span><span class="co">##    hair_color    media_altura</span></span>
+<span><span class="co">##    &lt;chr&gt;                &lt;dbl&gt;</span></span>
+<span><span class="co">##  1 auburn                150 </span></span>
+<span><span class="co">##  2 auburn, grey          180 </span></span>
+<span><span class="co">##  3 auburn, white         182 </span></span>
+<span><span class="co">##  4 black                 174.</span></span>
+<span><span class="co">##  5 blond                 177.</span></span>
+<span><span class="co">##  6 blonde                168 </span></span>
+<span><span class="co">##  7 brown                 177.</span></span>
+<span><span class="co">##  8 brown, grey           178 </span></span>
+<span><span class="co">##  9 grey                  170 </span></span>
+<span><span class="co">## 10 none                  181.</span></span>
+<span><span class="co">## 11 white                 156</span></span></code></pre></div>
+<div class="dica">
+<p>Repare no papel de <code>na.rm = TRUE</code>. Funções como <code><a href="https://rdrr.io/r/base/mean.html">mean()</a></code> ou <code><a href="https://rdrr.io/r/stats/cor.html">var()</a></code> devolvem <code>NA</code> se
+houver um único valor em falta nos dados; <code>na.rm = TRUE</code> manda ignorá-los no cálculo.
+Ignorar valores em falta nem sempre é inócuo — pode enviesar resultados —, mas é
+frequentemente o que se pretende ao resumir dados reais, que quase nunca estão
+completos.</p>
+</div>
+<div id="exercícios-19" class="section level4" number="15.2.5.1">
+<h4>
+<span class="header-section-number">15.2.5.1</span> Exercícios<a class="anchor" aria-label="anchor" href="#exerc%C3%ADcios-19"><i class="fas fa-link"></i></a>
+</h4>
+<p>Use a base <code>sw</code>.</p>
+<p><strong>1.</strong> Calcule a altura média e mediana das personagens.</p>
+<p><strong>2.</strong> Calcule a massa média das personagens com mais de 175 cm.</p>
+<p><strong>3.</strong> Na mesma tabela, apresente a massa média das personagens com menos de 175 cm e
+a das personagens com 175 cm ou mais.</p>
+<p><strong>4.</strong> Devolva tabelas (<em>tibbles</em>) com: (a) a altura média por espécie; (b) a massa
+média e mediana por espécie; (c) apenas o nome das personagens que participaram em mais
+de 2 filmes.</p>
+</div>
+</div>
+</div>
+<div id="juntar-tabelas" class="section level2" number="15.3">
+<h2>
+<span class="header-section-number">15.3</span> Juntar tabelas<a class="anchor" aria-label="anchor" href="#juntar-tabelas"><i class="fas fa-link"></i></a>
+</h2>
+<p>Em ciência de dados, a informação está muitas vezes repartida por várias tabelas que
+partilham uma <strong>coluna-chave</strong> — um identificador comum. As funções de junção do
+<code>dplyr</code> combinam-nas, e distinguem-se pela forma como tratam as linhas sem
+correspondência:</p>
+<ul>
+<li>
+<code><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">left_join()</a></code> — mantém todas as linhas da tabela da esquerda;</li>
+<li>
+<code><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">right_join()</a></code> — mantém todas as linhas da tabela da direita;</li>
+<li>
+<code><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">full_join()</a></code> — mantém todas as linhas de ambas.</li>
+</ul>
+<p>Onde não há correspondência, as colunas em falta são preenchidas com <code>NA</code>.</p>
+<p>Para ilustrar, criamos dois subconjuntos de <code>sw</code> — as personagens altas e as
+personagens humanas — ligados pela chave <code>name</code>:</p>
+<div class="sourceCode" id="cb212"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">personagens_altos</span> <span class="op">&lt;-</span> <span class="va">sw</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">height</span> <span class="op">&gt;</span> <span class="fl">180</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">name</span>, <span class="va">height</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">personagens_humanos</span> <span class="op">&lt;-</span> <span class="va">sw</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">species</span> <span class="op">==</span> <span class="st">"Human"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">name</span>, <span class="va">species</span><span class="op">)</span></span></code></pre></div>
+<p>A <code><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">left_join()</a></code> mantém <strong>todas</strong> as personagens altas e acrescenta a espécie apenas às
+que também são humanas (as restantes ficam com <code>NA</code> em <code>species</code>):</p>
+<div class="sourceCode" id="cb213"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">left_join</a></span><span class="op">(</span><span class="va">personagens_altos</span>, <span class="va">personagens_humanos</span>, by <span class="op">=</span> <span class="st">"name"</span><span class="op">)</span></span>
+<span><span class="co">## # A tibble: 39 × 3</span></span>
+<span><span class="co">##    name              height species</span></span>
+<span><span class="co">##    &lt;chr&gt;              &lt;int&gt; &lt;chr&gt;  </span></span>
+<span><span class="co">##  1 Darth Vader          202 Human  </span></span>
+<span><span class="co">##  2 Biggs Darklighter    183 Human  </span></span>
+<span><span class="co">##  3 Obi-Wan Kenobi       182 Human  </span></span>
+<span><span class="co">##  4 Anakin Skywalker     188 Human  </span></span>
+<span><span class="co">##  5 Chewbacca            228 &lt;NA&gt;   </span></span>
+<span><span class="co">##  6 Boba Fett            183 Human  </span></span>
+<span><span class="co">##  7 IG-88                200 &lt;NA&gt;   </span></span>
+<span><span class="co">##  8 Bossk                190 &lt;NA&gt;   </span></span>
+<span><span class="co">##  9 Qui-Gon Jinn         193 Human  </span></span>
+<span><span class="co">## 10 Nute Gunray          191 &lt;NA&gt;   </span></span>
+<span><span class="co">## # ℹ 29 more rows</span></span></code></pre></div>
+<p>A <code><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">right_join()</a></code> faz o inverso: mantém todas as personagens humanas e acrescenta a
+altura às que também são altas:</p>
+<div class="sourceCode" id="cb214"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">right_join</a></span><span class="op">(</span><span class="va">personagens_altos</span>, <span class="va">personagens_humanos</span>, by <span class="op">=</span> <span class="st">"name"</span><span class="op">)</span></span>
+<span><span class="co">## # A tibble: 35 × 3</span></span>
+<span><span class="co">##    name              height species</span></span>
+<span><span class="co">##    &lt;chr&gt;              &lt;int&gt; &lt;chr&gt;  </span></span>
+<span><span class="co">##  1 Darth Vader          202 Human  </span></span>
+<span><span class="co">##  2 Biggs Darklighter    183 Human  </span></span>
+<span><span class="co">##  3 Obi-Wan Kenobi       182 Human  </span></span>
+<span><span class="co">##  4 Anakin Skywalker     188 Human  </span></span>
+<span><span class="co">##  5 Boba Fett            183 Human  </span></span>
+<span><span class="co">##  6 Qui-Gon Jinn         193 Human  </span></span>
+<span><span class="co">##  7 Padmé Amidala        185 Human  </span></span>
+<span><span class="co">##  8 Ric Olié             183 Human  </span></span>
+<span><span class="co">##  9 Quarsh Panaka        183 Human  </span></span>
+<span><span class="co">## 10 Mace Windu           188 Human  </span></span>
+<span><span class="co">## # ℹ 25 more rows</span></span></code></pre></div>
+<p>A <code><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">full_join()</a></code> mantém todas as personagens de ambas as tabelas:</p>
+<div class="sourceCode" id="cb215"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">full_join</a></span><span class="op">(</span><span class="va">personagens_altos</span>, <span class="va">personagens_humanos</span>, by <span class="op">=</span> <span class="st">"name"</span><span class="op">)</span></span>
+<span><span class="co">## # A tibble: 59 × 3</span></span>
+<span><span class="co">##    name              height species</span></span>
+<span><span class="co">##    &lt;chr&gt;              &lt;int&gt; &lt;chr&gt;  </span></span>
+<span><span class="co">##  1 Darth Vader          202 Human  </span></span>
+<span><span class="co">##  2 Biggs Darklighter    183 Human  </span></span>
+<span><span class="co">##  3 Obi-Wan Kenobi       182 Human  </span></span>
+<span><span class="co">##  4 Anakin Skywalker     188 Human  </span></span>
+<span><span class="co">##  5 Chewbacca            228 &lt;NA&gt;   </span></span>
+<span><span class="co">##  6 Boba Fett            183 Human  </span></span>
+<span><span class="co">##  7 IG-88                200 &lt;NA&gt;   </span></span>
+<span><span class="co">##  8 Bossk                190 &lt;NA&gt;   </span></span>
+<span><span class="co">##  9 Qui-Gon Jinn         193 Human  </span></span>
+<span><span class="co">## 10 Nute Gunray          191 &lt;NA&gt;   </span></span>
+<span><span class="co">## # ℹ 49 more rows</span></span></code></pre></div>
+<div class="nota">
+<p>As três junções são a versão em <code>dplyr</code> das combinações de tabelas que já tínhamos
+visto com a função <code><a href="https://rdrr.io/r/base/merge.html">merge()</a></code> do R base (Capítulo <a href="estruturas.html#estruturas">4</a>). A vantagem aqui é
+a clareza: o nome de cada função diz exatamente que linhas serão preservadas.</p>
+</div>
+<div id="exercícios-20" class="section level4" number="15.3.0.1">
+<h4>
+<span class="header-section-number">15.3.0.1</span> Exercícios<a class="anchor" aria-label="anchor" href="#exerc%C3%ADcios-20"><i class="fas fa-link"></i></a>
+</h4>
+<p><strong>1.</strong> Crie <code>personagens_altos</code> (altura &gt; 180 cm) e <code>personagens_leves</code> (massa &lt; 75 kg)
+e combine-as com <code><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">left_join()</a></code> pela coluna <code>name</code>. Observe que as personagens altas sem
+correspondência ficam com <code>NA</code> na massa.</p>
+<p><strong>2.</strong> Crie <code>personagens_humanos</code> (espécie <code>"Human"</code>) e <code>cor_cabelo</code> (personagens com
+<code>hair_color</code> não <code>NA</code>) e combine-as com <code><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">right_join()</a></code> por <code>name</code>.</p>
+<p><strong>3.</strong> Crie <code>especies_personagens</code> (espécie não <code>NA</code>) e <code>cor_olhos</code> (<code>eye_color</code> não
+<code>NA</code>) e combine-as com <code><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">full_join()</a></code> por <code>name</code>.</p>
+<p>Com os dados lidos, limpos e organizados, estamos prontos para o passo mais
+recompensador: representá-los graficamente com toda a expressividade. É o que faremos no
+próximo capítulo, com o <code>ggplot2</code>.</p>
+
+</div>
+</div>
+</div>
+  <div class="chapter-nav">
+<div class="prev"><a href="graficos.html"><span class="header-section-number">14</span> Gráficos com o R base</a></div>
+<div class="next"><a href="ggplot.html"><span class="header-section-number">16</span> O pacote ggplot2</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#manipulacao"><span class="header-section-number">15</span> Manipulação de dados</a></li>
+<li><a class="nav-link" href="#tibbles"><span class="header-section-number">15.1</span> Tibbles</a></li>
+<li>
+<a class="nav-link" href="#os-verbos-do-dplyr"><span class="header-section-number">15.2</span> Os verbos do dplyr</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#selecionar-colunas-com-select"><span class="header-section-number">15.2.1</span> Selecionar colunas com select()</a></li>
+<li><a class="nav-link" href="#ordenar-com-arrange"><span class="header-section-number">15.2.2</span> Ordenar com arrange()</a></li>
+<li><a class="nav-link" href="#filtrar-linhas-com-filter"><span class="header-section-number">15.2.3</span> Filtrar linhas com filter()</a></li>
+<li><a class="nav-link" href="#criar-e-modificar-colunas-com-mutate"><span class="header-section-number">15.2.4</span> Criar e modificar colunas com mutate()</a></li>
+<li><a class="nav-link" href="#resumir-com-summarize-e-group_by"><span class="header-section-number">15.2.5</span> Resumir com summarize() e group_by()</a></li>
+</ul>
+</li>
+<li><a class="nav-link" href="#juntar-tabelas"><span class="header-section-number">15.3</span> Juntar tabelas</a></li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+          
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>Introdução ao R e à Simulação Estatística</strong>: Um Laboratório de Estatística Computacional" was written by Renato de Paula. It was last built on 06 de July de 2026.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+for (let popover of popovers) {
+  const div = document.createElement('div');
+  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+  div.innerHTML = popover.getAttribute('data-content');
+
+  var has_math = div.querySelector("span.math");
+  if (has_math) {
+    document.body.appendChild(div);
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+    MathJax.Hub.Queue(function() {
+      popover.setAttribute('data-content', div.innerHTML);
+      document.body.removeChild(div);
+    })
+  }
+}
+</script>
+</body>
+</html>

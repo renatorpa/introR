@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Capítulo 7 Scripts em R | Introdução ao R e à Simulação Estatística</title>
+<meta name="author" content="Renato de Paula">
+<meta name="description" content="Nos capítulos anteriores escrevemos código diretamente na consola e definimos as nossas próprias funções (Capítulo 6). Enquanto experimentamos, a consola é cómoda; mas o trabalho que fica apenas...">
+<meta name="generator" content="bookdown 0.46 with bs4_book()">
+<meta property="og:title" content="Capítulo 7 Scripts em R | Introdução ao R e à Simulação Estatística">
+<meta property="og:type" content="book">
+<meta property="og:description" content="Nos capítulos anteriores escrevemos código diretamente na consola e definimos as nossas próprias funções (Capítulo 6). Enquanto experimentamos, a consola é cómoda; mas o trabalho que fica apenas...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Capítulo 7 Scripts em R | Introdução ao R e à Simulação Estatística">
+<meta name="twitter:description" content="Nos capítulos anteriores escrevemos código diretamente na consola e definimos as nossas próprias funções (Capítulo 6). Enquanto experimentamos, a consola é cómoda; mas o trabalho que fica apenas...">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.11.0/transition.js"></script><script src="libs/bs3compat-0.11.0/tabs.js"></script><script src="libs/bs3compat-0.11.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="Um Laboratório de Estatística Computacional">Introdução ao R e à Simulação Estatística</a>:
+        <small class="text-muted">Um Laboratório de Estatística Computacional</small>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">Prefácio</a></li>
+<li><a class="" href="intro.html"><span class="header-section-number">1</span> Estatística, computação e simulação</a></li>
+<li><a class="" href="rrstudio.html"><span class="header-section-number">2</span> O R e o RStudio</a></li>
+<li><a class="" href="calculadora.html"><span class="header-section-number">3</span> O R como calculadora</a></li>
+<li><a class="" href="estruturas.html"><span class="header-section-number">4</span> Estruturas de dados</a></li>
+<li><a class="" href="selecao.html"><span class="header-section-number">5</span> Estruturas de decisão</a></li>
+<li><a class="" href="funcoes.html"><span class="header-section-number">6</span> Funções</a></li>
+<li><a class="active" href="scripts.html"><span class="header-section-number">7</span> Scripts em R</a></li>
+<li><a class="" href="leitura.html"><span class="header-section-number">8</span> Leitura de dados</a></li>
+<li><a class="" href="pipe.html"><span class="header-section-number">9</span> O operador pipe</a></li>
+<li><a class="" href="while.html"><span class="header-section-number">10</span> O ciclo while</a></li>
+<li><a class="" href="for.html"><span class="header-section-number">11</span> O ciclo for</a></li>
+<li><a class="" href="apply.html"><span class="header-section-number">12</span> A família apply</a></li>
+<li><a class="" href="revisao.html"><span class="header-section-number">13</span> Exercícios de revisão</a></li>
+<li><a class="" href="graficos.html"><span class="header-section-number">14</span> Gráficos com o R base</a></li>
+<li><a class="" href="manipulacao.html"><span class="header-section-number">15</span> Manipulação de dados</a></li>
+<li><a class="" href="ggplot.html"><span class="header-section-number">16</span> O pacote ggplot2</a></li>
+<li><a class="" href="sample.html"><span class="header-section-number">17</span> A função sample()</a></li>
+<li><a class="" href="probabilidade.html"><span class="header-section-number">18</span> Probabilidade e variáveis aleatórias</a></li>
+<li><a class="" href="simulacao.html"><span class="header-section-number">19</span> Simulação</a></li>
+<li><a class="" href="distribuicoes.html"><span class="header-section-number">20</span> Distribuições de probabilidade</a></li>
+<li><a class="" href="exercicios-extra.html"><span class="header-section-number">21</span> Exercícios extra</a></li>
+<li><a class="" href="transformada.html"><span class="header-section-number">22</span> Método da transformada inversa</a></li>
+<li><a class="" href="aceitacao-rejeicao.html"><span class="header-section-number">23</span> Método da aceitação-rejeição</a></li>
+<li><a class="" href="teoremas-limites.html"><span class="header-section-number">24</span> Teoremas limites</a></li>
+<li><a class="" href="calculo-integrais.html"><span class="header-section-number">25</span> Cálculo de integrais por Monte Carlo</a></li>
+<li><a class="" href="solucoes.html"><span class="header-section-number">26</span> Resoluções dos exercícios</a></li>
+</ul>
+
+        <div class="book-extra">
+          
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="scripts" class="section level1" number="7">
+<h1>
+<span class="header-section-number">Capítulo 7</span> Scripts em R<a class="anchor" aria-label="anchor" href="#scripts"><i class="fas fa-link"></i></a>
+</h1>
+<p>Nos capítulos anteriores escrevemos código diretamente na consola e definimos as
+nossas próprias funções (Capítulo <a href="funcoes.html#funcoes">6</a>). Enquanto experimentamos, a
+consola é cómoda; mas o trabalho que fica apenas na consola perde-se quando
+fechamos a sessão e é difícil de repetir com exatidão. Chegou o momento de guardar
+o código num lugar permanente: um <em>script</em>.</p>
+<p>Um <strong>script</strong> é simplesmente um ficheiro de texto, com a extensão <code>.R</code>, que reúne
+uma sequência de instruções — variáveis, funções, blocos de código — pensada para
+ser guardada, lida e executada de novo sempre que for preciso. Os scripts são a
+base de duas ideias centrais em ciência de dados: a <strong>automatização</strong> de tarefas
+repetitivas e a <strong>reprodutibilidade</strong> da análise, isto é, a garantia de que
+qualquer pessoa — incluindo o nosso próprio “eu” de daqui a seis meses — consegue
+obter exatamente os mesmos resultados a partir dos mesmos dados.</p>
+<div class="objetivo">
+<p>Neste capítulo aprendemos a guardar código num ficheiro <code>.R</code>, a executá-lo com
+<code><a href="https://rdrr.io/r/base/source.html">source()</a></code>, a compreender o papel do diretório de trabalho e a adotar hábitos que
+tornam a nossa análise reprodutível.</p>
+</div>
+<div id="criar-um-script" class="section level2" number="7.1">
+<h2>
+<span class="header-section-number">7.1</span> Criar um script<a class="anchor" aria-label="anchor" href="#criar-um-script"><i class="fas fa-link"></i></a>
+</h2>
+<p>No RStudio, cria-se um novo script pelo menu <em>File &gt; New File &gt; R Script</em> (ou com
+o atalho <code>Ctrl+Shift+N</code> / <code>Cmd+Shift+N</code>). Escreve-se o código no editor e guarda-se
+o ficheiro com a extensão <code>.R</code>.</p>
+<p>Guarde, por exemplo, o código seguinte num ficheiro chamado <code>meu_script.R</code>:</p>
+<div class="sourceCode" id="cb107"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">produto</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="kw"><a href="https://rdrr.io/r/base/function.html">return</a></span><span class="op">(</span><span class="va">x</span> <span class="op">*</span> <span class="va">y</span><span class="op">)</span></span>
+<span><span class="op">}</span></span></code></pre></div>
+<p>Repare que guardar o script <strong>não executa</strong> o código — apenas o preserva. Definir a
+função e poder usá-la são dois passos distintos.</p>
+</div>
+<div id="executar-um-script" class="section level2" number="7.2">
+<h2>
+<span class="header-section-number">7.2</span> Executar um script<a class="anchor" aria-label="anchor" href="#executar-um-script"><i class="fas fa-link"></i></a>
+</h2>
+<p>Para correr um script guardado, usamos a função <code><a href="https://rdrr.io/r/base/source.html">source()</a></code>, na consola ou dentro de
+outro script. O R lê o ficheiro e executa, uma a uma, todas as suas linhas.</p>
+<p>Se o ficheiro <code>meu_script.R</code> estiver no <strong>diretório de trabalho atual</strong>, basta:</p>
+<div class="sourceCode" id="cb108"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/source.html">source</a></span><span class="op">(</span><span class="st">"meu_script.R"</span><span class="op">)</span></span></code></pre></div>
+<p>Se estiver noutra pasta, indicamos o caminho completo:</p>
+<div class="sourceCode" id="cb109"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/source.html">source</a></span><span class="op">(</span><span class="st">"/caminho/para/o/seu/script/meu_script.R"</span><span class="op">)</span></span></code></pre></div>
+<div id="o-que-acontece-quando-executamos-um-script" class="section level3" number="7.2.1">
+<h3>
+<span class="header-section-number">7.2.1</span> O que acontece quando executamos um script?<a class="anchor" aria-label="anchor" href="#o-que-acontece-quando-executamos-um-script"><i class="fas fa-link"></i></a>
+</h3>
+<p>Ao chamar <code><a href="https://rdrr.io/r/base/source.html">source()</a></code>, todas as funções, variáveis e resultados definidos no script
+passam a estar disponíveis no ambiente de trabalho. Depois de executar o
+<code>meu_script.R</code> acima, a função <code>produto()</code> fica pronta a usar:</p>
+<div class="sourceCode" id="cb110"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu">produto</span><span class="op">(</span><span class="fl">2</span>, <span class="fl">3</span><span class="op">)</span></span>
+<span><span class="co">## [1] 6</span></span></code></pre></div>
+<p>É esta a lógica que torna os scripts tão úteis: escrevemos e testamos um conjunto de
+funções uma vez, guardamo-las num ficheiro e, em qualquer análise futura, basta uma
+linha — <code>source("as_minhas_funcoes.R")</code> — para as ter todas à disposição.</p>
+<div class="dica">
+<p>No RStudio, o botão <strong>Source</strong> (canto superior direito do editor) executa o script
+inteiro, e <code>Ctrl+Enter</code> / <code>Cmd+Enter</code> corre apenas a linha ou o bloco selecionado.
+Correr linha a linha é a melhor forma de perceber e depurar um script enquanto o
+escrevemos.</p>
+</div>
+</div>
+</div>
+<div id="o-diretório-de-trabalho" class="section level2" number="7.3">
+<h2>
+<span class="header-section-number">7.3</span> O diretório de trabalho<a class="anchor" aria-label="anchor" href="#o-diret%C3%B3rio-de-trabalho"><i class="fas fa-link"></i></a>
+</h2>
+<p>O <strong>diretório de trabalho</strong> (<em>working directory</em>) é a pasta que o R toma como ponto
+de referência: é aí que procura os ficheiros a ler e onde guarda os resultados, a
+menos que indiquemos um caminho completo. Duas funções bastam para o gerir:</p>
+<ul>
+<li>
+<code><a href="https://rdrr.io/r/base/getwd.html">getwd()</a></code> — devolve o caminho do diretório de trabalho atual.</li>
+<li>
+<code>setwd("caminho/da/pasta")</code> — muda o diretório de trabalho para o caminho
+indicado.</li>
+</ul>
+<div class="sourceCode" id="cb111"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/getwd.html">getwd</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="co">## [1] "C:/Users/Utilizador/Documents"</span></span></code></pre></div>
+<p>Com o diretório de trabalho bem definido, referimo-nos aos ficheiros pelo nome, sem
+escrever o caminho todo. Se <code>dados.csv</code> estiver no diretório de trabalho:</p>
+<div class="sourceCode" id="cb112"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">dados</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.csv</a></span><span class="op">(</span><span class="st">"dados.csv"</span><span class="op">)</span></span></code></pre></div>
+<div class="atencao">
+<p>Evite espalhar chamadas a <code>setwd("C:/Users/...")</code> pelos seus scripts. Um caminho
+absoluto só existe no seu computador: quando o script chega às mãos de outra pessoa
+(ou muda de máquina), deixa de funcionar — e a reprodutibilidade, que era o objetivo,
+perde-se. A boa prática é trabalhar dentro de um <strong>Projeto do RStudio</strong> (<em>File &gt; New
+Project</em>), que fixa automaticamente o diretório de trabalho na pasta do projeto e
+permite usar apenas caminhos <strong>relativos</strong>, como <code>"dados/dados.csv"</code>.</p>
+</div>
+</div>
+<div id="exercícios-8" class="section level2" number="7.4">
+<h2>
+<span class="header-section-number">7.4</span> Exercícios<a class="anchor" aria-label="anchor" href="#exerc%C3%ADcios-8"><i class="fas fa-link"></i></a>
+</h2>
+<p><strong>1.</strong> Crie os seguintes scripts passo a passo:</p>
+<ol style="list-style-type: lower-alpha">
+<li><p>Crie um script <code>quadrado.R</code> com funções para calcular o perímetro e a área de
+um quadrado, dado o comprimento do lado. Noutro script, use <code>quadrado.R</code> para
+calcular o perímetro e a área de um quadrado de lado 5.</p></li>
+<li><p>Crie um script <code>estatistica.R</code> com funções para ordenar uma amostra e calcular a
+média, a variância e o desvio padrão de um vetor numérico.</p></li>
+<li><p>Crie um programa que use o script <code>estatistica.R</code> para calcular a mediana, a
+variância e o desvio padrão da amostra <code>amostra &lt;- c(1, 2, 3, 4, 5, 6, 7)</code>.</p></li>
+</ol>
+<p><strong>2.</strong> Crie um script <code>circulo.R</code> com duas funções:</p>
+<ul>
+<li>
+<code>area_circulo(r)</code> — calcula a área de um círculo de raio <span class="math inline">\(r\)</span>;</li>
+<li>
+<code>circunferencia(r)</code> — calcula o perímetro (circunferência) de um círculo de raio
+<span class="math inline">\(r\)</span>.</li>
+</ul>
+<p>Depois, noutro script, use as funções de <code>circulo.R</code> para calcular a área e o
+perímetro de um círculo de raio 10.</p>
+<p><strong>3.</strong> Crie um script <code>analise.R</code> com funções para calcular:</p>
+<ul>
+<li>o valor mínimo (<code>minimo</code>) e máximo (<code>maximo</code>) de um vetor numérico;</li>
+<li>a amplitude (<code>amplitude</code>), definida como a diferença entre o máximo e o mínimo.</li>
+</ul>
+<p>Depois, num script separado, use <code>analise.R</code> para calcular o mínimo, o máximo e a
+amplitude do vetor <code>dados &lt;- c(8, 15, 22, 3, 18, 7)</code>.</p>
+<p><strong>4.</strong> Crie um script <code>categorias.R</code> com uma função <code>contar_categorias()</code> que
+receba um vetor categórico e devolva uma tabela de frequências de cada categoria.
+Use-o depois para analisar o vetor
+<code>cidades &lt;- c("Lisboa", "Porto", "Lisboa", "Coimbra", "Porto", "Porto", "Lisboa")</code>
+e apresente a frequência de cada cidade.</p>
+<p><strong>5.</strong> Crie um script <code>escore_z.R</code> com uma função
+<code>calcular_escore_z(valor, media, desvio_padrao)</code> que calcule o valor padronizado
+(<em>escore z</em>) de um valor, dado por <span class="math inline">\(z = \dfrac{x - \mu}{\sigma}\)</span>. Num script
+separado, use-o para calcular o <em>escore z</em> dos valores
+<code>valores &lt;- c(5, 6, 7, 8, 9)</code>, assumindo média 7 e desvio padrão 1,5.</p>
+<p><strong>6.</strong> Crie um script <code>binomial.R</code> com uma função <code>probabilidade_binomial(n, p, x)</code>
+que calcule a probabilidade de ocorrerem exatamente <span class="math inline">\(x\)</span> sucessos em <span class="math inline">\(n\)</span> provas
+independentes de um ensaio de Bernoulli:
+<span class="math display">\[P(X = x) = \binom{n}{x}\, p^{x}\, (1 - p)^{\,n - x},\]</span>
+onde <span class="math inline">\(\binom{n}{x}\)</span> é o coeficiente binomial (em R, <code>choose(n, x)</code>) e <span class="math inline">\(p\)</span> é a
+probabilidade de sucesso em cada prova. Num script separado, use-o para calcular a
+probabilidade de obter exatamente 3 sucessos em 5 provas, com <span class="math inline">\(p = 0{,}6\)</span>.</p>
+<p>Com os scripts guardámos o nosso código de forma permanente e reutilizável. No
+próximo capítulo damos o passo seguinte e igualmente decisivo: trazer para dentro do
+R <strong>dados reais</strong>, guardados em ficheiros de texto, CSV ou Excel.</p>
+
+</div>
+</div>
+  <div class="chapter-nav">
+<div class="prev"><a href="funcoes.html"><span class="header-section-number">6</span> Funções</a></div>
+<div class="next"><a href="leitura.html"><span class="header-section-number">8</span> Leitura de dados</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#scripts"><span class="header-section-number">7</span> Scripts em R</a></li>
+<li><a class="nav-link" href="#criar-um-script"><span class="header-section-number">7.1</span> Criar um script</a></li>
+<li>
+<a class="nav-link" href="#executar-um-script"><span class="header-section-number">7.2</span> Executar um script</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#o-que-acontece-quando-executamos-um-script"><span class="header-section-number">7.2.1</span> O que acontece quando executamos um script?</a></li></ul>
+</li>
+<li><a class="nav-link" href="#o-diret%C3%B3rio-de-trabalho"><span class="header-section-number">7.3</span> O diretório de trabalho</a></li>
+<li><a class="nav-link" href="#exerc%C3%ADcios-8"><span class="header-section-number">7.4</span> Exercícios</a></li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+          
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>Introdução ao R e à Simulação Estatística</strong>: Um Laboratório de Estatística Computacional" was written by Renato de Paula. It was last built on 06 de July de 2026.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+for (let popover of popovers) {
+  const div = document.createElement('div');
+  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+  div.innerHTML = popover.getAttribute('data-content');
+
+  var has_math = div.querySelector("span.math");
+  if (has_math) {
+    document.body.appendChild(div);
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+    MathJax.Hub.Queue(function() {
+      popover.setAttribute('data-content', div.innerHTML);
+      document.body.removeChild(div);
+    })
+  }
+}
+</script>
+</body>
+</html>

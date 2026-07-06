@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Capítulo 6 Funções | Introdução ao R e à Simulação Estatística</title>
+<meta name="author" content="Renato de Paula">
+<meta name="description" content="Ao longo dos capítulos anteriores usámos dezenas de funções — mean(), sum(), c(), factor(), subset(). Chegou o momento de virar a mesa e aprender a escrever as nossas próprias funções. Esta é,...">
+<meta name="generator" content="bookdown 0.46 with bs4_book()">
+<meta property="og:title" content="Capítulo 6 Funções | Introdução ao R e à Simulação Estatística">
+<meta property="og:type" content="book">
+<meta property="og:description" content="Ao longo dos capítulos anteriores usámos dezenas de funções — mean(), sum(), c(), factor(), subset(). Chegou o momento de virar a mesa e aprender a escrever as nossas próprias funções. Esta é,...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Capítulo 6 Funções | Introdução ao R e à Simulação Estatística">
+<meta name="twitter:description" content="Ao longo dos capítulos anteriores usámos dezenas de funções — mean(), sum(), c(), factor(), subset(). Chegou o momento de virar a mesa e aprender a escrever as nossas próprias funções. Esta é,...">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.11.0/transition.js"></script><script src="libs/bs3compat-0.11.0/tabs.js"></script><script src="libs/bs3compat-0.11.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="Um Laboratório de Estatística Computacional">Introdução ao R e à Simulação Estatística</a>:
+        <small class="text-muted">Um Laboratório de Estatística Computacional</small>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">Prefácio</a></li>
+<li><a class="" href="intro.html"><span class="header-section-number">1</span> Estatística, computação e simulação</a></li>
+<li><a class="" href="rrstudio.html"><span class="header-section-number">2</span> O R e o RStudio</a></li>
+<li><a class="" href="calculadora.html"><span class="header-section-number">3</span> O R como calculadora</a></li>
+<li><a class="" href="estruturas.html"><span class="header-section-number">4</span> Estruturas de dados</a></li>
+<li><a class="" href="selecao.html"><span class="header-section-number">5</span> Estruturas de decisão</a></li>
+<li><a class="active" href="funcoes.html"><span class="header-section-number">6</span> Funções</a></li>
+<li><a class="" href="scripts.html"><span class="header-section-number">7</span> Scripts em R</a></li>
+<li><a class="" href="leitura.html"><span class="header-section-number">8</span> Leitura de dados</a></li>
+<li><a class="" href="pipe.html"><span class="header-section-number">9</span> O operador pipe</a></li>
+<li><a class="" href="while.html"><span class="header-section-number">10</span> O ciclo while</a></li>
+<li><a class="" href="for.html"><span class="header-section-number">11</span> O ciclo for</a></li>
+<li><a class="" href="apply.html"><span class="header-section-number">12</span> A família apply</a></li>
+<li><a class="" href="revisao.html"><span class="header-section-number">13</span> Exercícios de revisão</a></li>
+<li><a class="" href="graficos.html"><span class="header-section-number">14</span> Gráficos com o R base</a></li>
+<li><a class="" href="manipulacao.html"><span class="header-section-number">15</span> Manipulação de dados</a></li>
+<li><a class="" href="ggplot.html"><span class="header-section-number">16</span> O pacote ggplot2</a></li>
+<li><a class="" href="sample.html"><span class="header-section-number">17</span> A função sample()</a></li>
+<li><a class="" href="probabilidade.html"><span class="header-section-number">18</span> Probabilidade e variáveis aleatórias</a></li>
+<li><a class="" href="simulacao.html"><span class="header-section-number">19</span> Simulação</a></li>
+<li><a class="" href="distribuicoes.html"><span class="header-section-number">20</span> Distribuições de probabilidade</a></li>
+<li><a class="" href="exercicios-extra.html"><span class="header-section-number">21</span> Exercícios extra</a></li>
+<li><a class="" href="transformada.html"><span class="header-section-number">22</span> Método da transformada inversa</a></li>
+<li><a class="" href="aceitacao-rejeicao.html"><span class="header-section-number">23</span> Método da aceitação-rejeição</a></li>
+<li><a class="" href="teoremas-limites.html"><span class="header-section-number">24</span> Teoremas limites</a></li>
+<li><a class="" href="calculo-integrais.html"><span class="header-section-number">25</span> Cálculo de integrais por Monte Carlo</a></li>
+<li><a class="" href="solucoes.html"><span class="header-section-number">26</span> Resoluções dos exercícios</a></li>
+</ul>
+
+        <div class="book-extra">
+          
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="funcoes" class="section level1" number="6">
+<h1>
+<span class="header-section-number">Capítulo 6</span> Funções<a class="anchor" aria-label="anchor" href="#funcoes"><i class="fas fa-link"></i></a>
+</h1>
+<p>Ao longo dos capítulos anteriores usámos dezenas de funções — <code><a href="https://rdrr.io/r/base/mean.html">mean()</a></code>, <code><a href="https://rdrr.io/r/base/sum.html">sum()</a></code>,
+<code><a href="https://rdrr.io/r/base/c.html">c()</a></code>, <code><a href="https://rdrr.io/r/base/factor.html">factor()</a></code>, <code><a href="https://rdrr.io/r/base/subset.html">subset()</a></code>. Chegou o momento de virar a mesa e aprender a
+escrever as <em>nossas próprias</em> funções. Esta é, talvez, a competência mais
+transformadora de toda a programação: a partir do momento em que sabemos criar
+funções, deixamos de ser apenas utilizadores da linguagem e passamos a
+estendê-la.</p>
+<p>A motivação é simples e profunda. Imagine que precisa de calcular o índice de
+massa corporal de dez pessoas. Poderia repetir a fórmula dez vezes — mas, se se
+enganasse na fórmula, teria de corrigir dez lugares, e se quisesse mudar algo,
+outros dez. A alternativa é escrever a fórmula <strong>uma vez</strong>, dentro de uma função,
+e chamá-la dez vezes. A este princípio dá-se por vezes o nome de “não te
+repitas”: tudo o que se repete deve ser encapsulado num só lugar.</p>
+<p>Uma função é, então, um bloco de código com nome, que realiza uma tarefa
+específica e só corre quando é chamado. As suas vantagens resumem-se a três
+palavras:</p>
+<ul>
+<li>
+<strong>Reutilização</strong> — uma vez definida, chama-se as vezes que forem precisas, em
+qualquer parte do programa.</li>
+<li>
+<strong>Modularização</strong> — divide um problema grande em peças pequenas, cada uma com
+uma responsabilidade clara, tornando o código mais organizado e legível.</li>
+<li>
+<strong>Abstração</strong> — depois de escrita e testada, podemos usar a função sem voltar a
+pensar em como funciona por dentro. <code><a href="https://rdrr.io/r/base/mean.html">mean()</a></code> calcula uma média sem nos obrigar a
+saber como.</li>
+</ul>
+<div id="anatomia-de-uma-função" class="section level2" number="6.1">
+<h2>
+<span class="header-section-number">6.1</span> Anatomia de uma função<a class="anchor" aria-label="anchor" href="#anatomia-de-uma-fun%C3%A7%C3%A3o"><i class="fas fa-link"></i></a>
+</h2>
+<p>A estrutura de uma função em R é a seguinte:</p>
+<div class="sourceCode" id="cb96"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">nome_da_funcao</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">argumentos</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="co"># corpo: o código que realiza a tarefa</span></span>
+<span>  <span class="va">resultado</span> <span class="op">&lt;-</span> <span class="va">...</span></span>
+<span>  <span class="kw"><a href="https://rdrr.io/r/base/function.html">return</a></span><span class="op">(</span><span class="va">resultado</span><span class="op">)</span>   <span class="co"># o valor devolvido</span></span>
+<span><span class="op">}</span></span></code></pre></div>
+<p>Quatro elementos a identificar:</p>
+<ul>
+<li>
+<strong>Nome</strong> — o identificador pelo qual chamaremos a função (segue as regras dos
+nomes de variáveis do Capítulo <a href="calculadora.html#calculadora">3</a>).</li>
+<li>
+<strong>Argumentos</strong> — os valores de entrada que a função recebe. Podem ser
+obrigatórios ou opcionais.</li>
+<li>
+<strong>Corpo</strong> — o bloco de código, entre chavetas, que faz o trabalho.</li>
+<li>
+<strong>Valor devolvido</strong> — o resultado que a função entrega, indicado por
+<code><a href="https://rdrr.io/r/base/function.html">return()</a></code>.</li>
+</ul>
+<p>Vejamos um primeiro exemplo completo: uma função que calcula a área de um
+retângulo.</p>
+<div class="sourceCode" id="cb97"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">calcula_area</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">largura</span>, <span class="va">altura</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="va">area</span> <span class="op">&lt;-</span> <span class="va">largura</span> <span class="op">*</span> <span class="va">altura</span></span>
+<span>  <span class="kw"><a href="https://rdrr.io/r/base/function.html">return</a></span><span class="op">(</span><span class="va">area</span><span class="op">)</span></span>
+<span><span class="op">}</span></span>
+<span></span>
+<span><span class="co"># Chamar a função</span></span>
+<span><span class="fu">calcula_area</span><span class="op">(</span><span class="fl">4</span>, <span class="fl">3</span><span class="op">)</span></span>
+<span><span class="co">## [1] 12</span></span></code></pre></div>
+<p>Definimos a função uma vez e, a partir daí, calcular a área de qualquer retângulo
+é uma questão de a chamar com novos valores. É este o ganho.</p>
+<div id="variáveis-locais-e-globais" class="section level3" number="6.1.1">
+<h3>
+<span class="header-section-number">6.1.1</span> Variáveis locais e globais<a class="anchor" aria-label="anchor" href="#vari%C3%A1veis-locais-e-globais"><i class="fas fa-link"></i></a>
+</h3>
+<p>Há aqui uma subtileza importante, que evita muita confusão mais tarde. Dentro da
+função <code>calcula_area</code>, as variáveis <code>largura</code>, <code>altura</code> e <code>area</code> são <strong>locais</strong>:
+existem apenas enquanto a função corre e desaparecem quando ela termina. Não são
+visíveis fora da função, nem interferem com variáveis de igual nome que existam no
+resto do programa.</p>
+<div class="sourceCode" id="cb98"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fl">10</span></span>
+<span></span>
+<span><span class="va">minha_funcao</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="va">x</span> <span class="op">&lt;-</span> <span class="fl">5</span>        <span class="co"># este 'x' é local: só existe dentro da função</span></span>
+<span>  <span class="kw"><a href="https://rdrr.io/r/base/function.html">return</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span><span class="op">}</span></span>
+<span></span>
+<span><span class="fu">minha_funcao</span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="co">## [1] 5</span></span>
+<span><span class="va">x</span>               <span class="co"># o 'x' global não foi afetado</span></span>
+<span><span class="co">## [1] 10</span></span></code></pre></div>
+<div class="nota">
+<p>Este isolamento é uma vantagem, não um obstáculo. Significa que podemos escrever
+uma função sem receio de que os seus nomes internos colidam com o resto do
+programa — cada função tem o seu “mundo” próprio. É uma das razões pelas quais as
+funções tornam o código mais seguro e mais fácil de manter.</p>
+</div>
+</div>
+</div>
+<div id="argumentos-mais-flexibilidade" class="section level2" number="6.2">
+<h2>
+<span class="header-section-number">6.2</span> Argumentos: mais flexibilidade<a class="anchor" aria-label="anchor" href="#argumentos-mais-flexibilidade"><i class="fas fa-link"></i></a>
+</h2>
+<p>As funções tornam-se muito mais úteis quando aprendemos a controlar como os seus
+argumentos são passados.</p>
+<div id="valores-por-omissão" class="section level3" number="6.2.1">
+<h3>
+<span class="header-section-number">6.2.1</span> Valores por omissão<a class="anchor" aria-label="anchor" href="#valores-por-omiss%C3%A3o"><i class="fas fa-link"></i></a>
+</h3>
+<p>Podemos dar a um argumento um <strong>valor por omissão</strong>, usado sempre que quem chama a
+função não o especifica. Isto torna certos argumentos opcionais:</p>
+<div class="sourceCode" id="cb99"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">calcula_area</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">largura</span>, <span class="va">altura</span> <span class="op">=</span> <span class="fl">2</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="kw"><a href="https://rdrr.io/r/base/function.html">return</a></span><span class="op">(</span><span class="va">largura</span> <span class="op">*</span> <span class="va">altura</span><span class="op">)</span></span>
+<span><span class="op">}</span></span>
+<span></span>
+<span><span class="fu">calcula_area</span><span class="op">(</span><span class="fl">4</span><span class="op">)</span>     <span class="co"># 'altura' não foi dado, usa-se o valor por omissão (2)</span></span>
+<span><span class="co">## [1] 8</span></span></code></pre></div>
+</div>
+<div id="argumentos-por-nome" class="section level3" number="6.2.2">
+<h3>
+<span class="header-section-number">6.2.2</span> Argumentos por nome<a class="anchor" aria-label="anchor" href="#argumentos-por-nome"><i class="fas fa-link"></i></a>
+</h3>
+<p>Ao chamar uma função, podemos passar os argumentos <strong>pelo nome</strong>, e não apenas
+pela posição. Isto liberta-nos da ordem e torna as chamadas mais legíveis:</p>
+<div class="sourceCode" id="cb100"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">calcula_area</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">largura</span>, <span class="va">altura</span> <span class="op">=</span> <span class="fl">2</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="kw"><a href="https://rdrr.io/r/base/function.html">return</a></span><span class="op">(</span><span class="va">largura</span> <span class="op">*</span> <span class="va">altura</span><span class="op">)</span></span>
+<span><span class="op">}</span></span>
+<span></span>
+<span><span class="fu">calcula_area</span><span class="op">(</span>altura <span class="op">=</span> <span class="fl">4</span>, largura <span class="op">=</span> <span class="fl">3</span><span class="op">)</span>   <span class="co"># a ordem já não importa</span></span>
+<span><span class="co">## [1] 12</span></span></code></pre></div>
+<div class="dica">
+<p>Passar argumentos pelo nome é uma excelente prática quando uma função tem muitos
+argumentos, ou quando queremos especificar apenas alguns dos opcionais. Compare
+<code>rnorm(100, 0, 1)</code> com <code>rnorm(n = 100, mean = 0, sd = 1)</code>: a segunda forma
+dispensa quem lê o código de decorar a ordem dos argumentos.</p>
+</div>
+</div>
+</div>
+<div id="validar-entradas-com-stop" class="section level2" number="6.3">
+<h2>
+<span class="header-section-number">6.3</span> Validar entradas com <code>stop()</code><a class="anchor" aria-label="anchor" href="#validar-entradas-com-stop"><i class="fas fa-link"></i></a>
+</h2>
+<p>Uma boa função protege-se contra usos indevidos. A função <code><a href="https://rdrr.io/r/base/stop.html">stop()</a></code> interrompe a
+execução e emite uma mensagem de erro personalizada, útil quando uma condição
+necessária não é satisfeita:</p>
+<div class="sourceCode" id="cb101"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">f</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="kw">if</span> <span class="op">(</span><span class="va">x</span> <span class="op">&lt;</span> <span class="fl">0</span><span class="op">)</span> <span class="op">{</span></span>
+<span>    <span class="kw"><a href="https://rdrr.io/r/base/stop.html">stop</a></span><span class="op">(</span><span class="st">"Erro: x não pode ser negativo"</span><span class="op">)</span></span>
+<span>  <span class="op">}</span></span>
+<span>  <span class="kw"><a href="https://rdrr.io/r/base/function.html">return</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="op">}</span></span>
+<span></span>
+<span><span class="fu">f</span><span class="op">(</span><span class="op">-</span><span class="fl">2</span><span class="op">)</span></span>
+<span><span class="co">## Error in f(-2): Erro: x não pode ser negativo</span></span></code></pre></div>
+<p>Ao verificar <code>x &lt; 0</code> logo no início, a função recusa liminarmente uma entrada
+inválida (a raiz quadrada de um negativo), em vez de devolver um <code>NaN</code> silencioso
+que poderia contaminar cálculos posteriores. Antecipar e sinalizar erros é a marca
+de uma função bem escrita.</p>
+</div>
+<div id="exercícios-de-análise" class="section level2" number="6.4">
+<h2>
+<span class="header-section-number">6.4</span> Exercícios de análise<a class="anchor" aria-label="anchor" href="#exerc%C3%ADcios-de-an%C3%A1lise"><i class="fas fa-link"></i></a>
+</h2>
+<p>Antes dos exercícios de construção, alguns exercícios de leitura — para
+consolidar a compreensão do que as funções fazem.</p>
+<p><strong>Exemplo 1.</strong> Qual é o resultado da chamada?</p>
+<div class="sourceCode" id="cb102"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">dados_estudante</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">nome</span>, <span class="va">altura</span> <span class="op">=</span> <span class="fl">167</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="st">"O(A) estudante"</span>, <span class="va">nome</span>, <span class="st">"tem"</span>, <span class="va">altura</span>, <span class="st">"centímetros de altura."</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="op">}</span></span>
+<span></span>
+<span><span class="fu">dados_estudante</span><span class="op">(</span><span class="st">"Joana"</span>, <span class="fl">160</span><span class="op">)</span></span></code></pre></div>
+<p><strong>Exemplo 2.</strong> Qual é a sintaxe correta para definir uma função que soma dois
+números?</p>
+<ol style="list-style-type: lower-alpha">
+<li><code>soma &lt;- function(x, y) { return(x + y) }</code></li>
+<li><code>function soma(x, y) { return(x + y) }</code></li>
+<li><code>def soma(x, y) { return(x + y) }</code></li>
+<li><code>soma(x, y) = function { return(x + y) }</code></li>
+</ol>
+<p><strong>Exemplo 3.</strong> Considerando a função <code>dados_estudante</code> do Exemplo 1, quais das
+chamadas seguintes estão corretas?</p>
+<div class="sourceCode" id="cb103"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu">dados_estudante</span><span class="op">(</span><span class="st">"Joana"</span>, <span class="fl">160</span><span class="op">)</span></span>
+<span><span class="fu">dados_estudante</span><span class="op">(</span>altura <span class="op">=</span> <span class="fl">160</span>, nome <span class="op">=</span> <span class="st">"Joana"</span><span class="op">)</span></span>
+<span><span class="fu">dados_estudante</span><span class="op">(</span>nome <span class="op">=</span> <span class="st">"Joana"</span>, <span class="fl">160</span><span class="op">)</span></span>
+<span><span class="fu">dados_estudante</span><span class="op">(</span>altura <span class="op">=</span> <span class="fl">160</span>, <span class="st">"Joana"</span><span class="op">)</span></span>
+<span><span class="fu">dados_estudante</span><span class="op">(</span><span class="fl">160</span><span class="op">)</span></span></code></pre></div>
+<div class="nota">
+<p>A última chamada, <code>dados_estudante(160)</code>, é sintaticamente válida mas
+logicamente absurda: 160 será interpretado como o <code>nome</code> (por ser o primeiro
+argumento) e a <code>altura</code> usará o valor por omissão, 167 — resultando em “O(A)
+estudante 160 tem 167 centímetros de altura.” Um bom lembrete de que o R faz o que
+lhe pedimos, não o que queremos dizer.</p>
+</div>
+<p><strong>Exemplo 4.</strong> Qual é o valor de <code>resultado</code>?</p>
+<div class="sourceCode" id="cb104"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">adi</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">a</span>, <span class="va">b</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="kw"><a href="https://rdrr.io/r/base/function.html">return</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">a</span> <span class="op">+</span> <span class="fl">5</span>, <span class="va">b</span> <span class="op">+</span> <span class="fl">5</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="op">}</span></span>
+<span></span>
+<span><span class="va">resultado</span> <span class="op">&lt;-</span> <span class="fu">adi</span><span class="op">(</span><span class="fl">3</span>, <span class="fl">2</span><span class="op">)</span></span></code></pre></div>
+</div>
+<div id="exercícios-7" class="section level2" number="6.5">
+<h2>
+<span class="header-section-number">6.5</span> Exercícios<a class="anchor" aria-label="anchor" href="#exerc%C3%ADcios-7"><i class="fas fa-link"></i></a>
+</h2>
+<p><strong>1.</strong> Crie uma função <code>quadrado()</code> que receba um número <code>x</code> e devolva o seu
+quadrado. Teste-a com 3, 5 e 7.</p>
+<p><strong>2.</strong> Crie uma função <code>hipotenusa(a, b)</code> que calcule a hipotenusa de um triângulo
+retângulo a partir dos dois catetos, usando o Teorema de Pitágoras.</p>
+<p><strong>3.</strong> Crie uma função <code>divisao_segura(numerador, denominador)</code> que devolva a
+divisão, ou uma mensagem de erro apropriada se o denominador for zero.</p>
+<p><strong>4.</strong> Crie uma função que receba dois inteiros e devolva o maior. Teste-a lendo
+dois números do utilizador. Depois, crie uma segunda função que devolva o menor,
+aproveitando a primeira.</p>
+<p><strong>5.</strong> Crie uma função que devolva o maior de três inteiros, reutilizando a função
+<code>maior()</code> do exercício anterior.</p>
+<p><strong>6.</strong> Crie uma função <code>analise_vetor()</code> que receba um vetor numérico e devolva um
+vetor com a soma, a média, o desvio padrão e o máximo. Aplique-a a
+<code>c(4, 8, 15, 16, 23, 42)</code>. <em>Funções úteis:</em> <code><a href="https://rdrr.io/r/base/sum.html">sum()</a></code>, <code><a href="https://rdrr.io/r/base/mean.html">mean()</a></code>, <code><a href="https://rdrr.io/r/stats/sd.html">sd()</a></code>, <code><a href="https://rdrr.io/r/base/Extremes.html">max()</a></code>.</p>
+<p><strong>7.</strong> Crie uma função <code>classificar_numero()</code> que classifique um inteiro como
+“positivo”, “negativo” ou “zero”.</p>
+<p><strong>8.</strong> Crie uma função que calcule o Índice de Massa Corporal a partir do peso
+(kg) e da altura (m) e o classifique segundo a tabela:</p>
+<div class="inline-table"><table class="table table-sm">
+<thead><tr class="header">
+<th>IMC (kg/m²)</th>
+<th>Classificação</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td>&lt; 18,5</td>
+<td>Baixo peso</td>
+</tr>
+<tr class="even">
+<td>18,5 – 24,9</td>
+<td>Peso normal</td>
+</tr>
+<tr class="odd">
+<td>25 – 29,9</td>
+<td>Excesso de peso</td>
+</tr>
+<tr class="even">
+<td>30 – 34,9</td>
+<td>Obesidade grau I</td>
+</tr>
+<tr class="odd">
+<td>35 – 39,9</td>
+<td>Obesidade grau II</td>
+</tr>
+<tr class="even">
+<td>
+<span class="math inline">\(\geq\)</span> 40</td>
+<td>Obesidade grau III</td>
+</tr>
+</tbody>
+</table></div>
+<p>Recorde que <span class="math inline">\(\text{IMC} = \dfrac{\text{Peso}}{\text{Altura}^2}\)</span>.</p>
+<p><strong>9.</strong> Crie funções para converter euros noutras moedas, com base em taxas de
+câmbio. Escreva depois um programa que peça um valor em euros e imprima a
+conversão para dólar, libra, iene e real.</p>
+<p><strong>10.</strong> Crie uma função que calcule o intervalo de confiança a
+<span class="math inline">\((1 - \alpha) \times 100\%\)</span> para o valor médio (para amostras grandes, de dimensão
+<span class="math inline">\(n \geq 30\)</span>), dado por
+<span class="math display">\[\left(\bar{x} - z_{1-\frac{\alpha}{2}}\frac{s}{\sqrt{n}},\;
+\bar{x} + z_{1-\frac{\alpha}{2}}\frac{s}{\sqrt{n}}\right),\]</span>
+onde <span class="math inline">\(s\)</span> é o desvio padrão amostral e <span class="math inline">\(z_{1-\frac{\alpha}{2}}\)</span> é o quantil de
+probabilidade <span class="math inline">\(1 - \alpha/2\)</span> (use <code><a href="https://rdrr.io/r/stats/Normal.html">qnorm()</a></code>).</p>
+<div class="sourceCode" id="cb105"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">IC</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">amostra</span>, <span class="va">alpha</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="co"># o seu código aqui</span></span>
+<span><span class="op">}</span></span></code></pre></div>
+<p><strong>11.</strong> Generalize a função anterior para calcular o intervalo de confiança para
+vários valores de <span class="math inline">\(\alpha\)</span> de uma só vez (por exemplo, 0,001, 0,01, 0,05 e 0,10).</p>
+<div class="sourceCode" id="cb106"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">ICs</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">amostra</span>, <span class="va">alphas</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="co"># o seu código aqui</span></span>
+<span><span class="op">}</span></span></code></pre></div>
+<p><strong>12.</strong> Crie uma função <code>calcula_moda()</code> que receba um vetor (numérico ou de
+carateres) e devolva a moda — o valor mais frequente. Se houver mais do que uma
+moda, deve devolvê-las todas. <br><em>Sugestão:</em> Use a função <code><a href="https://rdrr.io/r/base/table.html">table()</a></code> para contar ocorrências.</p>
+<p>Teste com <code>c(1, 2, 2, 3, 3, 4, 4)</code> e com <code>c("A", "B", "A", "C", "C", "C", "B")</code>.</p>
+<p><strong>13.</strong> A distância euclidiana entre dois pontos <span class="math inline">\(A(x_1, y_1)\)</span> e <span class="math inline">\(B(x_2, y_2)\)</span> é
+<span class="math display">\[d(A, B) = \sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2}.\]</span>
+Crie uma função <code>distancia_euclidiana()</code> que a calcule, e teste-a com <span class="math inline">\(A(2, 3)\)</span> e
+<span class="math inline">\(B(6, 9)\)</span>. Generalize-a depois para pontos em qualquer dimensão e teste-a com
+<span class="math inline">\(A(1, 2, 3)\)</span> e <span class="math inline">\(B(4, 5, 6)\)</span>.</p>
+<p><strong>14.</strong> Crie uma função <code>cria_matriz_aleatoria(linhas, colunas)</code> que devolva uma
+matriz com números aleatórios uniformes entre 0 e 1. Crie depois uma função
+<code>analisa_matriz()</code> que devolva a soma, a média e o traço (se a matriz for
+quadrada) de uma matriz dada. Teste-as com uma matriz <span class="math inline">\(5 \times 5\)</span>. Por fim,
+generalize <code>analisa_matriz()</code> para devolver também o determinante, apenas quando a
+matriz for quadrada; caso contrário, deve informar que não é possível calculá-lo.</p>
+<p>Com as funções, fechamos a caixa de ferramentas fundamental da programação em R.
+Temos agora tudo o que é preciso — valores, estruturas de dados, decisões e
+funções — para, nos próximos capítulos, automatizar tarefas com ciclos, ler dados
+reais e, finalmente, mergulhar na probabilidade e na simulação.</p>
+
+</div>
+</div>
+  <div class="chapter-nav">
+<div class="prev"><a href="selecao.html"><span class="header-section-number">5</span> Estruturas de decisão</a></div>
+<div class="next"><a href="scripts.html"><span class="header-section-number">7</span> Scripts em R</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#funcoes"><span class="header-section-number">6</span> Funções</a></li>
+<li>
+<a class="nav-link" href="#anatomia-de-uma-fun%C3%A7%C3%A3o"><span class="header-section-number">6.1</span> Anatomia de uma função</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#vari%C3%A1veis-locais-e-globais"><span class="header-section-number">6.1.1</span> Variáveis locais e globais</a></li></ul>
+</li>
+<li>
+<a class="nav-link" href="#argumentos-mais-flexibilidade"><span class="header-section-number">6.2</span> Argumentos: mais flexibilidade</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#valores-por-omiss%C3%A3o"><span class="header-section-number">6.2.1</span> Valores por omissão</a></li>
+<li><a class="nav-link" href="#argumentos-por-nome"><span class="header-section-number">6.2.2</span> Argumentos por nome</a></li>
+</ul>
+</li>
+<li><a class="nav-link" href="#validar-entradas-com-stop"><span class="header-section-number">6.3</span> Validar entradas com stop()</a></li>
+<li><a class="nav-link" href="#exerc%C3%ADcios-de-an%C3%A1lise"><span class="header-section-number">6.4</span> Exercícios de análise</a></li>
+<li><a class="nav-link" href="#exerc%C3%ADcios-7"><span class="header-section-number">6.5</span> Exercícios</a></li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+          
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>Introdução ao R e à Simulação Estatística</strong>: Um Laboratório de Estatística Computacional" was written by Renato de Paula. It was last built on 06 de July de 2026.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+for (let popover of popovers) {
+  const div = document.createElement('div');
+  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+  div.innerHTML = popover.getAttribute('data-content');
+
+  var has_math = div.querySelector("span.math");
+  if (has_math) {
+    document.body.appendChild(div);
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+    MathJax.Hub.Queue(function() {
+      popover.setAttribute('data-content', div.innerHTML);
+      document.body.removeChild(div);
+    })
+  }
+}
+</script>
+</body>
+</html>

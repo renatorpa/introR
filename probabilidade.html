@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Capítulo 18 Probabilidade e variáveis aleatórias | Introdução ao R e à Simulação Estatística</title>
+<meta name="author" content="Renato de Paula">
+<meta name="description" content="No capítulo anterior aprendemos a gerar acaso. Agora precisamos da linguagem matemática para o descrever com rigor — a linguagem das variáveis aleatórias, que está no coração de toda a estatística...">
+<meta name="generator" content="bookdown 0.46 with bs4_book()">
+<meta property="og:title" content="Capítulo 18 Probabilidade e variáveis aleatórias | Introdução ao R e à Simulação Estatística">
+<meta property="og:type" content="book">
+<meta property="og:description" content="No capítulo anterior aprendemos a gerar acaso. Agora precisamos da linguagem matemática para o descrever com rigor — a linguagem das variáveis aleatórias, que está no coração de toda a estatística...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Capítulo 18 Probabilidade e variáveis aleatórias | Introdução ao R e à Simulação Estatística">
+<meta name="twitter:description" content="No capítulo anterior aprendemos a gerar acaso. Agora precisamos da linguagem matemática para o descrever com rigor — a linguagem das variáveis aleatórias, que está no coração de toda a estatística...">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.11.0/transition.js"></script><script src="libs/bs3compat-0.11.0/tabs.js"></script><script src="libs/bs3compat-0.11.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="Um Laboratório de Estatística Computacional">Introdução ao R e à Simulação Estatística</a>:
+        <small class="text-muted">Um Laboratório de Estatística Computacional</small>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">Prefácio</a></li>
+<li><a class="" href="intro.html"><span class="header-section-number">1</span> Estatística, computação e simulação</a></li>
+<li><a class="" href="rrstudio.html"><span class="header-section-number">2</span> O R e o RStudio</a></li>
+<li><a class="" href="calculadora.html"><span class="header-section-number">3</span> O R como calculadora</a></li>
+<li><a class="" href="estruturas.html"><span class="header-section-number">4</span> Estruturas de dados</a></li>
+<li><a class="" href="selecao.html"><span class="header-section-number">5</span> Estruturas de decisão</a></li>
+<li><a class="" href="funcoes.html"><span class="header-section-number">6</span> Funções</a></li>
+<li><a class="" href="scripts.html"><span class="header-section-number">7</span> Scripts em R</a></li>
+<li><a class="" href="leitura.html"><span class="header-section-number">8</span> Leitura de dados</a></li>
+<li><a class="" href="pipe.html"><span class="header-section-number">9</span> O operador pipe</a></li>
+<li><a class="" href="while.html"><span class="header-section-number">10</span> O ciclo while</a></li>
+<li><a class="" href="for.html"><span class="header-section-number">11</span> O ciclo for</a></li>
+<li><a class="" href="apply.html"><span class="header-section-number">12</span> A família apply</a></li>
+<li><a class="" href="revisao.html"><span class="header-section-number">13</span> Exercícios de revisão</a></li>
+<li><a class="" href="graficos.html"><span class="header-section-number">14</span> Gráficos com o R base</a></li>
+<li><a class="" href="manipulacao.html"><span class="header-section-number">15</span> Manipulação de dados</a></li>
+<li><a class="" href="ggplot.html"><span class="header-section-number">16</span> O pacote ggplot2</a></li>
+<li><a class="" href="sample.html"><span class="header-section-number">17</span> A função sample()</a></li>
+<li><a class="active" href="probabilidade.html"><span class="header-section-number">18</span> Probabilidade e variáveis aleatórias</a></li>
+<li><a class="" href="simulacao.html"><span class="header-section-number">19</span> Simulação</a></li>
+<li><a class="" href="distribuicoes.html"><span class="header-section-number">20</span> Distribuições de probabilidade</a></li>
+<li><a class="" href="exercicios-extra.html"><span class="header-section-number">21</span> Exercícios extra</a></li>
+<li><a class="" href="transformada.html"><span class="header-section-number">22</span> Método da transformada inversa</a></li>
+<li><a class="" href="aceitacao-rejeicao.html"><span class="header-section-number">23</span> Método da aceitação-rejeição</a></li>
+<li><a class="" href="teoremas-limites.html"><span class="header-section-number">24</span> Teoremas limites</a></li>
+<li><a class="" href="calculo-integrais.html"><span class="header-section-number">25</span> Cálculo de integrais por Monte Carlo</a></li>
+<li><a class="" href="solucoes.html"><span class="header-section-number">26</span> Resoluções dos exercícios</a></li>
+</ul>
+
+        <div class="book-extra">
+          
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="probabilidade" class="section level1" number="18">
+<h1>
+<span class="header-section-number">Capítulo 18</span> Probabilidade e variáveis aleatórias<a class="anchor" aria-label="anchor" href="#probabilidade"><i class="fas fa-link"></i></a>
+</h1>
+<p>No capítulo anterior aprendemos a <em>gerar</em> acaso. Agora precisamos da linguagem
+matemática para o <em>descrever</em> com rigor — a linguagem das <strong>variáveis aleatórias</strong>, que
+está no coração de toda a estatística e de toda a simulação.</p>
+<p>Uma <strong>variável aleatória</strong> é uma função que atribui um valor numérico a cada resultado
+possível de uma experiência aleatória. Formalmente, é uma função que faz corresponder a
+cada elemento do espaço de resultados <span class="math inline">\(\Omega\)</span> um número real. Ao lançar um dado, por
+exemplo, podemos definir a variável aleatória <span class="math inline">\(X\)</span> como o número da face voltada para
+cima, que assume valores de 1 a 6.</p>
+<p>As variáveis aleatórias são fundamentais porque permitem quantificar e analisar
+matematicamente fenómenos incertos. Classificam-se em dois grandes tipos:</p>
+<ul>
+<li>
+<strong>discretas</strong> — assumem valores num conjunto finito ou numerável, como o número de
+caras em três lançamentos de uma moeda;</li>
+<li>
+<strong>contínuas</strong> — assumem qualquer valor num intervalo, como a altura de uma pessoa.</li>
+</ul>
+<div class="objetivo">
+<p>Neste capítulo revemos as ferramentas que descrevem uma variável aleatória — função de
+probabilidade, função densidade, função de distribuição, valor esperado e variância — e
+aprendemos a calculá-las no R, com particular destaque para a integração numérica com
+<code><a href="https://rdrr.io/r/stats/integrate.html">integrate()</a></code>.</p>
+</div>
+<div id="como-se-descreve-uma-variável-aleatória" class="section level2" number="18.1">
+<h2>
+<span class="header-section-number">18.1</span> Como se descreve uma variável aleatória<a class="anchor" aria-label="anchor" href="#como-se-descreve-uma-vari%C3%A1vel-aleat%C3%B3ria"><i class="fas fa-link"></i></a>
+</h2>
+<p>A distribuição de uma variável aleatória descreve-se de formas diferentes consoante ela
+seja discreta ou contínua.</p>
+<p>Uma variável <strong>discreta</strong> descreve-se pela sua <strong>função massa de probabilidade</strong>
+(f.m.p.), <span class="math inline">\(f_X(x) = P(X = x)\)</span>, que dá a probabilidade de cada valor. Para ser uma
+f.m.p. válida, tem de satisfazer duas condições:
+<span class="math display">\[f_X(x) \geq 0 \quad \forall x, \qquad \sum_{x} f_X(x) = 1.\]</span></p>
+<p>Uma variável <strong>contínua</strong> descreve-se pela sua <strong>função densidade de probabilidade</strong>
+(f.d.p.), <span class="math inline">\(f_X(x)\)</span>. Aqui, a probabilidade não está em cada ponto (que é nula), mas na
+<strong>área sob a curva</strong>: <span class="math inline">\(P(a &lt; X &lt; b) = \int_a^b f_X(x)\,dx\)</span>. As condições análogas são:
+<span class="math display">\[f_X(x) \geq 0 \quad \forall x, \qquad \int_{-\infty}^{+\infty} f_X(x)\,dx = 1.\]</span></p>
+<p>Em qualquer dos casos, a <strong>função de distribuição</strong> (acumulada), <span class="math inline">\(F_X(x) = P(X \leq x)\)</span>,
+acumula a probabilidade até <span class="math inline">\(x\)</span> — somando, no caso discreto, ou integrando, no contínuo:
+<span class="math display">\[F_X(x) = \sum_{t \leq x} f_X(t) \qquad \text{ou} \qquad F_X(x) = \int_{-\infty}^{x} f_X(t)\,dt.\]</span></p>
+<p>Finalmente, dois números resumem a distribuição: o <strong>valor esperado</strong> <span class="math inline">\(E(X)\)</span> (o centro,
+a “média teórica”) e a <strong>variância</strong> <span class="math inline">\(V(X)\)</span> (a dispersão em torno desse centro). As suas
+definições espelham a natureza discreta ou contínua da variável:</p>
+<p><span class="math display">\[E(X) = \sum_x x\, f_X(x) \quad \text{ou} \quad E(X) = \int_{-\infty}^{+\infty} x\, f_X(x)\,dx,\]</span>
+<span class="math display">\[V(X) = E\!\left[(X - E(X))^2\right] = \sum_x (x - E(X))^2 f_X(x) \quad \text{ou} \quad \int_{-\infty}^{+\infty} (x - E(X))^2 f_X(x)\,dx.\]</span></p>
+<div class="nota">
+<p>Repare no paralelo perfeito entre os dois mundos: onde a variável discreta <strong>soma</strong>
+(<span class="math inline">\(\sum\)</span>), a contínua <strong>integra</strong> (<span class="math inline">\(\int\)</span>). É a mesma ideia — acumular probabilidade —
+expressa nas duas linguagens. Guardar este paralelo em mente torna toda a matéria mais
+simples.</p>
+</div>
+</div>
+<div id="exemplo-uma-variável-discreta" class="section level2" number="18.2">
+<h2>
+<span class="header-section-number">18.2</span> Exemplo: uma variável discreta<a class="anchor" aria-label="anchor" href="#exemplo-uma-vari%C3%A1vel-discreta"><i class="fas fa-link"></i></a>
+</h2>
+<p>Numa empresa, o número de reclamações recebidas por dia é uma variável aleatória
+discreta <span class="math inline">\(X\)</span> com a seguinte f.m.p.:</p>
+<p><span class="math display">\[f_X(x) = P(X = x) =
+\begin{cases}
+0{,}10, &amp; x = 0 \\
+0{,}25, &amp; x = 1 \\
+0{,}30, &amp; x = 2 \\
+0{,}20, &amp; x = 3 \\
+0{,}15, &amp; x = 4
+\end{cases}\]</span></p>
+<p>Queremos (a) confirmar que <span class="math inline">\(f_X\)</span> é uma f.m.p., (b) calcular o número esperado e a
+variância das reclamações, e (c) a probabilidade de haver mais de 2 reclamações num dia.</p>
+<p>Para (a), verificamos que as probabilidades são não negativas e somam 1:</p>
+<div class="sourceCode" id="cb229"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">X_valores</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">3</span>, <span class="fl">4</span><span class="op">)</span></span>
+<span><span class="va">P_X</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0.10</span>, <span class="fl">0.25</span>, <span class="fl">0.30</span>, <span class="fl">0.20</span>, <span class="fl">0.15</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">P_X</span><span class="op">)</span>          <span class="co"># deve dar 1</span></span>
+<span><span class="co">## [1] 1</span></span></code></pre></div>
+<p>Para (b), aplicamos diretamente as definições de <span class="math inline">\(E(X)\)</span> e <span class="math inline">\(V(X)\)</span>:</p>
+<div class="sourceCode" id="cb230"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">E_X</span>   <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">X_valores</span> <span class="op">*</span> <span class="va">P_X</span><span class="op">)</span>                 <span class="co"># valor esperado</span></span>
+<span><span class="va">Var_X</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="op">(</span><span class="va">X_valores</span> <span class="op">-</span> <span class="va">E_X</span><span class="op">)</span><span class="op">^</span><span class="fl">2</span> <span class="op">*</span> <span class="va">P_X</span><span class="op">)</span>       <span class="co"># variância</span></span>
+<span><span class="va">E_X</span></span>
+<span><span class="co">## [1] 2.05</span></span>
+<span><span class="va">Var_X</span></span>
+<span><span class="co">## [1] 1.448</span></span></code></pre></div>
+<p>E para (c), somamos as probabilidades dos valores superiores a 2:</p>
+<div class="sourceCode" id="cb231"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">P_X_maior_2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">P_X</span><span class="op">[</span><span class="va">X_valores</span> <span class="op">&gt;</span> <span class="fl">2</span><span class="op">]</span><span class="op">)</span></span>
+<span><span class="va">P_X_maior_2</span></span>
+<span><span class="co">## [1] 0.35</span></span></code></pre></div>
+<p>Em média, a empresa recebe cerca de 2 reclamações por dia, e a probabilidade de receber
+mais de 2 é de 0,35.</p>
+</div>
+<div id="exemplo-uma-variável-contínua" class="section level2" number="18.3">
+<h2>
+<span class="header-section-number">18.3</span> Exemplo: uma variável contínua<a class="anchor" aria-label="anchor" href="#exemplo-uma-vari%C3%A1vel-cont%C3%ADnua"><i class="fas fa-link"></i></a>
+</h2>
+<p>Seja <span class="math inline">\(X\)</span> uma variável contínua com f.d.p.</p>
+<p><span class="math display">\[f(x) = \begin{cases} 2e^{-2x}, &amp; x \geq 0 \\ 0, &amp; x &lt; 0 \end{cases}\]</span></p>
+<p>(trata-se de uma distribuição exponencial). Queremos (a) confirmar que é uma f.d.p.,
+(b) calcular <span class="math inline">\(P(X &gt; 2)\)</span> e (c) <span class="math inline">\(P(0{,}3 &lt; X &lt; 0{,}7)\)</span>.</p>
+<p>Começamos por definir a função em R:</p>
+<div class="sourceCode" id="cb232"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">f1</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html">ifelse</a></span><span class="op">(</span><span class="va">x</span> <span class="op">&lt;</span> <span class="fl">0</span>, <span class="fl">0</span>, <span class="fl">2</span> <span class="op">*</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html">exp</a></span><span class="op">(</span><span class="op">-</span><span class="fl">2</span> <span class="op">*</span> <span class="va">x</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="op">}</span></span></code></pre></div>
+<p>O seu gráfico mostra a forma típica de decaimento da exponencial:</p>
+<div class="sourceCode" id="cb233"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">f1</span>, from <span class="op">=</span> <span class="fl">0</span>, to <span class="op">=</span> <span class="fl">5</span>,</span>
+<span>     main <span class="op">=</span> <span class="st">"Densidade exponencial"</span>,</span>
+<span>     xlab <span class="op">=</span> <span class="st">"x"</span>, ylab <span class="op">=</span> <span class="st">"f(x)"</span>, col <span class="op">=</span> <span class="st">"steelblue"</span>, lwd <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span></code></pre></div>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:prob-exp"></span>
+<img src="introR_files/figure-html/prob-exp-1.png" alt="Função densidade da distribuição exponencial de parâmetro 2." width="80%"><p class="caption">
+Figura 18.1: Função densidade da distribuição exponencial de parâmetro 2.
+</p>
+</div>
+<p>Para (a), a condição <span class="math inline">\(\int_{-\infty}^{+\infty} f(x)\,dx = 1\)</span> verifica-se por integração
+numérica com <code><a href="https://rdrr.io/r/stats/integrate.html">integrate()</a></code>:</p>
+<div class="sourceCode" id="cb234"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/integrate.html">integrate</a></span><span class="op">(</span><span class="va">f1</span>, lower <span class="op">=</span> <span class="fl">0</span>, upper <span class="op">=</span> <span class="cn">Inf</span><span class="op">)</span></span>
+<span><span class="co">## 1 with absolute error &lt; 5e-07</span></span></code></pre></div>
+<p>As alíneas (b) e (c) correspondem a áreas sob a curva, ou seja, a integrais nos
+intervalos pedidos:
+<span class="math display">\[P(X &gt; 2) = \int_2^{+\infty} 2e^{-2x}\,dx, \qquad P(0{,}3 &lt; X &lt; 0{,}7) = \int_{0{,}3}^{0{,}7} 2e^{-2x}\,dx.\]</span></p>
+<div class="sourceCode" id="cb235"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/integrate.html">integrate</a></span><span class="op">(</span><span class="va">f1</span>, lower <span class="op">=</span> <span class="fl">2</span>, upper <span class="op">=</span> <span class="cn">Inf</span><span class="op">)</span>      <span class="co"># P(X &gt; 2)</span></span>
+<span><span class="co">## 0.01832 with absolute error &lt; 2.8e-06</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/stats/integrate.html">integrate</a></span><span class="op">(</span><span class="va">f1</span>, lower <span class="op">=</span> <span class="fl">0.3</span>, upper <span class="op">=</span> <span class="fl">0.7</span><span class="op">)</span>    <span class="co"># P(0.3 &lt; X &lt; 0.7)</span></span>
+<span><span class="co">## 0.3022 with absolute error &lt; 3.4e-15</span></span></code></pre></div>
+<div class="dica">
+<p>A <code><a href="https://rdrr.io/r/stats/integrate.html">integrate()</a></code> devolve um objeto com vários elementos; o valor do integral está em
+<code>$value</code>. Assim, para usar o resultado num cálculo posterior, escrevemos, por exemplo,
+<code>integrate(f1, 0, Inf)$value</code>. Guardar este pormenor evita muita frustração quando se
+encadeiam contas.</p>
+</div>
+<div class="nota">
+<p>Quando a forma da distribuição é conhecida, a sua função de distribuição pode ser
+escrita de forma fechada, sem integrar. Para esta exponencial,
+<span class="math inline">\(F_X(x) = 1 - e^{-2x}\)</span> para <span class="math inline">\(x \geq 0\)</span>, e <span class="math inline">\(P(X &gt; 2) = 1 - F_X(2) = e^{-4} \approx 0{,}018\)</span>
+— exatamente o valor que a integração numérica devolveu. Comparar o cálculo analítico
+com o numérico é uma excelente forma de confirmar que ambos estão certos.</p>
+</div>
+</div>
+<div id="exemplo-uma-densidade-definida-por-troços" class="section level2" number="18.4">
+<h2>
+<span class="header-section-number">18.4</span> Exemplo: uma densidade definida por troços<a class="anchor" aria-label="anchor" href="#exemplo-uma-densidade-definida-por-tro%C3%A7os"><i class="fas fa-link"></i></a>
+</h2>
+<p>A procura diária de arroz num supermercado, em centenas de quilogramas, é uma variável
+aleatória <span class="math inline">\(X\)</span> com f.d.p.</p>
+<p><span class="math display">\[f(x) = \begin{cases}
+\frac{2}{3}x, &amp; 0 \leq x &lt; 1 \\[4pt]
+-\frac{x}{3} + 1, &amp; 1 \leq x &lt; 3 \\[4pt]
+0, &amp; x &lt; 0 \ \text{ou} \ x \geq 3
+\end{cases}\]</span></p>
+<p>Queremos (a) a probabilidade de se venderem mais de 150 kg num dia e (b) a venda
+esperada em 30 dias. Definimos a função por troços com <code><a href="https://rdrr.io/r/base/ifelse.html">ifelse()</a></code> encadeados:</p>
+<div class="sourceCode" id="cb236"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">f2</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html">ifelse</a></span><span class="op">(</span><span class="va">x</span> <span class="op">&gt;=</span> <span class="fl">0</span> <span class="op">&amp;</span> <span class="va">x</span> <span class="op">&lt;</span> <span class="fl">1</span>, <span class="op">(</span><span class="fl">2</span><span class="op">/</span><span class="fl">3</span><span class="op">)</span> <span class="op">*</span> <span class="va">x</span>,</span>
+<span>         <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html">ifelse</a></span><span class="op">(</span><span class="va">x</span> <span class="op">&gt;=</span> <span class="fl">1</span> <span class="op">&amp;</span> <span class="va">x</span> <span class="op">&lt;</span> <span class="fl">3</span>, <span class="op">-</span><span class="va">x</span><span class="op">/</span><span class="fl">3</span> <span class="op">+</span> <span class="fl">1</span>, <span class="fl">0</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="op">}</span></span></code></pre></div>
+<p>Confirmamos que é uma f.d.p. (o integral vale 1) e vemos o seu gráfico — uma densidade
+triangular:</p>
+<div class="sourceCode" id="cb237"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/integrate.html">integrate</a></span><span class="op">(</span><span class="va">f2</span>, <span class="fl">0</span>, <span class="fl">3</span><span class="op">)</span></span>
+<span><span class="co">## 1 with absolute error &lt; 1.1e-15</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">f2</span>, from <span class="op">=</span> <span class="op">-</span><span class="fl">1</span>, to <span class="op">=</span> <span class="fl">4</span>,</span>
+<span>     main <span class="op">=</span> <span class="st">"Densidade da procura de arroz"</span>,</span>
+<span>     xlab <span class="op">=</span> <span class="st">"x (centenas de kg)"</span>, ylab <span class="op">=</span> <span class="st">"f(x)"</span>, col <span class="op">=</span> <span class="st">"steelblue"</span>, lwd <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span></code></pre></div>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:prob-troços"></span>
+<img src="introR_files/figure-html/prob-troc%CC%A7os-1.png" alt="Densidade da procura de arroz, definida por dois troços." width="80%"><p class="caption">
+Figura 18.2: Densidade da procura de arroz, definida por dois troços.
+</p>
+</div>
+<p>Para (a), 150 kg correspondem a <span class="math inline">\(x = 1{,}5\)</span> centenas de quilogramas, pelo que queremos
+<span class="math inline">\(P(X &gt; 1{,}5) = \int_{1{,}5}^{3} f(x)\,dx\)</span>. Podemos assinalar essa área no gráfico:</p>
+<div class="sourceCode" id="cb238"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">f2</span>, from <span class="op">=</span> <span class="op">-</span><span class="fl">1</span>, to <span class="op">=</span> <span class="fl">4</span>,</span>
+<span>     main <span class="op">=</span> <span class="st">"P(X &gt; 1,5)"</span>, xlab <span class="op">=</span> <span class="st">"x"</span>, ylab <span class="op">=</span> <span class="st">"f(x)"</span>, col <span class="op">=</span> <span class="st">"steelblue"</span>, lwd <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/polygon.html">polygon</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1.5</span>, <span class="fl">1.5</span>, <span class="fl">3</span><span class="op">)</span>, y <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fu">f2</span><span class="op">(</span><span class="fl">1.5</span><span class="op">)</span>, <span class="fl">0</span><span class="op">)</span>, density <span class="op">=</span> <span class="fl">15</span>, col <span class="op">=</span> <span class="st">"firebrick"</span><span class="op">)</span></span></code></pre></div>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:prob-area"></span>
+<img src="introR_files/figure-html/prob-area-1.png" alt="A área sombreada representa P(X &gt; 1,5)." width="80%"><p class="caption">
+Figura 18.3: A área sombreada representa P(X &gt; 1,5).
+</p>
+</div>
+<div class="sourceCode" id="cb239"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/integrate.html">integrate</a></span><span class="op">(</span><span class="va">f2</span>, <span class="fl">1.5</span>, <span class="fl">3</span><span class="op">)</span>      <span class="co"># P(X &gt; 1,5)</span></span>
+<span><span class="co">## 0.375 with absolute error &lt; 4.2e-15</span></span></code></pre></div>
+<p>Para (b), a venda esperada num dia é <span class="math inline">\(E(X) = \int_{-\infty}^{+\infty} x\, f(x)\,dx\)</span>;
+definimos a função integranda <span class="math inline">\(x\,f(x)\)</span> e integramos. A venda esperada em 30 dias é 30
+vezes esse valor:</p>
+<div class="sourceCode" id="cb240"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">ef2</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="va">x</span> <span class="op">*</span> <span class="fu">f2</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">E_X</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/integrate.html">integrate</a></span><span class="op">(</span><span class="va">ef2</span>, <span class="fl">0</span>, <span class="fl">3</span><span class="op">)</span><span class="op">$</span><span class="va">value</span></span>
+<span><span class="va">E_X</span>            <span class="co"># venda esperada num dia (centenas de kg)</span></span>
+<span><span class="co">## [1] 1.333</span></span>
+<span><span class="fl">30</span> <span class="op">*</span> <span class="va">E_X</span>       <span class="co"># venda esperada em 30 dias</span></span>
+<span><span class="co">## [1] 40</span></span></code></pre></div>
+<div class="nota">
+<p>Note-se que os exemplos deste capítulo são simples e poderiam resolver-se
+analiticamente, sem métodos numéricos — foram escolhidos apenas para ilustrar as
+funções do R. O verdadeiro valor da integração numérica revela-se nos problemas
+complexos, em que a solução analítica é difícil ou impossível de obter. É aí que
+ferramentas como a <code><a href="https://rdrr.io/r/stats/integrate.html">integrate()</a></code> se tornam indispensáveis.</p>
+</div>
+</div>
+<div id="exercícios-23" class="section level2" number="18.5">
+<h2>
+<span class="header-section-number">18.5</span> Exercícios<a class="anchor" aria-label="anchor" href="#exerc%C3%ADcios-23"><i class="fas fa-link"></i></a>
+</h2>
+<p><strong>1.</strong> O número de produtos defeituosos numa linha de produção, ao fim de cada hora, é
+uma variável aleatória discreta <span class="math inline">\(X\)</span> com f.m.p.:</p>
+<p><span class="math display">\[P(X = x) = \begin{cases}
+1/10, &amp; x = 0 \\ 2/10, &amp; x = 1 \\ 3/10, &amp; x = 2 \\ 2/10, &amp; x = 3 \\ 2/10, &amp; x = 4
+\end{cases}\]</span></p>
+<ol style="list-style-type: lower-alpha">
+<li>Verifique se é uma f.m.p.</li>
+<li>Calcule o valor esperado e a variância do número de produtos defeituosos por hora.</li>
+<li>Calcule a probabilidade de haver, no máximo, 2 produtos defeituosos numa hora.</li>
+</ol>
+<p><strong>2.</strong> Um inquérito numa universidade registou o número de cadeiras em que cada aluno
+está inscrito. A variável aleatória <span class="math inline">\(Z\)</span> tem f.m.p.:</p>
+<p><span class="math display">\[P(Z = z) = \begin{cases}
+0{,}05, &amp; z = 1 \\ 0{,}15, &amp; z = 2 \\ 0{,}35, &amp; z = 3 \\ 0{,}25, &amp; z = 4 \\ 0{,}20, &amp; z = 5
+\end{cases}\]</span></p>
+<ol style="list-style-type: lower-alpha">
+<li>Verifique se é uma f.m.p.</li>
+<li>Calcule o valor esperado e a variância do número de cadeiras.</li>
+<li>Calcule a probabilidade de um aluno estar inscrito em mais de 3 cadeiras.</li>
+</ol>
+<p><strong>3.</strong> Numa dada localidade, a distribuição do rendimento, em u.m. (unidades
+monetárias), é uma variável aleatória <span class="math inline">\(X\)</span> com <strong>função densidade de probabilidade</strong>:</p>
+<p><span class="math display">\[f_X(x) = \begin{cases}
+\frac{1}{10}x + \frac{1}{10}, &amp; 0 \leq x \leq 2 \\[4pt]
+-\frac{3}{40}x + \frac{9}{20}, &amp; 2 &lt; x \leq 6 \\[4pt]
+0, &amp; x &lt; 0 \ \text{ou} \ x &gt; 6
+\end{cases}\]</span></p>
+<ol style="list-style-type: lower-alpha">
+<li>Mostre que <span class="math inline">\(f_X\)</span> é uma f.d.p.</li>
+<li>Qual o rendimento médio nesta localidade?</li>
+<li>Calcule a probabilidade de encontrar uma pessoa com rendimento acima de 4,5 u.m. e
+assinale o resultado no gráfico da densidade.</li>
+</ol>
+<p><strong>4.</strong> Uma variável aleatória contínua <span class="math inline">\(X\)</span> tem distribuição uniforme no intervalo
+<span class="math inline">\([10, 20]\)</span>.</p>
+<ol style="list-style-type: lower-alpha">
+<li>Apresente o gráfico da f.d.p.</li>
+<li>Calcule <span class="math inline">\(P(X &lt; 15)\)</span>.</li>
+<li>Calcule <span class="math inline">\(P(12 \leq X \leq 18)\)</span>.</li>
+<li>Calcule <span class="math inline">\(E(X)\)</span> e <span class="math inline">\(V(X)\)</span>.</li>
+</ol>
+<p><strong>5.</strong> O tempo de espera (em minutos) num balcão de atendimento é uma variável aleatória
+contínua <span class="math inline">\(Y\)</span> com f.d.p.</p>
+<p><span class="math display">\[f_Y(y) = \begin{cases} 0{,}125\,y, &amp; 0 \leq y \leq 4 \\ 0, &amp; \text{caso contrário} \end{cases}\]</span></p>
+<ol style="list-style-type: lower-alpha">
+<li>Crie uma função para a função de distribuição acumulada de <span class="math inline">\(Y\)</span>.</li>
+<li>Calcule <span class="math inline">\(P(Y &gt; 3)\)</span>.</li>
+<li>Calcule <span class="math inline">\(P(1 &lt; Y &lt; 3)\)</span>.</li>
+<li>Calcule <span class="math inline">\(P(Y &lt; 2)\)</span>.</li>
+<li>Calcule <span class="math inline">\(P(Y &lt; 3 \mid Y &gt; 1)\)</span> (probabilidade condicional).</li>
+</ol>
+<p><strong>6.</strong> A duração, em anos, de uma lâmpada especial é uma variável aleatória contínua <span class="math inline">\(X\)</span>
+com densidade</p>
+<p><span class="math display">\[f_X(x) = \begin{cases} 3e^{-3x}, &amp; x \geq 0 \\ 0, &amp; x &lt; 0 \end{cases}\]</span></p>
+<ol style="list-style-type: lower-alpha">
+<li>Crie uma função para a função de distribuição acumulada de <span class="math inline">\(X\)</span>.</li>
+<li>Calcule <span class="math inline">\(P(X &gt; 2)\)</span>.</li>
+<li>Calcule <span class="math inline">\(P(0{,}5 &lt; X &lt; 1{,}2)\)</span>.</li>
+<li>Calcule <span class="math inline">\(P(X &gt; 3)\)</span>.</li>
+<li>Calcule <span class="math inline">\(P(X &lt; 3 \mid X &gt; 1)\)</span>.</li>
+</ol>
+<p>Descrita a probabilidade de uma variável aleatória, o passo natural é conhecer as
+<strong>distribuições</strong> mais importantes — a binomial, a normal, a exponencial — e as funções
+que o R lhes dedica. É esse o tema do próximo capítulo.</p>
+
+</div>
+</div>
+  <div class="chapter-nav">
+<div class="prev"><a href="sample.html"><span class="header-section-number">17</span> A função sample()</a></div>
+<div class="next"><a href="simulacao.html"><span class="header-section-number">19</span> Simulação</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#probabilidade"><span class="header-section-number">18</span> Probabilidade e variáveis aleatórias</a></li>
+<li><a class="nav-link" href="#como-se-descreve-uma-vari%C3%A1vel-aleat%C3%B3ria"><span class="header-section-number">18.1</span> Como se descreve uma variável aleatória</a></li>
+<li><a class="nav-link" href="#exemplo-uma-vari%C3%A1vel-discreta"><span class="header-section-number">18.2</span> Exemplo: uma variável discreta</a></li>
+<li><a class="nav-link" href="#exemplo-uma-vari%C3%A1vel-cont%C3%ADnua"><span class="header-section-number">18.3</span> Exemplo: uma variável contínua</a></li>
+<li><a class="nav-link" href="#exemplo-uma-densidade-definida-por-tro%C3%A7os"><span class="header-section-number">18.4</span> Exemplo: uma densidade definida por troços</a></li>
+<li><a class="nav-link" href="#exerc%C3%ADcios-23"><span class="header-section-number">18.5</span> Exercícios</a></li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+          
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>Introdução ao R e à Simulação Estatística</strong>: Um Laboratório de Estatística Computacional" was written by Renato de Paula. It was last built on 06 de July de 2026.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+for (let popover of popovers) {
+  const div = document.createElement('div');
+  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+  div.innerHTML = popover.getAttribute('data-content');
+
+  var has_math = div.querySelector("span.math");
+  if (has_math) {
+    document.body.appendChild(div);
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+    MathJax.Hub.Queue(function() {
+      popover.setAttribute('data-content', div.innerHTML);
+      document.body.removeChild(div);
+    })
+  }
+}
+</script>
+</body>
+</html>
