@@ -82,36 +82,28 @@
 <h1>
 <span class="header-section-number">Capítulo 4</span> Estruturas de dados<a class="anchor" aria-label="anchor" href="#estruturas"><i class="fas fa-link"></i></a>
 </h1>
-<p>Até aqui, trabalhámos sobretudo com valores isolados: um número, um texto ou um resultado lógico. Mas a estatística raramente lida com valores isolados. Lida, quase sempre, com <strong>conjuntos de dados</strong>. As alturas dos alunos de uma turma, as vendas mensais de uma empresa, as respostas de um inquérito ou as medições recolhidas por um sensor são colecções de valores que queremos guardar, organizar e analisar em conjunto. É aqui que entram as <strong>estruturas de dados</strong>.</p>
-<p>Uma estrutura de dados é uma forma de organizar vários valores num único objecto, para que possamos manipulá-los como um todo. Escolher a estrutura certa para cada problema é um passo fundamental: cada estrutura tem a sua finalidade própria, e conhecê-las bem é essencial para programar de forma clara, eficiente e segura em R.</p>
+<p>Até aqui, trabalhámos sobretudo com valores isolados: um número, um texto ou um resultado lógico. Mas a estatística raramente lida com valores isolados. Lida, quase sempre, com <strong>conjuntos de dados</strong>. As alturas dos estudantes de uma turma, as vendas mensais de uma empresa, as respostas de um inquérito ou as medições recolhidas por um sensor são coleções de valores que queremos guardar, organizar e analisar em conjunto. É aqui que entram as <strong>estruturas de dados</strong>.</p>
+<p>Uma estrutura de dados é uma forma de organizar vários valores num único objeto, para que possamos manipulá-los como um todo. Escolher a estrutura certa para cada problema é um passo fundamental: cada estrutura tem a sua finalidade própria, e conhecê-las bem é essencial para programar de forma clara, eficiente e segura em R.</p>
 <p>Antes de as estudarmos uma a uma, convém reter que, em R, existem dois grandes tipos de objetos:</p>
 <ul>
 <li>
-<strong>Funções</strong> — objetos que <em>executam</em> operações, como <code><a href="https://rdrr.io/r/base/Trig.html">cos()</a></code>, <code><a href="https://rdrr.io/r/base/print.html">print()</a></code>,
+<strong>Funções</strong> – objetos que <em>executam</em> operações, como <code><a href="https://rdrr.io/r/base/Trig.html">cos()</a></code>, <code><a href="https://rdrr.io/r/base/print.html">print()</a></code>,
 <code><a href="https://rdrr.io/r/graphics/plot.default.html">plot()</a></code> ou <code><a href="https://rdrr.io/r/stats/integrate.html">integrate()</a></code>.</li>
 <li>
-<strong>Dados</strong> — objetos que <em>contêm</em> informação, como <code>23</code>, <code>"Olá"</code>, <code>TRUE</code>, ou as
+<strong>Dados</strong> – objetos que <em>contêm</em> informação, como <code>23</code>, <code>"Olá"</code>, <code>TRUE</code>, ou as
 estruturas que vamos conhecer agora.</li>
 </ul>
-<p>Neste capítulo percorremos as quatro estruturas de dados fundamentais, das mais
-simples às mais flexíveis: os <strong>vetores</strong> (coleções homogéneas), os <strong>fatores</strong>
-(vetores para dados categóricos), as <strong>matrizes e arrays</strong> (coleções
-bidimensionais e multidimensionais), os <strong>data frames</strong> (tabelas) e as <strong>listas</strong>
-(coleções heterogéneas). Cada uma responde a uma necessidade diferente.</p>
+<p>Neste capítulo percorremos as principais estruturas de dados do R, das mais simples às mais flexíveis: os <strong>vetores</strong>, que guardam vários valores do mesmo tipo; os <strong>fatores</strong>, usados para representar dados categóricos; as <strong>matrizes</strong> e os <strong>arrays</strong>, que organizam valores em duas ou mais dimensões; os <strong>data frames</strong>, que representam tabelas de dados; e as <strong>listas</strong>, que permitem reunir objetos de tipos diferentes. Cada uma destas estruturas responde a uma necessidade própria, e aprender a distingui-las é essencial para escolher a ferramenta certa em cada problema.</p>
 <div id="vetor" class="section level2" number="4.1">
 <h2>
 <span class="header-section-number">4.1</span> Vetor<a class="anchor" aria-label="anchor" href="#vetor"><i class="fas fa-link"></i></a>
 </h2>
-<p>O <strong>vetor</strong> é a estrutura mais elementar e, ao mesmo tempo, a mais importante do
-R — a tal ponto que, mesmo um único número, é internamente um vetor de comprimento
-um. Um vetor é uma sequência ordenada de elementos <strong>do mesmo tipo</strong>: todos
-números, ou todos texto, ou todos valores lógicos.</p>
-<p>Três ideias a reter desde já:</p>
+<p>O <strong>vetor</strong> é a estrutura de dados mais elementar do R e, ao mesmo tempo, uma das mais importantes. Mesmo um único número é tratado internamente como um vetor de comprimento um. Um vetor é uma sequência ordenada de elementos do mesmo tipo: apenas números, apenas texto ou apenas valores lógicos.</p>
+<p>Há três ideias essenciais a reter desde já:</p>
 <ul>
-<li>todos os elementos de um vetor têm de ser do mesmo tipo;</li>
-<li>os elementos são indexados a partir de <strong>1</strong> (o primeiro elemento está na
-posição 1, não 0, como em muitas outras linguagens);</li>
-<li>criam-se com a função <code><a href="https://rdrr.io/r/base/c.html">c()</a></code> e manipulam-se com uma vasta coleção de funções.</li>
+<li>todos os elementos de um vetor têm de pertencer ao mesmo tipo;</li>
+<li>os elementos são indexados a partir de <strong>1</strong>, ou seja, o primeiro elemento está na posição 1, e não na posição 0, como acontece em muitas outras linguagens de programação;</li>
+<li>os vetores são normalmente criados com a função <code><a href="https://rdrr.io/r/base/c.html">c()</a></code> e podem ser manipulados com uma vasta coleção de funções do R.</li>
 </ul>
 <div id="tipos-de-vetores" class="section level3" number="4.1.1">
 <h3>
@@ -135,7 +127,7 @@ posição 1, não 0, como em muitas outras linguagens);</li>
 <span><span class="co">## [1] "3"     "FALSE" "a"</span></span></code></pre></div>
 <div class="atencao">
 <p>Repare no último exemplo. Ao tentarmos misturar um número, um valor lógico e um
-texto, o R <strong>não</strong> dá erro: converte tudo para o tipo mais “geral” — neste caso,
+texto, o R <strong>não</strong> dá erro: converte tudo para o tipo mais “geral”, neste caso,
 texto. A este fenómeno chamamos <strong>coerção</strong>. É cómodo, mas traiçoeiro: se
 esperava um vetor de números e o R o converteu silenciosamente em texto, os
 cálculos seguintes falharão. Convém, por isso, garantir que cada vetor contém um
@@ -182,35 +174,43 @@ oferece atalhos poderosos para os construir:</p>
 <p>O operador <code>:</code> e as funções <code><a href="https://rdrr.io/r/base/seq.html">seq()</a></code> e <code><a href="https://rdrr.io/r/base/rep.html">rep()</a></code> vão aparecer constantemente. Note a
 diferença subtil entre <code>times</code> e <code>each</code> em <code><a href="https://rdrr.io/r/base/rep.html">rep()</a></code>: <code>times</code> repete a sequência
 inteira; <code>each</code> repete cada elemento antes de passar ao seguinte. Confundir os
-dois é comum — experimente ambos até a distinção ficar natural.</p>
+dois é comum, experimente ambos até a distinção ficar natural.</p>
 </div>
 </div>
 <div id="aceder-a-elementos" class="section level3" number="4.1.3">
 <h3>
 <span class="header-section-number">4.1.3</span> Aceder a elementos<a class="anchor" aria-label="anchor" href="#aceder-a-elementos"><i class="fas fa-link"></i></a>
 </h3>
-<p>Guardar um vetor só é útil se depois conseguirmos extrair partes dele. Fazemo-lo
-com <strong>colchetes</strong> <code>[ ]</code> e índices. Esta é uma das operações que mais vamos usar,
-por isso vale a pena dominá-la bem. Há três formas principais de indexar.</p>
-<p><strong>Por posição.</strong> Indicamos os índices dos elementos que queremos:</p>
+<p>Guardar um vetor só é útil se conseguirmos recuperar, selecionar ou modificar partes dele. Em R, fazemos isso com <strong>parênteses retos</strong> <code>[ ]</code> e índices. Esta operação chama-se <strong>indexação</strong> e será uma das mais usadas ao longo do livro. Por isso, vale a pena compreendê-la bem desde o início. Há três formas principais de indexar um vetor.</p>
+<p><strong>Por posição.</strong> Indicamos os índices dos elementos que queremos selecionar:</p>
 <div class="sourceCode" id="cb33"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="op">(</span><span class="op">-</span><span class="fl">5</span><span class="op">)</span><span class="op">:</span><span class="fl">5</span></span>
 <span><span class="va">x</span></span>
 <span><span class="co">##  [1] -5 -4 -3 -2 -1  0  1  2  3  4  5</span></span>
 <span></span>
+<span><span class="va">x</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span>             <span class="co"># primeiro elemento</span></span>
+<span><span class="co">## [1] -5</span></span>
+<span></span>
 <span><span class="va">x</span><span class="op">[</span><span class="fl">4</span><span class="op">:</span><span class="fl">8</span><span class="op">]</span>           <span class="co"># do quarto ao oitavo elemento</span></span>
 <span><span class="co">## [1] -2 -1  0  1  2</span></span>
 <span></span>
-<span><span class="va">x</span><span class="op">[</span><span class="op">-</span><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">]</span>    <span class="co"># todos menos o último</span></span>
-<span><span class="co">## [1] -5 -4 -3 -2 -1  0  1  2  3  4</span></span></code></pre></div>
-<p><strong>Por exclusão.</strong> Um índice negativo <em>remove</em> elementos:</p>
+<span><span class="va">x</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">3</span>, <span class="fl">5</span><span class="op">)</span><span class="op">]</span>    <span class="co"># primeiro, terceiro e quinto elementos</span></span>
+<span><span class="co">## [1] -5 -3 -1</span></span></code></pre></div>
+<p><strong>Por exclusão.</strong> Também podemos indicar as posições que queremos remover. Para isso, usamos índices negativos:</p>
 <div class="sourceCode" id="cb34"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">x</span><span class="op">[</span><span class="op">-</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span>, <span class="fl">9</span><span class="op">:</span><span class="fl">11</span><span class="op">)</span><span class="op">]</span>   <span class="co"># remove os três primeiros e os três últimos</span></span>
+<code class="sourceCode R"><span><span class="va">x</span><span class="op">[</span><span class="op">-</span><span class="fl">1</span><span class="op">]</span>            <span class="co"># todos os elementos exceto o primeiro</span></span>
+<span><span class="co">##  [1] -4 -3 -2 -1  0  1  2  3  4  5</span></span>
+<span></span>
+<span><span class="va">x</span><span class="op">[</span><span class="op">-</span><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">]</span>    <span class="co"># todos os elementos exceto o último</span></span>
+<span><span class="co">## [1] -5 -4 -3 -2 -1  0  1  2  3  4</span></span>
+<span></span>
+<span><span class="va">x</span><span class="op">[</span><span class="op">-</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span>, <span class="fl">9</span><span class="op">:</span><span class="fl">11</span><span class="op">)</span><span class="op">]</span> <span class="co"># remove os três primeiros e os três últimos</span></span>
 <span><span class="co">## [1] -2 -1  0  1  2</span></span></code></pre></div>
-<p><strong>Por condição lógica.</strong> Esta é a forma mais poderosa: fornecemos um vetor de
-<code>TRUE</code>/<code>FALSE</code>, e o R devolve os elementos nas posições onde há <code>TRUE</code>. Como as
-comparações produzem exatamente esses vetores lógicos, podemos filtrar dados de
-forma muito expressiva:</p>
+<div class="nota">
+<p>A expressão <code>length(x)</code> devolve o comprimento do vetor <code>x</code>. Em R, índices negativos removem posições, não valores. Portanto, <code>x[-length(x)]</code> significa: remover o elemento que está na última posição de <code>x</code>, e não remover um valor igual a <code>length(x)</code>.</p>
+</div>
+<p><strong>Por condição lógica.</strong> A terceira forma de indexação é uma das mais úteis em análise de dados. Em vez de indicarmos diretamente as posições que queremos selecionar, fornecemos ao R um vetor lógico, isto é, um vetor formado por valores <code>TRUE</code> e <code>FALSE</code>. O R devolve apenas os elementos que estão nas posições onde aparece <code>TRUE</code>.</p>
+<p>Esta ideia é particularmente poderosa porque as comparações em R produzem precisamente vetores lógicos. Assim, podemos selecionar elementos que satisfazem uma certa condição.</p>
 <div class="sourceCode" id="cb35"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Selecionar os elementos com valor absoluto menor que 3</span></span>
 <span><span class="va">index</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">abs</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">&lt;</span> <span class="fl">3</span></span>
@@ -220,23 +220,25 @@ forma muito expressiva:</p>
 <span><span class="va">x</span><span class="op">[</span><span class="va">index</span><span class="op">]</span></span>
 <span><span class="co">## [1] -2 -1  0  1  2</span></span>
 <span></span>
-<span><span class="co"># ... ou tudo de uma vez, sem variável auxiliar</span></span>
+<span><span class="co"># A mesma seleção, sem criar uma variável auxiliar</span></span>
 <span><span class="va">x</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">abs</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">&lt;</span> <span class="fl">3</span><span class="op">]</span></span>
 <span><span class="co">## [1] -2 -1  0  1  2</span></span></code></pre></div>
-<p>Mais exemplos desta indexação condicional, que convém estudar com calma:</p>
+<p>No exemplo anterior, <code>abs(x) &lt; 3</code> cria uma condição lógica. O R verifica essa condição elemento a elemento e devolve <code>TRUE</code> nas posições em que o valor absoluto de <code>x</code> é menor que 3. Quando usamos esse vetor lógico dentro dos parênteses retos, ficamos apenas com os elementos correspondentes às posições verdadeiras.</p>
+<p>Vejamos mais alguns exemplos:</p>
 <div class="sourceCode" id="cb36"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">y</span> <span class="op">&lt;-</span> <span class="fl">1</span><span class="op">:</span><span class="fl">10</span></span>
-<span><span class="va">y</span><span class="op">[</span><span class="va">y</span> <span class="op">&gt;</span> <span class="fl">5</span><span class="op">]</span>           <span class="co"># os maiores que 5</span></span>
+<span></span>
+<span><span class="va">y</span><span class="op">[</span><span class="va">y</span> <span class="op">&gt;</span> <span class="fl">5</span><span class="op">]</span>           <span class="co"># elementos maiores que 5</span></span>
 <span><span class="co">## [1]  6  7  8  9 10</span></span>
 <span></span>
-<span><span class="va">y</span><span class="op">[</span><span class="va">y</span> <span class="op"><a href="https://rdrr.io/r/base/Arithmetic.html">%%</a></span> <span class="fl">2</span> <span class="op">==</span> <span class="fl">0</span><span class="op">]</span>     <span class="co"># os pares</span></span>
+<span><span class="va">y</span><span class="op">[</span><span class="va">y</span> <span class="op"><a href="https://rdrr.io/r/base/Arithmetic.html">%%</a></span> <span class="fl">2</span> <span class="op">==</span> <span class="fl">0</span><span class="op">]</span>     <span class="co"># elementos pares</span></span>
 <span><span class="co">## [1]  2  4  6  8 10</span></span>
 <span></span>
 <span><span class="va">y</span><span class="op">[</span><span class="fl">5</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="cn">NA</span></span>
-<span><span class="va">y</span><span class="op">[</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">y</span><span class="op">)</span><span class="op">]</span>       <span class="co"># todos os que não são NA</span></span>
+<span><span class="va">y</span><span class="op">[</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">y</span><span class="op">)</span><span class="op">]</span>       <span class="co"># elementos que não são NA</span></span>
 <span><span class="co">## [1]  1  2  3  4  6  7  8  9 10</span></span></code></pre></div>
-<p>O R traz ainda alguns vetores predefinidos convenientes, como <code>letters</code> e
-<code>LETTERS</code> (o alfabeto em minúsculas e maiúsculas):</p>
+<p>Neste último exemplo, <code>is.na(y)</code> identifica os valores ausentes e devolve <code>TRUE</code> nas posições em que há <code>NA</code>. O operador <code>!</code> inverte essa condição. Por isso, <code>!is.na(y)</code> seleciona os elementos que <strong>não</strong> são valores ausentes.</p>
+<p>O R inclui ainda alguns vetores predefinidos úteis, como <code>letters</code> e <code>LETTERS</code>, que contêm o alfabeto em minúsculas e em maiúsculas, respetivamente:</p>
 <div class="sourceCode" id="cb37"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">letters</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">]</span></span>
 <span><span class="co">## [1] "a" "b" "c"</span></span>
@@ -277,7 +279,7 @@ numérico:</p>
 <span><span class="fu"><a href="https://rdrr.io/r/base/cumsum.html">cumsum</a></span><span class="op">(</span><span class="va">v</span><span class="op">)</span>     <span class="co"># somas acumuladas</span></span>
 <span><span class="co">## [1] 2.2 3.3 6.6</span></span></code></pre></div>
 <p>Uma função particularmente útil é <code><a href="https://rdrr.io/r/base/which.html">which()</a></code>, que devolve as <strong>posições</strong> dos
-elementos que satisfazem uma condição — e não os valores em si:</p>
+elementos que satisfazem uma condição, e não os valores em si:</p>
 <div class="sourceCode" id="cb39"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">y</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">8</span>, <span class="fl">3</span>, <span class="fl">5</span>, <span class="fl">7</span>, <span class="fl">6</span>, <span class="fl">6</span>, <span class="fl">8</span>, <span class="fl">9</span>, <span class="fl">2</span>, <span class="fl">3</span>, <span class="fl">9</span>, <span class="fl">4</span>, <span class="fl">10</span>, <span class="fl">4</span>, <span class="fl">11</span><span class="op">)</span></span>
 <span></span>
@@ -286,10 +288,12 @@ elementos que satisfazem uma condição — e não os valores em si:</p>
 <span></span>
 <span><span class="va">y</span><span class="op">[</span><span class="va">y</span> <span class="op">&gt;</span> <span class="fl">5</span><span class="op">]</span>         <span class="co"># os valores em si</span></span>
 <span><span class="co">## [1]  8  7  6  6  8  9  9 10 11</span></span></code></pre></div>
+<div class="nota">
 <p>A distinção entre <em>posições</em> (<code>which(y &gt; 5)</code>) e <em>valores</em> (<code>y[y &gt; 5]</code>) é uma
 fonte comum de confusão. Guarde-a: uma pergunta como “em que dias o consumo
 excedeu a média?” pede posições; “quais foram os consumos acima da média?” pede
 valores.</p>
+</div>
 </div>
 <div id="operações-e-reciclagem" class="section level3" number="4.1.5">
 <h3>
@@ -326,7 +330,7 @@ não for múltiplo do menor, a reciclagem fica “incompleta” e o R emite um a
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">3</span>, <span class="fl">5</span>, <span class="fl">7</span><span class="op">)</span><span class="op">^</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">3</span>, <span class="fl">4</span><span class="op">)</span></span>
 <span><span class="co">## Warning: longer object length is not a multiple of shorter object length</span></span>
 <span><span class="co">## [1]   4  27 625  49</span></span></code></pre></div>
-<p>Aqui, <code>c(2, 3, 4)</code> foi reciclado para <code>c(2, 3, 4, 2)</code> — o último elemento repetiu
+<p>Aqui, <code>c(2, 3, 4)</code> foi reciclado para <code>c(2, 3, 4, 2)</code>, o último elemento repetiu
 apenas parcialmente. <strong>Leia sempre os avisos do R:</strong> um aviso de reciclagem é,
 muitas vezes, o sintoma de um vetor com o comprimento errado.</p>
 </div>
@@ -352,7 +356,7 @@ muitas vezes, o sintoma de um vetor com o comprimento errado.</p>
 <p><strong>5.</strong> Crie um vetor <span class="math inline">\(x_3\)</span> com a palavra “uva” 10 vezes, “maçã” 9 vezes,
 “laranja” 6 vezes e “banana” 1 vez.</p>
 <p><strong>6.</strong> Crie o vetor <code>notas &lt;- c(7, 8, 9)</code> e atribua-lhe os nomes dos alunos
-“Ana”, “João” e “Pedro”. Aceda à nota do “João” usando o nome. <br><em>Sugestão:</em> use a função <code><a href="https://rdrr.io/r/base/names.html">names()</a></code>.</p>
+“Ana”, “João” e “Pedro”. Aceda à nota do “João” usando o nome. <br><em>Sugestão:</em> Use a função <code><a href="https://rdrr.io/r/base/names.html">names()</a></code>.</p>
 <p><strong>7.</strong> Crie um vetor de 15 números aleatórios entre 1 e 100 (use <code><a href="https://rdrr.io/r/base/sample.html">sample()</a></code>).
 Ordene-o por ordem crescente e depois decrescente. Encontre o menor e o maior
 valor.</p>
@@ -374,7 +378,7 @@ posições 2, 4 e 6. Substitua o último elemento por 100.</p>
 </ol>
 <p><strong>13.</strong> Crie:</p>
 <ol style="list-style-type: lower-alpha">
-<li>um vetor com os valores <span class="math inline">\(e^{x}\sin(x)\)</span> nos pontos <span class="math inline">\(x = 2, 2{,}1, 2{,}2,
+<li>um vetor com os valores <span class="math inline">\(e^{x}\sin(x)\)</span> nos pontos <span class="math inline">\(x = 2, 2.1, 2.2,
 \ldots, 6\)</span>;</li>
 <li>o vetor <span class="math inline">\(\left(3, \dfrac{3^2}{2}, \dfrac{3^3}{3}, \ldots,
 \dfrac{3^{30}}{30}\right)\)</span>.</li>
@@ -389,7 +393,7 @@ posições 2, 4 e 6. Substitua o último elemento por 100.</p>
 durante 30 dias, guardando-os num vetor <code>consumo</code>.</p>
 <ol style="list-style-type: lower-alpha">
 <li>Defina <code>consumo</code> com 30 valores gerados aleatoriamente entre 10 e 40 kWh,
-usando <code><a href="https://rdrr.io/r/stats/Uniform.html">runif()</a></code> com semente 2025 (<code>set.seed(2025)</code>). Consulte <code><a href="https://rdrr.io/r/stats/Uniform.html">?runif</a></code> para
+usando <code><a href="https://rdrr.io/r/stats/Uniform.html">runif()</a></code> com semente 2026 (<code>set.seed(2026)</code>). Consulte <code><a href="https://rdrr.io/r/stats/Uniform.html">?runif</a></code> para
 os parâmetros.</li>
 <li>Calcule o consumo médio e guarde-o em <code>media</code>.</li>
 <li>Crie um vetor lógico <code>acima_da_media</code> indicando os dias com consumo superior à
@@ -428,22 +432,15 @@ superior a 100 toneladas.</li>
 <h2>
 <span class="header-section-number">4.2</span> Fatores<a class="anchor" aria-label="anchor" href="#fatores"><i class="fas fa-link"></i></a>
 </h2>
-<p>Nem todos os dados são números ou textos livres. Muitas variáveis são
-<strong>categóricas</strong>: assumem um número limitado de valores possíveis — o sexo, o
-estado civil, o grau de satisfação, o nível de escolaridade. Poderíamos
-guardá-las como vetores de texto, mas o R oferece uma estrutura feita à medida
-para elas: o <strong>fator</strong>.</p>
-<p>Um fator é um vetor especial, concebido para representar dados categóricos. À
-primeira vista parece um vetor de texto, mas por baixo esconde uma organização
-mais inteligente, que torna as análises estatísticas mais eficientes e mais
-corretas. Três conceitos definem um fator:</p>
+<p>Nem todos os dados são números ou textos livres. Muitas variáveis são <strong>categóricas</strong>, isto é, assumem um número limitado de valores possíveis. É o caso do género, do estado civil, do grau de satisfação ou do nível de escolaridade. Poderíamos guardar estas variáveis como vetores de texto, mas o R oferece uma estrutura própria para as representar: o <strong>fator</strong>.</p>
+<p>Um fator é um vetor especial, concebido para trabalhar com dados categóricos. À primeira vista, pode parecer um vetor de texto. No entanto, internamente, o R organiza as categorias de forma mais adequada para análise estatística, gráficos e modelos. Para compreender bem um fator, precisamos de conhecer três ideias:</p>
 <ul>
 <li>
 <strong>Níveis</strong> (<em>levels</em>): os valores distintos que a categoria pode assumir. Para
 uma variável “tamanho”, os níveis poderiam ser “pequeno”, “médio” e “grande”.</li>
 <li>
 <strong>Armazenamento interno</strong>: internamente, o R guarda cada valor como um inteiro
-que aponta para um nível. É mais eficiente e evita erros de escrita — se “médio”
+que aponta para um nível. É mais eficiente e evita erros de escrita, se “médio”
 é um nível, não há forma de acidentalmente escrever “medio” numa observação.</li>
 <li>
 <strong>Ordem</strong>: os fatores podem ser <strong>ordenados</strong> (quando há uma hierarquia natural,
@@ -462,11 +459,7 @@ ordem intrínseca, como cores).</li>
 <span><span class="co">## [1] baixo medio alto  medio baixo alto </span></span>
 <span><span class="co">## Levels: alto baixo medio</span></span></code></pre></div>
 <div class="atencao">
-<p>Por omissão, o R ordena os níveis <strong>alfabeticamente</strong> — repare que ficaram “alto”,
-“baixo”, “medio”, o que quase nunca é a ordem que queremos. Para variáveis com uma
-hierarquia natural, isto é um problema: um gráfico ou uma tabela apareceriam por
-ordem alfabética em vez da ordem lógica. A solução é indicar explicitamente a
-ordem dos níveis.</p>
+<p>Por omissão, o R ordena os níveis <strong>alfabeticamente</strong>. Repare que a ordem ficou <code>"alto"</code>, <code>"baixo"</code>, <code>"medio"</code>, o que quase nunca corresponde à ordem pretendida. Para variáveis com uma hierarquia natural, isto pode ser um problema: gráficos, tabelas e resumos podem aparecer por ordem alfabética, e não pela ordem lógica das categorias. A solução é indicar explicitamente a ordem dos níveis.</p>
 </div>
 <div class="sourceCode" id="cb45"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Especificar a ordem dos níveis</span></span>
@@ -504,9 +497,7 @@ nível maior do que aquele?”), usamos <code>ordered = TRUE</code>:</p>
 <h3>
 <span class="header-section-number">4.2.3</span> Gerar fatores com <code>gl()</code><a class="anchor" aria-label="anchor" href="#gerar-fatores-com-gl"><i class="fas fa-link"></i></a>
 </h3>
-<p>Quando precisamos de fatores com padrões regulares — típico em desenhos
-experimentais, onde há grupos de igual dimensão — a função <code><a href="https://rdrr.io/r/base/gl.html">gl()</a></code> (<em>generate
-levels</em>) poupa trabalho:</p>
+<p>Quando precisamos de criar fatores com padrões regulares, como acontece frequentemente em desenhos experimentais com grupos de igual dimensão, a função <code><a href="https://rdrr.io/r/base/gl.html">gl()</a></code> (<em>generate levels</em>) permite fazê-lo de forma simples e rápida.</p>
 <div class="sourceCode" id="cb48"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># gl(n, k): n níveis, cada um repetido k vezes</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/gl.html">gl</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">4</span>, k <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></span>
@@ -526,8 +517,7 @@ levels</em>) poupa trabalho:</p>
 <p><strong>1.</strong> Crie o vetor <code>c("pequeno", "médio", "grande", "pequeno", "grande")</code> e
 transforme-o num fator com níveis ordenados “pequeno”, “médio”, “grande”. Exiba os
 níveis.</p>
-<p><strong>2.</strong> Crie um fator com as cores de carros <code>c("vermelho", "azul", "preto", "vermelho", "branco", "azul")</code>. Use <code><a href="https://rdrr.io/r/base/table.html">table()</a></code> para contar quantos carros há de
-cada cor.</p>
+<p><strong>2.</strong> Crie um fator com as cores de carros <code>c("vermelho", "azul", "preto", "vermelho", "branco", "azul")</code>. <br><em>Sugestão:</em> Use <code><a href="https://rdrr.io/r/base/table.html">table()</a></code> para contar quantos carros há de cada cor.</p>
 <p><strong>3.</strong> Crie um fator com avaliações “bom”, “médio”, “mau” e modifique os níveis
 para “excelente”, “razoável” e “insatisfatório”. Exiba o fator modificado.</p>
 <p><strong>4.</strong> Crie o vetor <code>c("solteiro", "casado", "divorciado")</code>. Verifique se é um
@@ -573,8 +563,7 @@ níveis.</li>
 <p>Converta-o num fator não ordenado <code>phda_fator</code>.</p>
 <ol start="2" style="list-style-type: lower-alpha">
 <li>Obtenha as frequências absolutas e relativas de cada desafio.</li>
-<li>Quantos estudantes indicaram “Concentração” ou “Procrastinação” como principal
-dificuldade?</li>
+<li>Quantos estudantes indicaram “Concentração” ou “Procrastinação” como principal dificuldade?</li>
 <li>Recodifique “Nenhum” para “Sem dificuldade declarada”.</li>
 <li>Crie um gráfico de barras dos desafios, com rótulos de frequência. <br><em>Sugestão:</em> Use a função <code><a href="https://rdrr.io/r/graphics/barplot.html">barplot()</a></code>.</li>
 </ol>
@@ -839,7 +828,7 @@ Tempo, Satisfação).</p>
 satisfação 3.</li>
 <li>Use <code><a href="https://rdrr.io/r/base/cbind.html">cbind()</a></code> para acrescentar a coluna “Horas de uso” com os valores
 <code>c(5, 7, 6, 8)</code>.</li>
-<li>Calcule a média de cada métrica com <code><a href="https://rdrr.io/r/base/colSums.html">colMeans()</a></code>.</li>
+<li>Calcule a média de cada métrica com <code><a href="https://rdrr.io/pkg/Matrix/man/colSums-methods.html">colMeans()</a></code>.</li>
 <li>Que aluno fez mais perguntas? <br><em>Sugestão:</em> Use a função <code><a href="https://rdrr.io/r/base/which.min.html">which.max()</a></code>.</li>
 </ol>
 <p><strong>13.</strong> Um ecrã em tons de cinzento pode representar-se por uma matriz, em que
@@ -1039,7 +1028,7 @@ variável partilhada (como <code>id</code> ou <code>curso</code>):</p>
 <div class="nota">
 <p>Estes cruzamentos — <em>inner</em>, <em>left</em>, <em>right</em> e <em>full join</em> — são conceitos
 centrais em bases de dados. O pacote <code>dplyr</code> oferece versões mais legíveis com os
-mesmos nomes (<code>inner_join()</code>, <code>left_join()</code>, etc.), que reencontraremos no
+mesmos nomes (<code><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">inner_join()</a></code>, <code><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">left_join()</a></code>, etc.), que reencontraremos no
 capítulo de manipulação de dados.</p>
 </div>
 </div>
@@ -1112,7 +1101,7 @@ resume cada coluna à sua maneira:</p>
 dados <code>airquality</code>, por exemplo, tem <code>NA</code> em algumas colunas, o que faz com que a
 sua média direta seja <code>NA</code>:</p>
 <div class="sourceCode" id="cb73"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/colSums.html">colMeans</a></span><span class="op">(</span><span class="va">airquality</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/Matrix/man/colSums-methods.html">colMeans</a></span><span class="op">(</span><span class="va">airquality</span><span class="op">)</span></span>
 <span><span class="co">##   Ozone Solar.R    Wind    Temp   Month     Day </span></span>
 <span><span class="co">##      NA      NA   9.958  77.882   6.993  15.804</span></span></code></pre></div>
 <p>A solução é a mesma: o argumento <code>na.rm = TRUE</code> ignora os valores em falta:</p>
@@ -1120,7 +1109,7 @@ sua média direta seja <code>NA</code>:</p>
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">airquality</span><span class="op">$</span><span class="va">Ozone</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
 <span><span class="co">## [1] 42.13</span></span>
 <span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/colSums.html">colMeans</a></span><span class="op">(</span><span class="va">airquality</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu"><a href="https://rdrr.io/pkg/Matrix/man/colSums-methods.html">colMeans</a></span><span class="op">(</span><span class="va">airquality</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div id="exercícios-4" class="section level3" number="4.4.10">
 <h3>
@@ -1147,7 +1136,7 @@ menos económicos. <br><em>Sugestão:</em> Use a função <code><a href="https:/
 Crie <code>carros1</code> com as colunas <code>car</code>, <code>mpg</code>, <code>cyl</code> e <code>carros2</code> com <code>car</code>, <code>hp</code>,
 <code>wt</code>. Junte-os com <code><a href="https://rdrr.io/r/base/merge.html">merge()</a></code> pela coluna <code>car</code>.</p>
 <p><strong>10.</strong> Carregue o <code>airquality</code> e mostre as primeiras e as últimas 6 linhas.</p>
-<p><strong>11.</strong> Conte quantos <code>NA</code> existem em cada coluna do <code>airquality</code>. <br><em>Sugestão:</em> Use a função <code><a href="https://rdrr.io/r/base/colSums.html">colSums()</a></code>.</p>
+<p><strong>11.</strong> Conte quantos <code>NA</code> existem em cada coluna do <code>airquality</code>. <br><em>Sugestão:</em> Use a função <code><a href="https://rdrr.io/pkg/Matrix/man/colSums-methods.html">colSums()</a></code>.</p>
 <p><strong>12.</strong> Calcule a média de <code>Solar.R</code> no <code>airquality</code>, ignorando os <code>NA</code>.</p>
 <p><strong>13.</strong> Crie um subconjunto do <code>airquality</code> com <code>Wind &gt; 10</code> e <code>Temp &gt; 80</code>. Mostre
 as primeiras 6 linhas.</p>
