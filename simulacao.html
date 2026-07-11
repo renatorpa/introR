@@ -118,50 +118,51 @@ resolvemos, por simulação, um problema cuja solução analítica seria muito t
 <span class="math inline">\([0, 1]\)</span> é, sabidamente, <span class="math inline">\(\frac{1}{2}\)</span>. Pela Lei dos Grandes Números, a média de uma
 amostra <span class="math inline">\(X_1, \ldots, X_n\)</span> dessa distribuição, <span class="math inline">\(\overline{X} = \frac{1}{n}\sum_{i=1}^n X_i\)</span>,
 deve aproximar-se de 0,5 à medida que <span class="math inline">\(n\)</span> cresce.</p>
-<p>A tabela seguinte mostra as médias de várias amostras simuladas, para diferentes
-dimensões <span class="math inline">\(n\)</span>. Note-se como as médias estão sempre próximas de 0,5, mas com uma variação
+<p>A Tabela <a href="simulacao.html#tab:tab-lln-repeticoes">19.1</a> mostra cinco repetições independentes da mesma experiência de simulação, para diferentes valores de <span class="math inline">\(n\)</span>. Note-se como as médias estão sempre próximas de 0.5, mas com uma variação
 que <strong>diminui</strong> claramente à medida que <span class="math inline">\(n\)</span> aumenta:</p>
 <div class="inline-table"><table class="table table-sm">
+<caption>
+<span id="tab:tab-lln-repeticoes">Tabela 19.1: </span>Cinco estimativas independentes de uma probabilidade, para diferentes valores de <span class="math inline">\(n\)</span>. À medida que <span class="math inline">\(n\)</span> aumenta, as estimativas tendem a concentrar-se em torno do valor teórico.</caption>
 <thead><tr class="header">
-<th><span class="math inline">\(n\)</span></th>
-<th>Rép. 1</th>
-<th>Rép. 2</th>
-<th>Rép. 3</th>
-<th>Rép. 4</th>
-<th>Rép. 5</th>
+<th align="right">n</th>
+<th align="center">Rép. 1</th>
+<th align="center">Rép. 2</th>
+<th align="center">Rép. 3</th>
+<th align="center">Rép. 4</th>
+<th align="center">Rép. 5</th>
 </tr></thead>
 <tbody>
 <tr class="odd">
-<td>100</td>
-<td>0,485</td>
-<td>0,481</td>
-<td>0,484</td>
-<td>0,569</td>
-<td>0,441</td>
+<td align="right">100</td>
+<td align="center">0.485</td>
+<td align="center">0.481</td>
+<td align="center">0.484</td>
+<td align="center">0.569</td>
+<td align="center">0.441</td>
 </tr>
 <tr class="even">
-<td>1 000</td>
-<td>0,497</td>
-<td>0,506</td>
-<td>0,480</td>
-<td>0,498</td>
-<td>0,499</td>
+<td align="right">1 000</td>
+<td align="center">0.497</td>
+<td align="center">0.506</td>
+<td align="center">0.480</td>
+<td align="center">0.498</td>
+<td align="center">0.499</td>
 </tr>
 <tr class="odd">
-<td>10 000</td>
-<td>0,502</td>
-<td>0,501</td>
-<td>0,499</td>
-<td>0,498</td>
-<td>0,498</td>
+<td align="right">10 000</td>
+<td align="center">0.502</td>
+<td align="center">0.501</td>
+<td align="center">0.499</td>
+<td align="center">0.498</td>
+<td align="center">0.498</td>
 </tr>
 <tr class="even">
-<td>100 000</td>
-<td>0,502</td>
-<td>0,499</td>
-<td>0,500</td>
-<td>0,498</td>
-<td>0,499</td>
+<td align="right">100 000</td>
+<td align="center">0.502</td>
+<td align="center">0.499</td>
+<td align="center">0.500</td>
+<td align="center">0.498</td>
+<td align="center">0.499</td>
 </tr>
 </tbody>
 </table></div>
@@ -349,7 +350,7 @@ o vocabulário indispensável de qualquer simulação.</p>
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Introdução ao R e à Simulação Estatística</strong>: Um Laboratório de Estatística Computacional" was written by Renato de Paula and Nuno Brites. It was last built on 07 de July de 2026.</p>
+    <p>"<strong>Introdução ao R e à Simulação Estatística</strong>: Um Laboratório de Estatística Computacional" was written by Renato de Paula and Nuno Brites. It was last built on 11 de July de 2026.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

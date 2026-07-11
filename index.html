@@ -92,25 +92,14 @@ exercícios e código executável.&lt;/p&gt;">
 <a class="btn btn-primary" href="introR.epub" role="button">Descarregar EPUB</a></p>
 </div>
 <p>Este livro nasceu de uma convicção simples: aprende-se estatística a fazer
-estatística. Durante muito tempo, o ensino da disciplina viveu dividido entre,
-por um lado, a teoria — distribuições, teoremas, demonstrações — e, por outro,
-a prática, muitas vezes reduzida a exercícios de papel e lápis com números
-pequenos e cuidadosamente escolhidos para “dar certo”. O computador estava
-ausente, ou aparecia apenas no fim, como uma calculadora sofisticada.</p>
-<p>Hoje sabemos que essa separação é artificial. A estatística moderna é, em larga
-medida, uma ciência computacional. Quando queremos perceber como se comporta a
-média de uma amostra, não precisamos de recitar o Teorema do Limite Central de
-memória: podemos gerar milhares de amostras no computador e <em>ver</em> a distribuição
-a formar-se diante dos nossos olhos. Quando um integral não tem solução
-fechada, podemos estimá-lo por simulação. Quando um modelo é demasiado complexo
-para a análise tradicional, simulamos. A capacidade de programar deixou de ser
-um extra para quem estuda estatística — passou a ser uma competência central.</p>
+estatística. Durante muito tempo, o ensino da disciplina viveu dividido entre, por um lado, a teoria – distribuições, teoremas, demonstrações — e, por outro, a prática, muitas vezes reduzida a exercícios de papel e lápis com números pequenos e cuidadosamente escolhidos para “dar certo”. O computador estava ausente, ou aparecia apenas no fim, como uma calculadora sofisticada.</p>
+<p>Hoje sabemos que essa separação é artificial. A estatística moderna é, em larga medida, uma ciência computacional. Quando queremos perceber como se comporta a média de uma amostra, não basta recitar o Teorema do Limite Central: podemos também gerar milhares de amostras e observar empiricamente o fenómeno que o teorema descreve. Quando um integral não tem solução fechada, podemos estimá-lo por simulação. Quando um modelo é demasiado complexo
+para a análise tradicional, simulamos. A capacidade de programar deixou de ser um extra para quem estuda estatística — passou a ser uma competência central.</p>
 <div class="objetivo">
 <p><strong>O que este livro se propõe fazer.</strong> Levar o leitor, sem pressupor qualquer
 experiência prévia de programação, desde os primeiros comandos em R até à
 utilização de métodos de simulação para resolver problemas de probabilidade e
-estatística. Fazemo-lo mantendo sempre juntas as duas metades da disciplina: a
-teoria que dá sentido aos métodos e a aplicação que os torna úteis.</p>
+estatística. Fazemo-lo mantendo sempre juntas as duas metades da disciplina: a teoria que dá sentido aos métodos e a aplicação que os torna úteis.</p>
 </div>
 <div id="porquê-o-r" class="section level2" number="0.1">
 <h2>
@@ -120,44 +109,25 @@ teoria que dá sentido aos métodos e a aplicação que os torna úteis.</p>
 <p>O R foi concebido, desde a raiz, <em>por</em> estatísticos e <em>para</em> fazer estatística.
 Não é uma linguagem de propósito geral à qual se acrescentaram, mais tarde,
 ferramentas estatísticas; é o contrário. Trabalhar com vetores, matrizes,
-tabelas de dados, distribuições de probabilidade e gráficos é, em R, natural e
-imediato — porque foi para isso que a linguagem foi desenhada. Um cálculo que
+tabelas de dados, distribuições de probabilidade e gráficos é, em R, natural e imediato porque foi para isso que a linguagem foi desenhada. Um cálculo que
 noutras linguagens exigiria vários passos, em R resume-se muitas vezes a uma
-única linha legível.</p>
-<p>A isto junta-se uma comunidade científica enorme e ativa. O R é gratuito, de
-código aberto, e conta com milhares de pacotes que estendem as suas capacidades
-a praticamente todas as áreas da ciência de dados. É a lingua franca da
-estatística académica e é largamente usado na indústria, na investigação
-biomédica, nas ciências sociais, na economia e na finança. Aprender R não é
-aprender uma ferramenta de nicho: é adquirir uma competência transferível e
-valorizada.</p>
+única linha.</p>
+<p>A isto junta-se uma comunidade científica ampla, activa e internacional. O R é gratuito, de código aberto, e conta com milhares de pacotes que estendem as suas capacidades a praticamente todas as áreas da estatística, da ciência de dados e da computação científica. Tornou-se uma linguagem de referência na estatística académica e é amplamente utilizado na investigação biomédica, nas ciências sociais, na economia, na finança, na indústria e na administração pública. Aprender R não é, por isso, aprender uma ferramenta de nicho: é adquirir uma competência técnica, transferível e valorizada em múltiplos contextos científicos e profissionais.</p>
 </div>
 <div id="porquê-a-simulação" class="section level2" number="0.2">
 <h2>
 <span class="header-section-number">0.2</span> Porquê a simulação?<a class="anchor" aria-label="anchor" href="#porqu%C3%AA-a-simula%C3%A7%C3%A3o"><i class="fas fa-link"></i></a>
 </h2>
-<p>A simulação é o fio condutor deste livro. A ideia é poderosa e, ao mesmo tempo,
-desarmante de tão simples: em vez de calcular uma probabilidade ou um valor
-esperado por métodos analíticos, deixamos o computador <em>repetir a experiência</em>
-muitas vezes e observamos o que acontece.</p>
-<p>Suponha que quer saber a probabilidade de, ao lançar dez moedas, obter exatamente
-cinco caras. Pode deduzir a fórmula binomial — e deve aprender a fazê-lo. Mas
-pode também pedir ao R que “lance” dez moedas cem mil vezes e conte a proporção
-de vezes em que saíram cinco caras. Os dois valores hão de coincidir, e essa
-coincidência não é um acaso: é a <strong>Lei dos Grandes Números</strong> em ação. A simulação
-transforma teoremas abstratos em fenómenos que podemos ver, medir e experimentar.</p>
-<p>Ao longo do livro, a simulação servir-nos-á para três propósitos: <strong>compreender</strong>
-(tornando visíveis conceitos como a variabilidade amostral ou a convergência),
-<strong>estimar</strong> (aproximando probabilidades, integrais e valores esperados que não
-sabemos calcular de outra forma) e <strong>validar</strong> (confrontando resultados teóricos
-com evidência gerada por computador).</p>
+<p>A simulação é o fio condutor deste livro. A ideia é poderosa e, ao mesmo tempo, desarmante de tão simples: em vez de calcular uma probabilidade ou um valor esperado por métodos analíticos, deixamos o computador <em>repetir a experiência</em> muitas vezes e observamos o que acontece.</p>
+<p>Suponha que quer saber a probabilidade de, ao lançar dez moedas, obter exatamente cinco caras. Pode deduzir a fórmula binomial – e deve aprender a fazê-lo. Mas pode também pedir ao R que “lance” dez moedas cem mil vezes e conte a proporção de vezes em que saíram cinco caras. Os dois valores hão de coincidir, e essa coincidência não é um acaso: é a <strong>Lei dos Grandes Números</strong> em ação. A simulação transforma teoremas abstratos em fenómenos que podemos ver, medir e experimentar.</p>
+<p>Ao longo do livro, a simulação servir-nos-á para três propósitos: <strong>compreender</strong> (tornando visíveis conceitos como a variabilidade amostral ou a convergência), <strong>estimar</strong> (aproximando probabilidades, integrais e valores esperados que não sabemos calcular de outra forma) e <strong>validar</strong> (confrontando resultados teóricos com evidência gerada por computador).</p>
 </div>
 <div id="para-quem-é-este-livro" class="section level2" number="0.3">
 <h2>
 <span class="header-section-number">0.3</span> Para quem é este livro<a class="anchor" aria-label="anchor" href="#para-quem-%C3%A9-este-livro"><i class="fas fa-link"></i></a>
 </h2>
 <p>Escrevemos este livro a pensar em estudantes do primeiro ano de licenciaturas em
-que a estatística tem um papel central — matemática aplicada, estatística,
+que a estatística tem um papel central – matemática aplicada, estatística,
 ciência de dados, economia, engenharia, biologia — e, mais geralmente, em
 qualquer pessoa que queira aprender a programar em R com o objetivo de fazer
 estatística.</p>
@@ -177,15 +147,12 @@ ideal — o lugar onde a teoria ganha corpo.</p>
 <span class="header-section-number">0.4</span> Como está organizado<a class="anchor" aria-label="anchor" href="#como-est%C3%A1-organizado"><i class="fas fa-link"></i></a>
 </h2>
 <p>O livro segue uma progressão deliberada, em que cada capítulo prepara o seguinte.</p>
-<p>Na <strong>primeira parte</strong> aprendemos a linguagem: instalamos o R e o RStudio, usamos
-o R como calculadora, conhecemos as estruturas de dados fundamentais (vetores,
-matrizes, tabelas e listas) e as ferramentas que dão vida à programação —
-estruturas de decisão, funções, ciclos e leitura de dados.</p>
+<p>Na <strong>primeira parte</strong> aprendemos a linguagem: instalamos o R e o RStudio, usamos o R como calculadora, conhecemos as estruturas de dados fundamentais (vetores, matrizes, tabelas e listas) e as ferramentas que dão vida à programação – estruturas de decisão, funções, ciclos e leitura de dados.</p>
 <p>Na <strong>segunda parte</strong> viramo-nos para a visualização e a manipulação de dados,
 aprendendo a produzir gráficos informativos e a transformar conjuntos de dados
 reais.</p>
 <p>Na <strong>terceira parte</strong> chegamos ao coração do livro: probabilidade, geração de
-números aleatórios e métodos de simulação — o método da transformada inversa, o
+números aleatórios e métodos de simulação – o método da transformada inversa, o
 método da aceitação-rejeição, a ilustração dos teoremas limite e o cálculo de
 integrais por simulação (Monte Carlo).</p>
 <p>Cada capítulo alterna explicação, código comentado e exemplos aplicados, e
@@ -209,20 +176,14 @@ apenas informação sobre o que ajustar.</p>
 <li>As caixas de <strong>dica</strong> oferecem sugestões práticas e boas práticas.</li>
 <li>As caixas de <strong>atenção</strong> avisam para erros comuns e armadilhas frequentes.</li>
 </ul>
-<p>O código aparece em caixas próprias. Quando uma linha começa por <code>##</code>, trata-se
-do <strong>resultado</strong> que o R devolve — foi assim que combinámos representar aquilo
-que apareceria no ecrã depois de executar o comando anterior.</p>
+<p>O código aparece em caixas próprias. Quando uma linha começa por <code>##</code>, trata-se do <strong>resultado</strong> que o R devolve – foi assim que combinámos representar aquilo que apareceria no ecrã depois de executar o comando anterior.</p>
 </div>
 <div id="uma-nota-final" class="section level2" number="0.6">
 <h2>
 <span class="header-section-number">0.6</span> Uma nota final<a class="anchor" aria-label="anchor" href="#uma-nota-final"><i class="fas fa-link"></i></a>
 </h2>
-<p>Um livro assim não substitui a prática paciente nem a discussão com colegas e
-docentes; pretende ser um companheiro fiável nessa aprendizagem. Se, ao chegar
-ao fim, o leitor olhar para um problema estatístico e a sua primeira reação for
-“posso simular isto para ver o que acontece”, então este livro terá cumprido o
-seu propósito.</p>
-<p>Bom trabalho — e bem-vindo ao laboratório.</p>
+<p>Um livro como este não substitui a prática paciente, nem a discussão com colegas e docentes; pretende, antes, ser um companheiro fiável nesse processo de aprendizagem. Se, ao chegar ao fim, o leitor olhar para um problema estatístico e a sua primeira reacção for “posso simular isto para perceber melhor o que acontece”, então este livro terá cumprido o seu propósito.</p>
+<p>Bom trabalho – e bem-vindo ao laboratório.</p>
 
 </div>
 </div>
@@ -255,7 +216,7 @@ seu propósito.</p>
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Introdução ao R e à Simulação Estatística</strong>: Um Laboratório de Estatística Computacional" was written by Renato de Paula and Nuno Brites. It was last built on 07 de July de 2026.</p>
+    <p>"<strong>Introdução ao R e à Simulação Estatística</strong>: Um Laboratório de Estatística Computacional" was written by Renato de Paula and Nuno Brites. It was last built on 11 de July de 2026.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

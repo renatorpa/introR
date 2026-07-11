@@ -123,7 +123,7 @@
 \urlstyle{same}
 \hypersetup{
   pdftitle={Introdução ao R e à Simulação Estatística},
-  pdfauthor={Renato de Paula},
+  pdfauthor={Renato de Paula and Nuno Brites},
   pdflang={pt-PT},
   colorlinks=true,
   linkcolor={Maroon},
@@ -140,8 +140,8 @@
 }
 \makeatother
 \subtitle{Um Laboratório de Estatística Computacional}
-\author{Renato de Paula}
-\date{07 de July de 2026}
+\author{Renato de Paula and Nuno Brites}
+\date{11 de July de 2026}
 
 \begin{document}
 \maketitle
@@ -154,27 +154,19 @@
 \chapter*{Prefácio}\label{prefuxe1cio}
 
 
-Este livro nasceu de uma convicção simples: aprende-se estatística a fazer
-estatística. Durante muito tempo, o ensino da disciplina viveu dividido entre,
-por um lado, a teoria --- distribuições, teoremas, demonstrações --- e, por outro,
-a prática, muitas vezes reduzida a exercícios de papel e lápis com números
-pequenos e cuidadosamente escolhidos para ``dar certo''. O computador estava
-ausente, ou aparecia apenas no fim, como uma calculadora sofisticada.
+Descarregar PDF
+Descarregar EPUB
 
-Hoje sabemos que essa separação é artificial. A estatística moderna é, em larga
-medida, uma ciência computacional. Quando queremos perceber como se comporta a
-média de uma amostra, não precisamos de recitar o Teorema do Limite Central de
-memória: podemos gerar milhares de amostras no computador e \emph{ver} a distribuição
-a formar-se diante dos nossos olhos. Quando um integral não tem solução
-fechada, podemos estimá-lo por simulação. Quando um modelo é demasiado complexo
-para a análise tradicional, simulamos. A capacidade de programar deixou de ser
-um extra para quem estuda estatística --- passou a ser uma competência central.
+Este livro nasceu de uma convicção simples: aprende-se estatística a fazer
+estatística. Durante muito tempo, o ensino da disciplina viveu dividido entre, por um lado, a teoria -- distribuições, teoremas, demonstrações --- e, por outro, a prática, muitas vezes reduzida a exercícios de papel e lápis com números pequenos e cuidadosamente escolhidos para ``dar certo''. O computador estava ausente, ou aparecia apenas no fim, como uma calculadora sofisticada.
+
+Hoje sabemos que essa separação é artificial. A estatística moderna é, em larga medida, uma ciência computacional. Quando queremos perceber como se comporta a média de uma amostra, não basta recitar o Teorema do Limite Central: podemos também gerar milhares de amostras e observar empiricamente o fenómeno que o teorema descreve. Quando um integral não tem solução fechada, podemos estimá-lo por simulação. Quando um modelo é demasiado complexo
+para a análise tradicional, simulamos. A capacidade de programar deixou de ser um extra para quem estuda estatística --- passou a ser uma competência central.
 
 \textbf{O que este livro se propõe fazer.} Levar o leitor, sem pressupor qualquer
 experiência prévia de programação, desde os primeiros comandos em R até à
 utilização de métodos de simulação para resolver problemas de probabilidade e
-estatística. Fazemo-lo mantendo sempre juntas as duas metades da disciplina: a
-teoria que dá sentido aos métodos e a aplicação que os torna úteis.
+estatística. Fazemo-lo mantendo sempre juntas as duas metades da disciplina: a teoria que dá sentido aos métodos e a aplicação que os torna úteis.
 
 \section{Porquê o R?}\label{porquuxea-o-r}
 
@@ -183,43 +175,24 @@ Existem muitas linguagens de programação. Porquê estudar precisamente o R?
 O R foi concebido, desde a raiz, \emph{por} estatísticos e \emph{para} fazer estatística.
 Não é uma linguagem de propósito geral à qual se acrescentaram, mais tarde,
 ferramentas estatísticas; é o contrário. Trabalhar com vetores, matrizes,
-tabelas de dados, distribuições de probabilidade e gráficos é, em R, natural e
-imediato --- porque foi para isso que a linguagem foi desenhada. Um cálculo que
+tabelas de dados, distribuições de probabilidade e gráficos é, em R, natural e imediato porque foi para isso que a linguagem foi desenhada. Um cálculo que
 noutras linguagens exigiria vários passos, em R resume-se muitas vezes a uma
-única linha legível.
+única linha.
 
-A isto junta-se uma comunidade científica enorme e ativa. O R é gratuito, de
-código aberto, e conta com milhares de pacotes que estendem as suas capacidades
-a praticamente todas as áreas da ciência de dados. É a lingua franca da
-estatística académica e é largamente usado na indústria, na investigação
-biomédica, nas ciências sociais, na economia e na finança. Aprender R não é
-aprender uma ferramenta de nicho: é adquirir uma competência transferível e
-valorizada.
+A isto junta-se uma comunidade científica ampla, activa e internacional. O R é gratuito, de código aberto, e conta com milhares de pacotes que estendem as suas capacidades a praticamente todas as áreas da estatística, da ciência de dados e da computação científica. Tornou-se uma linguagem de referência na estatística académica e é amplamente utilizado na investigação biomédica, nas ciências sociais, na economia, na finança, na indústria e na administração pública. Aprender R não é, por isso, aprender uma ferramenta de nicho: é adquirir uma competência técnica, transferível e valorizada em múltiplos contextos científicos e profissionais.
 
 \section{Porquê a simulação?}\label{porquuxea-a-simulauxe7uxe3o}
 
-A simulação é o fio condutor deste livro. A ideia é poderosa e, ao mesmo tempo,
-desarmante de tão simples: em vez de calcular uma probabilidade ou um valor
-esperado por métodos analíticos, deixamos o computador \emph{repetir a experiência}
-muitas vezes e observamos o que acontece.
+A simulação é o fio condutor deste livro. A ideia é poderosa e, ao mesmo tempo, desarmante de tão simples: em vez de calcular uma probabilidade ou um valor esperado por métodos analíticos, deixamos o computador \emph{repetir a experiência} muitas vezes e observamos o que acontece.
 
-Suponha que quer saber a probabilidade de, ao lançar dez moedas, obter exatamente
-cinco caras. Pode deduzir a fórmula binomial --- e deve aprender a fazê-lo. Mas
-pode também pedir ao R que ``lance'' dez moedas cem mil vezes e conte a proporção
-de vezes em que saíram cinco caras. Os dois valores hão de coincidir, e essa
-coincidência não é um acaso: é a \textbf{Lei dos Grandes Números} em ação. A simulação
-transforma teoremas abstratos em fenómenos que podemos ver, medir e experimentar.
+Suponha que quer saber a probabilidade de, ao lançar dez moedas, obter exatamente cinco caras. Pode deduzir a fórmula binomial -- e deve aprender a fazê-lo. Mas pode também pedir ao R que ``lance'' dez moedas cem mil vezes e conte a proporção de vezes em que saíram cinco caras. Os dois valores hão de coincidir, e essa coincidência não é um acaso: é a \textbf{Lei dos Grandes Números} em ação. A simulação transforma teoremas abstratos em fenómenos que podemos ver, medir e experimentar.
 
-Ao longo do livro, a simulação servir-nos-á para três propósitos: \textbf{compreender}
-(tornando visíveis conceitos como a variabilidade amostral ou a convergência),
-\textbf{estimar} (aproximando probabilidades, integrais e valores esperados que não
-sabemos calcular de outra forma) e \textbf{validar} (confrontando resultados teóricos
-com evidência gerada por computador).
+Ao longo do livro, a simulação servir-nos-á para três propósitos: \textbf{compreender} (tornando visíveis conceitos como a variabilidade amostral ou a convergência), \textbf{estimar} (aproximando probabilidades, integrais e valores esperados que não sabemos calcular de outra forma) e \textbf{validar} (confrontando resultados teóricos com evidência gerada por computador).
 
 \section{Para quem é este livro}\label{para-quem-uxe9-este-livro}
 
 Escrevemos este livro a pensar em estudantes do primeiro ano de licenciaturas em
-que a estatística tem um papel central --- matemática aplicada, estatística,
+que a estatística tem um papel central -- matemática aplicada, estatística,
 ciência de dados, economia, engenharia, biologia --- e, mais geralmente, em
 qualquer pessoa que queira aprender a programar em R com o objetivo de fazer
 estatística.
@@ -238,17 +211,14 @@ ideal --- o lugar onde a teoria ganha corpo.
 
 O livro segue uma progressão deliberada, em que cada capítulo prepara o seguinte.
 
-Na \textbf{primeira parte} aprendemos a linguagem: instalamos o R e o RStudio, usamos
-o R como calculadora, conhecemos as estruturas de dados fundamentais (vetores,
-matrizes, tabelas e listas) e as ferramentas que dão vida à programação ---
-estruturas de decisão, funções, ciclos e leitura de dados.
+Na \textbf{primeira parte} aprendemos a linguagem: instalamos o R e o RStudio, usamos o R como calculadora, conhecemos as estruturas de dados fundamentais (vetores, matrizes, tabelas e listas) e as ferramentas que dão vida à programação -- estruturas de decisão, funções, ciclos e leitura de dados.
 
 Na \textbf{segunda parte} viramo-nos para a visualização e a manipulação de dados,
 aprendendo a produzir gráficos informativos e a transformar conjuntos de dados
 reais.
 
 Na \textbf{terceira parte} chegamos ao coração do livro: probabilidade, geração de
-números aleatórios e métodos de simulação --- o método da transformada inversa, o
+números aleatórios e métodos de simulação -- o método da transformada inversa, o
 método da aceitação-rejeição, a ilustração dos teoremas limite e o cálculo de
 integrais por simulação (Monte Carlo).
 
@@ -276,79 +246,67 @@ As caixas coloridas ao longo do texto assinalam informação de tipos diferentes
   As caixas de \textbf{atenção} avisam para erros comuns e armadilhas frequentes.
 \end{itemize}
 
-O código aparece em caixas próprias. Quando uma linha começa por \texttt{\#\#}, trata-se
-do \textbf{resultado} que o R devolve --- foi assim que combinámos representar aquilo
-que apareceria no ecrã depois de executar o comando anterior.
+O código aparece em caixas próprias. Quando uma linha começa por \texttt{\#\#}, trata-se do \textbf{resultado} que o R devolve -- foi assim que combinámos representar aquilo que apareceria no ecrã depois de executar o comando anterior.
 
 \section{Uma nota final}\label{uma-nota-final}
 
-Um livro assim não substitui a prática paciente nem a discussão com colegas e
-docentes; pretende ser um companheiro fiável nessa aprendizagem. Se, ao chegar
-ao fim, o leitor olhar para um problema estatístico e a sua primeira reação for
-``posso simular isto para ver o que acontece'', então este livro terá cumprido o
-seu propósito.
+Um livro como este não substitui a prática paciente, nem a discussão com colegas e docentes; pretende, antes, ser um companheiro fiável nesse processo de aprendizagem. Se, ao chegar ao fim, o leitor olhar para um problema estatístico e a sua primeira reacção for ``posso simular isto para perceber melhor o que acontece'', então este livro terá cumprido o seu propósito.
 
-Bom trabalho --- e bem-vindo ao laboratório.
+Bom trabalho -- e bem-vindo ao laboratório.
 
 \chapter{Estatística, computação e simulação}\label{intro}
 
-Antes de escrevermos a primeira linha de código, vale a pena parar um momento
-para responder a uma pergunta legítima: \emph{porque é que um estudante de
-estatística precisa de aprender a programar?} A resposta a esta pergunta é, em
-boa medida, a justificação para todo este livro --- e perceber bem a resposta
-tornará tudo o que se segue mais motivado e mais fácil.
+Antes de escrevermos a primeira linha de código, vale a pena recuar um pouco. A programação, a matemática e a estatística não surgiram no vazio: fazem parte de uma longa história humana de representação, contagem, cálculo e decisão.
+
+Desde muito cedo, os seres humanos precisaram de comunicar. A linguagem permitiu descrever o mundo, transmitir experiências, coordenar acções e preservar conhecimento. Mas comunicar não bastava. Era também necessário distinguir quantidades: saber se havia poucos ou muitos frutos numa árvore, quantos animais tinham sido avistados, quantos membros havia num grupo, quantos objectos tinham sido trocados ou quantos dias faltavam para determinado acontecimento.
+
+Podemos imaginar uma situação elementar. Um pequeno grupo encontra uma árvore carregada de maçãs. Antes de decidir parar, colher e repartir os frutos, precisa de avaliar rapidamente se há alimento suficiente para todos -- e se vale a pena correr o risco de permanecer naquele lugar, exposto ao frio, à distância ou a predadores. Mesmo sem símbolos formais, há aqui uma forma primitiva de pensamento quantitativo: comparar, estimar, contar, decidir.
+
+Dessa necessidade de lidar com quantidades nasceram os números. Dos números nasceu a aritmética; da aritmética, formas cada vez mais sofisticadas de cálculo; e, ao longo dos séculos, a matemática tornou-se uma linguagem rigorosa para descrever relações, padrões, formas, movimentos e incertezas. Sempre que uma sociedade precisou de medir terras, construir edifícios, navegar, cobrar impostos, organizar calendários, estudar populações ou compreender fenómenos naturais, precisou também de desenvolver instrumentos matemáticos.
+
+Mas calcular sempre foi difícil. Durante muito tempo, fazer contas exigia esforço, tempo e engenho. Por isso surgiram instrumentos auxiliares: marcas em ossos ou pedras, ábacos, tabelas numéricas, réguas de cálculo, máquinas mecânicas, calculadoras electrónicas e, finalmente, computadores. Cada uma destas ferramentas ampliou a nossa capacidade de calcular; mas o computador alterou a escala do problema. Aquilo que antes demorava horas, dias ou era simplesmente impraticável passou a poder ser feito em segundos.
+
+A estatística insere-se nesta história como a disciplina que nos ajuda a raciocinar com dados, variabilidade e incerteza. Quando observamos apenas uma parte de uma população, quando medimos fenómenos sujeitos a erro, quando comparamos tratamentos, quando estudamos riscos ou quando tentamos prever acontecimentos futuros, estamos no domínio da estatística. Como mostra David Salsburg no livro \emph{The Lady Tasting Tea: How Statistics Revolutionized Science in the Twentieth Century}, a estatística transformou profundamente a prática científica moderna, desde o desenho de experiências até à inferência a partir de dados. A estatística transforma dados em informação e ajuda-nos a tomar decisões quando a certeza absoluta não está disponível.
+
+Hoje, porém, a estatística é inseparável da computação. Os dados são maiores, os modelos são mais complexos e muitos dos métodos modernos dependem de algoritmos, simulações e cálculo intensivo. Por isso, alguém que estuda ou trabalha com dados, incerteza e modelos precisa de aprender a programar. Não para substituir o pensamento estatístico, mas para o tornar praticável, reprodutível e aplicável a problemas reais.
+
+Esta é, em grande medida, a justificação para este livro. Aprender R não é apenas aprender comandos; é aprender uma forma de pensar com dados. É ganhar a capacidade de transformar uma pergunta numa sequência de operações claras, verificáveis e repetíveis. É poder explorar, simular, visualizar e modelar fenómenos aleatórios com uma precisão que seria impossível apenas com papel, lápis e calculadora.
 
 \section{A estatística tornou-se computacional}\label{a-estatuxedstica-tornou-se-computacional}
 
-Durante grande parte do século XX, a estatística viveu com um travão
-permanente: a dificuldade de fazer contas. Os métodos que se ensinavam e usavam
-eram, muitas vezes, aqueles que se conseguiam calcular à mão ou com uma
-calculadora --- tabelas de distribuições impressas no fim dos manuais,
-aproximações engenhosas, fórmulas fechadas cuidadosamente deduzidas para evitar
-cálculos impraticáveis.
+Durante grande parte do século XX, a estatística viveu com um travão permanente: a dificuldade de fazer contas. Os métodos que se ensinavam e usavam eram, muitas vezes, aqueles que se conseguiam calcular à mão ou com uma calculadora -- tabelas de distribuições impressas no fim dos manuais, aproximações engenhosas, fórmulas fechadas cuidadosamente deduzidas para evitar cálculos impraticáveis.
 
-O computador mudou tudo. Aquilo que antes era impossível de calcular passou a
-ser uma questão de segundos. E, com isso, mudou também aquilo que faz sentido
-ensinar e aprender. Já não precisamos de decorar valores de tabelas nem de nos
-limitarmos aos poucos modelos que admitem solução analítica simples. Podemos
-explorar dados reais, ajustar modelos complexos e, sobretudo, \textbf{simular}.
+O computador mudou tudo. Aquilo que antes era impossível de calcular passou a ser uma questão de segundos. E, com isso, mudou também aquilo que faz sentido ensinar e aprender. Já não precisamos de decorar valores de tabelas nem de nos limitar aos poucos modelos que admitem solução analítica simples. Podemos explorar dados reais, ajustar modelos complexos e, sobretudo, simular.
 
-Não estamos a dizer que a teoria deixou de importar --- pelo contrário. Continuamos
-a precisar de compreender \emph{porque é que} os métodos funcionam. O que mudou é que
-a teoria e o computador passaram a trabalhar em conjunto: a teoria dá-nos a
-compreensão, o computador dá-nos o alcance.
+Não estamos a dizer que a teoria deixou de importar -- pelo contrário. Continuamos a precisar de compreender porque é que os métodos funcionam. O que mudou é que a teoria e o computador passaram a trabalhar em conjunto: a teoria dá-nos a compreensão; o computador dá-nos o alcance.
 
 \section{O que é o R}\label{o-que-uxe9-o-r}
 
-O \textbf{R} é uma linguagem de programação e um ambiente de trabalho pensados
-especificamente para a computação estatística e para a produção de gráficos.
-Voltaremos a esta descrição, com mais detalhe, no próximo capítulo; para já,
-basta reter três ideias.
+O R é uma linguagem de programação e um ambiente de trabalho concebidos para a computação estatística, a análise de dados e a produção de gráficos. A sua origem está ligada à linguagem S, criada nos Bell Laboratories como uma linguagem orientada para a análise interactiva de dados. O R nasceu mais tarde como uma implementação livre dessa tradição: foi criado por Ross Ihaka e Robert Gentleman, na Universidade de Auckland, na Nova Zelândia, e o próprio nome ``R'' joga simultaneamente com as iniciais dos seus criadores e com a ligação à linguagem S.
 
-Primeiro, o R é \textbf{gratuito e de código aberto}. Qualquer pessoa o pode
-descarregar, usar, inspecionar e modificar --- o que faz dele uma ferramenta
-democrática, sem barreiras de custo entre quem quer aprender e o conhecimento.
+Esta origem é importante porque explica a natureza do R. O R não foi pensado, em primeiro lugar, como uma linguagem genérica de programação, mas como uma linguagem para pensar estatisticamente com dados. Por isso, desde o início, operações com vetores, matrizes, tabelas, distribuições de probabilidade, modelos estatísticos e gráficos fazem parte do seu vocabulário natural. Aquilo que noutras linguagens exige bibliotecas externas ou estruturas mais pesadas surge, em R, como parte da própria gramática da linguagem.
 
-Segundo, o R foi feito \textbf{por estatísticos, para estatísticos}. Manipular
-conjuntos de dados, trabalhar com distribuições de probabilidade, ajustar
-modelos e desenhar gráficos são tarefas para as quais a linguagem está
-naturalmente vocacionada.
+O R é também gratuito e de código aberto. Qualquer pessoa o pode descarregar, usar, inspeccionar e modificar. Esta característica teve uma consequência decisiva: reduziu a barreira de entrada ao software estatístico e permitiu que estudantes, docentes, investigadores, instituições públicas e empresas tivessem acesso à mesma ferramenta, independentemente do orçamento disponível. Nesse sentido, o R tornou-se uma ferramenta científica profundamente democrática.
 
-Terceiro, o R tem por trás uma \textbf{comunidade científica vastíssima}. Milhares de
-pacotes, escritos e partilhados livremente por investigadores de todo o mundo,
-estendem as suas capacidades a praticamente qualquer domínio.
+Mas talvez a característica mais transformadora do R seja o seu ecossistema de pacotes. Para além das funções que vêm instaladas com o próprio R, existe o CRAN -- Comprehensive R Archive Network --, uma rede de servidores que reúne, verifica e disponibiliza pacotes desenvolvidos pela comunidade. Um pacote é uma extensão do R: pode acrescentar novas funções, novos métodos estatísticos, novos conjuntos de dados, novas formas de visualização ou novas interfaces com outros sistemas.
+
+Na prática, o CRAN funciona como uma grande biblioteca pública de métodos computacionais. Quando alguém desenvolve uma nova técnica estatística, um novo algoritmo ou uma ferramenta útil para análise de dados, pode disponibilizá-la sob a forma de pacote. Outros utilizadores podem então instalar esse pacote directamente no R e aplicar essas ferramentas aos seus próprios problemas. É esta arquitectura aberta que explica por que razão o R acompanha tão rapidamente a evolução da estatística moderna: muitos métodos recentes chegam ao R através de pacotes antes de aparecerem em software comercial.
+
+Em termos práticos, o R reúne num só ambiente a manipulação de dados, o cálculo numérico, a simulação, a inferência estatística, a construção de modelos, a programação e a produção de gráficos de qualidade. Esta combinação torna-o particularmente adequado para aprender estatística de forma activa: não apenas lendo fórmulas, mas experimentando, simulando, visualizando e verificando propriedades nos próprios dados.
+
+O facto de o R ser uma linguagem de programação completa distingue-o de uma folha de cálculo. Numa folha de cálculo, tendemos a organizar os dados em células e a escrever operações ligadas à sua posição. Em R, escrevemos instruções que descrevem o que queremos fazer: transformar uma variável, aplicar uma função, repetir uma simulação, ajustar um modelo ou produzir um gráfico. Esta mudança de perspectiva é uma das fontes da flexibilidade do R.
+
+A isto junta-se uma comunidade científica ampla, activa e internacional. O R tornou-se uma das linguagens de referência na estatística académica e é amplamente utilizado na investigação biomédica, nas ciências sociais, na economia, na finança, na indústria e na administração pública. Aprender R, portanto, não é aprender uma ferramenta de nicho: é adquirir uma competência técnica, transferível e valorizada em múltiplos contextos científicos e profissionais.
+
+Neste livro, usaremos essa competência com um propósito central: compreender fenómenos aleatórios através da simulação. Antes de avançarmos para a sintaxe da linguagem, vale a pena introduzir esta ideia, porque ela será o fio condutor de grande parte do percurso.
 
 \section{A ideia central: simular}\label{a-ideia-central-simular}
 
 A palavra ``simulação'' percorre este livro de uma ponta à outra. Vale a pena
-introduzi-la desde já, com um exemplo minúsculo, para que o leitor perceba de
-imediato o poder da ideia.
+introduzi-la desde já, com um exemplo minúsculo, para que o leitor perceba de imediato o poder da ideia.
 
-Imagine que lançamos um dado equilibrado e queremos saber qual é o valor médio
-que sai a longo prazo. A teoria responde sem hesitar: a média é
-\((1+2+3+4+5+6)/6 = 3{,}5\). Mas há uma segunda maneira de chegar à mesma resposta,
-sem fazer a conta: podemos \emph{lançar o dado muitas vezes} e calcular a média dos
-resultados. Em R, isso escreve-se assim:
+Imagine que lançamos um dado equilibrado e queremos saber qual é o valor médio que sai a longo prazo. A teoria responde sem hesitar: a média é
+\[\frac{(1+2+3+4+5+6)}{6} = 3.5.\] Mas há uma segunda maneira de chegar à mesma resposta, sem fazer a conta: podemos \emph{lançar o dado muitas vezes} e calcular a média dos resultados. Em R, isso escreve-se assim:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -361,136 +319,67 @@ resultados. Em R, isso escreve-se assim:
 \end{Highlighting}
 \end{Shaded}
 
-O valor obtido --- próximo de \(3.5\) --- não é imposto por nenhuma fórmula: \emph{emerge}
-da repetição da experiência. Esta é a essência da simulação. Em vez de deduzir o
-resultado, construímos uma versão computacional do fenómeno aleatório e
-observamos o seu comportamento.
+O valor obtido -- próximo de \(3.5\) -- não é imposto por nenhuma fórmula: \emph{emerge} da repetição da experiência. Esta é a essência da simulação. Em vez de deduzir o resultado, construímos uma versão computacional do fenómeno aleatório e observamos o seu comportamento.
 
-Ainda não é preciso perceber cada detalhe do código acima --- a função \texttt{sample()},
-o argumento \texttt{replace}, e assim por diante. Tudo isto será explicado nos próximos
-capítulos. O importante, por agora, é ficar com a intuição: \textbf{o computador pode
-repetir uma experiência aleatória tantas vezes quantas quisermos, e a partir
-dessas repetições estimar aquilo que nos interessa.}
+Ainda não é preciso perceber cada detalhe do código acima -- a função \texttt{sample()}, o argumento \texttt{replace}, e assim por diante. Tudo isto será explicado nos próximos capítulos. O importante, por agora, é ficar com a intuição: \textbf{o computador pode repetir uma experiência aleatória tantas vezes quantas quisermos, e a partir dessas repetições estimar aquilo que nos interessa.}
 
-Este pequeno exemplo já contém, em embrião, tudo o que faremos mais tarde de
-forma mais ambiciosa. Quando não soubermos calcular uma probabilidade,
-estimá-la-emos por simulação. Quando um integral não tiver solução fechada,
-aproximá-lo-emos por simulação. Quando quisermos \emph{ver} um teorema a funcionar,
-ilustrá-lo-emos por simulação. Mas nada disto será possível sem primeiro
-dominarmos a linguagem --- e é para isso que servem os capítulos que se seguem.
+Este pequeno exemplo já contém, em pequena escala, tudo o que faremos mais tarde de forma mais ambiciosa. Quando não soubermos calcular uma probabilidade, estimá-la-emos por simulação. Quando um integral não tiver solução fechada, aproximá-lo-emos por simulação. Quando quisermos ver um teorema a funcionar, ilustrá-lo-emos por simulação. Mas nada disto será possível sem primeiro dominarmos a linguagem -- e é para isso que servem os capítulos que se seguem.
 
 \section{O caminho que vamos percorrer}\label{o-caminho-que-vamos-percorrer}
 
-O livro está organizado como uma subida gradual, em que cada degrau assenta no
-anterior.
+O livro está organizado como uma subida gradual. Cada capítulo introduz uma nova ferramenta, mas essa ferramenta não aparece isolada: serve para preparar o passo seguinte. A ideia é que o leitor comece por ganhar familiaridade com o R e termine capaz de escrever pequenas simulações estatísticas de forma autónoma.
 
-Começamos por \textbf{instalar e conhecer as ferramentas} (Capítulo~\ref{rrstudio})
-e por usar o R como uma \textbf{calculadora} que também guarda resultados e toma
-decisões (Capítulo~\ref{calculadora}). Aprendemos depois a organizar
-informação em \textbf{estruturas de dados} --- vetores, matrizes, tabelas e listas
-(Capítulo~\ref{estruturas}) --- e a controlar o fluxo dos programas com
-\textbf{estruturas de decisão} (Capítulo~\ref{selecao}) e \textbf{funções}
-(Capítulo~\ref{funcoes}).
+Começamos por \textbf{instalar e conhecer o ambiente de trabalho} (Capítulo~\ref{rrstudio}) e por usar o R como uma \textbf{calculadora programável}: uma ferramenta que calcula, guarda objectos, avalia expressões e toma decisões (Capítulo~\ref{calculadora}). Em seguida, aprendemos a organizar informação em \textbf{estruturas de dados} -- vetores, matrizes, tabelas e listas (Capítulo~\ref{estruturas}) -- e a controlar o comportamento dos programas com \textbf{estruturas de selecção}, \textbf{funções}, \textbf{scripts}, ciclos \texttt{for} e ciclos \texttt{while}.
 
-A partir daí, o livro ganha ritmo: automatizamos tarefas repetitivas com ciclos,
-lemos dados a partir de ficheiros, visualizamos e manipulamos conjuntos de dados
-reais e, finalmente, entramos no território da \textbf{probabilidade e da simulação},
-onde tudo o que aprendemos converge num objetivo comum.
+A segunda parte do percurso aproxima-nos dos dados reais. Aprendemos a ler informação a partir de ficheiros, a encadear operações com o operador pipe, a manipular tabelas, a produzir gráficos básicos e a construir visualizações mais elaboradas com \texttt{ggplot2}. Nesta fase, o R deixa de ser apenas uma calculadora e passa a ser um laboratório de análise de dados.
 
-Se está a ler este livro no âmbito de uma disciplina, use os capítulos como um
-guia de laboratório: leia com o RStudio aberto, execute cada exemplo e resolva
-os exercícios no fim de cada capítulo antes de avançar. A programação aprende-se
-com as mãos, não apenas com os olhos.
+A terceira parte introduz a linguagem da \textbf{probabilidade}. Estudamos experiências aleatórias, amostragem, distribuições de probabilidade e as funções do R associadas a essas distribuições -- as famílias \texttt{d}, \texttt{p}, \texttt{q} e \texttt{r}. A partir daqui, o computador passa a ser usado não só para calcular, mas também para gerar aleatoriedade controlada.
+
+Na parte final, todos estes elementos convergem na \textbf{simulação estatística}. Exploramos o método de Monte Carlo, a geração de variáveis aleatórias, a transformada inversa, o método de aceitação-rejeição e, por fim, a aproximação de integrais por simulação. O último capítulo, dedicado ao \textbf{cálculo de integrais por Monte Carlo}, ilustra bem o espírito do livro: usar programação, probabilidade e estatística para resolver problemas que seriam difíceis, ou mesmo impraticáveis, apenas com cálculo analítico.
+
+Assim, o percurso vai do primeiro contacto com o R até à simulação de fenómenos aleatórios e à resolução computacional de problemas estatísticos. O objectivo não é apenas aprender comandos, mas desenvolver uma forma de pensar: transformar uma pergunta quantitativa num procedimento claro, reprodutível e verificável.
+
+Se está a ler este livro no âmbito de uma disciplina, use os capítulos como um guia de laboratório: leia com o RStudio aberto, execute cada exemplo e resolva os exercícios no fim de cada capítulo antes de avançar. A programação aprende-se com as mãos, não apenas com os olhos.
 
 Comecemos, então, pelo princípio: pôr as ferramentas a funcionar.
 
 \chapter{O R e o RStudio}\label{rrstudio}
 
-Toda a aprendizagem começa por preparar as ferramentas. Neste capítulo damos os
-primeiros passos práticos: percebemos o que é o R, instalamo-lo no computador,
-instalamos também o RStudio --- o ambiente que torna o trabalho com R muito mais
-confortável --- e fazemos uma primeira visita guiada ao seu ecrã. No fim, o leitor
-terá um laboratório de estatística a funcionar e estará pronto para escrever os
-primeiros comandos.
+No capítulo anterior vimos por que razão a estatística moderna é inseparável da computação e por que motivo o R se tornou uma linguagem central para trabalhar com dados, incerteza e simulação. Neste capítulo passamos da motivação à prática: vamos preparar o ambiente de trabalho.
 
-\section{O que é o R}\label{o-que-uxe9-o-r-1}
+Trabalhar com R implica, na prática, instalar dois programas complementares. O primeiro é o \textbf{R}, isto é, o motor que executa os cálculos, interpreta os comandos e contém as funções fundamentais da linguagem. O segundo é o \textbf{RStudio}, uma interface que torna a escrita, a organização e a execução do código muito mais cómodas.
 
-O R é um software de código aberto, desenvolvido como uma implementação gratuita
-da linguagem \textbf{S}, concebida especificamente para computação estatística,
-programação e produção de gráficos. A intenção original era dar a quem trabalha
-com dados a capacidade de os explorar de forma intuitiva e interativa,
-recorrendo a representações gráficas que facilitassem a sua compreensão. O R foi
-criado por Ross Ihaka e Robert Gentleman, da Universidade de Auckland, na Nova
-Zelândia --- e o nome, com o seu toque de humor, brinca com as iniciais dos dois
-autores e com a linguagem S que lhe deu origem.
-
-Mais importante do que a história é perceber o que o R oferece a quem faz
-estatística. Em termos práticos, o R reúne num só ambiente:
-
-\begin{itemize}
-\tightlist
-\item
-  manipulação eficiente de dados e formas flexíveis de os armazenar;
-\item
-  operadores poderosos para cálculos com vetores e matrizes;
-\item
-  uma coleção abrangente e coerente de ferramentas para análise de dados;
-\item
-  capacidades gráficas avançadas, tanto para visualização no ecrã como para
-  produção de figuras de qualidade de publicação;
-\item
-  uma linguagem de programação completa, com estruturas de decisão, ciclos,
-  funções definidas pelo utilizador e ferramentas de entrada e saída de dados.
-\end{itemize}
-
-Repare que a última destas capacidades --- o R ser uma \textbf{linguagem de programação}
-completa --- é o que distingue o R de uma folha de cálculo. Numa folha de cálculo,
-descrevemos \emph{onde} estão os dados; em R, descrevemos \emph{o que queremos fazer} com
-eles. É essa mudança de perspetiva que dá ao R a sua flexibilidade, e é o que
-vamos aprender ao longo do livro.
+O objectivo deste capítulo é simples: instalar o R, instalar o RStudio e fazer uma primeira visita guiada ao ambiente onde iremos trabalhar ao longo do livro. No fim, o leitor terá um pequeno laboratório de estatística computacional a funcionar no seu computador e estará pronto para escrever os primeiros comandos.
 
 \section{Instalação}\label{instalauxe7uxe3o}
 
-Trabalhar com R implica, na prática, instalar \textbf{dois} programas
-complementares. O primeiro é o R propriamente dito --- o motor que executa os
-cálculos. O segundo é o RStudio, uma interface que torna a escrita e a
-organização do código muito mais agradáveis.
-
 \subsection{Instalar o R}\label{instalar-o-r}
 
-A versão base do R, que inclui o conjunto fundamental de funções, descarrega-se
-do sítio oficial do projeto:
+A versão base do R, que inclui o conjunto fundamental de funções, descarrega-se do sítio oficial do projecto:
 
 \begin{quote}
 \url{https://www.r-project.org/}
 \end{quote}
 
-Basta seguir a ligação para o CRAN (a rede de repositórios do R), escolher o
-sistema operativo (Windows, macOS ou Linux) e instalar como qualquer outro
-programa.
+A partir dessa página, basta seguir a ligação para o \textbf{CRAN} (\emph{Comprehensive R Archive Network}), escolher o sistema operativo -- Windows, macOS ou Linux -- e instalar o programa como qualquer outra aplicação. O CRAN é a rede oficial de repositórios do R: além de disponibilizar o próprio R, é também a partir dele que, mais tarde, instalaremos muitos dos pacotes usados para alargar as capacidades da linguagem.
 
 \subsection{Instalar o RStudio}\label{instalar-o-rstudio}
 
-Poderíamos trabalhar apenas com o R base, mas escrever código dessa forma é
-pouco confortável. Por isso, instala-se quase sempre um \textbf{ambiente de
-desenvolvimento integrado} (IDE) --- um programa que ajuda a escrever, guardar e
-organizar os \emph{scripts}, a executar comandos e a gerir os resultados. A escolha
-habitual é o \textbf{RStudio}, gratuito e disponível em:
+Poderíamos trabalhar apenas com o R base, mas escrever código dessa forma é pouco confortável. Por isso, instala-se quase sempre um \textbf{ambiente de desenvolvimento integrado} -- em inglês, \emph{Integrated Development Environment} ou \textbf{IDE}. Um IDE ajuda a escrever, guardar e organizar scripts, executar comandos, visualizar objectos, consultar gráficos e acompanhar os resultados.
+
+A escolha habitual para trabalhar com R é o \textbf{RStudio Desktop}, gratuito e disponível em:
 
 \begin{quote}
 \url{https://posit.co/download/rstudio-desktop/}
 \end{quote}
 
-A ordem importa: instale \textbf{primeiro} o R e \textbf{só depois} o RStudio. O RStudio
-não substitui o R --- precisa de o encontrar já instalado no computador para
-funcionar. Se instalar o RStudio sem ter o R, ele não terá motor para executar
-os comandos.
+A ordem importa: instale \textbf{primeiro} o R e \textbf{só depois} o RStudio. O RStudio não substitui o R -- precisa de o encontrar já instalado no computador para conseguir executar os comandos. Se instalar apenas o RStudio, terá a interface, mas não terá o motor da linguagem.
 
 \subsection{Pacotes: estender o R}\label{pacotes-estender-o-r}
 
 Além do conjunto base de funções, o R oferece milhares de \textbf{pacotes} adicionais,
 desenvolvidos e partilhados pela comunidade. Um pacote é uma coleção de funções e
-dados que acrescenta novas capacidades ao R --- desde gráficos elegantes até
+dados que acrescenta novas capacidades ao R -- desde gráficos elegantes até
 modelos estatísticos sofisticados.
 
 Instalar um pacote faz-se uma única vez, com a função \texttt{install.packages()}
@@ -511,9 +400,9 @@ Para ver todos os pacotes já instalados no seu sistema:
 \end{Shaded}
 
 Distinga bem dois passos que são frequentemente confundidos. \textbf{Instalar} um
-pacote (com \texttt{install.packages()}) faz-se uma vez só --- descarrega o pacote para o
+pacote (com \texttt{install.packages()}) faz-se uma vez só -- descarrega o pacote para o
 computador. \textbf{Carregar} um pacote (com \texttt{library()}) faz-se em cada sessão em que
-o queremos usar --- torna as suas funções disponíveis. É como comprar um livro
+o queremos usar -- torna as suas funções disponíveis. É como comprar um livro
 (uma vez) e depois tirá-lo da estante sempre que precisamos dele.
 
 \begin{Shaded}
@@ -531,7 +420,7 @@ ambiente.
 
 \textbf{O Editor de \emph{scripts}} (por omissão, no canto superior esquerdo) é onde
 escrevemos e guardamos o nosso código. Um \emph{script} é um ficheiro de texto com uma
-sequência de comandos --- o ``guião'' da nossa análise. O editor oferece realce de
+sequência de comandos -- o ``guião'' da nossa análise. O editor oferece realce de
 sintaxe (que colore o código para o tornar legível), completamento automático e a
 possibilidade de executar linhas ou blocos de código diretamente. É aqui que
 deve escrever o código que quer conservar.
@@ -543,7 +432,7 @@ consola não fica guardado. Pense na consola como uma folha de rascunho e no
 editor como o caderno definitivo.
 
 \textbf{O painel \emph{Environment}/\emph{History}} (canto superior direito) mostra, no
-separador \emph{Environment}, todos os objetos atualmente na memória da sessão --- os
+separador \emph{Environment}, todos os objetos atualmente na memória da sessão -- os
 dados e variáveis que fomos criando. O separador \emph{History} guarda o histórico de
 comandos executados, permitindo recuperá-los facilmente.
 
@@ -597,24 +486,15 @@ mais poderoso.
 
 \chapter{O R como calculadora}\label{calculadora}
 
-A melhor forma de começar a programar em R é usá-lo para aquilo que ele faz de
-forma mais imediata: contas. Neste capítulo tratamos o R como uma calculadora
-muito poderosa --- mas, à medida que avançamos, vamos descobrir que é bem mais do
-que isso. Uma calculadora dá-nos um resultado e esquece-o; o R permite-nos
-\emph{guardar} valores, \emph{dar-lhes nomes} e \emph{reutilizá-los}, e é esse pequeno salto ---
-de calcular para nomear e reutilizar --- que abre as portas à programação.
+A melhor forma de começar a programar em R é usá-lo primeiro para aquilo que ele faz de modo mais imediato: calcular. Neste capítulo, tratamos o R como uma calculadora muito poderosa. No entanto, à medida que avançarmos, veremos que ele é bastante mais do que isso.
 
-Há ainda uma razão de fundo para começar por aqui. A estatística está
-intimamente ligada à álgebra: representamos conjuntos de dados e variáveis
-através de vetores e matrizes, e manipulamo-los com operações aritméticas. Antes
-de avançarmos para comandos estatísticos mais específicos, convém perceber bem
-como o R lida com números, valores e operações elementares.
+Uma calculadora comum recebe uma expressão, devolve um resultado e, em geral, esquece-o. O R permite-nos fazer algo mais importante: guardar valores, atribuir-lhes nomes e reutilizá-los em cálculos posteriores. Este pequeno passo, passar de calcular para nomear e reutilizar, é uma das portas de entrada para a programação.
+
+Há também uma razão matemática para começar por aqui. A estatística está profundamente ligada à álgebra e ao cálculo com estruturas numéricas. Representamos dados, variáveis e modelos através de números, vetores, matrizes e tabelas, e manipulamo-los por meio de operações aritméticas e transformações. Antes de avançarmos para comandos estatísticos mais específicos, convém compreender bem como o R lida com números, valores e operações elementares.
 
 \section{A consola e o primeiro comando}\label{a-consola-e-o-primeiro-comando}
 
-O R aceita comandos numa interface de linha de comando, assinalada pelo símbolo
-\texttt{\textgreater{}}, a que chamamos \textbf{prompt}. Escrevemos um comando a seguir ao \emph{prompt},
-pressionamos \texttt{Enter}, e o R interpreta-o, executa-o e mostra o resultado.
+O R aceita comandos numa interface de linha de comando, assinalada pelo símbolo \texttt{\textgreater{}}, a que chamamos \textbf{prompt}. Quando escrevemos directamente na \textbf{Consola}, basta escrever o comando a seguir ao \emph{prompt} e pressionar \texttt{Enter}: o R interpreta o comando, executa-o e mostra o resultado.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -623,21 +503,15 @@ pressionamos \texttt{Enter}, e o R interpreta-o, executa-o e mostra o resultado.
 \end{Highlighting}
 \end{Shaded}
 
-Ao longo do livro, o código que escrevemos aparece em caixas próprias. Quando uma
-linha começa por \texttt{\#\#}, trata-se do \textbf{resultado} devolvido pelo R --- aquilo que
-apareceria no ecrã depois de executar o comando anterior. Assim, pode ler cada
-bloco como um diálogo: primeiro o que pedimos, depois o que o R respondeu.
+No RStudio, contudo, é comum escrevermos os comandos num \textbf{script} e enviá-los depois para a Consola. Nesse caso, colocamos o cursor na linha que queremos executar e usamos \texttt{Ctrl\ +\ Enter} no Windows ou no Linux, ou \texttt{Cmd\ +\ Enter} no macOS.
 
-O \texttt{{[}1{]}} que precede o resultado indica a posição do primeiro elemento mostrado
-nessa linha. Para um único valor parece supérfluo, mas quando o R devolve muitos
-valores, esta numeração ajuda-nos a localizá-los.
+Ao longo do livro, o código que escrevemos aparece em caixas próprias. Quando uma linha começa por \texttt{\#\#}, trata-se do \textbf{resultado} devolvido pelo R, isto é, aquilo que apareceria na Consola depois de executar o comando anterior. Assim, pode ler cada bloco como um diálogo: primeiro o que pedimos, depois o que o R respondeu.
+
+O \texttt{{[}1{]}} que precede o resultado indica a posição do primeiro elemento mostrado nessa linha. Para um único valor parece supérfluo, mas quando o R devolve muitos valores, esta numeração ajuda-nos a localizá-los.
 
 \section{Comentários: escrever para humanos}\label{comentuxe1rios-escrever-para-humanos}
 
-O carácter \texttt{\#} inicia um \textbf{comentário}: tudo o que vem depois dele, na mesma
-linha, é ignorado pelo R. Os comentários não servem para o computador --- servem
-para nós e para quem, mais tarde, ler o nosso código (muitas vezes, esse alguém
-somos nós próprios, uns meses depois).
+O carácter \texttt{\#} inicia um \textbf{comentário}: tudo o que vem depois dele, na mesma linha, é ignorado pelo R. Os comentários não servem para o computador -- servem para nós e para quem, mais tarde, ler o nosso código (muitas vezes, esse alguém somos nós próprios, uns meses depois).
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -647,15 +521,11 @@ somos nós próprios, uns meses depois).
 \end{Highlighting}
 \end{Shaded}
 
-Comente o \emph{porquê}, não o \emph{quê}. Uma linha como \texttt{x\ \textless{}-\ x\ +\ 1\ \ \#\ incrementa\ x} é
-inútil, porque o comentário apenas repete o código. Um bom comentário explica a
-intenção: \texttt{x\ \textless{}-\ x\ +\ 1\ \ \#\ passamos\ ao\ dia\ seguinte}.
+Comente o \emph{porquê}, não o \emph{quê}. Uma linha como \texttt{x\ \textless{}-\ x\ +\ 1\ \ \#\ incrementa\ x} é inútil, porque o comentário apenas repete o código. Um bom comentário explica a intenção: \texttt{x\ \textless{}-\ x\ +\ 1\ \ \#\ passamos\ ao\ dia\ seguinte}.
 
 \section{Pedir ajuda}\label{pedir-ajuda}
 
-Ninguém decora todas as funções do R --- e não precisa. O que é essencial é saber
-consultar a documentação. Se conhece o nome de uma função, precede-o de um ponto
-de interrogação para abrir a respetiva página de ajuda:
+Ninguém decora todas as funções do R, nem precisa de o fazer. O essencial é saber consultar a documentação. Se conhece o nome de uma função, basta precedê-lo de um ponto de interrogação para abrir a respectiva página de ajuda:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -663,9 +533,7 @@ de interrogação para abrir a respetiva página de ajuda:
 \end{Highlighting}
 \end{Shaded}
 
-A ajuda descreve o que a função faz, quais os seus argumentos e o que devolve.
-Para além disso, muitas funções trazem exemplos prontos a correr, que se veem
-com \texttt{example()}:
+A ajuda descreve o que a função faz, quais são os seus argumentos (isto é, os valores ou opções que fornecemos à função para ela executar uma tarefa) e o que devolve. Para além disso, muitas funções trazem exemplos prontos a correr, que podem ser vistos com \texttt{example()}:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -673,25 +541,21 @@ com \texttt{example()}:
 \end{Highlighting}
 \end{Shaded}
 
-Aprender a ler estas páginas é uma das competências mais rentáveis para quem
-programa em R.
+No comando \texttt{example(sum)}, o argumento da função \texttt{example()} é \texttt{sum}. Isto significa que estamos a pedir ao R para mostrar exemplos de utilização da função \texttt{sum()}.
+
+Aprender a ler estas páginas é uma das competências mais rentáveis para quem programa em R.
 
 \section{Objetos e variáveis}\label{objetos-e-variuxe1veis}
 
-Chegamos ao salto de que falámos na abertura. Em R, tudo o que criamos ou
-carregamos numa sessão --- um número, um texto, um vetor, uma tabela, até uma
-função --- é um \textbf{objeto}, uma unidade de armazenamento na memória.
+Chegamos ao salto referido na abertura. Em R, tudo o que criamos ou carregamos numa sessão é um \textbf{objeto}: um número, um texto, um vetor, uma tabela ou até uma função. Um objeto é uma unidade de informação guardada na memória.
 
-Uma \textbf{variável} é simplesmente um \emph{nome} que associamos a um objeto. Ao criar
-uma variável, criamos um ``rótulo'' que aponta para o objeto guardado na memória e
-que nos permite voltar a ele sempre que quisermos, sem ter de o recalcular ou
-reescrever.
+Uma \textbf{variável} é simplesmente um \emph{nome} que associamos a um objeto. Ao criar uma variável, criamos um rótulo que nos permite aceder ao objecto guardado na memória sempre que quisermos, sem ter de o recalcular ou escrever novamente.
+
+Nesta descrição usamos a ideia de ``rótulo'' apenas como uma imagem intuitiva. Em linguagens de programação, é comum falar de nomes, referências e ponteiros para descrever a relação entre uma variável e o objeto armazenado na memória. No R, porém, o funcionamento interno da memória é mais subtil e não será necessário estudar ponteiros neste livro. Para os nossos objetivos, basta compreender que um nome permite guardar, recuperar e reutilizar um objeto. Leitores interessados numa descrição mais avançada podem consultar \emph{Advanced R}, de Hadley Wickham, em particular os capítulos sobre nomes, valores e memória.
 
 \subsection{Atribuição}\label{atribuiuxe7uxe3o}
 
-Atribuir um valor a uma variável faz-se com o operador \texttt{\textless{}-} (uma seta que se lê
-``recebe''). A expressão seguinte cria uma variável chamada \texttt{x} e guarda-lhe o
-valor 10:
+Atribuir um valor a uma variável faz-se com o operador \texttt{\textless{}-} (uma seta que se lê ``recebe''). A expressão seguinte cria uma variável chamada \texttt{x} e guarda-lhe o valor 10:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -699,8 +563,7 @@ valor 10:
 \end{Highlighting}
 \end{Shaded}
 
-O operador \texttt{\textless{}-} guarda o valor do lado direito na variável do lado esquerdo. Do
-lado esquerdo deve estar apenas um nome de variável. E, uma vez criada, a
+O operador \texttt{\textless{}-} guarda o valor do lado direito na variável do lado esquerdo. Do lado esquerdo deve estar apenas um nome de variável. E, uma vez criada, a
 variável pode ser reutilizada:
 
 \begin{Shaded}
@@ -712,14 +575,9 @@ variável pode ser reutilizada:
 \end{Highlighting}
 \end{Shaded}
 
-Uma atribuição \textbf{não é} uma equação matemática. Escrever \texttt{a\ +\ 2\ \textless{}-\ 10} não faz
-sentido: do lado esquerdo tem de estar um nome, não uma expressão a calcular.
-Embora o R também aceite \texttt{=} e \texttt{-\textgreater{}} para atribuir, recomendamos o uso de \texttt{\textless{}-},
-para não confundir a atribuição (\texttt{\textless{}-}) com o teste de igualdade (\texttt{==}), que
-veremos mais adiante.
+Uma atribuição \textbf{não é} uma equação matemática. Escrever \texttt{a\ +\ 2\ \textless{}-\ 10} não faz sentido: do lado esquerdo tem de estar um nome, não uma expressão a calcular. Embora o R também aceite \texttt{=} e \texttt{-\textgreater{}} para atribuir, recomendamos o uso de \texttt{\textless{}-}, para não confundir a atribuição (\texttt{\textless{}-}) com o teste de igualdade (\texttt{==}), que veremos mais adiante.
 
-Podemos guardar não só um número, mas uma sequência de valores. A função \texttt{c()}
-(de \emph{combine}, combinar) junta vários valores num \textbf{vetor}:
+Podemos guardar não só um número, mas uma sequência de valores. A função \texttt{c()} (de \emph{combine}, combinar) junta vários valores num \textbf{vetor}:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -733,8 +591,7 @@ O R \textbf{distingue maiúsculas de minúsculas}. \texttt{X} e \texttt{x} são 
 diferentes. Este é um dos erros mais comuns de quem começa, por isso convém
 gravá-lo desde já.
 
-Para ver todos os objetos que existem atualmente na memória da sessão, usamos
-\texttt{ls()} (ou consultamos o separador \emph{Environment} no RStudio):
+Para ver todos os objetos que existem atualmente na memória da sessão, usamos \texttt{ls()} (ou consultamos o separador \emph{Environment} no RStudio):
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -747,13 +604,9 @@ Para ver todos os objetos que existem atualmente na memória da sessão, usamos
 A escolha dos nomes das variáveis não é só uma questão de gosto: bons nomes
 tornam o código legível, e o R impõe algumas regras.
 
-Um nome de variável deve começar por uma letra (ou por um ponto seguido de
-letra) e pode conter letras, números, pontos e sublinhados. Não pode conter
-espaços nem carateres especiais como \texttt{@}, \texttt{\#}, \texttt{\$} ou \texttt{\%}. Assim,
-\texttt{nome\_cliente2} é válido; \texttt{2nome} ou \texttt{nome\ cliente} não são.
+Um nome de variável deve começar por uma letra, embora o R também aceite alguns nomes começados por ponto. Depois do primeiro carácter, o nome pode conter letras, números, pontos e sublinhados. Não pode conter espaços nem caracteres especiais como \texttt{@}, \texttt{\#}, \texttt{\$} ou \texttt{\%}. Assim, \texttt{nome\_cliente2} é válido; \texttt{2nome} ou \texttt{nome\ cliente} não são.
 
-Também não podemos usar \textbf{palavras reservadas} --- termos com significado especial
-no R, como \texttt{if}, \texttt{else}, \texttt{for}, \texttt{while}, \texttt{TRUE}, \texttt{FALSE}, \texttt{function}.
+Também não podemos usar \textbf{palavras reservadas} -- termos com significado especial no R, como \texttt{if}, \texttt{else}, \texttt{for}, \texttt{while}, \texttt{TRUE}, \texttt{FALSE}, \texttt{function}.
 
 E, como já vimos, o R distingue maiúsculas de minúsculas:
 
@@ -766,10 +619,9 @@ E, como já vimos, o R distingue maiúsculas de minúsculas:
 
 Aqui, \texttt{idade} e \texttt{Idade} são duas variáveis distintas.
 
-Prefira nomes que descrevam o conteúdo. \texttt{nota\_final} diz-nos muito mais do que
-\texttt{x}. Uma convenção comum e legível é usar minúsculas e separar palavras com
-sublinhados: \texttt{faculdade\_de\_ciencias}. Código escrito para ser lido é código que
-se consegue corrigir e reutilizar.
+Embora o R permita nomes de objetos que começam por ponto, como \texttt{.valor} ou \texttt{.dados}, convém evitar essa prática nesta fase. Em sistemas como macOS e Linux, ficheiros ou pastas cujo nome começa por ponto são tratados como ficheiros ocultos. Por exemplo, um ficheiro chamado \texttt{.dados.csv} pode não aparecer normalmente no Finder. Para evitar confusões, neste livro usaremos nomes simples e explícitos, sem ponto inicial.
+
+Prefira nomes que descrevam o conteúdo. \texttt{nota\_final} diz-nos muito mais do que \texttt{x}. Uma convenção comum e legível é usar minúsculas e separar palavras com sublinhados: \texttt{faculdade\_de\_ciencias}. Código escrito para ser lido é código que se consegue corrigir e reutilizar.
 
 \section{Tipos de dados}\label{tipos-de-dados}
 
@@ -780,20 +632,20 @@ tipos de dados que vamos encontrar são:
 \begin{itemize}
 \tightlist
 \item
-  \textbf{Numeric} --- números, inteiros ou decimais. Exemplos: \texttt{42}, \texttt{3.14}.
+  \textbf{Numeric} -- números, inteiros ou decimais. Exemplos: \texttt{42}, \texttt{3.14}.
 \item
-  \textbf{Character} --- texto (cadeias de carateres). Exemplo: \texttt{"Olá"}.
+  \textbf{Character} -- texto (cadeias de carateres). Exemplo: \texttt{"Olá"}.
 \item
-  \textbf{Logical} --- valores lógicos, \texttt{TRUE} ou \texttt{FALSE}.
+  \textbf{Logical} -- valores lógicos, \texttt{TRUE} ou \texttt{FALSE}.
 \item
-  \textbf{Vectors} --- coleções de elementos do mesmo tipo, como \texttt{c(1,\ 2,\ 3)}.
+  \textbf{Vetors} -- coleções de elementos do mesmo tipo, como \texttt{c(1,\ 2,\ 3)}.
 \item
-  \textbf{Factors} --- variáveis categóricas (por exemplo, ``baixo'', ``médio'', ``alto'').
+  \textbf{Factors} -- variáveis categóricas (por exemplo, ``baixo'', ``médio'', ``alto'').
 \item
-  \textbf{Data frames} --- tabelas com linhas e colunas, ao estilo de uma folha de
+  \textbf{Data frames} -- tabelas com linhas e colunas, ao estilo de uma folha de
   cálculo.
 \item
-  \textbf{Lists} --- coleções que podem misturar elementos de tipos diferentes.
+  \textbf{Lists} -- coleções que podem misturar elementos de tipos diferentes.
 \end{itemize}
 
 Os quatro primeiros aparecem já neste capítulo; os restantes serão o tema do
@@ -804,14 +656,14 @@ Capítulo~\ref{estruturas}. Um primeiro contacto:
 \NormalTok{a }\OtherTok{\textless{}{-}} \FloatTok{3.14}                \CommentTok{\# numeric}
 \NormalTok{b }\OtherTok{\textless{}{-}} \StringTok{"Programação R"}     \CommentTok{\# character}
 \NormalTok{c }\OtherTok{\textless{}{-}} \DecValTok{3} \SpecialCharTok{\textless{}} \DecValTok{2}               \CommentTok{\# logical (resultado de uma comparação)}
-\NormalTok{d }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{)          }\CommentTok{\# vector}
+\NormalTok{d }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{)          }\CommentTok{\# vetor}
 \end{Highlighting}
 \end{Shaded}
 
 \subsection{Tipagem dinâmica}\label{tipagem-dinuxe2mica}
 
 Uma característica cómoda do R é a \textbf{tipagem dinâmica}: não precisamos de
-declarar o tipo de uma variável --- o R deduz-o a partir do valor que lhe
+declarar o tipo de uma variável, o R deduz-o a partir do valor que lhe
 atribuímos. A função \texttt{class()} diz-nos o tipo (a \emph{classe}) de um objeto:
 
 \begin{Shaded}
@@ -830,9 +682,7 @@ atribuímos. A função \texttt{class()} diz-nos o tipo (a \emph{classe}) de um 
 \end{Highlighting}
 \end{Shaded}
 
-Existe ainda a função \texttt{typeof()}, que revela o tipo de armazenamento interno ---
-o modo como o R guarda o objeto na memória. Nem sempre coincide com \texttt{class()}, e
-essa distinção é por vezes reveladora:
+Existe ainda a função \texttt{typeof()}, que revela o tipo de armazenamento interno, o modo como o R guarda o objeto na memória. Nem sempre coincide com \texttt{class()}, e essa distinção é por vezes reveladora:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -856,15 +706,12 @@ essa distinção é por vezes reveladora:
 \end{Highlighting}
 \end{Shaded}
 
-Repare no último caso: uma tabela (\texttt{data.frame}) tem classe \texttt{"data.frame"} mas,
-internamente, é armazenada como uma \textbf{lista}. Voltaremos a este facto quando
-estudarmos as estruturas de dados.
+Repare no último caso: uma tabela (\texttt{data.frame}) tem classe \texttt{"data.frame"} mas, internamente, é armazenada como uma \textbf{lista}. Voltaremos a este facto quando estudarmos as estruturas de dados.
 
 \subsection{Converter entre tipos}\label{converter-entre-tipos}
 
 Muitas vezes, sobretudo quando importamos dados de fontes externas, um valor
-chega-nos com o tipo ``errado'' --- um número guardado como texto, por exemplo. As
-funções da família \texttt{as.*()} convertem entre tipos:
+chega-nos com o tipo ``errado'': um número guardado como texto, por exemplo. As funções da família \texttt{as.*()} convertem entre tipos:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -884,9 +731,7 @@ funções da família \texttt{as.*()} convertem entre tipos:
 
 \section{Operadores aritméticos}\label{operadores-aritmuxe9ticos}
 
-Com valores para manipular, vejamos as operações que os combinam. Os operadores
-aritméticos do R são os que seria de esperar, com dois acréscimos úteis: a
-divisão inteira e o resto.
+Com valores para manipular, vejamos as operações que os combinam. Os operadores aritméticos do R são os que seria de esperar, com dois acréscimos úteis: a divisão inteira e o resto.
 
 {\def\LTcaptype{none} % do not increment counter
 \begin{longtable}[]{@{}lll@{}}
@@ -930,16 +775,11 @@ Alguns exemplos, incluindo funções matemáticas comuns:
 \end{Highlighting}
 \end{Shaded}
 
-Os operadores \texttt{\%\%} e \texttt{\%/\%} são mais úteis do que parecem. O resto \texttt{\%\%} responde a
-perguntas como ``este número é par?'' (\texttt{n\ \%\%\ 2\ ==\ 0}) ou ``esta hora, somadas
-algumas horas, dá que horas no relógio de 24?'' --- questões que aparecerão nos
-exercícios. Vale a pena habituar-se a eles.
+Os operadores \texttt{\%\%} e \texttt{\%/\%} são mais úteis do que parecem. O resto \texttt{\%\%} responde a perguntas como ``este número é par?'' (\texttt{n\ \%\%\ 2\ ==\ 0}) ou ``esta hora, somadas algumas horas, dá que horas no relógio de 24?'' -- questões que aparecerão nos exercícios. Vale a pena habituar-se a eles.
 
 \subsection{Prioridade das operações}\label{prioridade-das-operauxe7uxf5es}
 
-Como na matemática, as operações têm uma ordem de prioridade: primeiro potências,
-depois multiplicações e divisões, e só então adições e subtrações. Os parênteses
-alteram essa ordem e, na dúvida, tornam o código mais claro:
+Como na matemática, as operações têm uma ordem de prioridade: primeiro potências, depois multiplicações e divisões, e só então adições e subtrações. Os parênteses alteram essa ordem e, na dúvida, tornam o código mais claro:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -953,8 +793,7 @@ alteram essa ordem e, na dúvida, tornam o código mais claro:
 
 \subsection{Controlar os dígitos apresentados}\label{controlar-os-duxedgitos-apresentados}
 
-Por vezes queremos ver mais (ou menos) casas decimais. A opção global \texttt{digits}
-controla quantos algarismos significativos o R apresenta:
+Por vezes queremos ver mais (ou menos) casas decimais. A opção global \texttt{digits} controla quantos algarismos significativos o R apresenta:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -971,9 +810,7 @@ controla quantos algarismos significativos o R apresenta:
 \end{Highlighting}
 \end{Shaded}
 
-Isto altera apenas a \emph{apresentação}: internamente, o R continua a guardar o valor
-com toda a precisão disponível. Mudar \texttt{digits} nunca arredonda os cálculos ---
-apenas o que vemos no ecrã.
+Isto altera apenas a \emph{apresentação}: internamente, o R continua a guardar o valor com toda a precisão disponível. Mudar \texttt{digits} nunca arredonda os cálculos, apenas o que vemos no ecrã.
 
 \section{Objetos predefinidos e valores especiais}\label{objetos-predefinidos-e-valores-especiais}
 
@@ -1006,28 +843,18 @@ distinguir:
 \begin{itemize}
 \tightlist
 \item
-  \textbf{\texttt{Inf}} (e \texttt{-Inf}) representam o infinito, resultado de operações como
-  dividir por zero.
+  \textbf{\texttt{Inf}} (e \textbf{\texttt{-Inf}}) representam o infinito, resultado de operações como dividir por zero.
 \item
-  \textbf{\texttt{NaN}} (\emph{Not a Number}) representa um resultado numérico \textbf{indefinido},
-  como \texttt{0/0} ou a raiz quadrada de um número negativo. É um número que não é
-  número.
+  \textbf{\texttt{NaN}} (\emph{Not a Number}) representa um resultado numérico \textbf{indefinido}, como \texttt{0/0} ou a raiz quadrada de um número negativo. É um número que não é número.
 \item
-  \textbf{\texttt{NA}} (\emph{Not Available}) representa um valor \textbf{ausente} --- um dado que não foi
-  medido ou que está em falta. Ao contrário de \texttt{NaN}, o \texttt{NA} não é
-  necessariamente numérico: pode representar qualquer tipo de dado em falta.
+  \textbf{\texttt{NA}} (\emph{Not Available}) representa um valor \textbf{ausente}, um dado que não foi medido ou que está em falta. Ao contrário de \texttt{NaN}, o \texttt{NA} não é necessariamente numérico: pode representar qualquer tipo de dado em falta.
 \end{itemize}
 
-A distinção entre \texttt{NaN} e \texttt{NA} é subtil mas importante: o primeiro é fruto de uma
-conta impossível; o segundo, de informação que simplesmente não temos.
+A distinção entre \texttt{NaN} e \texttt{NA} é subtil mas importante: o primeiro é fruto de uma conta impossível; o segundo, de informação que simplesmente não temos.
 
 \subsection{Lidar com valores ausentes}\label{lidar-com-valores-ausentes}
 
-Os valores ausentes são a regra, não a exceção, em dados reais --- questionários
-com perguntas em branco, sensores que falharam, registos incompletos. Por isso,
-o R trata-os com cuidado: qualquer cálculo que envolva um \texttt{NA} devolve, por
-omissão, \texttt{NA}. Faz sentido --- se não sabemos um dos valores, não podemos saber a
-média.
+Os valores ausentes são frequentes em dados reais: questionários com perguntas por responder, sensores que falharam, registos incompletos ou medições que não chegaram a ser feitas. Por isso, o R trata estes casos com prudência. Por omissão, qualquer cálculo que envolva um \texttt{NA} devolve também \texttt{NA}. A razão é simples: se um dos valores é desconhecido, o resultado do cálculo pode também ser desconhecido. No caso da média, por exemplo, não podemos determinar o seu valor exacto sem saber todos os valores que entram no cálculo.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1051,9 +878,8 @@ resumo:
 \end{Shaded}
 
 Não se pode testar a ausência com o operador de igualdade. \texttt{x\ ==\ NA} \textbf{não}
-devolve \texttt{TRUE}/\texttt{FALSE} --- devolve \texttt{NA}, porque comparar algo com um valor
-desconhecido é, ele próprio, desconhecido. Para detetar valores em falta, usamos
-a função \texttt{is.na()}:
+devolve \texttt{TRUE}/\texttt{FALSE} -- devolve \texttt{NA}, porque comparar algo com um valor
+desconhecido é, ele próprio, desconhecido. Para detetar valores em falta, usamos a função \texttt{is.na()}:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1067,29 +893,25 @@ a função \texttt{is.na()}:
 \end{Highlighting}
 \end{Shaded}
 
-Existe ainda \texttt{is.nan()}, específica para detetar \texttt{NaN}. Note a relação entre as
-duas: \texttt{is.na()} deteta tanto \texttt{NA} como \texttt{NaN} (afinal, um \texttt{NaN} também não é um
-valor disponível), ao passo que \texttt{is.nan()} só deteta \texttt{NaN}.
+Existe ainda \texttt{is.nan()}, específica para detetar \texttt{NaN}. Note a relação entre as duas: \texttt{is.na()} deteta tanto \texttt{NA} como \texttt{NaN} (afinal, um \texttt{NaN} também não é um valor disponível), ao passo que \texttt{is.nan()} só deteta \texttt{NaN}.
 
 \section{Exibir e combinar texto}\label{exibir-e-combinar-texto}
 
-Para além de calcular, precisamos frequentemente de \textbf{comunicar} resultados ---
-mostrá-los ao utilizador, combiná-los com texto explicativo, ou pedir dados a
-quem executa o programa. Algumas funções essenciais para isso:
+Para além de calcular, precisamos frequentemente de \textbf{comunicar} resultados -- mostrá-los ao utilizador, combiná-los com texto explicativo, ou pedir dados a quem executa o programa. Algumas funções essenciais para isso:
 
 \begin{itemize}
 \tightlist
 \item
-  \texttt{print()} --- exibe valores e resultados na consola.
+  \texttt{print()} -- exibe valores e resultados na consola.
 \item
-  \texttt{readline()} --- recebe uma entrada escrita pelo utilizador via teclado.
+  \texttt{readline()} -- recebe uma entrada escrita pelo utilizador via teclado.
 \item
-  \texttt{paste()} --- junta (concatena) textos, com um separador (por omissão, um
+  \texttt{paste()} -- junta (concatena) textos, com um separador (por omissão, um
   espaço).
 \item
-  \texttt{paste0()} --- como \texttt{paste()}, mas sem separador.
+  \texttt{paste0()} -- como \texttt{paste()}, mas sem separador.
 \item
-  \texttt{cat()} --- junta e exibe textos e valores de forma direta, sem as aspas de
+  \texttt{cat()} -- junta e exibe textos e valores de forma direta, sem as aspas de
   \texttt{print()}.
 \end{itemize}
 
@@ -1133,14 +955,11 @@ inválida:
 \end{Highlighting}
 \end{Shaded}
 
-\texttt{readline()} só funciona de forma interativa (na consola). Num documento
-compilado ou num \emph{script} executado de uma vez, não há ninguém para responder ao
-pedido, pelo que estes exemplos se destinam a ser experimentados diretamente na
-consola.
+A função \texttt{readline()} destina-se a uso interactivo, isto é, a situações em que existe uma consola à espera da resposta do utilizador. Por isso, estes exemplos devem ser experimentados directamente na Consola. Num documento compilado, como um ficheiro R Markdown ou bookdown, ou num script executado de forma não interactiva, não há oportunidade para responder ao pedido, e o código pode ficar bloqueado ou falhar.
 
 \subsection{\texorpdfstring{A função \texttt{paste()} com mais detalhe}{A função paste() com mais detalhe}}\label{a-funuxe7uxe3o-paste-com-mais-detalhe}
 
-A função \texttt{paste()} é surpreendentemente versátil. Aceita vários argumentos,
+A função \texttt{paste()} é muito versátil. Aceita vários argumentos,
 combina vetores elemento a elemento e deixa-nos escolher o separador:
 
 \begin{Shaded}
@@ -1150,8 +969,8 @@ combina vetores elemento a elemento e deixa-nos escolher o separador:
 \DocumentationTok{\#\# [1] "Data Science com R"}
 
 \CommentTok{\# Separador específico}
-\FunctionTok{paste}\NormalTok{(}\StringTok{"2024"}\NormalTok{, }\StringTok{"04"}\NormalTok{, }\StringTok{"28"}\NormalTok{, }\AttributeTok{sep =} \StringTok{"{-}"}\NormalTok{)}
-\DocumentationTok{\#\# [1] "2024{-}04{-}28"}
+\FunctionTok{paste}\NormalTok{(}\StringTok{"2026"}\NormalTok{, }\StringTok{"04"}\NormalTok{, }\StringTok{"28"}\NormalTok{, }\AttributeTok{sep =} \StringTok{"{-}"}\NormalTok{)}
+\DocumentationTok{\#\# [1] "2026{-}04{-}28"}
 
 \CommentTok{\# Combinação elemento a elemento de dois vetores}
 \NormalTok{nomes  }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"Ana"}\NormalTok{, }\StringTok{"Bruno"}\NormalTok{, }\StringTok{"Carlos"}\NormalTok{)}
@@ -1171,9 +990,7 @@ combina vetores elemento a elemento e deixa-nos escolher o separador:
 
 \section{Operadores lógicos e relacionais}\label{operadores-luxf3gicos-e-relacionais}
 
-Terminamos com os operadores que permitem ao R \textbf{tomar decisões} --- comparar
-valores e combinar condições. São a base das estruturas de decisão do
-Capítulo~\ref{selecao}, por isso este é o primeiro passo para escrever
+Terminamos com os operadores que permitem ao R \textbf{tomar decisões}: comparar valores e combinar condições. São a base das estruturas de decisão do Capítulo~\ref{selecao}, por isso este é o primeiro passo para escrever
 programas que reagem aos dados.
 
 \subsection{Operadores relacionais}\label{operadores-relacionais}
@@ -1198,6 +1015,8 @@ Operador & Testa se\ldots{} \\
 \end{longtable}
 }
 
+Alguns exemplos:
+
 \begin{Shaded}
 \begin{Highlighting}[]
 \DecValTok{2} \SpecialCharTok{\textgreater{}} \DecValTok{1}
@@ -1211,10 +1030,7 @@ Operador & Testa se\ldots{} \\
 \end{Highlighting}
 \end{Shaded}
 
-Não confunda \texttt{=} com \texttt{==}. Um só sinal de igual (\texttt{=}) é uma \textbf{atribuição}; dois
-sinais (\texttt{==}) são um \textbf{teste de igualdade}. Trocar um pelo outro é uma fonte
-inesgotável de erros --- e, felizmente, dos mais fáceis de corrigir quando os
-reconhecemos.
+Não confunda \texttt{=} com \texttt{==}. Um só sinal de igual (\texttt{=}) é uma \textbf{atribuição}; dois sinais de igual (\texttt{==}) formam um \textbf{teste de igualdade}. Trocar um pelo outro é uma fonte frequente de erros e, felizmente, uma das mais fáceis de corrigir quando aprendemos a reconhecê-la.
 
 \subsection{Operadores lógicos}\label{operadores-luxf3gicos}
 
@@ -1245,50 +1061,36 @@ Os operadores lógicos combinam ou invertem condições:
 \end{Highlighting}
 \end{Shaded}
 
-Com estas peças --- valores, nomes, operações e comparações --- temos já o vocabulário
-elementar de um programa. Nos exercícios que se seguem, vamos combiná-las para
-resolver pequenos problemas. E, no próximo capítulo, aprenderemos a organizar os
-valores em estruturas mais ricas, que nos permitirão trabalhar com conjuntos de
-dados a sério.
+Com estas peças, valores, nomes, operações e comparações, temos já o vocabulário elementar de um programa. Nos exercícios que se seguem, vamos combiná-las para resolver pequenos problemas. No próximo capítulo, aprenderemos a organizar os valores em estruturas mais ricas, que nos permitirão trabalhar com conjuntos de dados a sério.
 
 \section{Exercícios}\label{exercuxedcios}
 
-\textbf{1.} Escreva um programa em R que leia dois inteiros inseridos pelo utilizador
-e imprima: a soma dos dois números; o produto; a diferença entre o primeiro e o
-segundo; a divisão do primeiro pelo segundo; o resto dessa divisão; e o primeiro
-número elevado à potência do segundo.
-\emph{Sugestão:} use \texttt{readline()} para a entrada e \texttt{as.integer()} para a conversão.
+\textbf{1.} Escreva um programa em R que leia dois inteiros inseridos pelo utilizador e imprima: a soma dos dois números; o produto; a diferença entre o primeiro e o segundo; a divisão do primeiro pelo segundo; o resto dessa divisão; e o primeiro número elevado à potência do segundo.
+\emph{Sugestão:} Use \texttt{readline()} para a entrada e \texttt{as.integer()} para a conversão.
 
-\textbf{2.} Escreva um programa em R que leia dois números decimais e imprima a soma,
-a diferença, o produto e o primeiro número elevado à potência do segundo.
-\emph{Sugestão:} use \texttt{as.numeric()} para a conversão.
+\textbf{2.} Escreva um programa em R que leia dois números decimais e imprima a soma, a diferença, o produto e o primeiro número elevado à potência do segundo.
+\emph{Sugestão:} Use \texttt{as.numeric()} para a conversão.
 
-\textbf{3.} Escreva um programa em R que leia uma distância em milhas e a converta
-para quilómetros, usando a fórmula \(K = M \times 1.609344\).
+\textbf{3.} Escreva um programa em R que leia uma distância em milhas e a converta para quilómetros, usando a fórmula \(K = M \times 1.609344\).
 
 \textbf{4.} Escreva um programa em R que leia três inteiros correspondentes ao
 comprimento, à largura e à altura de um paralelepípedo, e imprima o seu volume.
 
 \textbf{5.} Escreva um programa em R que leia três inteiros e imprima a sua média.
 
-\textbf{6.} Escreva um programa em R que leia uma temperatura em graus Fahrenheit e a
-converta para graus Celsius, usando a fórmula \(C = \dfrac{F - 32}{1.8}\).
+\textbf{6.} Escreva um programa em R que leia uma temperatura em graus Fahrenheit e a converta para graus Celsius, usando a fórmula \(C = \dfrac{F - 32}{1.8}\).
 
 \textbf{7.} Escreva um programa em R que leia uma hora no formato de 24 horas e
 imprima a hora correspondente no formato de 12 horas.
 
-\textbf{8.} São exatamente 14h e definiu um alarme para tocar dentro de 51 horas. A
-que horas tocará o alarme?
-\emph{Sugestão:} o operador \texttt{\%\%} é seu amigo.
+\textbf{8.} São exatamente 14h e definiu um alarme para tocar dentro de 51 horas. A que horas tocará o alarme?
+\emph{Sugestão:} O operador \texttt{\%\%} é seu amigo.
 
-\textbf{9.} Generalize o problema anterior: peça ao utilizador a hora atual e o número
-de horas de espera, e imprima a hora a que o alarme tocará.
+\textbf{9.} Generalize o problema anterior: peça ao utilizador a hora atual e o número de horas de espera, e imprima a hora a que o alarme tocará.
 
-\textbf{10.} Escreva um programa em R que leia um número inteiro e imprima \texttt{TRUE} se
-for maior que 10, ou \texttt{FALSE} caso contrário.
+\textbf{10.} Escreva um programa em R que leia um número inteiro e imprima \texttt{TRUE} se for maior que 10, ou \texttt{FALSE} caso contrário.
 
-\textbf{11.} Escreva um programa em R que leia dois números e imprima \texttt{TRUE} se forem
-iguais, ou \texttt{FALSE} caso contrário.
+\textbf{11.} Escreva um programa em R que leia dois números e imprima \texttt{TRUE} se forem iguais, ou \texttt{FALSE} caso contrário.
 
 \textbf{12.} Escreva um programa em R que leia dois números e imprima \texttt{TRUE} se o
 primeiro for maior ou igual ao segundo, ou \texttt{FALSE} caso contrário.
@@ -1296,25 +1098,15 @@ primeiro for maior ou igual ao segundo, ou \texttt{FALSE} caso contrário.
 \textbf{13.} Escreva um programa em R que leia um número e imprima \texttt{TRUE} se ele
 estiver entre 0 e 100 (inclusive), ou \texttt{FALSE} caso contrário.
 
-\textbf{14.} Escreva um programa em R que leia três números e imprima uma mensagem
-indicando se o primeiro é menor que o segundo \emph{e} o segundo é menor que o
-terceiro.
+\textbf{14.} Escreva um programa em R que leia três números e imprima uma mensagem indicando se o primeiro é menor que o segundo \emph{e} o segundo é menor que o terceiro.
 
 \chapter{Estruturas de dados}\label{estruturas}
 
-Até aqui, trabalhámos sobretudo com valores isolados --- um número, um texto, um
-resultado lógico. Mas a estatística raramente lida com valores isolados: lida com
-\emph{conjuntos} de dados. As alturas de uma turma, as vendas de um ano, as respostas
-de um inquérito --- tudo isto são coleções de valores que queremos guardar,
-organizar e analisar em conjunto. É aqui que entram as \textbf{estruturas de dados}.
+Até aqui, trabalhámos sobretudo com valores isolados: um número, um texto ou um resultado lógico. Mas a estatística raramente lida com valores isolados. Lida, quase sempre, com \textbf{conjuntos de dados}. As alturas dos alunos de uma turma, as vendas mensais de uma empresa, as respostas de um inquérito ou as medições recolhidas por um sensor são colecções de valores que queremos guardar, organizar e analisar em conjunto. É aqui que entram as \textbf{estruturas de dados}.
 
-Uma estrutura de dados é uma forma de organizar vários valores num único objeto,
-para que possamos manipulá-los como um todo. Escolher a estrutura certa para cada
-problema é meio caminho andado: cada uma tem a sua vocação, e conhecê-las é
-essencial para programar bem em R.
+Uma estrutura de dados é uma forma de organizar vários valores num único objecto, para que possamos manipulá-los como um todo. Escolher a estrutura certa para cada problema é um passo fundamental: cada estrutura tem a sua finalidade própria, e conhecê-las bem é essencial para programar de forma clara, eficiente e segura em R.
 
-Antes de as estudarmos uma a uma, convém reter que, em R, existem dois grandes
-tipos de objetos:
+Antes de as estudarmos uma a uma, convém reter que, em R, existem dois grandes tipos de objetos:
 
 \begin{itemize}
 \tightlist
@@ -6253,20 +6045,20 @@ personagens da saga. Guardamo-lo em \texttt{sw}:
 \FunctionTok{glimpse}\NormalTok{(sw)   }\CommentTok{\# visão geral das colunas e dos seus tipos}
 \DocumentationTok{\#\# Rows: 87}
 \DocumentationTok{\#\# Columns: 14}
-\DocumentationTok{\#\# $ name       \textless{}chr\textgreater{} "Luke Skywalker", "C{-}3PO", "R2{-}D2", "Darth Vader", "Leia Organa", "Owen Lars", "\textasciitilde{}}
-\DocumentationTok{\#\# $ height     \textless{}int\textgreater{} 172, 167, 96, 202, 150, 178, 165, 97, 183, 182, 188, 180, 228, 180, 173, 175, 17\textasciitilde{}}
-\DocumentationTok{\#\# $ mass       \textless{}dbl\textgreater{} 77.0, 75.0, 32.0, 136.0, 49.0, 120.0, 75.0, 32.0, 84.0, 77.0, 84.0, NA, 112.0, 8\textasciitilde{}}
-\DocumentationTok{\#\# $ hair\_color \textless{}chr\textgreater{} "blond", NA, NA, "none", "brown", "brown, grey", "brown", NA, "black", "auburn, \textasciitilde{}}
-\DocumentationTok{\#\# $ skin\_color \textless{}chr\textgreater{} "fair", "gold", "white, blue", "white", "light", "light", "light", "white, red",\textasciitilde{}}
-\DocumentationTok{\#\# $ eye\_color  \textless{}chr\textgreater{} "blue", "yellow", "red", "yellow", "brown", "blue", "blue", "red", "brown", "blu\textasciitilde{}}
-\DocumentationTok{\#\# $ birth\_year \textless{}dbl\textgreater{} 19.0, 112.0, 33.0, 41.9, 19.0, 52.0, 47.0, NA, 24.0, 57.0, 41.9, 64.0, 200.0, 29\textasciitilde{}}
-\DocumentationTok{\#\# $ sex        \textless{}chr\textgreater{} "male", "none", "none", "male", "female", "male", "female", "none", "male", "mal\textasciitilde{}}
-\DocumentationTok{\#\# $ gender     \textless{}chr\textgreater{} "masculine", "masculine", "masculine", "masculine", "feminine", "masculine", "fe\textasciitilde{}}
-\DocumentationTok{\#\# $ homeworld  \textless{}chr\textgreater{} "Tatooine", "Tatooine", "Naboo", "Tatooine", "Alderaan", "Tatooine", "Tatooine",\textasciitilde{}}
-\DocumentationTok{\#\# $ species    \textless{}chr\textgreater{} "Human", "Droid", "Droid", "Human", "Human", "Human", "Human", "Droid", "Human",\textasciitilde{}}
-\DocumentationTok{\#\# $ films      \textless{}list\textgreater{} \textless{}"A New Hope", "The Empire Strikes Back", "Return of the Jedi", "Revenge of the\textasciitilde{}}
-\DocumentationTok{\#\# $ vehicles   \textless{}list\textgreater{} \textless{}"Snowspeeder", "Imperial Speeder Bike"\textgreater{}, \textless{}\textgreater{}, \textless{}\textgreater{}, \textless{}\textgreater{}, "Imperial Speeder Bike", \textasciitilde{}}
-\DocumentationTok{\#\# $ starships  \textless{}list\textgreater{} \textless{}"X{-}wing", "Imperial shuttle"\textgreater{}, \textless{}\textgreater{}, \textless{}\textgreater{}, "TIE Advanced x1", \textless{}\textgreater{}, \textless{}\textgreater{}, \textless{}\textgreater{}, \textless{}\textgreater{}, "X{-}w\textasciitilde{}}
+\DocumentationTok{\#\# $ name       \textless{}chr\textgreater{} "Luke Skywalker", "C{-}3PO", "R2{-}D2", "Darth Vader", "Leia Organa", "Owen Lars", "Ber\textasciitilde{}}
+\DocumentationTok{\#\# $ height     \textless{}int\textgreater{} 172, 167, 96, 202, 150, 178, 165, 97, 183, 182, 188, 180, 228, 180, 173, 175, 170, \textasciitilde{}}
+\DocumentationTok{\#\# $ mass       \textless{}dbl\textgreater{} 77.0, 75.0, 32.0, 136.0, 49.0, 120.0, 75.0, 32.0, 84.0, 77.0, 84.0, NA, 112.0, 80.0\textasciitilde{}}
+\DocumentationTok{\#\# $ hair\_color \textless{}chr\textgreater{} "blond", NA, NA, "none", "brown", "brown, grey", "brown", NA, "black", "auburn, whi\textasciitilde{}}
+\DocumentationTok{\#\# $ skin\_color \textless{}chr\textgreater{} "fair", "gold", "white, blue", "white", "light", "light", "light", "white, red", "l\textasciitilde{}}
+\DocumentationTok{\#\# $ eye\_color  \textless{}chr\textgreater{} "blue", "yellow", "red", "yellow", "brown", "blue", "blue", "red", "brown", "blue{-}g\textasciitilde{}}
+\DocumentationTok{\#\# $ birth\_year \textless{}dbl\textgreater{} 19.0, 112.0, 33.0, 41.9, 19.0, 52.0, 47.0, NA, 24.0, 57.0, 41.9, 64.0, 200.0, 29.0,\textasciitilde{}}
+\DocumentationTok{\#\# $ sex        \textless{}chr\textgreater{} "male", "none", "none", "male", "female", "male", "female", "none", "male", "male",\textasciitilde{}}
+\DocumentationTok{\#\# $ gender     \textless{}chr\textgreater{} "masculine", "masculine", "masculine", "masculine", "feminine", "masculine", "femin\textasciitilde{}}
+\DocumentationTok{\#\# $ homeworld  \textless{}chr\textgreater{} "Tatooine", "Tatooine", "Naboo", "Tatooine", "Alderaan", "Tatooine", "Tatooine", "T\textasciitilde{}}
+\DocumentationTok{\#\# $ species    \textless{}chr\textgreater{} "Human", "Droid", "Droid", "Human", "Human", "Human", "Human", "Droid", "Human", "H\textasciitilde{}}
+\DocumentationTok{\#\# $ films      \textless{}list\textgreater{} \textless{}"A New Hope", "The Empire Strikes Back", "Return of the Jedi", "Revenge of the Si\textasciitilde{}}
+\DocumentationTok{\#\# $ vehicles   \textless{}list\textgreater{} \textless{}"Snowspeeder", "Imperial Speeder Bike"\textgreater{}, \textless{}\textgreater{}, \textless{}\textgreater{}, \textless{}\textgreater{}, "Imperial Speeder Bike", \textless{}\textgreater{},\textasciitilde{}}
+\DocumentationTok{\#\# $ starships  \textless{}list\textgreater{} \textless{}"X{-}wing", "Imperial shuttle"\textgreater{}, \textless{}\textgreater{}, \textless{}\textgreater{}, "TIE Advanced x1", \textless{}\textgreater{}, \textless{}\textgreater{}, \textless{}\textgreater{}, \textless{}\textgreater{}, "X{-}wing\textasciitilde{}}
 \end{Highlighting}
 \end{Shaded}
 
@@ -6346,18 +6138,18 @@ selecionam colunas pelo nome. Um sinal \texttt{-} remove colunas:
 \DocumentationTok{\#\# \# i 77 more rows}
 \FunctionTok{select}\NormalTok{(sw, }\SpecialCharTok{{-}}\FunctionTok{ends\_with}\NormalTok{(}\StringTok{"color"}\NormalTok{))        }\CommentTok{\# todas menos essas}
 \DocumentationTok{\#\# \# A tibble: 87 x 11}
-\DocumentationTok{\#\#    name               height  mass birth\_year sex   gender homeworld species films vehicles starships}
-\DocumentationTok{\#\#    \textless{}chr\textgreater{}               \textless{}int\textgreater{} \textless{}dbl\textgreater{}      \textless{}dbl\textgreater{} \textless{}chr\textgreater{} \textless{}chr\textgreater{}  \textless{}chr\textgreater{}     \textless{}chr\textgreater{}   \textless{}lis\textgreater{} \textless{}list\textgreater{}   \textless{}list\textgreater{}   }
-\DocumentationTok{\#\#  1 Luke Skywalker        172    77       19   male  mascu\textasciitilde{} Tatooine  Human   \textless{}chr\textgreater{} \textless{}chr\textgreater{}    \textless{}chr [2]\textgreater{}}
-\DocumentationTok{\#\#  2 C{-}3PO                 167    75      112   none  mascu\textasciitilde{} Tatooine  Droid   \textless{}chr\textgreater{} \textless{}chr\textgreater{}    \textless{}chr [0]\textgreater{}}
-\DocumentationTok{\#\#  3 R2{-}D2                  96    32       33   none  mascu\textasciitilde{} Naboo     Droid   \textless{}chr\textgreater{} \textless{}chr\textgreater{}    \textless{}chr [0]\textgreater{}}
-\DocumentationTok{\#\#  4 Darth Vader           202   136       41.9 male  mascu\textasciitilde{} Tatooine  Human   \textless{}chr\textgreater{} \textless{}chr\textgreater{}    \textless{}chr [1]\textgreater{}}
-\DocumentationTok{\#\#  5 Leia Organa           150    49       19   fema\textasciitilde{} femin\textasciitilde{} Alderaan  Human   \textless{}chr\textgreater{} \textless{}chr\textgreater{}    \textless{}chr [0]\textgreater{}}
-\DocumentationTok{\#\#  6 Owen Lars             178   120       52   male  mascu\textasciitilde{} Tatooine  Human   \textless{}chr\textgreater{} \textless{}chr\textgreater{}    \textless{}chr [0]\textgreater{}}
-\DocumentationTok{\#\#  7 Beru Whitesun Lars    165    75       47   fema\textasciitilde{} femin\textasciitilde{} Tatooine  Human   \textless{}chr\textgreater{} \textless{}chr\textgreater{}    \textless{}chr [0]\textgreater{}}
-\DocumentationTok{\#\#  8 R5{-}D4                  97    32       NA   none  mascu\textasciitilde{} Tatooine  Droid   \textless{}chr\textgreater{} \textless{}chr\textgreater{}    \textless{}chr [0]\textgreater{}}
-\DocumentationTok{\#\#  9 Biggs Darklighter     183    84       24   male  mascu\textasciitilde{} Tatooine  Human   \textless{}chr\textgreater{} \textless{}chr\textgreater{}    \textless{}chr [1]\textgreater{}}
-\DocumentationTok{\#\# 10 Obi{-}Wan Kenobi        182    77       57   male  mascu\textasciitilde{} Stewjon   Human   \textless{}chr\textgreater{} \textless{}chr\textgreater{}    \textless{}chr [5]\textgreater{}}
+\DocumentationTok{\#\#    name               height  mass birth\_year sex    gender   homeworld species films vehicles starships}
+\DocumentationTok{\#\#    \textless{}chr\textgreater{}               \textless{}int\textgreater{} \textless{}dbl\textgreater{}      \textless{}dbl\textgreater{} \textless{}chr\textgreater{}  \textless{}chr\textgreater{}    \textless{}chr\textgreater{}     \textless{}chr\textgreater{}   \textless{}lis\textgreater{} \textless{}list\textgreater{}   \textless{}list\textgreater{}   }
+\DocumentationTok{\#\#  1 Luke Skywalker        172    77       19   male   masculi\textasciitilde{} Tatooine  Human   \textless{}chr\textgreater{} \textless{}chr\textgreater{}    \textless{}chr [2]\textgreater{}}
+\DocumentationTok{\#\#  2 C{-}3PO                 167    75      112   none   masculi\textasciitilde{} Tatooine  Droid   \textless{}chr\textgreater{} \textless{}chr\textgreater{}    \textless{}chr [0]\textgreater{}}
+\DocumentationTok{\#\#  3 R2{-}D2                  96    32       33   none   masculi\textasciitilde{} Naboo     Droid   \textless{}chr\textgreater{} \textless{}chr\textgreater{}    \textless{}chr [0]\textgreater{}}
+\DocumentationTok{\#\#  4 Darth Vader           202   136       41.9 male   masculi\textasciitilde{} Tatooine  Human   \textless{}chr\textgreater{} \textless{}chr\textgreater{}    \textless{}chr [1]\textgreater{}}
+\DocumentationTok{\#\#  5 Leia Organa           150    49       19   female feminine Alderaan  Human   \textless{}chr\textgreater{} \textless{}chr\textgreater{}    \textless{}chr [0]\textgreater{}}
+\DocumentationTok{\#\#  6 Owen Lars             178   120       52   male   masculi\textasciitilde{} Tatooine  Human   \textless{}chr\textgreater{} \textless{}chr\textgreater{}    \textless{}chr [0]\textgreater{}}
+\DocumentationTok{\#\#  7 Beru Whitesun Lars    165    75       47   female feminine Tatooine  Human   \textless{}chr\textgreater{} \textless{}chr\textgreater{}    \textless{}chr [0]\textgreater{}}
+\DocumentationTok{\#\#  8 R5{-}D4                  97    32       NA   none   masculi\textasciitilde{} Tatooine  Droid   \textless{}chr\textgreater{} \textless{}chr\textgreater{}    \textless{}chr [0]\textgreater{}}
+\DocumentationTok{\#\#  9 Biggs Darklighter     183    84       24   male   masculi\textasciitilde{} Tatooine  Human   \textless{}chr\textgreater{} \textless{}chr\textgreater{}    \textless{}chr [1]\textgreater{}}
+\DocumentationTok{\#\# 10 Obi{-}Wan Kenobi        182    77       57   male   masculi\textasciitilde{} Stewjon   Human   \textless{}chr\textgreater{} \textless{}chr\textgreater{}    \textless{}chr [5]\textgreater{}}
 \DocumentationTok{\#\# \# i 77 more rows}
 \end{Highlighting}
 \end{Shaded}
@@ -6384,50 +6176,50 @@ A \texttt{arrange()} ordena as linhas por uma ou mais colunas; \texttt{desc()} i
 \begin{Highlighting}[]
 \FunctionTok{arrange}\NormalTok{(sw, mass)                        }\CommentTok{\# massa crescente}
 \DocumentationTok{\#\# \# A tibble: 87 x 14}
-\DocumentationTok{\#\#    name  height  mass hair\_color skin\_color eye\_color birth\_year sex   gender homeworld species films}
-\DocumentationTok{\#\#    \textless{}chr\textgreater{}  \textless{}int\textgreater{} \textless{}dbl\textgreater{} \textless{}chr\textgreater{}      \textless{}chr\textgreater{}      \textless{}chr\textgreater{}          \textless{}dbl\textgreater{} \textless{}chr\textgreater{} \textless{}chr\textgreater{}  \textless{}chr\textgreater{}     \textless{}chr\textgreater{}   \textless{}lis\textgreater{}}
-\DocumentationTok{\#\#  1 Ratt\textasciitilde{}     79    15 none       grey, blue unknown           NA male  mascu\textasciitilde{} Aleen Mi\textasciitilde{} Aleena  \textless{}chr\textgreater{}}
-\DocumentationTok{\#\#  2 Yoda      66    17 white      green      brown            896 male  mascu\textasciitilde{} \textless{}NA\textgreater{}      Yoda\textquotesingle{}s\textasciitilde{} \textless{}chr\textgreater{}}
-\DocumentationTok{\#\#  3 Wick\textasciitilde{}     88    20 brown      brown      brown              8 male  mascu\textasciitilde{} Endor     Ewok    \textless{}chr\textgreater{}}
-\DocumentationTok{\#\#  4 R2{-}D2     96    32 \textless{}NA\textgreater{}       white, bl\textasciitilde{} red               33 none  mascu\textasciitilde{} Naboo     Droid   \textless{}chr\textgreater{}}
-\DocumentationTok{\#\#  5 R5{-}D4     97    32 \textless{}NA\textgreater{}       white, red red               NA none  mascu\textasciitilde{} Tatooine  Droid   \textless{}chr\textgreater{}}
-\DocumentationTok{\#\#  6 Sebu\textasciitilde{}    112    40 none       grey, red  orange            NA male  mascu\textasciitilde{} Malastare Dug     \textless{}chr\textgreater{}}
-\DocumentationTok{\#\#  7 Padm\textasciitilde{}    185    45 brown      light      brown             46 fema\textasciitilde{} femin\textasciitilde{} Naboo     Human   \textless{}chr\textgreater{}}
-\DocumentationTok{\#\#  8 Dud \textasciitilde{}     94    45 none       blue, grey yellow            NA male  mascu\textasciitilde{} Vulpter   Vulpte\textasciitilde{} \textless{}chr\textgreater{}}
-\DocumentationTok{\#\#  9 Wat \textasciitilde{}    193    48 none       green, gr\textasciitilde{} unknown           NA male  mascu\textasciitilde{} Skako     Skakoan \textless{}chr\textgreater{}}
-\DocumentationTok{\#\# 10 Sly \textasciitilde{}    178    48 none       pale       white             NA \textless{}NA\textgreater{}  \textless{}NA\textgreater{}   Umbara    \textless{}NA\textgreater{}    \textless{}chr\textgreater{}}
+\DocumentationTok{\#\#    name     height  mass hair\_color skin\_color eye\_color birth\_year sex   gender homeworld species films}
+\DocumentationTok{\#\#    \textless{}chr\textgreater{}     \textless{}int\textgreater{} \textless{}dbl\textgreater{} \textless{}chr\textgreater{}      \textless{}chr\textgreater{}      \textless{}chr\textgreater{}          \textless{}dbl\textgreater{} \textless{}chr\textgreater{} \textless{}chr\textgreater{}  \textless{}chr\textgreater{}     \textless{}chr\textgreater{}   \textless{}lis\textgreater{}}
+\DocumentationTok{\#\#  1 Ratts T\textasciitilde{}     79    15 none       grey, blue unknown           NA male  mascu\textasciitilde{} Aleen Mi\textasciitilde{} Aleena  \textless{}chr\textgreater{}}
+\DocumentationTok{\#\#  2 Yoda         66    17 white      green      brown            896 male  mascu\textasciitilde{} \textless{}NA\textgreater{}      Yoda\textquotesingle{}s\textasciitilde{} \textless{}chr\textgreater{}}
+\DocumentationTok{\#\#  3 Wicket \textasciitilde{}     88    20 brown      brown      brown              8 male  mascu\textasciitilde{} Endor     Ewok    \textless{}chr\textgreater{}}
+\DocumentationTok{\#\#  4 R2{-}D2        96    32 \textless{}NA\textgreater{}       white, bl\textasciitilde{} red               33 none  mascu\textasciitilde{} Naboo     Droid   \textless{}chr\textgreater{}}
+\DocumentationTok{\#\#  5 R5{-}D4        97    32 \textless{}NA\textgreater{}       white, red red               NA none  mascu\textasciitilde{} Tatooine  Droid   \textless{}chr\textgreater{}}
+\DocumentationTok{\#\#  6 Sebulba     112    40 none       grey, red  orange            NA male  mascu\textasciitilde{} Malastare Dug     \textless{}chr\textgreater{}}
+\DocumentationTok{\#\#  7 Padmé A\textasciitilde{}    185    45 brown      light      brown             46 fema\textasciitilde{} femin\textasciitilde{} Naboo     Human   \textless{}chr\textgreater{}}
+\DocumentationTok{\#\#  8 Dud Bolt     94    45 none       blue, grey yellow            NA male  mascu\textasciitilde{} Vulpter   Vulpte\textasciitilde{} \textless{}chr\textgreater{}}
+\DocumentationTok{\#\#  9 Wat Tam\textasciitilde{}    193    48 none       green, gr\textasciitilde{} unknown           NA male  mascu\textasciitilde{} Skako     Skakoan \textless{}chr\textgreater{}}
+\DocumentationTok{\#\# 10 Sly Moo\textasciitilde{}    178    48 none       pale       white             NA \textless{}NA\textgreater{}  \textless{}NA\textgreater{}   Umbara    \textless{}NA\textgreater{}    \textless{}chr\textgreater{}}
 \DocumentationTok{\#\# \# i 77 more rows}
 \DocumentationTok{\#\# \# i 2 more variables: vehicles \textless{}list\textgreater{}, starships \textless{}list\textgreater{}}
 \FunctionTok{arrange}\NormalTok{(sw, }\FunctionTok{desc}\NormalTok{(mass))                  }\CommentTok{\# massa decrescente}
 \DocumentationTok{\#\# \# A tibble: 87 x 14}
-\DocumentationTok{\#\#    name  height  mass hair\_color skin\_color eye\_color birth\_year sex   gender homeworld species films}
-\DocumentationTok{\#\#    \textless{}chr\textgreater{}  \textless{}int\textgreater{} \textless{}dbl\textgreater{} \textless{}chr\textgreater{}      \textless{}chr\textgreater{}      \textless{}chr\textgreater{}          \textless{}dbl\textgreater{} \textless{}chr\textgreater{} \textless{}chr\textgreater{}  \textless{}chr\textgreater{}     \textless{}chr\textgreater{}   \textless{}lis\textgreater{}}
-\DocumentationTok{\#\#  1 Jabb\textasciitilde{}    175  1358 \textless{}NA\textgreater{}       green{-}tan\textasciitilde{} orange         600   herm\textasciitilde{} mascu\textasciitilde{} Nal Hutta Hutt    \textless{}chr\textgreater{}}
-\DocumentationTok{\#\#  2 Grie\textasciitilde{}    216   159 none       brown, wh\textasciitilde{} green, y\textasciitilde{}       NA   male  mascu\textasciitilde{} Kalee     Kaleesh \textless{}chr\textgreater{}}
-\DocumentationTok{\#\#  3 IG{-}88    200   140 none       metal      red             15   none  mascu\textasciitilde{} \textless{}NA\textgreater{}      Droid   \textless{}chr\textgreater{}}
-\DocumentationTok{\#\#  4 Dart\textasciitilde{}    202   136 none       white      yellow          41.9 male  mascu\textasciitilde{} Tatooine  Human   \textless{}chr\textgreater{}}
-\DocumentationTok{\#\#  5 Tarf\textasciitilde{}    234   136 brown      brown      blue            NA   male  mascu\textasciitilde{} Kashyyyk  Wookiee \textless{}chr\textgreater{}}
-\DocumentationTok{\#\#  6 Owen\textasciitilde{}    178   120 brown, gr\textasciitilde{} light      blue            52   male  mascu\textasciitilde{} Tatooine  Human   \textless{}chr\textgreater{}}
-\DocumentationTok{\#\#  7 Bossk    190   113 none       green      red             53   male  mascu\textasciitilde{} Trandosha Trando\textasciitilde{} \textless{}chr\textgreater{}}
-\DocumentationTok{\#\#  8 Chew\textasciitilde{}    228   112 brown      unknown    blue           200   male  mascu\textasciitilde{} Kashyyyk  Wookiee \textless{}chr\textgreater{}}
-\DocumentationTok{\#\#  9 Jek \textasciitilde{}    180   110 brown      fair       blue            NA   \textless{}NA\textgreater{}  \textless{}NA\textgreater{}   Bestine \textasciitilde{} \textless{}NA\textgreater{}    \textless{}chr\textgreater{}}
-\DocumentationTok{\#\# 10 Dext\textasciitilde{}    198   102 none       brown      yellow          NA   male  mascu\textasciitilde{} Ojom      Besali\textasciitilde{} \textless{}chr\textgreater{}}
+\DocumentationTok{\#\#    name     height  mass hair\_color skin\_color eye\_color birth\_year sex   gender homeworld species films}
+\DocumentationTok{\#\#    \textless{}chr\textgreater{}     \textless{}int\textgreater{} \textless{}dbl\textgreater{} \textless{}chr\textgreater{}      \textless{}chr\textgreater{}      \textless{}chr\textgreater{}          \textless{}dbl\textgreater{} \textless{}chr\textgreater{} \textless{}chr\textgreater{}  \textless{}chr\textgreater{}     \textless{}chr\textgreater{}   \textless{}lis\textgreater{}}
+\DocumentationTok{\#\#  1 Jabba D\textasciitilde{}    175  1358 \textless{}NA\textgreater{}       green{-}tan\textasciitilde{} orange         600   herm\textasciitilde{} mascu\textasciitilde{} Nal Hutta Hutt    \textless{}chr\textgreater{}}
+\DocumentationTok{\#\#  2 Grievous    216   159 none       brown, wh\textasciitilde{} green, y\textasciitilde{}       NA   male  mascu\textasciitilde{} Kalee     Kaleesh \textless{}chr\textgreater{}}
+\DocumentationTok{\#\#  3 IG{-}88       200   140 none       metal      red             15   none  mascu\textasciitilde{} \textless{}NA\textgreater{}      Droid   \textless{}chr\textgreater{}}
+\DocumentationTok{\#\#  4 Darth V\textasciitilde{}    202   136 none       white      yellow          41.9 male  mascu\textasciitilde{} Tatooine  Human   \textless{}chr\textgreater{}}
+\DocumentationTok{\#\#  5 Tarfful     234   136 brown      brown      blue            NA   male  mascu\textasciitilde{} Kashyyyk  Wookiee \textless{}chr\textgreater{}}
+\DocumentationTok{\#\#  6 Owen La\textasciitilde{}    178   120 brown, gr\textasciitilde{} light      blue            52   male  mascu\textasciitilde{} Tatooine  Human   \textless{}chr\textgreater{}}
+\DocumentationTok{\#\#  7 Bossk       190   113 none       green      red             53   male  mascu\textasciitilde{} Trandosha Trando\textasciitilde{} \textless{}chr\textgreater{}}
+\DocumentationTok{\#\#  8 Chewbac\textasciitilde{}    228   112 brown      unknown    blue           200   male  mascu\textasciitilde{} Kashyyyk  Wookiee \textless{}chr\textgreater{}}
+\DocumentationTok{\#\#  9 Jek Ton\textasciitilde{}    180   110 brown      fair       blue            NA   \textless{}NA\textgreater{}  \textless{}NA\textgreater{}   Bestine \textasciitilde{} \textless{}NA\textgreater{}    \textless{}chr\textgreater{}}
+\DocumentationTok{\#\# 10 Dexter \textasciitilde{}    198   102 none       brown      yellow          NA   male  mascu\textasciitilde{} Ojom      Besali\textasciitilde{} \textless{}chr\textgreater{}}
 \DocumentationTok{\#\# \# i 77 more rows}
 \DocumentationTok{\#\# \# i 2 more variables: vehicles \textless{}list\textgreater{}, starships \textless{}list\textgreater{}}
 \FunctionTok{arrange}\NormalTok{(sw, }\FunctionTok{desc}\NormalTok{(height), }\FunctionTok{desc}\NormalTok{(mass))    }\CommentTok{\# por altura e, em empate, por massa}
 \DocumentationTok{\#\# \# A tibble: 87 x 14}
-\DocumentationTok{\#\#    name  height  mass hair\_color skin\_color eye\_color birth\_year sex   gender homeworld species films}
-\DocumentationTok{\#\#    \textless{}chr\textgreater{}  \textless{}int\textgreater{} \textless{}dbl\textgreater{} \textless{}chr\textgreater{}      \textless{}chr\textgreater{}      \textless{}chr\textgreater{}          \textless{}dbl\textgreater{} \textless{}chr\textgreater{} \textless{}chr\textgreater{}  \textless{}chr\textgreater{}     \textless{}chr\textgreater{}   \textless{}lis\textgreater{}}
-\DocumentationTok{\#\#  1 Yara\textasciitilde{}    264    NA none       white      yellow          NA   male  mascu\textasciitilde{} Quermia   Quermi\textasciitilde{} \textless{}chr\textgreater{}}
-\DocumentationTok{\#\#  2 Tarf\textasciitilde{}    234   136 brown      brown      blue            NA   male  mascu\textasciitilde{} Kashyyyk  Wookiee \textless{}chr\textgreater{}}
-\DocumentationTok{\#\#  3 Lama\textasciitilde{}    229    88 none       grey       black           NA   male  mascu\textasciitilde{} Kamino    Kamino\textasciitilde{} \textless{}chr\textgreater{}}
-\DocumentationTok{\#\#  4 Chew\textasciitilde{}    228   112 brown      unknown    blue           200   male  mascu\textasciitilde{} Kashyyyk  Wookiee \textless{}chr\textgreater{}}
-\DocumentationTok{\#\#  5 Roos\textasciitilde{}    224    82 none       grey       orange          NA   male  mascu\textasciitilde{} Naboo     Gungan  \textless{}chr\textgreater{}}
-\DocumentationTok{\#\#  6 Grie\textasciitilde{}    216   159 none       brown, wh\textasciitilde{} green, y\textasciitilde{}       NA   male  mascu\textasciitilde{} Kalee     Kaleesh \textless{}chr\textgreater{}}
-\DocumentationTok{\#\#  7 Taun\textasciitilde{}    213    NA none       grey       black           NA   fema\textasciitilde{} femin\textasciitilde{} Kamino    Kamino\textasciitilde{} \textless{}chr\textgreater{}}
-\DocumentationTok{\#\#  8 Tion\textasciitilde{}    206    80 none       grey       black           NA   male  mascu\textasciitilde{} Utapau    Pau\textquotesingle{}an  \textless{}chr\textgreater{}}
-\DocumentationTok{\#\#  9 Rugo\textasciitilde{}    206    NA none       green      orange          NA   male  mascu\textasciitilde{} Naboo     Gungan  \textless{}chr\textgreater{}}
-\DocumentationTok{\#\# 10 Dart\textasciitilde{}    202   136 none       white      yellow          41.9 male  mascu\textasciitilde{} Tatooine  Human   \textless{}chr\textgreater{}}
+\DocumentationTok{\#\#    name     height  mass hair\_color skin\_color eye\_color birth\_year sex   gender homeworld species films}
+\DocumentationTok{\#\#    \textless{}chr\textgreater{}     \textless{}int\textgreater{} \textless{}dbl\textgreater{} \textless{}chr\textgreater{}      \textless{}chr\textgreater{}      \textless{}chr\textgreater{}          \textless{}dbl\textgreater{} \textless{}chr\textgreater{} \textless{}chr\textgreater{}  \textless{}chr\textgreater{}     \textless{}chr\textgreater{}   \textless{}lis\textgreater{}}
+\DocumentationTok{\#\#  1 Yarael \textasciitilde{}    264    NA none       white      yellow          NA   male  mascu\textasciitilde{} Quermia   Quermi\textasciitilde{} \textless{}chr\textgreater{}}
+\DocumentationTok{\#\#  2 Tarfful     234   136 brown      brown      blue            NA   male  mascu\textasciitilde{} Kashyyyk  Wookiee \textless{}chr\textgreater{}}
+\DocumentationTok{\#\#  3 Lama Su     229    88 none       grey       black           NA   male  mascu\textasciitilde{} Kamino    Kamino\textasciitilde{} \textless{}chr\textgreater{}}
+\DocumentationTok{\#\#  4 Chewbac\textasciitilde{}    228   112 brown      unknown    blue           200   male  mascu\textasciitilde{} Kashyyyk  Wookiee \textless{}chr\textgreater{}}
+\DocumentationTok{\#\#  5 Roos Ta\textasciitilde{}    224    82 none       grey       orange          NA   male  mascu\textasciitilde{} Naboo     Gungan  \textless{}chr\textgreater{}}
+\DocumentationTok{\#\#  6 Grievous    216   159 none       brown, wh\textasciitilde{} green, y\textasciitilde{}       NA   male  mascu\textasciitilde{} Kalee     Kaleesh \textless{}chr\textgreater{}}
+\DocumentationTok{\#\#  7 Taun We     213    NA none       grey       black           NA   fema\textasciitilde{} femin\textasciitilde{} Kamino    Kamino\textasciitilde{} \textless{}chr\textgreater{}}
+\DocumentationTok{\#\#  8 Tion Me\textasciitilde{}    206    80 none       grey       black           NA   male  mascu\textasciitilde{} Utapau    Pau\textquotesingle{}an  \textless{}chr\textgreater{}}
+\DocumentationTok{\#\#  9 Rugor N\textasciitilde{}    206    NA none       green      orange          NA   male  mascu\textasciitilde{} Naboo     Gungan  \textless{}chr\textgreater{}}
+\DocumentationTok{\#\# 10 Darth V\textasciitilde{}    202   136 none       white      yellow          41.9 male  mascu\textasciitilde{} Tatooine  Human   \textless{}chr\textgreater{}}
 \DocumentationTok{\#\# \# i 77 more rows}
 \DocumentationTok{\#\# \# i 2 more variables: vehicles \textless{}list\textgreater{}, starships \textless{}list\textgreater{}}
 \end{Highlighting}
@@ -6450,18 +6242,18 @@ A \texttt{filter()} seleciona linhas que satisfazem uma ou mais condições lóg
 \begin{Highlighting}[]
 \NormalTok{sw }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{filter}\NormalTok{(height }\SpecialCharTok{\textgreater{}} \DecValTok{170}\NormalTok{)                       }\CommentTok{\# uma condição}
 \DocumentationTok{\#\# \# A tibble: 55 x 14}
-\DocumentationTok{\#\#    name  height  mass hair\_color skin\_color eye\_color birth\_year sex   gender homeworld species films}
-\DocumentationTok{\#\#    \textless{}chr\textgreater{}  \textless{}int\textgreater{} \textless{}dbl\textgreater{} \textless{}chr\textgreater{}      \textless{}chr\textgreater{}      \textless{}chr\textgreater{}          \textless{}dbl\textgreater{} \textless{}chr\textgreater{} \textless{}chr\textgreater{}  \textless{}chr\textgreater{}     \textless{}chr\textgreater{}   \textless{}lis\textgreater{}}
-\DocumentationTok{\#\#  1 Luke\textasciitilde{}    172    77 blond      fair       blue            19   male  mascu\textasciitilde{} Tatooine  Human   \textless{}chr\textgreater{}}
-\DocumentationTok{\#\#  2 Dart\textasciitilde{}    202   136 none       white      yellow          41.9 male  mascu\textasciitilde{} Tatooine  Human   \textless{}chr\textgreater{}}
-\DocumentationTok{\#\#  3 Owen\textasciitilde{}    178   120 brown, gr\textasciitilde{} light      blue            52   male  mascu\textasciitilde{} Tatooine  Human   \textless{}chr\textgreater{}}
-\DocumentationTok{\#\#  4 Bigg\textasciitilde{}    183    84 black      light      brown           24   male  mascu\textasciitilde{} Tatooine  Human   \textless{}chr\textgreater{}}
-\DocumentationTok{\#\#  5 Obi{-}\textasciitilde{}    182    77 auburn, w\textasciitilde{} fair       blue{-}gray       57   male  mascu\textasciitilde{} Stewjon   Human   \textless{}chr\textgreater{}}
-\DocumentationTok{\#\#  6 Anak\textasciitilde{}    188    84 blond      fair       blue            41.9 male  mascu\textasciitilde{} Tatooine  Human   \textless{}chr\textgreater{}}
-\DocumentationTok{\#\#  7 Wilh\textasciitilde{}    180    NA auburn, g\textasciitilde{} fair       blue            64   male  mascu\textasciitilde{} Eriadu    Human   \textless{}chr\textgreater{}}
-\DocumentationTok{\#\#  8 Chew\textasciitilde{}    228   112 brown      unknown    blue           200   male  mascu\textasciitilde{} Kashyyyk  Wookiee \textless{}chr\textgreater{}}
-\DocumentationTok{\#\#  9 Han \textasciitilde{}    180    80 brown      fair       brown           29   male  mascu\textasciitilde{} Corellia  Human   \textless{}chr\textgreater{}}
-\DocumentationTok{\#\# 10 Gree\textasciitilde{}    173    74 \textless{}NA\textgreater{}       green      black           44   male  mascu\textasciitilde{} Rodia     Rodian  \textless{}chr\textgreater{}}
+\DocumentationTok{\#\#    name     height  mass hair\_color skin\_color eye\_color birth\_year sex   gender homeworld species films}
+\DocumentationTok{\#\#    \textless{}chr\textgreater{}     \textless{}int\textgreater{} \textless{}dbl\textgreater{} \textless{}chr\textgreater{}      \textless{}chr\textgreater{}      \textless{}chr\textgreater{}          \textless{}dbl\textgreater{} \textless{}chr\textgreater{} \textless{}chr\textgreater{}  \textless{}chr\textgreater{}     \textless{}chr\textgreater{}   \textless{}lis\textgreater{}}
+\DocumentationTok{\#\#  1 Luke Sk\textasciitilde{}    172    77 blond      fair       blue            19   male  mascu\textasciitilde{} Tatooine  Human   \textless{}chr\textgreater{}}
+\DocumentationTok{\#\#  2 Darth V\textasciitilde{}    202   136 none       white      yellow          41.9 male  mascu\textasciitilde{} Tatooine  Human   \textless{}chr\textgreater{}}
+\DocumentationTok{\#\#  3 Owen La\textasciitilde{}    178   120 brown, gr\textasciitilde{} light      blue            52   male  mascu\textasciitilde{} Tatooine  Human   \textless{}chr\textgreater{}}
+\DocumentationTok{\#\#  4 Biggs D\textasciitilde{}    183    84 black      light      brown           24   male  mascu\textasciitilde{} Tatooine  Human   \textless{}chr\textgreater{}}
+\DocumentationTok{\#\#  5 Obi{-}Wan\textasciitilde{}    182    77 auburn, w\textasciitilde{} fair       blue{-}gray       57   male  mascu\textasciitilde{} Stewjon   Human   \textless{}chr\textgreater{}}
+\DocumentationTok{\#\#  6 Anakin \textasciitilde{}    188    84 blond      fair       blue            41.9 male  mascu\textasciitilde{} Tatooine  Human   \textless{}chr\textgreater{}}
+\DocumentationTok{\#\#  7 Wilhuff\textasciitilde{}    180    NA auburn, g\textasciitilde{} fair       blue            64   male  mascu\textasciitilde{} Eriadu    Human   \textless{}chr\textgreater{}}
+\DocumentationTok{\#\#  8 Chewbac\textasciitilde{}    228   112 brown      unknown    blue           200   male  mascu\textasciitilde{} Kashyyyk  Wookiee \textless{}chr\textgreater{}}
+\DocumentationTok{\#\#  9 Han Solo    180    80 brown      fair       brown           29   male  mascu\textasciitilde{} Corellia  Human   \textless{}chr\textgreater{}}
+\DocumentationTok{\#\# 10 Greedo      173    74 \textless{}NA\textgreater{}       green      black           44   male  mascu\textasciitilde{} Rodia     Rodian  \textless{}chr\textgreater{}}
 \DocumentationTok{\#\# \# i 45 more rows}
 \DocumentationTok{\#\# \# i 2 more variables: vehicles \textless{}list\textgreater{}, starships \textless{}list\textgreater{}}
 \NormalTok{sw }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{filter}\NormalTok{(height }\SpecialCharTok{\textgreater{}} \DecValTok{170}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{select}\NormalTok{(name, height)}
@@ -6481,18 +6273,18 @@ A \texttt{filter()} seleciona linhas que satisfazem uma ou mais condições lóg
 \DocumentationTok{\#\# \# i 45 more rows}
 \NormalTok{sw }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{filter}\NormalTok{(height }\SpecialCharTok{\textgreater{}} \DecValTok{170}\NormalTok{, mass }\SpecialCharTok{\textgreater{}} \DecValTok{80}\NormalTok{)            }\CommentTok{\# duas condições (E lógico)}
 \DocumentationTok{\#\# \# A tibble: 21 x 14}
-\DocumentationTok{\#\#    name  height  mass hair\_color skin\_color eye\_color birth\_year sex   gender homeworld species films}
-\DocumentationTok{\#\#    \textless{}chr\textgreater{}  \textless{}int\textgreater{} \textless{}dbl\textgreater{} \textless{}chr\textgreater{}      \textless{}chr\textgreater{}      \textless{}chr\textgreater{}          \textless{}dbl\textgreater{} \textless{}chr\textgreater{} \textless{}chr\textgreater{}  \textless{}chr\textgreater{}     \textless{}chr\textgreater{}   \textless{}lis\textgreater{}}
-\DocumentationTok{\#\#  1 Dart\textasciitilde{}    202   136 none       white      yellow          41.9 male  mascu\textasciitilde{} Tatooine  Human   \textless{}chr\textgreater{}}
-\DocumentationTok{\#\#  2 Owen\textasciitilde{}    178   120 brown, gr\textasciitilde{} light      blue            52   male  mascu\textasciitilde{} Tatooine  Human   \textless{}chr\textgreater{}}
-\DocumentationTok{\#\#  3 Bigg\textasciitilde{}    183    84 black      light      brown           24   male  mascu\textasciitilde{} Tatooine  Human   \textless{}chr\textgreater{}}
-\DocumentationTok{\#\#  4 Anak\textasciitilde{}    188    84 blond      fair       blue            41.9 male  mascu\textasciitilde{} Tatooine  Human   \textless{}chr\textgreater{}}
-\DocumentationTok{\#\#  5 Chew\textasciitilde{}    228   112 brown      unknown    blue           200   male  mascu\textasciitilde{} Kashyyyk  Wookiee \textless{}chr\textgreater{}}
-\DocumentationTok{\#\#  6 Jabb\textasciitilde{}    175  1358 \textless{}NA\textgreater{}       green{-}tan\textasciitilde{} orange         600   herm\textasciitilde{} mascu\textasciitilde{} Nal Hutta Hutt    \textless{}chr\textgreater{}}
-\DocumentationTok{\#\#  7 Jek \textasciitilde{}    180   110 brown      fair       blue            NA   \textless{}NA\textgreater{}  \textless{}NA\textgreater{}   Bestine \textasciitilde{} \textless{}NA\textgreater{}    \textless{}chr\textgreater{}}
-\DocumentationTok{\#\#  8 IG{-}88    200   140 none       metal      red             15   none  mascu\textasciitilde{} \textless{}NA\textgreater{}      Droid   \textless{}chr\textgreater{}}
-\DocumentationTok{\#\#  9 Bossk    190   113 none       green      red             53   male  mascu\textasciitilde{} Trandosha Trando\textasciitilde{} \textless{}chr\textgreater{}}
-\DocumentationTok{\#\# 10 Ackb\textasciitilde{}    180    83 none       brown mot\textasciitilde{} orange          41   male  mascu\textasciitilde{} Mon Cala  Mon Ca\textasciitilde{} \textless{}chr\textgreater{}}
+\DocumentationTok{\#\#    name     height  mass hair\_color skin\_color eye\_color birth\_year sex   gender homeworld species films}
+\DocumentationTok{\#\#    \textless{}chr\textgreater{}     \textless{}int\textgreater{} \textless{}dbl\textgreater{} \textless{}chr\textgreater{}      \textless{}chr\textgreater{}      \textless{}chr\textgreater{}          \textless{}dbl\textgreater{} \textless{}chr\textgreater{} \textless{}chr\textgreater{}  \textless{}chr\textgreater{}     \textless{}chr\textgreater{}   \textless{}lis\textgreater{}}
+\DocumentationTok{\#\#  1 Darth V\textasciitilde{}    202   136 none       white      yellow          41.9 male  mascu\textasciitilde{} Tatooine  Human   \textless{}chr\textgreater{}}
+\DocumentationTok{\#\#  2 Owen La\textasciitilde{}    178   120 brown, gr\textasciitilde{} light      blue            52   male  mascu\textasciitilde{} Tatooine  Human   \textless{}chr\textgreater{}}
+\DocumentationTok{\#\#  3 Biggs D\textasciitilde{}    183    84 black      light      brown           24   male  mascu\textasciitilde{} Tatooine  Human   \textless{}chr\textgreater{}}
+\DocumentationTok{\#\#  4 Anakin \textasciitilde{}    188    84 blond      fair       blue            41.9 male  mascu\textasciitilde{} Tatooine  Human   \textless{}chr\textgreater{}}
+\DocumentationTok{\#\#  5 Chewbac\textasciitilde{}    228   112 brown      unknown    blue           200   male  mascu\textasciitilde{} Kashyyyk  Wookiee \textless{}chr\textgreater{}}
+\DocumentationTok{\#\#  6 Jabba D\textasciitilde{}    175  1358 \textless{}NA\textgreater{}       green{-}tan\textasciitilde{} orange         600   herm\textasciitilde{} mascu\textasciitilde{} Nal Hutta Hutt    \textless{}chr\textgreater{}}
+\DocumentationTok{\#\#  7 Jek Ton\textasciitilde{}    180   110 brown      fair       blue            NA   \textless{}NA\textgreater{}  \textless{}NA\textgreater{}   Bestine \textasciitilde{} \textless{}NA\textgreater{}    \textless{}chr\textgreater{}}
+\DocumentationTok{\#\#  8 IG{-}88       200   140 none       metal      red             15   none  mascu\textasciitilde{} \textless{}NA\textgreater{}      Droid   \textless{}chr\textgreater{}}
+\DocumentationTok{\#\#  9 Bossk       190   113 none       green      red             53   male  mascu\textasciitilde{} Trandosha Trando\textasciitilde{} \textless{}chr\textgreater{}}
+\DocumentationTok{\#\# 10 Ackbar      180    83 none       brown mot\textasciitilde{} orange          41   male  mascu\textasciitilde{} Mon Cala  Mon Ca\textasciitilde{} \textless{}chr\textgreater{}}
 \DocumentationTok{\#\# \# i 11 more rows}
 \DocumentationTok{\#\# \# i 2 more variables: vehicles \textless{}list\textgreater{}, starships \textless{}list\textgreater{}}
 \end{Highlighting}
@@ -6505,34 +6297,34 @@ com \texttt{\%in\%}:
 \begin{Highlighting}[]
 \NormalTok{sw }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{filter}\NormalTok{(hair\_color }\SpecialCharTok{==} \StringTok{"black"} \SpecialCharTok{|}\NormalTok{ hair\_color }\SpecialCharTok{==} \StringTok{"brown"}\NormalTok{)}
 \DocumentationTok{\#\# \# A tibble: 31 x 14}
-\DocumentationTok{\#\#    name  height  mass hair\_color skin\_color eye\_color birth\_year sex   gender homeworld species films}
-\DocumentationTok{\#\#    \textless{}chr\textgreater{}  \textless{}int\textgreater{} \textless{}dbl\textgreater{} \textless{}chr\textgreater{}      \textless{}chr\textgreater{}      \textless{}chr\textgreater{}          \textless{}dbl\textgreater{} \textless{}chr\textgreater{} \textless{}chr\textgreater{}  \textless{}chr\textgreater{}     \textless{}chr\textgreater{}   \textless{}lis\textgreater{}}
-\DocumentationTok{\#\#  1 Leia\textasciitilde{}    150  49   brown      light      brown           19   fema\textasciitilde{} femin\textasciitilde{} Alderaan  Human   \textless{}chr\textgreater{}}
-\DocumentationTok{\#\#  2 Beru\textasciitilde{}    165  75   brown      light      blue            47   fema\textasciitilde{} femin\textasciitilde{} Tatooine  Human   \textless{}chr\textgreater{}}
-\DocumentationTok{\#\#  3 Bigg\textasciitilde{}    183  84   black      light      brown           24   male  mascu\textasciitilde{} Tatooine  Human   \textless{}chr\textgreater{}}
-\DocumentationTok{\#\#  4 Chew\textasciitilde{}    228 112   brown      unknown    blue           200   male  mascu\textasciitilde{} Kashyyyk  Wookiee \textless{}chr\textgreater{}}
-\DocumentationTok{\#\#  5 Han \textasciitilde{}    180  80   brown      fair       brown           29   male  mascu\textasciitilde{} Corellia  Human   \textless{}chr\textgreater{}}
-\DocumentationTok{\#\#  6 Wedg\textasciitilde{}    170  77   brown      fair       hazel           21   male  mascu\textasciitilde{} Corellia  Human   \textless{}chr\textgreater{}}
-\DocumentationTok{\#\#  7 Jek \textasciitilde{}    180 110   brown      fair       blue            NA   \textless{}NA\textgreater{}  \textless{}NA\textgreater{}   Bestine \textasciitilde{} \textless{}NA\textgreater{}    \textless{}chr\textgreater{}}
-\DocumentationTok{\#\#  8 Boba\textasciitilde{}    183  78.2 black      fair       brown           31.5 male  mascu\textasciitilde{} Kamino    Human   \textless{}chr\textgreater{}}
-\DocumentationTok{\#\#  9 Land\textasciitilde{}    177  79   black      dark       brown           31   male  mascu\textasciitilde{} Socorro   Human   \textless{}chr\textgreater{}}
-\DocumentationTok{\#\# 10 Arve\textasciitilde{}     NA  NA   brown      fair       brown           NA   male  mascu\textasciitilde{} \textless{}NA\textgreater{}      Human   \textless{}chr\textgreater{}}
+\DocumentationTok{\#\#    name     height  mass hair\_color skin\_color eye\_color birth\_year sex   gender homeworld species films}
+\DocumentationTok{\#\#    \textless{}chr\textgreater{}     \textless{}int\textgreater{} \textless{}dbl\textgreater{} \textless{}chr\textgreater{}      \textless{}chr\textgreater{}      \textless{}chr\textgreater{}          \textless{}dbl\textgreater{} \textless{}chr\textgreater{} \textless{}chr\textgreater{}  \textless{}chr\textgreater{}     \textless{}chr\textgreater{}   \textless{}lis\textgreater{}}
+\DocumentationTok{\#\#  1 Leia Or\textasciitilde{}    150  49   brown      light      brown           19   fema\textasciitilde{} femin\textasciitilde{} Alderaan  Human   \textless{}chr\textgreater{}}
+\DocumentationTok{\#\#  2 Beru Wh\textasciitilde{}    165  75   brown      light      blue            47   fema\textasciitilde{} femin\textasciitilde{} Tatooine  Human   \textless{}chr\textgreater{}}
+\DocumentationTok{\#\#  3 Biggs D\textasciitilde{}    183  84   black      light      brown           24   male  mascu\textasciitilde{} Tatooine  Human   \textless{}chr\textgreater{}}
+\DocumentationTok{\#\#  4 Chewbac\textasciitilde{}    228 112   brown      unknown    blue           200   male  mascu\textasciitilde{} Kashyyyk  Wookiee \textless{}chr\textgreater{}}
+\DocumentationTok{\#\#  5 Han Solo    180  80   brown      fair       brown           29   male  mascu\textasciitilde{} Corellia  Human   \textless{}chr\textgreater{}}
+\DocumentationTok{\#\#  6 Wedge A\textasciitilde{}    170  77   brown      fair       hazel           21   male  mascu\textasciitilde{} Corellia  Human   \textless{}chr\textgreater{}}
+\DocumentationTok{\#\#  7 Jek Ton\textasciitilde{}    180 110   brown      fair       blue            NA   \textless{}NA\textgreater{}  \textless{}NA\textgreater{}   Bestine \textasciitilde{} \textless{}NA\textgreater{}    \textless{}chr\textgreater{}}
+\DocumentationTok{\#\#  8 Boba Fe\textasciitilde{}    183  78.2 black      fair       brown           31.5 male  mascu\textasciitilde{} Kamino    Human   \textless{}chr\textgreater{}}
+\DocumentationTok{\#\#  9 Lando C\textasciitilde{}    177  79   black      dark       brown           31   male  mascu\textasciitilde{} Socorro   Human   \textless{}chr\textgreater{}}
+\DocumentationTok{\#\# 10 Arvel C\textasciitilde{}     NA  NA   brown      fair       brown           NA   male  mascu\textasciitilde{} \textless{}NA\textgreater{}      Human   \textless{}chr\textgreater{}}
 \DocumentationTok{\#\# \# i 21 more rows}
 \DocumentationTok{\#\# \# i 2 more variables: vehicles \textless{}list\textgreater{}, starships \textless{}list\textgreater{}}
 \NormalTok{sw }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{filter}\NormalTok{(hair\_color }\SpecialCharTok{\%in\%} \FunctionTok{c}\NormalTok{(}\StringTok{"black"}\NormalTok{, }\StringTok{"brown"}\NormalTok{))   }\CommentTok{\# forma equivalente, mais curta}
 \DocumentationTok{\#\# \# A tibble: 31 x 14}
-\DocumentationTok{\#\#    name  height  mass hair\_color skin\_color eye\_color birth\_year sex   gender homeworld species films}
-\DocumentationTok{\#\#    \textless{}chr\textgreater{}  \textless{}int\textgreater{} \textless{}dbl\textgreater{} \textless{}chr\textgreater{}      \textless{}chr\textgreater{}      \textless{}chr\textgreater{}          \textless{}dbl\textgreater{} \textless{}chr\textgreater{} \textless{}chr\textgreater{}  \textless{}chr\textgreater{}     \textless{}chr\textgreater{}   \textless{}lis\textgreater{}}
-\DocumentationTok{\#\#  1 Leia\textasciitilde{}    150  49   brown      light      brown           19   fema\textasciitilde{} femin\textasciitilde{} Alderaan  Human   \textless{}chr\textgreater{}}
-\DocumentationTok{\#\#  2 Beru\textasciitilde{}    165  75   brown      light      blue            47   fema\textasciitilde{} femin\textasciitilde{} Tatooine  Human   \textless{}chr\textgreater{}}
-\DocumentationTok{\#\#  3 Bigg\textasciitilde{}    183  84   black      light      brown           24   male  mascu\textasciitilde{} Tatooine  Human   \textless{}chr\textgreater{}}
-\DocumentationTok{\#\#  4 Chew\textasciitilde{}    228 112   brown      unknown    blue           200   male  mascu\textasciitilde{} Kashyyyk  Wookiee \textless{}chr\textgreater{}}
-\DocumentationTok{\#\#  5 Han \textasciitilde{}    180  80   brown      fair       brown           29   male  mascu\textasciitilde{} Corellia  Human   \textless{}chr\textgreater{}}
-\DocumentationTok{\#\#  6 Wedg\textasciitilde{}    170  77   brown      fair       hazel           21   male  mascu\textasciitilde{} Corellia  Human   \textless{}chr\textgreater{}}
-\DocumentationTok{\#\#  7 Jek \textasciitilde{}    180 110   brown      fair       blue            NA   \textless{}NA\textgreater{}  \textless{}NA\textgreater{}   Bestine \textasciitilde{} \textless{}NA\textgreater{}    \textless{}chr\textgreater{}}
-\DocumentationTok{\#\#  8 Boba\textasciitilde{}    183  78.2 black      fair       brown           31.5 male  mascu\textasciitilde{} Kamino    Human   \textless{}chr\textgreater{}}
-\DocumentationTok{\#\#  9 Land\textasciitilde{}    177  79   black      dark       brown           31   male  mascu\textasciitilde{} Socorro   Human   \textless{}chr\textgreater{}}
-\DocumentationTok{\#\# 10 Arve\textasciitilde{}     NA  NA   brown      fair       brown           NA   male  mascu\textasciitilde{} \textless{}NA\textgreater{}      Human   \textless{}chr\textgreater{}}
+\DocumentationTok{\#\#    name     height  mass hair\_color skin\_color eye\_color birth\_year sex   gender homeworld species films}
+\DocumentationTok{\#\#    \textless{}chr\textgreater{}     \textless{}int\textgreater{} \textless{}dbl\textgreater{} \textless{}chr\textgreater{}      \textless{}chr\textgreater{}      \textless{}chr\textgreater{}          \textless{}dbl\textgreater{} \textless{}chr\textgreater{} \textless{}chr\textgreater{}  \textless{}chr\textgreater{}     \textless{}chr\textgreater{}   \textless{}lis\textgreater{}}
+\DocumentationTok{\#\#  1 Leia Or\textasciitilde{}    150  49   brown      light      brown           19   fema\textasciitilde{} femin\textasciitilde{} Alderaan  Human   \textless{}chr\textgreater{}}
+\DocumentationTok{\#\#  2 Beru Wh\textasciitilde{}    165  75   brown      light      blue            47   fema\textasciitilde{} femin\textasciitilde{} Tatooine  Human   \textless{}chr\textgreater{}}
+\DocumentationTok{\#\#  3 Biggs D\textasciitilde{}    183  84   black      light      brown           24   male  mascu\textasciitilde{} Tatooine  Human   \textless{}chr\textgreater{}}
+\DocumentationTok{\#\#  4 Chewbac\textasciitilde{}    228 112   brown      unknown    blue           200   male  mascu\textasciitilde{} Kashyyyk  Wookiee \textless{}chr\textgreater{}}
+\DocumentationTok{\#\#  5 Han Solo    180  80   brown      fair       brown           29   male  mascu\textasciitilde{} Corellia  Human   \textless{}chr\textgreater{}}
+\DocumentationTok{\#\#  6 Wedge A\textasciitilde{}    170  77   brown      fair       hazel           21   male  mascu\textasciitilde{} Corellia  Human   \textless{}chr\textgreater{}}
+\DocumentationTok{\#\#  7 Jek Ton\textasciitilde{}    180 110   brown      fair       blue            NA   \textless{}NA\textgreater{}  \textless{}NA\textgreater{}   Bestine \textasciitilde{} \textless{}NA\textgreater{}    \textless{}chr\textgreater{}}
+\DocumentationTok{\#\#  8 Boba Fe\textasciitilde{}    183  78.2 black      fair       brown           31.5 male  mascu\textasciitilde{} Kamino    Human   \textless{}chr\textgreater{}}
+\DocumentationTok{\#\#  9 Lando C\textasciitilde{}    177  79   black      dark       brown           31   male  mascu\textasciitilde{} Socorro   Human   \textless{}chr\textgreater{}}
+\DocumentationTok{\#\# 10 Arvel C\textasciitilde{}     NA  NA   brown      fair       brown           NA   male  mascu\textasciitilde{} \textless{}NA\textgreater{}      Human   \textless{}chr\textgreater{}}
 \DocumentationTok{\#\# \# i 21 more rows}
 \DocumentationTok{\#\# \# i 2 more variables: vehicles \textless{}list\textgreater{}, starships \textless{}list\textgreater{}}
 \end{Highlighting}
@@ -6548,11 +6340,11 @@ elemento, se contém o padrão:
 
 \NormalTok{sw }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{filter}\NormalTok{(}\FunctionTok{str\_detect}\NormalTok{(hair\_color, }\StringTok{"grey"}\NormalTok{))   }\CommentTok{\# cabelo que contenha "grey"}
 \DocumentationTok{\#\# \# A tibble: 3 x 14}
-\DocumentationTok{\#\#   name   height  mass hair\_color skin\_color eye\_color birth\_year sex   gender homeworld species films}
-\DocumentationTok{\#\#   \textless{}chr\textgreater{}   \textless{}int\textgreater{} \textless{}dbl\textgreater{} \textless{}chr\textgreater{}      \textless{}chr\textgreater{}      \textless{}chr\textgreater{}          \textless{}dbl\textgreater{} \textless{}chr\textgreater{} \textless{}chr\textgreater{}  \textless{}chr\textgreater{}     \textless{}chr\textgreater{}   \textless{}lis\textgreater{}}
-\DocumentationTok{\#\# 1 Owen \textasciitilde{}    178   120 brown, gr\textasciitilde{} light      blue              52 male  mascu\textasciitilde{} Tatooine  Human   \textless{}chr\textgreater{}}
-\DocumentationTok{\#\# 2 Wilhu\textasciitilde{}    180    NA auburn, g\textasciitilde{} fair       blue              64 male  mascu\textasciitilde{} Eriadu    Human   \textless{}chr\textgreater{}}
-\DocumentationTok{\#\# 3 Palpa\textasciitilde{}    170    75 grey       pale       yellow            82 male  mascu\textasciitilde{} Naboo     Human   \textless{}chr\textgreater{}}
+\DocumentationTok{\#\#   name      height  mass hair\_color skin\_color eye\_color birth\_year sex   gender homeworld species films}
+\DocumentationTok{\#\#   \textless{}chr\textgreater{}      \textless{}int\textgreater{} \textless{}dbl\textgreater{} \textless{}chr\textgreater{}      \textless{}chr\textgreater{}      \textless{}chr\textgreater{}          \textless{}dbl\textgreater{} \textless{}chr\textgreater{} \textless{}chr\textgreater{}  \textless{}chr\textgreater{}     \textless{}chr\textgreater{}   \textless{}lis\textgreater{}}
+\DocumentationTok{\#\# 1 Owen Lars    178   120 brown, gr\textasciitilde{} light      blue              52 male  mascu\textasciitilde{} Tatooine  Human   \textless{}chr\textgreater{}}
+\DocumentationTok{\#\# 2 Wilhuff \textasciitilde{}    180    NA auburn, g\textasciitilde{} fair       blue              64 male  mascu\textasciitilde{} Eriadu    Human   \textless{}chr\textgreater{}}
+\DocumentationTok{\#\# 3 Palpatine    170    75 grey       pale       yellow            82 male  mascu\textasciitilde{} Naboo     Human   \textless{}chr\textgreater{}}
 \DocumentationTok{\#\# \# i 2 more variables: vehicles \textless{}list\textgreater{}, starships \textless{}list\textgreater{}}
 \end{Highlighting}
 \end{Shaded}
@@ -6595,34 +6387,34 @@ converter a altura de centímetros para metros:
 \begin{Highlighting}[]
 \NormalTok{sw }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{mutate}\NormalTok{(}\AttributeTok{height =}\NormalTok{ height }\SpecialCharTok{/} \DecValTok{100}\NormalTok{)          }\CommentTok{\# substitui a coluna existente}
 \DocumentationTok{\#\# \# A tibble: 87 x 14}
-\DocumentationTok{\#\#    name  height  mass hair\_color skin\_color eye\_color birth\_year sex   gender homeworld species films}
-\DocumentationTok{\#\#    \textless{}chr\textgreater{}  \textless{}dbl\textgreater{} \textless{}dbl\textgreater{} \textless{}chr\textgreater{}      \textless{}chr\textgreater{}      \textless{}chr\textgreater{}          \textless{}dbl\textgreater{} \textless{}chr\textgreater{} \textless{}chr\textgreater{}  \textless{}chr\textgreater{}     \textless{}chr\textgreater{}   \textless{}lis\textgreater{}}
-\DocumentationTok{\#\#  1 Luke\textasciitilde{}   1.72    77 blond      fair       blue            19   male  mascu\textasciitilde{} Tatooine  Human   \textless{}chr\textgreater{}}
-\DocumentationTok{\#\#  2 C{-}3PO   1.67    75 \textless{}NA\textgreater{}       gold       yellow         112   none  mascu\textasciitilde{} Tatooine  Droid   \textless{}chr\textgreater{}}
-\DocumentationTok{\#\#  3 R2{-}D2   0.96    32 \textless{}NA\textgreater{}       white, bl\textasciitilde{} red             33   none  mascu\textasciitilde{} Naboo     Droid   \textless{}chr\textgreater{}}
-\DocumentationTok{\#\#  4 Dart\textasciitilde{}   2.02   136 none       white      yellow          41.9 male  mascu\textasciitilde{} Tatooine  Human   \textless{}chr\textgreater{}}
-\DocumentationTok{\#\#  5 Leia\textasciitilde{}   1.5     49 brown      light      brown           19   fema\textasciitilde{} femin\textasciitilde{} Alderaan  Human   \textless{}chr\textgreater{}}
-\DocumentationTok{\#\#  6 Owen\textasciitilde{}   1.78   120 brown, gr\textasciitilde{} light      blue            52   male  mascu\textasciitilde{} Tatooine  Human   \textless{}chr\textgreater{}}
-\DocumentationTok{\#\#  7 Beru\textasciitilde{}   1.65    75 brown      light      blue            47   fema\textasciitilde{} femin\textasciitilde{} Tatooine  Human   \textless{}chr\textgreater{}}
-\DocumentationTok{\#\#  8 R5{-}D4   0.97    32 \textless{}NA\textgreater{}       white, red red             NA   none  mascu\textasciitilde{} Tatooine  Droid   \textless{}chr\textgreater{}}
-\DocumentationTok{\#\#  9 Bigg\textasciitilde{}   1.83    84 black      light      brown           24   male  mascu\textasciitilde{} Tatooine  Human   \textless{}chr\textgreater{}}
-\DocumentationTok{\#\# 10 Obi{-}\textasciitilde{}   1.82    77 auburn, w\textasciitilde{} fair       blue{-}gray       57   male  mascu\textasciitilde{} Stewjon   Human   \textless{}chr\textgreater{}}
+\DocumentationTok{\#\#    name     height  mass hair\_color skin\_color eye\_color birth\_year sex   gender homeworld species films}
+\DocumentationTok{\#\#    \textless{}chr\textgreater{}     \textless{}dbl\textgreater{} \textless{}dbl\textgreater{} \textless{}chr\textgreater{}      \textless{}chr\textgreater{}      \textless{}chr\textgreater{}          \textless{}dbl\textgreater{} \textless{}chr\textgreater{} \textless{}chr\textgreater{}  \textless{}chr\textgreater{}     \textless{}chr\textgreater{}   \textless{}lis\textgreater{}}
+\DocumentationTok{\#\#  1 Luke Sk\textasciitilde{}   1.72    77 blond      fair       blue            19   male  mascu\textasciitilde{} Tatooine  Human   \textless{}chr\textgreater{}}
+\DocumentationTok{\#\#  2 C{-}3PO      1.67    75 \textless{}NA\textgreater{}       gold       yellow         112   none  mascu\textasciitilde{} Tatooine  Droid   \textless{}chr\textgreater{}}
+\DocumentationTok{\#\#  3 R2{-}D2      0.96    32 \textless{}NA\textgreater{}       white, bl\textasciitilde{} red             33   none  mascu\textasciitilde{} Naboo     Droid   \textless{}chr\textgreater{}}
+\DocumentationTok{\#\#  4 Darth V\textasciitilde{}   2.02   136 none       white      yellow          41.9 male  mascu\textasciitilde{} Tatooine  Human   \textless{}chr\textgreater{}}
+\DocumentationTok{\#\#  5 Leia Or\textasciitilde{}   1.5     49 brown      light      brown           19   fema\textasciitilde{} femin\textasciitilde{} Alderaan  Human   \textless{}chr\textgreater{}}
+\DocumentationTok{\#\#  6 Owen La\textasciitilde{}   1.78   120 brown, gr\textasciitilde{} light      blue            52   male  mascu\textasciitilde{} Tatooine  Human   \textless{}chr\textgreater{}}
+\DocumentationTok{\#\#  7 Beru Wh\textasciitilde{}   1.65    75 brown      light      blue            47   fema\textasciitilde{} femin\textasciitilde{} Tatooine  Human   \textless{}chr\textgreater{}}
+\DocumentationTok{\#\#  8 R5{-}D4      0.97    32 \textless{}NA\textgreater{}       white, red red             NA   none  mascu\textasciitilde{} Tatooine  Droid   \textless{}chr\textgreater{}}
+\DocumentationTok{\#\#  9 Biggs D\textasciitilde{}   1.83    84 black      light      brown           24   male  mascu\textasciitilde{} Tatooine  Human   \textless{}chr\textgreater{}}
+\DocumentationTok{\#\# 10 Obi{-}Wan\textasciitilde{}   1.82    77 auburn, w\textasciitilde{} fair       blue{-}gray       57   male  mascu\textasciitilde{} Stewjon   Human   \textless{}chr\textgreater{}}
 \DocumentationTok{\#\# \# i 77 more rows}
 \DocumentationTok{\#\# \# i 2 more variables: vehicles \textless{}list\textgreater{}, starships \textless{}list\textgreater{}}
 \NormalTok{sw }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{mutate}\NormalTok{(}\AttributeTok{height\_meters =}\NormalTok{ height }\SpecialCharTok{/} \DecValTok{100}\NormalTok{)   }\CommentTok{\# cria uma nova coluna}
 \DocumentationTok{\#\# \# A tibble: 87 x 15}
-\DocumentationTok{\#\#    name  height  mass hair\_color skin\_color eye\_color birth\_year sex   gender homeworld species films}
-\DocumentationTok{\#\#    \textless{}chr\textgreater{}  \textless{}int\textgreater{} \textless{}dbl\textgreater{} \textless{}chr\textgreater{}      \textless{}chr\textgreater{}      \textless{}chr\textgreater{}          \textless{}dbl\textgreater{} \textless{}chr\textgreater{} \textless{}chr\textgreater{}  \textless{}chr\textgreater{}     \textless{}chr\textgreater{}   \textless{}lis\textgreater{}}
-\DocumentationTok{\#\#  1 Luke\textasciitilde{}    172    77 blond      fair       blue            19   male  mascu\textasciitilde{} Tatooine  Human   \textless{}chr\textgreater{}}
-\DocumentationTok{\#\#  2 C{-}3PO    167    75 \textless{}NA\textgreater{}       gold       yellow         112   none  mascu\textasciitilde{} Tatooine  Droid   \textless{}chr\textgreater{}}
-\DocumentationTok{\#\#  3 R2{-}D2     96    32 \textless{}NA\textgreater{}       white, bl\textasciitilde{} red             33   none  mascu\textasciitilde{} Naboo     Droid   \textless{}chr\textgreater{}}
-\DocumentationTok{\#\#  4 Dart\textasciitilde{}    202   136 none       white      yellow          41.9 male  mascu\textasciitilde{} Tatooine  Human   \textless{}chr\textgreater{}}
-\DocumentationTok{\#\#  5 Leia\textasciitilde{}    150    49 brown      light      brown           19   fema\textasciitilde{} femin\textasciitilde{} Alderaan  Human   \textless{}chr\textgreater{}}
-\DocumentationTok{\#\#  6 Owen\textasciitilde{}    178   120 brown, gr\textasciitilde{} light      blue            52   male  mascu\textasciitilde{} Tatooine  Human   \textless{}chr\textgreater{}}
-\DocumentationTok{\#\#  7 Beru\textasciitilde{}    165    75 brown      light      blue            47   fema\textasciitilde{} femin\textasciitilde{} Tatooine  Human   \textless{}chr\textgreater{}}
-\DocumentationTok{\#\#  8 R5{-}D4     97    32 \textless{}NA\textgreater{}       white, red red             NA   none  mascu\textasciitilde{} Tatooine  Droid   \textless{}chr\textgreater{}}
-\DocumentationTok{\#\#  9 Bigg\textasciitilde{}    183    84 black      light      brown           24   male  mascu\textasciitilde{} Tatooine  Human   \textless{}chr\textgreater{}}
-\DocumentationTok{\#\# 10 Obi{-}\textasciitilde{}    182    77 auburn, w\textasciitilde{} fair       blue{-}gray       57   male  mascu\textasciitilde{} Stewjon   Human   \textless{}chr\textgreater{}}
+\DocumentationTok{\#\#    name     height  mass hair\_color skin\_color eye\_color birth\_year sex   gender homeworld species films}
+\DocumentationTok{\#\#    \textless{}chr\textgreater{}     \textless{}int\textgreater{} \textless{}dbl\textgreater{} \textless{}chr\textgreater{}      \textless{}chr\textgreater{}      \textless{}chr\textgreater{}          \textless{}dbl\textgreater{} \textless{}chr\textgreater{} \textless{}chr\textgreater{}  \textless{}chr\textgreater{}     \textless{}chr\textgreater{}   \textless{}lis\textgreater{}}
+\DocumentationTok{\#\#  1 Luke Sk\textasciitilde{}    172    77 blond      fair       blue            19   male  mascu\textasciitilde{} Tatooine  Human   \textless{}chr\textgreater{}}
+\DocumentationTok{\#\#  2 C{-}3PO       167    75 \textless{}NA\textgreater{}       gold       yellow         112   none  mascu\textasciitilde{} Tatooine  Droid   \textless{}chr\textgreater{}}
+\DocumentationTok{\#\#  3 R2{-}D2        96    32 \textless{}NA\textgreater{}       white, bl\textasciitilde{} red             33   none  mascu\textasciitilde{} Naboo     Droid   \textless{}chr\textgreater{}}
+\DocumentationTok{\#\#  4 Darth V\textasciitilde{}    202   136 none       white      yellow          41.9 male  mascu\textasciitilde{} Tatooine  Human   \textless{}chr\textgreater{}}
+\DocumentationTok{\#\#  5 Leia Or\textasciitilde{}    150    49 brown      light      brown           19   fema\textasciitilde{} femin\textasciitilde{} Alderaan  Human   \textless{}chr\textgreater{}}
+\DocumentationTok{\#\#  6 Owen La\textasciitilde{}    178   120 brown, gr\textasciitilde{} light      blue            52   male  mascu\textasciitilde{} Tatooine  Human   \textless{}chr\textgreater{}}
+\DocumentationTok{\#\#  7 Beru Wh\textasciitilde{}    165    75 brown      light      blue            47   fema\textasciitilde{} femin\textasciitilde{} Tatooine  Human   \textless{}chr\textgreater{}}
+\DocumentationTok{\#\#  8 R5{-}D4        97    32 \textless{}NA\textgreater{}       white, red red             NA   none  mascu\textasciitilde{} Tatooine  Droid   \textless{}chr\textgreater{}}
+\DocumentationTok{\#\#  9 Biggs D\textasciitilde{}    183    84 black      light      brown           24   male  mascu\textasciitilde{} Tatooine  Human   \textless{}chr\textgreater{}}
+\DocumentationTok{\#\# 10 Obi{-}Wan\textasciitilde{}    182    77 auburn, w\textasciitilde{} fair       blue{-}gray       57   male  mascu\textasciitilde{} Stewjon   Human   \textless{}chr\textgreater{}}
 \DocumentationTok{\#\# \# i 77 more rows}
 \DocumentationTok{\#\# \# i 3 more variables: vehicles \textless{}list\textgreater{}, starships \textless{}list\textgreater{}, height\_meters \textless{}dbl\textgreater{}}
 \end{Highlighting}
@@ -7793,24 +7585,27 @@ resolvemos, por simulação, um problema cuja solução analítica seria muito t
 amostra \(X_1, \ldots, X_n\) dessa distribuição, \(\overline{X} = \frac{1}{n}\sum_{i=1}^n X_i\),
 deve aproximar-se de 0,5 à medida que \(n\) cresce.
 
-A tabela seguinte mostra as médias de várias amostras simuladas, para diferentes
-dimensões \(n\). Note-se como as médias estão sempre próximas de 0,5, mas com uma variação
+A Tabela \ref{tab:tab-lln-repeticoes} mostra cinco repetições independentes da mesma experiência de simulação, para diferentes valores de \(n\). Note-se como as médias estão sempre próximas de 0.5, mas com uma variação
 que \textbf{diminui} claramente à medida que \(n\) aumenta:
 
-{\def\LTcaptype{none} % do not increment counter
-\begin{longtable}[]{@{}llllll@{}}
-\toprule\noalign{}
-\(n\) & Rép. 1 & Rép. 2 & Rép. 3 & Rép. 4 & Rép. 5 \\
-\midrule\noalign{}
-\endhead
-\bottomrule\noalign{}
-\endlastfoot
-100 & 0,485 & 0,481 & 0,484 & 0,569 & 0,441 \\
-1 000 & 0,497 & 0,506 & 0,480 & 0,498 & 0,499 \\
-10 000 & 0,502 & 0,501 & 0,499 & 0,498 & 0,498 \\
-100 000 & 0,502 & 0,499 & 0,500 & 0,498 & 0,499 \\
-\end{longtable}
-}
+\begin{table}
+
+\caption{\label{tab:tab-lln-repeticoes}Cinco estimativas independentes de uma probabilidade, para diferentes valores de $n$. À medida que $n$ aumenta, as estimativas tendem a concentrar-se em torno do valor teórico.}
+\centering
+\begin{tabular}[t]{r|c|c|c|c|c}
+\hline
+n & Rép. 1 & Rép. 2 & Rép. 3 & Rép. 4 & Rép. 5\\
+\hline
+100 & 0.485 & 0.481 & 0.484 & 0.569 & 0.441\\
+\hline
+1 000 & 0.497 & 0.506 & 0.480 & 0.498 & 0.499\\
+\hline
+10 000 & 0.502 & 0.501 & 0.499 & 0.498 & 0.498\\
+\hline
+100 000 & 0.502 & 0.499 & 0.500 & 0.498 & 0.499\\
+\hline
+\end{tabular}
+\end{table}
 
 Para gerar uma amostra uniforme em \([0, 1]\) usa-se a função \texttt{runif()}:
 
@@ -8021,26 +7816,24 @@ cada uma o R oferece, de forma sistemática, quatro funções.
 O R inclui as distribuições univariadas mais comuns. Para cada distribuição existem
 quatro funções, distinguidas por uma letra inicial:
 
-{\def\LTcaptype{none} % do not increment counter
-\begin{longtable}[]{@{}
-  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}@{}}
-\toprule\noalign{}
-\begin{minipage}[b]{\linewidth}\raggedright
-Função
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-O que devolve
-\end{minipage} \\
-\midrule\noalign{}
-\endhead
-\bottomrule\noalign{}
-\endlastfoot
-\texttt{d}\emph{nome}(\ldots) & a função de probabilidade (discreta) ou densidade (contínua) \\
-\texttt{p}\emph{nome}(\ldots) & a função de distribuição, \(F(x) = P(X \leq x)\) \\
-\texttt{q}\emph{nome}(\ldots) & o quantil correspondente a uma dada probabilidade (o inverso de \texttt{p}) \\
-\texttt{r}\emph{nome}(\ldots) & uma amostra aleatória da distribuição \\
-\end{longtable}
-}
+\begin{table}
+
+\caption{\label{tab:tab-funcoes-distribuicoes}Convenção usada em R para as funções associadas a distribuições de probabilidade.}
+\centering
+\begin{tabular}[t]{l|l}
+\hline
+Prefixo & O que devolve\\
+\hline
+$\texttt{d}$nome(...) & A função de probabilidade, no caso discreto, ou a função densidade, no caso contínuo.\\
+\hline
+$\texttt{p}$nome(...) & A função de distribuição acumulada, isto é, $F(x)=P(X\leq x)$.\\
+\hline
+$\texttt{q}$nome(...) & O quantil correspondente a uma dada probabilidade; em termos práticos, a inversa da função de distribuição.\\
+\hline
+$\texttt{r}$nome(...) & Uma amostra aleatória gerada a partir da distribuição.\\
+\hline
+\end{tabular}
+\end{table}
 
 O \emph{nome} é a abreviatura da distribuição: \texttt{binom}, \texttt{geom}, \texttt{pois}, \texttt{unif}, \texttt{exp},
 \texttt{norm}, e assim por diante.
@@ -10254,15 +10047,88 @@ contínuas.
 
 \section{Variáveis aleatórias discretas}\label{variuxe1veis-aleatuxf3rias-discretas}
 
-Suponha que \(X\) toma os valores \(x_0 < x_1 < x_2 < \cdots\) com probabilidades
-\(p_i = P(X = x_i)\), \(\sum_i p_i = 1\). A sua função de distribuição é a soma acumulada,
-\(F(x_k) = \sum_{i \leq k} p_i\). Aplicar a inversa generalizada significa, aqui, gerar
-\(U \sim U(0, 1)\) e devolver
-\[X = x_i \quad \text{se} \quad F(x_{i-1}) \leq U < F(x_i),\]
-isto é, o menor valor \(x_i\) cuja probabilidade acumulada já ultrapassa \(U\). Que este
-procedimento produz a distribuição certa vê-se de imediato: como
-\(P(a \leq U < b) = b - a\),
-\[P(X = x_i) = P\big(F(x_{i-1}) \leq U < F(x_i)\big) = F(x_i) - F(x_{i-1}) = p_i.\]
+O método da transformada inversa também se aplica a variáveis aleatórias discretas. A
+diferença principal é que, neste caso, a função de distribuição não é contínua: ela é uma
+função em escada, com saltos nos pontos que pertencem ao suporte da variável aleatória.
+
+Suponhamos que \(X\) toma valores
+
+\[
+x_1 < x_2 < x_3 < \cdots
+\]
+
+com probabilidades
+
+\[
+P(X=x_i)=p_i, \qquad i=1,2,\ldots,
+\]
+
+onde \(p_i\geq 0\) e \(\sum_i p_i=1\). A função de distribuição acumulada é dada por
+
+\[
+F(x_i)=P(X\leq x_i)=p_1+\cdots+p_i.
+\]
+
+Neste contexto, a inversa usual de \(F\) não existe no sentido clássico, pois \(F\) não é uma
+função contínua nem estritamente crescente. Por isso, usamos a \textbf{inversa generalizada},
+definida por
+
+\[
+F^{-1}(u)=\inf\{x\in\mathbb{R}: F(x)\geq u\}, \qquad 0<u<1.
+\]
+
+Assim, se \(U\sim U(0,1)\), definimos
+
+\[
+X=F^{-1}(U).
+\]
+
+Em termos práticos, isto significa que escolhemos o menor valor \(x_i\) para o qual a
+função de distribuição acumulada já atingiu ou ultrapassou o valor observado de \(U\).
+Equivalentemente,
+
+\[
+X=x_i
+\quad \text{se} \quad
+F(x_{i-1}) < U \leq F(x_i),
+\]
+
+com a convenção \(F(x_0)=0\).
+
+Esta formulação é particularmente natural no caso discreto: o intervalo
+
+\[
+\bigl(F(x_{i-1}),F(x_i)\bigr]
+\]
+
+tem comprimento
+
+\[
+F(x_i)-F(x_{i-1})=p_i.
+\]
+
+Como \(U\) é uniforme em \((0,1)\), a probabilidade de \(U\) cair nesse intervalo é
+precisamente \(p_i\). Portanto,
+
+\[
+P(X=x_i)
+=
+P\bigl(F(x_{i-1})<U\leq F(x_i)\bigr)
+=
+F(x_i)-F(x_{i-1})
+=
+p_i.
+\]
+
+Logo, a variável \(X=F^{-1}(U)\) tem exactamente a distribuição pretendida.
+
+Como \(U\) é uma variável contínua, a probabilidade de \(U\) tomar exactamente um dos valores
+\(F(x_i)\) é zero. Por isso, pequenas diferenças na escolha dos extremos dos intervalos não
+alteram a distribuição gerada. No entanto, a convenção
+\[
+F^{-1}(u)=\inf\{x:F(x)\geq u\}
+\]
+é a mais rigorosa e a mais usada em teoria da probabilidade.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -10273,21 +10139,24 @@ procedimento produz a distribuição certa vê-se de imediato: como
 \end{Highlighting}
 \end{Shaded}
 
-\textbf{Exemplo 1 (distribuição arbitrária).} Seja \(X\) discreta com \(p_1 = 0{,}20\),
-\(p_2 = 0{,}15\), \(p_3 = 0{,}25\), \(p_4 = 0{,}40\). A sua função de distribuição é
-\[F(x) = \begin{cases} 0, & x < 1 \\ 0{,}20, & 1 \leq x < 2 \\ 0{,}35, & 2 \leq x < 3 \\ 0{,}60, & 3 \leq x < 4 \\ 1, & x \geq 4 \end{cases}\]
+\textbf{Exemplo 1 (distribuição arbitrária).} Seja \(X\) discreta com valores possíveis
+\(1,2,3,4\) e probabilidades \(p_1 = 0{,}20\), \(p_2 = 0{,}15\), \(p_3 = 0{,}25\),
+\(p_4 = 0{,}40\). A sua função de distribuição é
+\[F(x) = \begin{cases} 0, & x < 1 \\ 0{,}20, & 1 \leq x < 2 \\ 0{,}35, & 2 \leq x < 3 \\ 0{,}60, & 3 \leq x < 4 \\ 1, & x \geq 4. \end{cases}\]
 
-Gerando \(U\), devolvemos 1 se \(U < 0{,}20\); 2 se \(0{,}20 \leq U < 0{,}35\); 3 se
-\(0{,}35 \leq U < 0{,}60\); e 4 se \(U \geq 0{,}60\):
+Gerando \(U\), devolvemos 1 se \(0 < U \leq 0{,}20\); 2 se
+\(0{,}20 < U \leq 0{,}35\); 3 se \(0{,}35 < U \leq 0{,}60\); e 4 se
+\(0{,}60 < U \leq 1\). Na prática computacional, devido à continuidade de \(U\), escrever
+as desigualdades com \texttt{\textless{}} ou \texttt{\textless{}=} nos pontos de corte não altera a distribuição gerada.
 
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{gerar\_inversa }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{() \{}
 \NormalTok{  u }\OtherTok{\textless{}{-}} \FunctionTok{runif}\NormalTok{(}\DecValTok{1}\NormalTok{)}
-  \ControlFlowTok{if}\NormalTok{ (u }\SpecialCharTok{\textless{}} \FloatTok{0.20}\NormalTok{)      }\FunctionTok{return}\NormalTok{(}\DecValTok{1}\NormalTok{)}
-  \ControlFlowTok{else} \ControlFlowTok{if}\NormalTok{ (u }\SpecialCharTok{\textless{}} \FloatTok{0.35}\NormalTok{) }\FunctionTok{return}\NormalTok{(}\DecValTok{2}\NormalTok{)}
-  \ControlFlowTok{else} \ControlFlowTok{if}\NormalTok{ (u }\SpecialCharTok{\textless{}} \FloatTok{0.60}\NormalTok{) }\FunctionTok{return}\NormalTok{(}\DecValTok{3}\NormalTok{)}
-  \ControlFlowTok{else}               \FunctionTok{return}\NormalTok{(}\DecValTok{4}\NormalTok{)}
+  \ControlFlowTok{if}\NormalTok{ (u }\SpecialCharTok{\textless{}=} \FloatTok{0.20}\NormalTok{)      }\FunctionTok{return}\NormalTok{(}\DecValTok{1}\NormalTok{)}
+  \ControlFlowTok{else} \ControlFlowTok{if}\NormalTok{ (u }\SpecialCharTok{\textless{}=} \FloatTok{0.35}\NormalTok{) }\FunctionTok{return}\NormalTok{(}\DecValTok{2}\NormalTok{)}
+  \ControlFlowTok{else} \ControlFlowTok{if}\NormalTok{ (u }\SpecialCharTok{\textless{}=} \FloatTok{0.60}\NormalTok{) }\FunctionTok{return}\NormalTok{(}\DecValTok{3}\NormalTok{)}
+  \ControlFlowTok{else}                \FunctionTok{return}\NormalTok{(}\DecValTok{4}\NormalTok{)}
 \NormalTok{\}}
 
 \FunctionTok{set.seed}\NormalTok{(}\DecValTok{123}\NormalTok{)}
@@ -10405,6 +10274,58 @@ sem ciclos: resolvendo \(1 - (1-p)^{y+1} = u\) chega-se a
 \caption{Amostra de uma geométrica (número de insucessos) por transformada inversa.}\label{fig:ti-geom}
 \end{figure}
 
+A distribuição geométrica aparece frequentemente com duas convenções diferentes. Em R, a função \texttt{rgeom()} usa a convenção
+
+\[
+Y = 0,1,2,\ldots,
+\]
+
+em que \(Y\) representa o \textbf{número de insucessos antes do primeiro sucesso}. Neste caso,
+
+\[
+P(Y=y)=p(1-p)^y, \qquad y=0,1,2,\ldots
+\]
+
+e a função de distribuição é
+
+\[
+F_Y(y)=P(Y\leq y)=1-(1-p)^{y+1}.
+\]
+
+Noutra convenção, também muito usada em Probabilidade, a variável aleatória conta o
+\textbf{número de provas até ao primeiro sucesso}. Nesse caso,
+
+\[
+X=1,2,3,\ldots
+\]
+
+e
+
+\[
+P(X=k)=(1-p)^{k-1}p, \qquad k=1,2,3,\ldots
+\]
+
+As duas versões estão relacionadas por
+
+\[
+X = Y+1.
+\]
+
+Assim, em R:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Número de insucessos antes do primeiro sucesso}
+\FunctionTok{rgeom}\NormalTok{(n, }\AttributeTok{prob =}\NormalTok{ p)}
+
+\CommentTok{\# Número de provas até ao primeiro sucesso}
+\FunctionTok{rgeom}\NormalTok{(n, }\AttributeTok{prob =}\NormalTok{ p) }\SpecialCharTok{+} \DecValTok{1}
+\end{Highlighting}
+\end{Shaded}
+
+Por isso, quando um exercício mencionar uma variável geométrica, é essencial verificar
+qual das duas convenções está a ser usada.
+
 \textbf{Exemplo 6 (Poisson).} Para a Poisson, o algoritmo acumula probabilidades como no
 Exemplo 2, mas usa a recursão que liga probabilidades consecutivas,
 \[p_{i+1} = \frac{\lambda}{i + 1}\, p_i, \qquad p_0 = e^{-\lambda},\]
@@ -10444,7 +10365,7 @@ o que evita recalcular fatoriais e exponenciais a cada passo:
 
 \subsection{Exercícios}\label{exercuxedcios-33}
 
-\textbf{1.} Seja \(X\) com \(P(X = 1) = 0{,}2\), \(P(X = 2) = 0{,}5\), \(P(X = 3) = 0{,}3\).
+\textbf{1.} Seja \(X\) com \(P(X = 1) = 0.2\), \(P(X = 2) = 0.5\), \(P(X = 3) = 0.3\).
 
 \begin{itemize}
 \tightlist
@@ -10456,7 +10377,7 @@ o que evita recalcular fatoriais e exponenciais a cada passo:
   Faça um gráfico de barras e compare com as probabilidades teóricas.
 \end{itemize}
 
-\textbf{2.} Uma moeda enviesada tem probabilidade 0,7 de cara e 0,3 de coroa.
+\textbf{2.} Uma moeda enviesada tem probabilidade 0.7 de cara e 0.3 de coroa.
 
 \begin{itemize}
 \tightlist
@@ -10468,13 +10389,16 @@ o que evita recalcular fatoriais e exponenciais a cada passo:
   Compare as proporções de caras e coroas com as probabilidades esperadas.
 \end{itemize}
 
-\textbf{3.} Seja \(X\) com \(P(X = 1) = 0{,}1\), \(P(X = 2) = 0{,}3\), \(P(X = 3) = 0{,}4\),
-\(P(X = 4) = 0{,}2\). Gere 2000 amostras por transformada inversa e compare a distribuição
+\textbf{3.} Seja \(X\) com \(P(X = 1) = 0.1\), \(P(X = 2) = 0.3\), \(P(X = 3) = 0.4\),
+\(P(X = 4) = 0.2\). Gere 2000 amostras por transformada inversa e compare a distribuição
 empírica com a teórica.
 
-\textbf{4.} Seja \(X\) geométrica com \(p = 0{,}2\) (número de provas até ao primeiro sucesso,
-\(P(X = k) = (1 - p)^{k-1}p\)). Com \texttt{set.seed(1234)}, gere 1000 valores por transformada
-inversa (terá de determinar a função de distribuição de \(X\)) e indique, com 4 casas
+\textbf{4.} Seja \(X\) uma variável geométrica com parâmetro \(p = 0.2\), na convenção em que
+\(X\) representa o número de provas até ao primeiro sucesso. Assim,
+\[
+P(X=k)=(1-p)^{k-1}p, \qquad k=1,2,\ldots
+\]
+Com \texttt{set.seed(1234)}, gere 1000 valores por transformada inversa e indique, com 4 casas
 decimais, a proporção de valores superiores à soma da média com o desvio padrão
 amostrais.
 
@@ -10691,12 +10615,27 @@ que surgiam os primeiros computadores eletrónicos capazes de produzir e
 manipular grandes quantidades de números pseudoaleatórios.
 
 O que torna o método notável é a sua generalidade e a elegância do argumento
-que o sustenta. Não exige o conhecimento da função de distribuição, nem sequer
-que a densidade \(f\) esteja normalizada (mais à frente veremos por que razão
-isto é útil): basta saber avaliar \(f\) ponto a ponto e dispor de uma
-distribuição auxiliar cómoda. Mais de setenta anos depois, continua a ser um
-dos pilares da simulação e o ponto de partida conceptual para técnicas
-modernas, como os métodos de Monte Carlo por cadeias de Markov (MCMC).
+que o sustenta. Não exige o conhecimento da função de distribuição: basta saber
+avaliar a densidade alvo, ou uma função proporcional a ela, ponto a ponto, e
+dispor de uma distribuição auxiliar cómoda. Mais à frente veremos que esta
+possibilidade é particularmente útil quando a constante de normalização da
+distribuição alvo é desconhecida.
+
+Neste capítulo aprendemos a gerar observações de uma distribuição cuja densidade
+alvo \(f\) é conhecida, mas cuja função de distribuição acumulada pode ser
+difícil de obter ou de inverter.
+
+O método da aceitação-rejeição constrói amostras dessa distribuição a partir de
+uma densidade auxiliar \(g\), da qual sabemos simular, desde que exista uma
+constante \(c>0\) tal que
+\[
+f(x) \leq c\,g(x)
+\]
+para todos os valores \(x\) no suporte da distribuição alvo.
+
+A ideia central é gerar candidatos a partir de \(g\) e aceitá-los com uma
+probabilidade cuidadosamente escolhida, de modo que os valores aceites tenham
+exactamente a distribuição pretendida.
 
 \section{A ideia geométrica}\label{a-ideia-geomuxe9trica}
 
@@ -10713,12 +10652,6 @@ mais simples --- a região sob uma curva \(c\,g(x)\), onde \(g\) é uma densidad
 de simular e \(c\) é uma constante que garante que \(c\,g\) fica sempre \emph{acima} de
 \(f\). Amostramos uniformemente sob a curva mais fácil e ficamos apenas com os
 pontos que caem também sob \(f\). Os restantes são descartados.
-
-Aprender a gerar observações de uma densidade \(f\) da qual não sabemos amostrar
-diretamente, recorrendo a uma densidade auxiliar \(g\) de fácil simulação, através
-do critério de aceitação-rejeição de von Neumann. No fim do capítulo, deverá ser
-capaz de escolher uma proposta \(g\) adequada, determinar a constante \(c\) e
-implementar o algoritmo em R.
 
 \section{Formalização do método}\label{formalizauxe7uxe3o-do-muxe9todo}
 
@@ -10796,6 +10729,33 @@ p = P(\text{aceitar})
 = \frac{1}{c}\int f(y)\, dy
 = \frac{1}{c}.
 \]
+
+A identidade \(P(\text{aceitar})=1/c\) pressupõe que \(f\) é uma densidade
+normalizada, isto é,
+\[
+\int f(y)\,dy = 1.
+\]
+Se, em vez de uma densidade normalizada, trabalharmos com uma função
+\(\tilde f\) apenas proporcional à densidade alvo, então a interpretação da
+taxa de aceitação muda. Nesse caso, existe uma constante \(Z>0\) tal que
+\[
+f(y)=\frac{\tilde f(y)}{Z},
+\]
+onde \(f\) é a densidade normalizada e \(Z=\int \tilde f(y)\,dy\) é a constante
+de normalização. Se usarmos uma constante \(\tilde c\) tal que
+\[
+\tilde f(y) \leq \tilde c\,g(y),
+\]
+a probabilidade média de aceitação passa a ser
+\[
+P(\text{aceitar})=\frac{Z}{\tilde c},
+\]
+e não necessariamente \(1/\tilde c\).
+
+Assim, quando a função alvo usada no algoritmo já está normalizada como
+densidade, a taxa teórica de aceitação é \(1/c\). Quando se trabalha com uma
+função proporcional à densidade, a constante de normalização altera a
+interpretação directa dessa taxa.
 
 Agora, a função de distribuição do valor devolvido é a de \(Y\) condicionada à
 aceitação. Para qualquer \(x\),
@@ -11068,18 +11028,53 @@ o método da inversão (\texttt{rnorm}), mais rápido, mas o argumento da
 aceitação-rejeição permanece o mais transparente para compreender \emph{porque é que}
 tais geradores funcionam.
 
-\section{O caso de densidades não normalizadas}\label{o-caso-de-densidades-nuxe3o-normalizadas}
+\section{O caso de funções não normalizadas}\label{o-caso-de-funuxe7uxf5es-nuxe3o-normalizadas}
 
-Uma virtude do método, que merece destaque, é a seguinte: para aplicar a
-aceitação-rejeição não precisamos de conhecer a \emph{constante de normalização} de
-\(f\). Suponhamos que só sabemos que a densidade alvo é proporcional a uma função
-conhecida \(\tilde f\), isto é, \(f(x) = \tilde f(x)/Z\), com \(Z = \int \tilde f\)
-possivelmente desconhecido ou difícil de calcular. Se encontrarmos \(\tilde c\)
-tal que \(\tilde f(x) \leq \tilde c\, g(x)\), o critério de aceitação
-\(U \leq \tilde f(Y)/[\tilde c\, g(Y)]\) produz observações de \(f\) na mesma, porque
-a constante \(Z\) se cancela no quociente. Esta propriedade é decisiva na
-estatística bayesiana, onde as distribuições \emph{a posteriori} são frequentemente
-conhecidas apenas a menos de uma constante.
+Uma virtude importante do método é que, em muitas situações, não precisamos de
+conhecer explicitamente a constante de normalização da distribuição alvo.
+
+Suponhamos que queremos amostrar de uma densidade \(f\), mas conhecemos apenas
+uma função \(\tilde f\) proporcional a ela. Isto significa que
+
+\[
+f(x)=\frac{\tilde f(x)}{Z},
+\qquad
+Z=\int \tilde f(x)\,dx,
+\]
+
+onde \(Z\) é a constante de normalização. Em muitas aplicações, sobretudo em
+estatística bayesiana, \(Z\) pode ser difícil ou impossível de calcular
+analiticamente.
+
+O método da aceitação-rejeição continua a ser aplicável se encontrarmos uma
+densidade de proposta \(g\) e uma constante \(\tilde c\) tais que
+
+\[
+\tilde f(x) \leq \tilde c\,g(x)
+\]
+
+para todos os \(x\) no suporte da distribuição alvo. Nesse caso, podemos aceitar
+um candidato \(Y\sim g\) quando
+
+\[
+U \leq \frac{\tilde f(Y)}{\tilde c\,g(Y)}.
+\]
+
+Os valores aceites têm densidade proporcional a \(\tilde f\), logo têm a
+densidade alvo \(f\). A constante de normalização \(Z\) não precisa de ser
+conhecida para executar o algoritmo.
+
+Contudo, há uma diferença importante: quando usamos uma densidade normalizada
+\(f\), a probabilidade média de aceitação é \(1/c\). Quando usamos uma função
+não normalizada \(\tilde f\), a probabilidade média de aceitação é
+
+\[
+P(\text{aceitar})=\frac{Z}{\tilde c}.
+\]
+
+Portanto, a taxa de aceitação observada pode até fornecer informação sobre a
+constante de normalização \(Z\), mas já não deve ser interpretada simplesmente
+como \(1/\tilde c\).
 
 \section{Síntese}\label{suxedntese}
 

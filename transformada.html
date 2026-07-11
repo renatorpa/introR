@@ -139,32 +139,89 @@ contínuas.</p>
 <h2>
 <span class="header-section-number">22.2</span> Variáveis aleatórias discretas<a class="anchor" aria-label="anchor" href="#vari%C3%A1veis-aleat%C3%B3rias-discretas"><i class="fas fa-link"></i></a>
 </h2>
-<p>Suponha que <span class="math inline">\(X\)</span> toma os valores <span class="math inline">\(x_0 &lt; x_1 &lt; x_2 &lt; \cdots\)</span> com probabilidades
-<span class="math inline">\(p_i = P(X = x_i)\)</span>, <span class="math inline">\(\sum_i p_i = 1\)</span>. A sua função de distribuição é a soma acumulada,
-<span class="math inline">\(F(x_k) = \sum_{i \leq k} p_i\)</span>. Aplicar a inversa generalizada significa, aqui, gerar
-<span class="math inline">\(U \sim U(0, 1)\)</span> e devolver
-<span class="math display">\[X = x_i \quad \text{se} \quad F(x_{i-1}) \leq U &lt; F(x_i),\]</span>
-isto é, o menor valor <span class="math inline">\(x_i\)</span> cuja probabilidade acumulada já ultrapassa <span class="math inline">\(U\)</span>. Que este
-procedimento produz a distribuição certa vê-se de imediato: como
-<span class="math inline">\(P(a \leq U &lt; b) = b - a\)</span>,
-<span class="math display">\[P(X = x_i) = P\big(F(x_{i-1}) \leq U &lt; F(x_i)\big) = F(x_i) - F(x_{i-1}) = p_i.\]</span></p>
+<p>O método da transformada inversa também se aplica a variáveis aleatórias discretas. A
+diferença principal é que, neste caso, a função de distribuição não é contínua: ela é uma
+função em escada, com saltos nos pontos que pertencem ao suporte da variável aleatória.</p>
+<p>Suponhamos que <span class="math inline">\(X\)</span> toma valores</p>
+<p><span class="math display">\[
+x_1 &lt; x_2 &lt; x_3 &lt; \cdots
+\]</span></p>
+<p>com probabilidades</p>
+<p><span class="math display">\[
+P(X=x_i)=p_i, \qquad i=1,2,\ldots,
+\]</span></p>
+<p>onde <span class="math inline">\(p_i\geq 0\)</span> e <span class="math inline">\(\sum_i p_i=1\)</span>. A função de distribuição acumulada é dada por</p>
+<p><span class="math display">\[
+F(x_i)=P(X\leq x_i)=p_1+\cdots+p_i.
+\]</span></p>
+<p>Neste contexto, a inversa usual de <span class="math inline">\(F\)</span> não existe no sentido clássico, pois <span class="math inline">\(F\)</span> não é uma
+função contínua nem estritamente crescente. Por isso, usamos a <strong>inversa generalizada</strong>,
+definida por</p>
+<p><span class="math display">\[
+F^{-1}(u)=\inf\{x\in\mathbb{R}: F(x)\geq u\}, \qquad 0&lt;u&lt;1.
+\]</span></p>
+<p>Assim, se <span class="math inline">\(U\sim U(0,1)\)</span>, definimos</p>
+<p><span class="math display">\[
+X=F^{-1}(U).
+\]</span></p>
+<p>Em termos práticos, isto significa que escolhemos o menor valor <span class="math inline">\(x_i\)</span> para o qual a
+função de distribuição acumulada já atingiu ou ultrapassou o valor observado de <span class="math inline">\(U\)</span>.
+Equivalentemente,</p>
+<p><span class="math display">\[
+X=x_i
+\quad \text{se} \quad
+F(x_{i-1}) &lt; U \leq F(x_i),
+\]</span></p>
+<p>com a convenção <span class="math inline">\(F(x_0)=0\)</span>.</p>
+<p>Esta formulação é particularmente natural no caso discreto: o intervalo</p>
+<p><span class="math display">\[
+\bigl(F(x_{i-1}),F(x_i)\bigr]
+\]</span></p>
+<p>tem comprimento</p>
+<p><span class="math display">\[
+F(x_i)-F(x_{i-1})=p_i.
+\]</span></p>
+<p>Como <span class="math inline">\(U\)</span> é uniforme em <span class="math inline">\((0,1)\)</span>, a probabilidade de <span class="math inline">\(U\)</span> cair nesse intervalo é
+precisamente <span class="math inline">\(p_i\)</span>. Portanto,</p>
+<p><span class="math display">\[
+P(X=x_i)
+=
+P\bigl(F(x_{i-1})&lt;U\leq F(x_i)\bigr)
+=
+F(x_i)-F(x_{i-1})
+=
+p_i.
+\]</span></p>
+<p>Logo, a variável <span class="math inline">\(X=F^{-1}(U)\)</span> tem exactamente a distribuição pretendida.</p>
+<div class="nota">
+<p>Como <span class="math inline">\(U\)</span> é uma variável contínua, a probabilidade de <span class="math inline">\(U\)</span> tomar exactamente um dos valores
+<span class="math inline">\(F(x_i)\)</span> é zero. Por isso, pequenas diferenças na escolha dos extremos dos intervalos não
+alteram a distribuição gerada. No entanto, a convenção
+<span class="math display">\[
+F^{-1}(u)=\inf\{x:F(x)\geq u\}
+\]</span>
+é a mais rigorosa e a mais usada em teoria da probabilidade.</p>
+</div>
 <div class="sourceCode" id="cb289"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Esquema do algoritmo</span></span>
 <span><span class="co"># 1. Gerar u ~ U(0, 1)</span></span>
 <span><span class="co"># 2. Percorrer os valores, acumulando probabilidades, até F(x_i) &gt;= u</span></span>
 <span><span class="co"># 3. Devolver esse x_i</span></span></code></pre></div>
-<p><strong>Exemplo 1 (distribuição arbitrária).</strong> Seja <span class="math inline">\(X\)</span> discreta com <span class="math inline">\(p_1 = 0{,}20\)</span>,
-<span class="math inline">\(p_2 = 0{,}15\)</span>, <span class="math inline">\(p_3 = 0{,}25\)</span>, <span class="math inline">\(p_4 = 0{,}40\)</span>. A sua função de distribuição é
-<span class="math display">\[F(x) = \begin{cases} 0, &amp; x &lt; 1 \\ 0{,}20, &amp; 1 \leq x &lt; 2 \\ 0{,}35, &amp; 2 \leq x &lt; 3 \\ 0{,}60, &amp; 3 \leq x &lt; 4 \\ 1, &amp; x \geq 4 \end{cases}\]</span></p>
-<p>Gerando <span class="math inline">\(U\)</span>, devolvemos 1 se <span class="math inline">\(U &lt; 0{,}20\)</span>; 2 se <span class="math inline">\(0{,}20 \leq U &lt; 0{,}35\)</span>; 3 se
-<span class="math inline">\(0{,}35 \leq U &lt; 0{,}60\)</span>; e 4 se <span class="math inline">\(U \geq 0{,}60\)</span>:</p>
+<p><strong>Exemplo 1 (distribuição arbitrária).</strong> Seja <span class="math inline">\(X\)</span> discreta com valores possíveis
+<span class="math inline">\(1,2,3,4\)</span> e probabilidades <span class="math inline">\(p_1 = 0{,}20\)</span>, <span class="math inline">\(p_2 = 0{,}15\)</span>, <span class="math inline">\(p_3 = 0{,}25\)</span>,
+<span class="math inline">\(p_4 = 0{,}40\)</span>. A sua função de distribuição é
+<span class="math display">\[F(x) = \begin{cases} 0, &amp; x &lt; 1 \\ 0{,}20, &amp; 1 \leq x &lt; 2 \\ 0{,}35, &amp; 2 \leq x &lt; 3 \\ 0{,}60, &amp; 3 \leq x &lt; 4 \\ 1, &amp; x \geq 4. \end{cases}\]</span></p>
+<p>Gerando <span class="math inline">\(U\)</span>, devolvemos 1 se <span class="math inline">\(0 &lt; U \leq 0{,}20\)</span>; 2 se
+<span class="math inline">\(0{,}20 &lt; U \leq 0{,}35\)</span>; 3 se <span class="math inline">\(0{,}35 &lt; U \leq 0{,}60\)</span>; e 4 se
+<span class="math inline">\(0{,}60 &lt; U \leq 1\)</span>. Na prática computacional, devido à continuidade de <span class="math inline">\(U\)</span>, escrever
+as desigualdades com <code>&lt;</code> ou <code>&lt;=</code> nos pontos de corte não altera a distribuição gerada.</p>
 <div class="sourceCode" id="cb290"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">gerar_inversa</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="va">u</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html">runif</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span></span>
-<span>  <span class="kw">if</span> <span class="op">(</span><span class="va">u</span> <span class="op">&lt;</span> <span class="fl">0.20</span><span class="op">)</span>      <span class="kw"><a href="https://rdrr.io/r/base/function.html">return</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span></span>
-<span>  <span class="kw">else</span> <span class="kw">if</span> <span class="op">(</span><span class="va">u</span> <span class="op">&lt;</span> <span class="fl">0.35</span><span class="op">)</span> <span class="kw"><a href="https://rdrr.io/r/base/function.html">return</a></span><span class="op">(</span><span class="fl">2</span><span class="op">)</span></span>
-<span>  <span class="kw">else</span> <span class="kw">if</span> <span class="op">(</span><span class="va">u</span> <span class="op">&lt;</span> <span class="fl">0.60</span><span class="op">)</span> <span class="kw"><a href="https://rdrr.io/r/base/function.html">return</a></span><span class="op">(</span><span class="fl">3</span><span class="op">)</span></span>
-<span>  <span class="kw">else</span>               <span class="kw"><a href="https://rdrr.io/r/base/function.html">return</a></span><span class="op">(</span><span class="fl">4</span><span class="op">)</span></span>
+<span>  <span class="kw">if</span> <span class="op">(</span><span class="va">u</span> <span class="op">&lt;=</span> <span class="fl">0.20</span><span class="op">)</span>      <span class="kw"><a href="https://rdrr.io/r/base/function.html">return</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span></span>
+<span>  <span class="kw">else</span> <span class="kw">if</span> <span class="op">(</span><span class="va">u</span> <span class="op">&lt;=</span> <span class="fl">0.35</span><span class="op">)</span> <span class="kw"><a href="https://rdrr.io/r/base/function.html">return</a></span><span class="op">(</span><span class="fl">2</span><span class="op">)</span></span>
+<span>  <span class="kw">else</span> <span class="kw">if</span> <span class="op">(</span><span class="va">u</span> <span class="op">&lt;=</span> <span class="fl">0.60</span><span class="op">)</span> <span class="kw"><a href="https://rdrr.io/r/base/function.html">return</a></span><span class="op">(</span><span class="fl">3</span><span class="op">)</span></span>
+<span>  <span class="kw">else</span>                <span class="kw"><a href="https://rdrr.io/r/base/function.html">return</a></span><span class="op">(</span><span class="fl">4</span><span class="op">)</span></span>
 <span><span class="op">}</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span></span>
@@ -250,11 +307,47 @@ sem ciclos: resolvendo <span class="math inline">\(1 - (1-p)^{y+1} = u\)</span> 
 Figura 22.3: Amostra de uma geométrica (número de insucessos) por transformada inversa.
 </p>
 </div>
+<div class="atencao">
+<p>A distribuição geométrica aparece frequentemente com duas convenções diferentes. Em R, a função <code><a href="https://rdrr.io/r/stats/Geometric.html">rgeom()</a></code> usa a convenção</p>
+<p><span class="math display">\[
+Y = 0,1,2,\ldots,
+\]</span></p>
+<p>em que <span class="math inline">\(Y\)</span> representa o <strong>número de insucessos antes do primeiro sucesso</strong>. Neste caso,</p>
+<p><span class="math display">\[
+P(Y=y)=p(1-p)^y, \qquad y=0,1,2,\ldots
+\]</span></p>
+<p>e a função de distribuição é</p>
+<p><span class="math display">\[
+F_Y(y)=P(Y\leq y)=1-(1-p)^{y+1}.
+\]</span></p>
+<p>Noutra convenção, também muito usada em Probabilidade, a variável aleatória conta o
+<strong>número de provas até ao primeiro sucesso</strong>. Nesse caso,</p>
+<p><span class="math display">\[
+X=1,2,3,\ldots
+\]</span></p>
+<p>e</p>
+<p><span class="math display">\[
+P(X=k)=(1-p)^{k-1}p, \qquad k=1,2,3,\ldots
+\]</span></p>
+<p>As duas versões estão relacionadas por</p>
+<p><span class="math display">\[
+X = Y+1.
+\]</span></p>
+<p>Assim, em R:</p>
+<div class="sourceCode" id="cb295"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Número de insucessos antes do primeiro sucesso</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/stats/Geometric.html">rgeom</a></span><span class="op">(</span><span class="va">n</span>, prob <span class="op">=</span> <span class="va">p</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Número de provas até ao primeiro sucesso</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/stats/Geometric.html">rgeom</a></span><span class="op">(</span><span class="va">n</span>, prob <span class="op">=</span> <span class="va">p</span><span class="op">)</span> <span class="op">+</span> <span class="fl">1</span></span></code></pre></div>
+<p>Por isso, quando um exercício mencionar uma variável geométrica, é essencial verificar
+qual das duas convenções está a ser usada.</p>
+</div>
 <p><strong>Exemplo 6 (Poisson).</strong> Para a Poisson, o algoritmo acumula probabilidades como no
 Exemplo 2, mas usa a recursão que liga probabilidades consecutivas,
 <span class="math display">\[p_{i+1} = \frac{\lambda}{i + 1}\, p_i, \qquad p_0 = e^{-\lambda},\]</span>
 o que evita recalcular fatoriais e exponenciais a cada passo:</p>
-<div class="sourceCode" id="cb295"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb296"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">gerar_poisson_inversa</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">lambda</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="va">U</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html">runif</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span></span>
 <span>  <span class="va">p</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html">exp</a></span><span class="op">(</span><span class="op">-</span><span class="va">lambda</span><span class="op">)</span>   <span class="co"># P(X = 0)</span></span>
@@ -283,24 +376,27 @@ Figura 22.4: Amostra de uma Poisson(3) por transformada inversa.
 <h3>
 <span class="header-section-number">22.2.1</span> Exercícios<a class="anchor" aria-label="anchor" href="#exerc%C3%ADcios-33"><i class="fas fa-link"></i></a>
 </h3>
-<p><strong>1.</strong> Seja <span class="math inline">\(X\)</span> com <span class="math inline">\(P(X = 1) = 0{,}2\)</span>, <span class="math inline">\(P(X = 2) = 0{,}5\)</span>, <span class="math inline">\(P(X = 3) = 0{,}3\)</span>.</p>
+<p><strong>1.</strong> Seja <span class="math inline">\(X\)</span> com <span class="math inline">\(P(X = 1) = 0.2\)</span>, <span class="math inline">\(P(X = 2) = 0.5\)</span>, <span class="math inline">\(P(X = 3) = 0.3\)</span>.</p>
 <ul>
 <li>Calcule a função de distribuição de <span class="math inline">\(X\)</span>.</li>
 <li>Gere 1000 amostras de <span class="math inline">\(X\)</span> por transformada inversa.</li>
 <li>Faça um gráfico de barras e compare com as probabilidades teóricas.</li>
 </ul>
-<p><strong>2.</strong> Uma moeda enviesada tem probabilidade 0,7 de cara e 0,3 de coroa.</p>
+<p><strong>2.</strong> Uma moeda enviesada tem probabilidade 0.7 de cara e 0.3 de coroa.</p>
 <ul>
 <li>Defina a função de distribuição da experiência.</li>
 <li>Simule 500 lançamentos por transformada inversa.</li>
 <li>Compare as proporções de caras e coroas com as probabilidades esperadas.</li>
 </ul>
-<p><strong>3.</strong> Seja <span class="math inline">\(X\)</span> com <span class="math inline">\(P(X = 1) = 0{,}1\)</span>, <span class="math inline">\(P(X = 2) = 0{,}3\)</span>, <span class="math inline">\(P(X = 3) = 0{,}4\)</span>,
-<span class="math inline">\(P(X = 4) = 0{,}2\)</span>. Gere 2000 amostras por transformada inversa e compare a distribuição
+<p><strong>3.</strong> Seja <span class="math inline">\(X\)</span> com <span class="math inline">\(P(X = 1) = 0.1\)</span>, <span class="math inline">\(P(X = 2) = 0.3\)</span>, <span class="math inline">\(P(X = 3) = 0.4\)</span>,
+<span class="math inline">\(P(X = 4) = 0.2\)</span>. Gere 2000 amostras por transformada inversa e compare a distribuição
 empírica com a teórica.</p>
-<p><strong>4.</strong> Seja <span class="math inline">\(X\)</span> geométrica com <span class="math inline">\(p = 0{,}2\)</span> (número de provas até ao primeiro sucesso,
-<span class="math inline">\(P(X = k) = (1 - p)^{k-1}p\)</span>). Com <code>set.seed(1234)</code>, gere 1000 valores por transformada
-inversa (terá de determinar a função de distribuição de <span class="math inline">\(X\)</span>) e indique, com 4 casas
+<p><strong>4.</strong> Seja <span class="math inline">\(X\)</span> uma variável geométrica com parâmetro <span class="math inline">\(p = 0.2\)</span>, na convenção em que
+<span class="math inline">\(X\)</span> representa o número de provas até ao primeiro sucesso. Assim,
+<span class="math display">\[
+P(X=k)=(1-p)^{k-1}p, \qquad k=1,2,\ldots
+\]</span>
+Com <code>set.seed(1234)</code>, gere 1000 valores por transformada inversa e indique, com 4 casas
 decimais, a proporção de valores superiores à soma da média com o desvio padrão
 amostrais.</p>
 </div>
@@ -327,7 +423,7 @@ número uniforme.</p>
 <span class="math display">\[F(x) = \int_0^x 2t\, dt = x^2, \qquad 0 &lt; x &lt; 1.\]</span>
 Como <span class="math inline">\(F(x) = x^2\)</span> é invertível em <span class="math inline">\((0, 1)\)</span>, com <span class="math inline">\(F^{-1}(u) = \sqrt{u}\)</span>, a receita diz que
 <span class="math inline">\(X = \sqrt{U}\)</span> tem a distribuição pretendida:</p>
-<div class="sourceCode" id="cb296"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb297"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span></span>
 <span><span class="va">n</span> <span class="op">&lt;-</span> <span class="fl">10000</span></span>
 <span><span class="va">simlist</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html">runif</a></span><span class="op">(</span><span class="va">n</span><span class="op">)</span><span class="op">)</span></span>
@@ -343,7 +439,7 @@ Figura 22.5: Amostra da densidade f(x) = 2x gerada por X = sqrt(U).
 <p><strong>Exemplo 2 (uniforme <span class="math inline">\(U(a, b)\)</span>).</strong> A função de distribuição da uniforme é
 <span class="math inline">\(F(x) = \frac{x - a}{b - a}\)</span>, cuja inversa é <span class="math inline">\(F^{-1}(u) = a + (b - a)u\)</span>. Logo,
 <span class="math inline">\(X = a + (b - a)U\)</span>:</p>
-<div class="sourceCode" id="cb297"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb298"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">a</span> <span class="op">&lt;-</span> <span class="op">-</span><span class="fl">2</span>; <span class="va">b</span> <span class="op">&lt;-</span> <span class="fl">2</span>; <span class="va">n</span> <span class="op">&lt;-</span> <span class="fl">10000</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span></span>
 <span><span class="va">simlist</span> <span class="op">&lt;-</span> <span class="va">a</span> <span class="op">+</span> <span class="op">(</span><span class="va">b</span> <span class="op">-</span> <span class="va">a</span><span class="op">)</span> <span class="op">*</span> <span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html">runif</a></span><span class="op">(</span><span class="va">n</span><span class="op">)</span></span>
@@ -365,7 +461,7 @@ Assim, <span class="math inline">\(X = -\ln(1 - U)\)</span> gera uma exponencial
 Além disso, se <span class="math inline">\(X\)</span> é exponencial de taxa 1, então <span class="math inline">\(\frac{1}{\lambda}X\)</span> é exponencial de
 taxa <span class="math inline">\(\lambda\)</span>; logo, uma exponencial de taxa <span class="math inline">\(\lambda\)</span> gera-se por
 <span class="math display">\[X = -\frac{1}{\lambda}\ln(U).\]</span></p>
-<div class="sourceCode" id="cb298"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb299"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">lambda</span> <span class="op">&lt;-</span> <span class="fl">3</span>; <span class="va">n</span> <span class="op">&lt;-</span> <span class="fl">10000</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span></span>
 <span><span class="va">simlist</span> <span class="op">&lt;-</span> <span class="op">-</span><span class="fu"><a href="https://rdrr.io/r/base/Log.html">log</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html">runif</a></span><span class="op">(</span><span class="va">n</span><span class="op">)</span><span class="op">)</span> <span class="op">/</span> <span class="va">lambda</span></span>
@@ -487,7 +583,7 @@ métodos — o de <strong>aceitação-rejeição</strong> — que dedicamos o pr
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Introdução ao R e à Simulação Estatística</strong>: Um Laboratório de Estatística Computacional" was written by Renato de Paula and Nuno Brites. It was last built on 07 de July de 2026.</p>
+    <p>"<strong>Introdução ao R e à Simulação Estatística</strong>: Um Laboratório de Estatística Computacional" was written by Renato de Paula and Nuno Brites. It was last built on 11 de July de 2026.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

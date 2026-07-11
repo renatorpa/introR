@@ -238,13 +238,13 @@ frequencista da probabilidade e o método de Monte Carlo.</p>
 repetido de um dado equilibrado, cuja média teórica é
 <span class="math inline">\(\mu = (1+2+3+4+5+6)/6 = 3{,}5\)</span>, e observemos a média acumulada
 <span class="math inline">\(\bar{X}_n\)</span> a estabilizar em torno desse valor à medida que <span class="math inline">\(n\)</span> cresce.</p>
-<div class="sourceCode" id="cb305"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb306"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">2024</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">n</span> <span class="op">&lt;-</span> <span class="fl">5000</span></span>
 <span><span class="va">lancamentos</span>   <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">6</span>, size <span class="op">=</span> <span class="va">n</span>, replace <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
 <span><span class="va">media_acumulada</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cumsum.html">cumsum</a></span><span class="op">(</span><span class="va">lancamentos</span><span class="op">)</span> <span class="op">/</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq_along</a></span><span class="op">(</span><span class="va">lancamentos</span><span class="op">)</span></span></code></pre></div>
-<div class="sourceCode" id="cb306"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb307"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">media_acumulada</span>, type <span class="op">=</span> <span class="st">"l"</span>, col <span class="op">=</span> <span class="st">"#10656d"</span>, lwd <span class="op">=</span> <span class="fl">1.2</span>,</span>
 <span>     ylim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2.5</span>, <span class="fl">4.5</span><span class="op">)</span>, log <span class="op">=</span> <span class="st">"x"</span>,</span>
 <span>     xlab <span class="op">=</span> <span class="st">"número de lançamentos (escala logarítmica)"</span>,</span>
@@ -261,7 +261,7 @@ acumulada oscila bastante, mas rapidamente se aproxima de <span class="math inli
 permanece. A escala logarítmica no eixo horizontal ajuda a ver que a
 estabilização não é fruto do acaso de uma única trajetória. Para o confirmar,
 sobreponhamos várias trajetórias independentes.</p>
-<div class="sourceCode" id="cb307"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb308"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">2024</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="cn">NULL</span>, xlim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="va">n</span><span class="op">)</span>, ylim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2.5</span>, <span class="fl">4.5</span><span class="op">)</span>, log <span class="op">=</span> <span class="st">"x"</span>,</span>
@@ -329,7 +329,7 @@ assimétrica — a exponencial de parâmetro <span class="math inline">\(1\)</sp
 desvio-padrão <span class="math inline">\(\sigma = 1\)</span>, e cuja densidade nada tem de “sino”. Vamos gerar
 muitas amostras de tamanho <span class="math inline">\(n\)</span>, calcular a média de cada uma, e observar a
 distribuição dessas médias à medida que <span class="math inline">\(n\)</span> aumenta.</p>
-<div class="sourceCode" id="cb308"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb309"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">2024</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">simular_medias</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">n</span>, <span class="va">replicas</span> <span class="op">=</span> <span class="fl">10000</span><span class="op">)</span> <span class="op">{</span></span>
@@ -341,7 +341,7 @@ distribuição dessas médias à medida que <span class="math inline">\(n\)</spa
 <span><span class="va">z1</span>  <span class="op">&lt;-</span> <span class="fu">simular_medias</span><span class="op">(</span><span class="fl">1</span><span class="op">)</span></span>
 <span><span class="va">z5</span>  <span class="op">&lt;-</span> <span class="fu">simular_medias</span><span class="op">(</span><span class="fl">5</span><span class="op">)</span></span>
 <span><span class="va">z30</span> <span class="op">&lt;-</span> <span class="fu">simular_medias</span><span class="op">(</span><span class="fl">30</span><span class="op">)</span></span></code></pre></div>
-<div class="sourceCode" id="cb309"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb310"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">op</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span><span class="op">(</span>mfrow <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">3</span><span class="op">)</span>, mar <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">4</span>, <span class="fl">4</span>, <span class="fl">2</span>, <span class="fl">1</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="kw">for</span> <span class="op">(</span><span class="va">par_z</span> <span class="kw">in</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="va">z1</span>, <span class="st">"n = 1"</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="va">z5</span>, <span class="st">"n = 5"</span><span class="op">)</span>,</span>
 <span>                    <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="va">z30</span>, <span class="st">"n = 30"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
@@ -356,7 +356,7 @@ distribuição dessas médias à medida que <span class="math inline">\(n\)</spa
 Figura 24.3: Distribuição da média amostral padronizada de observações exponenciais, para amostras de tamanho crescente. A curva a cheio é a densidade normal padrão. À medida que n aumenta, a assimetria da exponencial esbate-se e a distribuição das médias aproxima-se da normal.
 </p>
 </div>
-<div class="sourceCode" id="cb310"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb311"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span><span class="op">(</span><span class="va">op</span><span class="op">)</span></span></code></pre></div>
 <p>A sequência de histogramas conta toda a história. Para <span class="math inline">\(n = 1\)</span>, a distribuição
 das médias é simplesmente a própria exponencial padronizada — visivelmente
@@ -367,7 +367,7 @@ com um sino, é a demonstração visual da universalidade do teorema.</p>
 <p>Podemos confirmar a normalidade de forma mais fina com um gráfico
 quantil-quantil, que compara os quantis empíricos com os da normal padrão. Se a
 aproximação for boa, os pontos alinham-se sobre a reta.</p>
-<div class="sourceCode" id="cb311"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb312"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/qqnorm.html">qqnorm</a></span><span class="op">(</span><span class="va">z30</span>, main <span class="op">=</span> <span class="st">""</span>, col <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grDevices/adjustcolor.html">adjustcolor</a></span><span class="op">(</span><span class="st">"#10656d"</span>, <span class="fl">0.4</span><span class="op">)</span>, pch <span class="op">=</span> <span class="fl">19</span>, cex <span class="op">=</span> <span class="fl">0.4</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/stats/qqnorm.html">qqline</a></span><span class="op">(</span><span class="va">z30</span>, lwd <span class="op">=</span> <span class="fl">2</span>, col <span class="op">=</span> <span class="st">"grey30"</span><span class="op">)</span></span></code></pre></div>
 <div class="figure" style="text-align: center">
@@ -391,7 +391,7 @@ e o teorema garante que, para <span class="math inline">\(n\)</span> grande,</p>
 <p>É este resultado que justifica a clássica aproximação da binomial pela normal.
 Ilustremo-lo comparando a distribuição exata de uma binomial com a densidade
 normal correspondente.</p>
-<div class="sourceCode" id="cb312"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb313"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">2024</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">n_ensaios</span> <span class="op">&lt;-</span> <span class="fl">50</span></span>
@@ -521,7 +521,7 @@ como cada painel ilustra um dos dois teoremas centrais do capítulo.</p>
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Introdução ao R e à Simulação Estatística</strong>: Um Laboratório de Estatística Computacional" was written by Renato de Paula and Nuno Brites. It was last built on 07 de July de 2026.</p>
+    <p>"<strong>Introdução ao R e à Simulação Estatística</strong>: Um Laboratório de Estatística Computacional" was written by Renato de Paula and Nuno Brites. It was last built on 11 de July de 2026.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

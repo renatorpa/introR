@@ -90,35 +90,36 @@ cada uma o R oferece, de forma sistemática, quatro funções.</p>
 <p>O R inclui as distribuições univariadas mais comuns. Para cada distribuição existem
 quatro funções, distinguidas por uma letra inicial:</p>
 <div class="inline-table"><table class="table table-sm">
+<caption>
+<span id="tab:tab-funcoes-distribuicoes">Tabela 20.1: </span>Convenção usada em R para as funções associadas a distribuições de probabilidade.</caption>
 <colgroup>
-<col width="50%">
-<col width="50%">
+<col width="16%">
+<col width="83%">
 </colgroup>
 <thead><tr class="header">
-<th>Função</th>
-<th>O que devolve</th>
+<th align="left">Prefixo</th>
+<th align="left">O que devolve</th>
 </tr></thead>
 <tbody>
 <tr class="odd">
-<td>
-<code>d</code><em>nome</em>(…)</td>
-<td>a função de probabilidade (discreta) ou densidade (contínua)</td>
+<td align="left">
+<span class="math inline">\(\texttt{d}\)</span>nome(…)</td>
+<td align="left">A função de probabilidade, no caso discreto, ou a função densidade, no caso contínuo.</td>
 </tr>
 <tr class="even">
-<td>
-<code>p</code><em>nome</em>(…)</td>
-<td>a função de distribuição, <span class="math inline">\(F(x) = P(X \leq x)\)</span>
-</td>
+<td align="left">
+<span class="math inline">\(\texttt{p}\)</span>nome(…)</td>
+<td align="left">A função de distribuição acumulada, isto é, <span class="math inline">\(F(x)=P(X\leq x)\)</span>.</td>
 </tr>
 <tr class="odd">
-<td>
-<code>q</code><em>nome</em>(…)</td>
-<td>o quantil correspondente a uma dada probabilidade (o inverso de <code>p</code>)</td>
+<td align="left">
+<span class="math inline">\(\texttt{q}\)</span>nome(…)</td>
+<td align="left">O quantil correspondente a uma dada probabilidade; em termos práticos, a inversa da função de distribuição.</td>
 </tr>
 <tr class="even">
-<td>
-<code>r</code><em>nome</em>(…)</td>
-<td>uma amostra aleatória da distribuição</td>
+<td align="left">
+<span class="math inline">\(\texttt{r}\)</span>nome(…)</td>
+<td align="left">Uma amostra aleatória gerada a partir da distribuição.</td>
 </tr>
 </tbody>
 </table></div>
@@ -1461,7 +1462,7 @@ método da transformada inversa.</p>
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Introdução ao R e à Simulação Estatística</strong>: Um Laboratório de Estatística Computacional" was written by Renato de Paula and Nuno Brites. It was last built on 07 de July de 2026.</p>
+    <p>"<strong>Introdução ao R e à Simulação Estatística</strong>: Um Laboratório de Estatística Computacional" was written by Renato de Paula and Nuno Brites. It was last built on 11 de July de 2026.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

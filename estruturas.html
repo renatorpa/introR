@@ -6,14 +6,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Capítulo 4 Estruturas de dados | Introdução ao R e à Simulação Estatística</title>
 <meta name="author" content="Renato de Paula and Nuno Brites">
-<meta name="description" content="Até aqui, trabalhámos sobretudo com valores isolados — um número, um texto, um resultado lógico. Mas a estatística raramente lida com valores isolados: lida com conjuntos de dados. As alturas de...">
+<meta name="description" content="Até aqui, trabalhámos sobretudo com valores isolados: um número, um texto ou um resultado lógico. Mas a estatística raramente lida com valores isolados. Lida, quase sempre, com conjuntos de dados....">
 <meta name="generator" content="bookdown 0.46 with bs4_book()">
 <meta property="og:title" content="Capítulo 4 Estruturas de dados | Introdução ao R e à Simulação Estatística">
 <meta property="og:type" content="book">
-<meta property="og:description" content="Até aqui, trabalhámos sobretudo com valores isolados — um número, um texto, um resultado lógico. Mas a estatística raramente lida com valores isolados: lida com conjuntos de dados. As alturas de...">
+<meta property="og:description" content="Até aqui, trabalhámos sobretudo com valores isolados: um número, um texto ou um resultado lógico. Mas a estatística raramente lida com valores isolados. Lida, quase sempre, com conjuntos de dados....">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Capítulo 4 Estruturas de dados | Introdução ao R e à Simulação Estatística">
-<meta name="twitter:description" content="Até aqui, trabalhámos sobretudo com valores isolados — um número, um texto, um resultado lógico. Mas a estatística raramente lida com valores isolados: lida com conjuntos de dados. As alturas de...">
+<meta name="twitter:description" content="Até aqui, trabalhámos sobretudo com valores isolados: um número, um texto ou um resultado lógico. Mas a estatística raramente lida com valores isolados. Lida, quase sempre, com conjuntos de dados....">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.11.0/transition.js"></script><script src="libs/bs3compat-0.11.0/tabs.js"></script><script src="libs/bs3compat-0.11.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
@@ -82,17 +82,9 @@
 <h1>
 <span class="header-section-number">Capítulo 4</span> Estruturas de dados<a class="anchor" aria-label="anchor" href="#estruturas"><i class="fas fa-link"></i></a>
 </h1>
-<p>Até aqui, trabalhámos sobretudo com valores isolados — um número, um texto, um
-resultado lógico. Mas a estatística raramente lida com valores isolados: lida com
-<em>conjuntos</em> de dados. As alturas de uma turma, as vendas de um ano, as respostas
-de um inquérito — tudo isto são coleções de valores que queremos guardar,
-organizar e analisar em conjunto. É aqui que entram as <strong>estruturas de dados</strong>.</p>
-<p>Uma estrutura de dados é uma forma de organizar vários valores num único objeto,
-para que possamos manipulá-los como um todo. Escolher a estrutura certa para cada
-problema é meio caminho andado: cada uma tem a sua vocação, e conhecê-las é
-essencial para programar bem em R.</p>
-<p>Antes de as estudarmos uma a uma, convém reter que, em R, existem dois grandes
-tipos de objetos:</p>
+<p>Até aqui, trabalhámos sobretudo com valores isolados: um número, um texto ou um resultado lógico. Mas a estatística raramente lida com valores isolados. Lida, quase sempre, com <strong>conjuntos de dados</strong>. As alturas dos alunos de uma turma, as vendas mensais de uma empresa, as respostas de um inquérito ou as medições recolhidas por um sensor são colecções de valores que queremos guardar, organizar e analisar em conjunto. É aqui que entram as <strong>estruturas de dados</strong>.</p>
+<p>Uma estrutura de dados é uma forma de organizar vários valores num único objecto, para que possamos manipulá-los como um todo. Escolher a estrutura certa para cada problema é um passo fundamental: cada estrutura tem a sua finalidade própria, e conhecê-las bem é essencial para programar de forma clara, eficiente e segura em R.</p>
+<p>Antes de as estudarmos uma a uma, convém reter que, em R, existem dois grandes tipos de objetos:</p>
 <ul>
 <li>
 <strong>Funções</strong> — objetos que <em>executam</em> operações, como <code><a href="https://rdrr.io/r/base/Trig.html">cos()</a></code>, <code><a href="https://rdrr.io/r/base/print.html">print()</a></code>,
@@ -847,7 +839,7 @@ Tempo, Satisfação).</p>
 satisfação 3.</li>
 <li>Use <code><a href="https://rdrr.io/r/base/cbind.html">cbind()</a></code> para acrescentar a coluna “Horas de uso” com os valores
 <code>c(5, 7, 6, 8)</code>.</li>
-<li>Calcule a média de cada métrica com <code><a href="https://rdrr.io/pkg/Matrix/man/colSums-methods.html">colMeans()</a></code>.</li>
+<li>Calcule a média de cada métrica com <code><a href="https://rdrr.io/r/base/colSums.html">colMeans()</a></code>.</li>
 <li>Que aluno fez mais perguntas? <br><em>Sugestão:</em> Use a função <code><a href="https://rdrr.io/r/base/which.min.html">which.max()</a></code>.</li>
 </ol>
 <p><strong>13.</strong> Um ecrã em tons de cinzento pode representar-se por uma matriz, em que
@@ -1047,7 +1039,7 @@ variável partilhada (como <code>id</code> ou <code>curso</code>):</p>
 <div class="nota">
 <p>Estes cruzamentos — <em>inner</em>, <em>left</em>, <em>right</em> e <em>full join</em> — são conceitos
 centrais em bases de dados. O pacote <code>dplyr</code> oferece versões mais legíveis com os
-mesmos nomes (<code><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">inner_join()</a></code>, <code><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">left_join()</a></code>, etc.), que reencontraremos no
+mesmos nomes (<code>inner_join()</code>, <code>left_join()</code>, etc.), que reencontraremos no
 capítulo de manipulação de dados.</p>
 </div>
 </div>
@@ -1120,7 +1112,7 @@ resume cada coluna à sua maneira:</p>
 dados <code>airquality</code>, por exemplo, tem <code>NA</code> em algumas colunas, o que faz com que a
 sua média direta seja <code>NA</code>:</p>
 <div class="sourceCode" id="cb73"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/Matrix/man/colSums-methods.html">colMeans</a></span><span class="op">(</span><span class="va">airquality</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/colSums.html">colMeans</a></span><span class="op">(</span><span class="va">airquality</span><span class="op">)</span></span>
 <span><span class="co">##   Ozone Solar.R    Wind    Temp   Month     Day </span></span>
 <span><span class="co">##      NA      NA   9.958  77.882   6.993  15.804</span></span></code></pre></div>
 <p>A solução é a mesma: o argumento <code>na.rm = TRUE</code> ignora os valores em falta:</p>
@@ -1128,7 +1120,7 @@ sua média direta seja <code>NA</code>:</p>
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">airquality</span><span class="op">$</span><span class="va">Ozone</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
 <span><span class="co">## [1] 42.13</span></span>
 <span></span>
-<span><span class="fu"><a href="https://rdrr.io/pkg/Matrix/man/colSums-methods.html">colMeans</a></span><span class="op">(</span><span class="va">airquality</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu"><a href="https://rdrr.io/r/base/colSums.html">colMeans</a></span><span class="op">(</span><span class="va">airquality</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div id="exercícios-4" class="section level3" number="4.4.10">
 <h3>
@@ -1155,7 +1147,7 @@ menos económicos. <br><em>Sugestão:</em> Use a função <code><a href="https:/
 Crie <code>carros1</code> com as colunas <code>car</code>, <code>mpg</code>, <code>cyl</code> e <code>carros2</code> com <code>car</code>, <code>hp</code>,
 <code>wt</code>. Junte-os com <code><a href="https://rdrr.io/r/base/merge.html">merge()</a></code> pela coluna <code>car</code>.</p>
 <p><strong>10.</strong> Carregue o <code>airquality</code> e mostre as primeiras e as últimas 6 linhas.</p>
-<p><strong>11.</strong> Conte quantos <code>NA</code> existem em cada coluna do <code>airquality</code>. <br><em>Sugestão:</em> Use a função <code><a href="https://rdrr.io/pkg/Matrix/man/colSums-methods.html">colSums()</a></code>.</p>
+<p><strong>11.</strong> Conte quantos <code>NA</code> existem em cada coluna do <code>airquality</code>. <br><em>Sugestão:</em> Use a função <code><a href="https://rdrr.io/r/base/colSums.html">colSums()</a></code>.</p>
 <p><strong>12.</strong> Calcule a média de <code>Solar.R</code> no <code>airquality</code>, ignorando os <code>NA</code>.</p>
 <p><strong>13.</strong> Crie um subconjunto do <code>airquality</code> com <code>Wind &gt; 10</code> e <code>Temp &gt; 80</code>. Mostre
 as primeiras 6 linhas.</p>
@@ -1421,7 +1413,7 @@ aprovados (quem entregou o projeto e teve média <span class="math inline">\(\ge
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Introdução ao R e à Simulação Estatística</strong>: Um Laboratório de Estatística Computacional" was written by Renato de Paula and Nuno Brites. It was last built on 07 de July de 2026.</p>
+    <p>"<strong>Introdução ao R e à Simulação Estatística</strong>: Um Laboratório de Estatística Computacional" was written by Renato de Paula and Nuno Brites. It was last built on 11 de July de 2026.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

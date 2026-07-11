@@ -6,14 +6,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Capítulo 1 Estatística, computação e simulação | Introdução ao R e à Simulação Estatística</title>
 <meta name="author" content="Renato de Paula and Nuno Brites">
-<meta name="description" content="Antes de escrevermos a primeira linha de código, vale a pena parar um momento para responder a uma pergunta legítima: porque é que um estudante de estatística precisa de aprender a programar? A...">
+<meta name="description" content="Antes de escrevermos a primeira linha de código, vale a pena recuar um pouco. A programação, a matemática e a estatística não surgiram no vazio: fazem parte de uma longa história humana de...">
 <meta name="generator" content="bookdown 0.46 with bs4_book()">
 <meta property="og:title" content="Capítulo 1 Estatística, computação e simulação | Introdução ao R e à Simulação Estatística">
 <meta property="og:type" content="book">
-<meta property="og:description" content="Antes de escrevermos a primeira linha de código, vale a pena parar um momento para responder a uma pergunta legítima: porque é que um estudante de estatística precisa de aprender a programar? A...">
+<meta property="og:description" content="Antes de escrevermos a primeira linha de código, vale a pena recuar um pouco. A programação, a matemática e a estatística não surgiram no vazio: fazem parte de uma longa história humana de...">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Capítulo 1 Estatística, computação e simulação | Introdução ao R e à Simulação Estatística">
-<meta name="twitter:description" content="Antes de escrevermos a primeira linha de código, vale a pena parar um momento para responder a uma pergunta legítima: porque é que um estudante de estatística precisa de aprender a programar? A...">
+<meta name="twitter:description" content="Antes de escrevermos a primeira linha de código, vale a pena recuar um pouco. A programação, a matemática e a estatística não surgiram no vazio: fazem parte de uma longa história humana de...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.11.0/transition.js"></script><script src="libs/bs3compat-0.11.0/tabs.js"></script><script src="libs/bs3compat-0.11.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
@@ -82,64 +82,48 @@
 <h1>
 <span class="header-section-number">Capítulo 1</span> Estatística, computação e simulação<a class="anchor" aria-label="anchor" href="#intro"><i class="fas fa-link"></i></a>
 </h1>
-<p>Antes de escrevermos a primeira linha de código, vale a pena parar um momento
-para responder a uma pergunta legítima: <em>porque é que um estudante de
-estatística precisa de aprender a programar?</em> A resposta a esta pergunta é, em
-boa medida, a justificação para todo este livro — e perceber bem a resposta
-tornará tudo o que se segue mais motivado e mais fácil.</p>
+<p>Antes de escrevermos a primeira linha de código, vale a pena recuar um pouco. A programação, a matemática e a estatística não surgiram no vazio: fazem parte de uma longa história humana de representação, contagem, cálculo e decisão.</p>
+<p>Desde muito cedo, os seres humanos precisaram de comunicar. A linguagem permitiu descrever o mundo, transmitir experiências, coordenar acções e preservar conhecimento. Mas comunicar não bastava. Era também necessário distinguir quantidades: saber se havia poucos ou muitos frutos numa árvore, quantos animais tinham sido avistados, quantos membros havia num grupo, quantos objectos tinham sido trocados ou quantos dias faltavam para determinado acontecimento.</p>
+<p>Podemos imaginar uma situação elementar. Um pequeno grupo encontra uma árvore carregada de maçãs. Antes de decidir parar, colher e repartir os frutos, precisa de avaliar rapidamente se há alimento suficiente para todos – e se vale a pena correr o risco de permanecer naquele lugar, exposto ao frio, à distância ou a predadores. Mesmo sem símbolos formais, há aqui uma forma primitiva de pensamento quantitativo: comparar, estimar, contar, decidir.</p>
+<p>Dessa necessidade de lidar com quantidades nasceram os números. Dos números nasceu a aritmética; da aritmética, formas cada vez mais sofisticadas de cálculo; e, ao longo dos séculos, a matemática tornou-se uma linguagem rigorosa para descrever relações, padrões, formas, movimentos e incertezas. Sempre que uma sociedade precisou de medir terras, construir edifícios, navegar, cobrar impostos, organizar calendários, estudar populações ou compreender fenómenos naturais, precisou também de desenvolver instrumentos matemáticos.</p>
+<p>Mas calcular sempre foi difícil. Durante muito tempo, fazer contas exigia esforço, tempo e engenho. Por isso surgiram instrumentos auxiliares: marcas em ossos ou pedras, ábacos, tabelas numéricas, réguas de cálculo, máquinas mecânicas, calculadoras electrónicas e, finalmente, computadores. Cada uma destas ferramentas ampliou a nossa capacidade de calcular; mas o computador alterou a escala do problema. Aquilo que antes demorava horas, dias ou era simplesmente impraticável passou a poder ser feito em segundos.</p>
+<p>A estatística insere-se nesta história como a disciplina que nos ajuda a raciocinar com dados, variabilidade e incerteza. Quando observamos apenas uma parte de uma população, quando medimos fenómenos sujeitos a erro, quando comparamos tratamentos, quando estudamos riscos ou quando tentamos prever acontecimentos futuros, estamos no domínio da estatística. Como mostra David Salsburg no livro <em>The Lady Tasting Tea: How Statistics Revolutionized Science in the Twentieth Century</em>, a estatística transformou profundamente a prática científica moderna, desde o desenho de experiências até à inferência a partir de dados. A estatística transforma dados em informação e ajuda-nos a tomar decisões quando a certeza absoluta não está disponível.</p>
+<p>Hoje, porém, a estatística é inseparável da computação. Os dados são maiores, os modelos são mais complexos e muitos dos métodos modernos dependem de algoritmos, simulações e cálculo intensivo. Por isso, alguém que estuda ou trabalha com dados, incerteza e modelos precisa de aprender a programar. Não para substituir o pensamento estatístico, mas para o tornar praticável, reprodutível e aplicável a problemas reais.</p>
+<p>Esta é, em grande medida, a justificação para este livro. Aprender R não é apenas aprender comandos; é aprender uma forma de pensar com dados. É ganhar a capacidade de transformar uma pergunta numa sequência de operações claras, verificáveis e repetíveis. É poder explorar, simular, visualizar e modelar fenómenos aleatórios com uma precisão que seria impossível apenas com papel, lápis e calculadora.</p>
 <div id="a-estatística-tornou-se-computacional" class="section level2" number="1.1">
 <h2>
 <span class="header-section-number">1.1</span> A estatística tornou-se computacional<a class="anchor" aria-label="anchor" href="#a-estat%C3%ADstica-tornou-se-computacional"><i class="fas fa-link"></i></a>
 </h2>
-<p>Durante grande parte do século XX, a estatística viveu com um travão
-permanente: a dificuldade de fazer contas. Os métodos que se ensinavam e usavam
-eram, muitas vezes, aqueles que se conseguiam calcular à mão ou com uma
-calculadora — tabelas de distribuições impressas no fim dos manuais,
-aproximações engenhosas, fórmulas fechadas cuidadosamente deduzidas para evitar
-cálculos impraticáveis.</p>
-<p>O computador mudou tudo. Aquilo que antes era impossível de calcular passou a
-ser uma questão de segundos. E, com isso, mudou também aquilo que faz sentido
-ensinar e aprender. Já não precisamos de decorar valores de tabelas nem de nos
-limitarmos aos poucos modelos que admitem solução analítica simples. Podemos
-explorar dados reais, ajustar modelos complexos e, sobretudo, <strong>simular</strong>.</p>
+<p>Durante grande parte do século XX, a estatística viveu com um travão permanente: a dificuldade de fazer contas. Os métodos que se ensinavam e usavam eram, muitas vezes, aqueles que se conseguiam calcular à mão ou com uma calculadora – tabelas de distribuições impressas no fim dos manuais, aproximações engenhosas, fórmulas fechadas cuidadosamente deduzidas para evitar cálculos impraticáveis.</p>
+<p>O computador mudou tudo. Aquilo que antes era impossível de calcular passou a ser uma questão de segundos. E, com isso, mudou também aquilo que faz sentido ensinar e aprender. Já não precisamos de decorar valores de tabelas nem de nos limitar aos poucos modelos que admitem solução analítica simples. Podemos explorar dados reais, ajustar modelos complexos e, sobretudo, simular.</p>
 <div class="nota">
-<p>Não estamos a dizer que a teoria deixou de importar — pelo contrário. Continuamos
-a precisar de compreender <em>porque é que</em> os métodos funcionam. O que mudou é que
-a teoria e o computador passaram a trabalhar em conjunto: a teoria dá-nos a
-compreensão, o computador dá-nos o alcance.</p>
+<p>Não estamos a dizer que a teoria deixou de importar – pelo contrário. Continuamos a precisar de compreender porque é que os métodos funcionam. O que mudou é que a teoria e o computador passaram a trabalhar em conjunto: a teoria dá-nos a compreensão; o computador dá-nos o alcance.</p>
 </div>
 </div>
 <div id="o-que-é-o-r" class="section level2" number="1.2">
 <h2>
 <span class="header-section-number">1.2</span> O que é o R<a class="anchor" aria-label="anchor" href="#o-que-%C3%A9-o-r"><i class="fas fa-link"></i></a>
 </h2>
-<p>O <strong>R</strong> é uma linguagem de programação e um ambiente de trabalho pensados
-especificamente para a computação estatística e para a produção de gráficos.
-Voltaremos a esta descrição, com mais detalhe, no próximo capítulo; para já,
-basta reter três ideias.</p>
-<p>Primeiro, o R é <strong>gratuito e de código aberto</strong>. Qualquer pessoa o pode
-descarregar, usar, inspecionar e modificar — o que faz dele uma ferramenta
-democrática, sem barreiras de custo entre quem quer aprender e o conhecimento.</p>
-<p>Segundo, o R foi feito <strong>por estatísticos, para estatísticos</strong>. Manipular
-conjuntos de dados, trabalhar com distribuições de probabilidade, ajustar
-modelos e desenhar gráficos são tarefas para as quais a linguagem está
-naturalmente vocacionada.</p>
-<p>Terceiro, o R tem por trás uma <strong>comunidade científica vastíssima</strong>. Milhares de
-pacotes, escritos e partilhados livremente por investigadores de todo o mundo,
-estendem as suas capacidades a praticamente qualquer domínio.</p>
+<p>O R é uma linguagem de programação e um ambiente de trabalho concebidos para a computação estatística, a análise de dados e a produção de gráficos. A sua origem está ligada à linguagem S, criada nos Bell Laboratories como uma linguagem orientada para a análise interactiva de dados. O R nasceu mais tarde como uma implementação livre dessa tradição: foi criado por Ross Ihaka e Robert Gentleman, na Universidade de Auckland, na Nova Zelândia, e o próprio nome “R” joga simultaneamente com as iniciais dos seus criadores e com a ligação à linguagem S.</p>
+<p>Esta origem é importante porque explica a natureza do R. O R não foi pensado, em primeiro lugar, como uma linguagem genérica de programação, mas como uma linguagem para pensar estatisticamente com dados. Por isso, desde o início, operações com vetores, matrizes, tabelas, distribuições de probabilidade, modelos estatísticos e gráficos fazem parte do seu vocabulário natural. Aquilo que noutras linguagens exige bibliotecas externas ou estruturas mais pesadas surge, em R, como parte da própria gramática da linguagem.</p>
+<p>O R é também gratuito e de código aberto. Qualquer pessoa o pode descarregar, usar, inspeccionar e modificar. Esta característica teve uma consequência decisiva: reduziu a barreira de entrada ao software estatístico e permitiu que estudantes, docentes, investigadores, instituições públicas e empresas tivessem acesso à mesma ferramenta, independentemente do orçamento disponível. Nesse sentido, o R tornou-se uma ferramenta científica profundamente democrática.</p>
+<p>Mas talvez a característica mais transformadora do R seja o seu ecossistema de pacotes. Para além das funções que vêm instaladas com o próprio R, existe o CRAN – Comprehensive R Archive Network –, uma rede de servidores que reúne, verifica e disponibiliza pacotes desenvolvidos pela comunidade. Um pacote é uma extensão do R: pode acrescentar novas funções, novos métodos estatísticos, novos conjuntos de dados, novas formas de visualização ou novas interfaces com outros sistemas.</p>
+<p>Na prática, o CRAN funciona como uma grande biblioteca pública de métodos computacionais. Quando alguém desenvolve uma nova técnica estatística, um novo algoritmo ou uma ferramenta útil para análise de dados, pode disponibilizá-la sob a forma de pacote. Outros utilizadores podem então instalar esse pacote directamente no R e aplicar essas ferramentas aos seus próprios problemas. É esta arquitectura aberta que explica por que razão o R acompanha tão rapidamente a evolução da estatística moderna: muitos métodos recentes chegam ao R através de pacotes antes de aparecerem em software comercial.</p>
+<p>Em termos práticos, o R reúne num só ambiente a manipulação de dados, o cálculo numérico, a simulação, a inferência estatística, a construção de modelos, a programação e a produção de gráficos de qualidade. Esta combinação torna-o particularmente adequado para aprender estatística de forma activa: não apenas lendo fórmulas, mas experimentando, simulando, visualizando e verificando propriedades nos próprios dados.</p>
+<div class="nota">
+<p>O facto de o R ser uma linguagem de programação completa distingue-o de uma folha de cálculo. Numa folha de cálculo, tendemos a organizar os dados em células e a escrever operações ligadas à sua posição. Em R, escrevemos instruções que descrevem o que queremos fazer: transformar uma variável, aplicar uma função, repetir uma simulação, ajustar um modelo ou produzir um gráfico. Esta mudança de perspectiva é uma das fontes da flexibilidade do R.</p>
+</div>
+<p>A isto junta-se uma comunidade científica ampla, activa e internacional. O R tornou-se uma das linguagens de referência na estatística académica e é amplamente utilizado na investigação biomédica, nas ciências sociais, na economia, na finança, na indústria e na administração pública. Aprender R, portanto, não é aprender uma ferramenta de nicho: é adquirir uma competência técnica, transferível e valorizada em múltiplos contextos científicos e profissionais.</p>
+<p>Neste livro, usaremos essa competência com um propósito central: compreender fenómenos aleatórios através da simulação. Antes de avançarmos para a sintaxe da linguagem, vale a pena introduzir esta ideia, porque ela será o fio condutor de grande parte do percurso.</p>
 </div>
 <div id="a-ideia-central-simular" class="section level2" number="1.3">
 <h2>
 <span class="header-section-number">1.3</span> A ideia central: simular<a class="anchor" aria-label="anchor" href="#a-ideia-central-simular"><i class="fas fa-link"></i></a>
 </h2>
 <p>A palavra “simulação” percorre este livro de uma ponta à outra. Vale a pena
-introduzi-la desde já, com um exemplo minúsculo, para que o leitor perceba de
-imediato o poder da ideia.</p>
-<p>Imagine que lançamos um dado equilibrado e queremos saber qual é o valor médio
-que sai a longo prazo. A teoria responde sem hesitar: a média é
-<span class="math inline">\((1+2+3+4+5+6)/6 = 3{,}5\)</span>. Mas há uma segunda maneira de chegar à mesma resposta,
-sem fazer a conta: podemos <em>lançar o dado muitas vezes</em> e calcular a média dos
-resultados. Em R, isso escreve-se assim:</p>
+introduzi-la desde já, com um exemplo minúsculo, para que o leitor perceba de imediato o poder da ideia.</p>
+<p>Imagine que lançamos um dado equilibrado e queremos saber qual é o valor médio que sai a longo prazo. A teoria responde sem hesitar: a média é
+<span class="math display">\[\frac{(1+2+3+4+5+6)}{6} = 3.5.\]</span> Mas há uma segunda maneira de chegar à mesma resposta, sem fazer a conta: podemos <em>lançar o dado muitas vezes</em> e calcular a média dos resultados. Em R, isso escreve-se assim:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Lançar um dado equilibrado 1 000 000 de vezes</span></span>
 <span><span class="va">lancamentos</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">6</span>, size <span class="op">=</span> <span class="fl">1000000</span>, replace <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
@@ -147,46 +131,24 @@ resultados. Em R, isso escreve-se assim:</p>
 <span><span class="co"># Média dos resultados</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">lancamentos</span><span class="op">)</span></span>
 <span><span class="co">## [1] 3.499</span></span></code></pre></div>
-<p>O valor obtido — próximo de <span class="math inline">\(3.5\)</span> — não é imposto por nenhuma fórmula: <em>emerge</em>
-da repetição da experiência. Esta é a essência da simulação. Em vez de deduzir o
-resultado, construímos uma versão computacional do fenómeno aleatório e
-observamos o seu comportamento.</p>
+<p>O valor obtido – próximo de <span class="math inline">\(3.5\)</span> – não é imposto por nenhuma fórmula: <em>emerge</em> da repetição da experiência. Esta é a essência da simulação. Em vez de deduzir o resultado, construímos uma versão computacional do fenómeno aleatório e observamos o seu comportamento.</p>
 <div class="dica">
-<p>Ainda não é preciso perceber cada detalhe do código acima — a função <code><a href="https://rdrr.io/r/base/sample.html">sample()</a></code>,
-o argumento <code>replace</code>, e assim por diante. Tudo isto será explicado nos próximos
-capítulos. O importante, por agora, é ficar com a intuição: <strong>o computador pode
-repetir uma experiência aleatória tantas vezes quantas quisermos, e a partir
-dessas repetições estimar aquilo que nos interessa.</strong></p>
+<p>Ainda não é preciso perceber cada detalhe do código acima – a função <code><a href="https://rdrr.io/r/base/sample.html">sample()</a></code>, o argumento <code>replace</code>, e assim por diante. Tudo isto será explicado nos próximos capítulos. O importante, por agora, é ficar com a intuição: <strong>o computador pode repetir uma experiência aleatória tantas vezes quantas quisermos, e a partir dessas repetições estimar aquilo que nos interessa.</strong></p>
 </div>
-<p>Este pequeno exemplo já contém, em embrião, tudo o que faremos mais tarde de
-forma mais ambiciosa. Quando não soubermos calcular uma probabilidade,
-estimá-la-emos por simulação. Quando um integral não tiver solução fechada,
-aproximá-lo-emos por simulação. Quando quisermos <em>ver</em> um teorema a funcionar,
-ilustrá-lo-emos por simulação. Mas nada disto será possível sem primeiro
-dominarmos a linguagem — e é para isso que servem os capítulos que se seguem.</p>
+<p>Este pequeno exemplo já contém, em pequena escala, tudo o que faremos mais tarde de forma mais ambiciosa. Quando não soubermos calcular uma probabilidade, estimá-la-emos por simulação. Quando um integral não tiver solução fechada, aproximá-lo-emos por simulação. Quando quisermos ver um teorema a funcionar, ilustrá-lo-emos por simulação. Mas nada disto será possível sem primeiro dominarmos a linguagem – e é para isso que servem os capítulos que se seguem.</p>
 </div>
 <div id="o-caminho-que-vamos-percorrer" class="section level2" number="1.4">
 <h2>
 <span class="header-section-number">1.4</span> O caminho que vamos percorrer<a class="anchor" aria-label="anchor" href="#o-caminho-que-vamos-percorrer"><i class="fas fa-link"></i></a>
 </h2>
-<p>O livro está organizado como uma subida gradual, em que cada degrau assenta no
-anterior.</p>
-<p>Começamos por <strong>instalar e conhecer as ferramentas</strong> (Capítulo <a href="rrstudio.html#rrstudio">2</a>)
-e por usar o R como uma <strong>calculadora</strong> que também guarda resultados e toma
-decisões (Capítulo <a href="calculadora.html#calculadora">3</a>). Aprendemos depois a organizar
-informação em <strong>estruturas de dados</strong> — vetores, matrizes, tabelas e listas
-(Capítulo <a href="estruturas.html#estruturas">4</a>) — e a controlar o fluxo dos programas com
-<strong>estruturas de decisão</strong> (Capítulo <a href="selecao.html#selecao">5</a>) e <strong>funções</strong>
-(Capítulo <a href="funcoes.html#funcoes">6</a>).</p>
-<p>A partir daí, o livro ganha ritmo: automatizamos tarefas repetitivas com ciclos,
-lemos dados a partir de ficheiros, visualizamos e manipulamos conjuntos de dados
-reais e, finalmente, entramos no território da <strong>probabilidade e da simulação</strong>,
-onde tudo o que aprendemos converge num objetivo comum.</p>
+<p>O livro está organizado como uma subida gradual. Cada capítulo introduz uma nova ferramenta, mas essa ferramenta não aparece isolada: serve para preparar o passo seguinte. A ideia é que o leitor comece por ganhar familiaridade com o R e termine capaz de escrever pequenas simulações estatísticas de forma autónoma.</p>
+<p>Começamos por <strong>instalar e conhecer o ambiente de trabalho</strong> (Capítulo <a href="rrstudio.html#rrstudio">2</a>) e por usar o R como uma <strong>calculadora programável</strong>: uma ferramenta que calcula, guarda objectos, avalia expressões e toma decisões (Capítulo <a href="calculadora.html#calculadora">3</a>). Em seguida, aprendemos a organizar informação em <strong>estruturas de dados</strong> – vetores, matrizes, tabelas e listas (Capítulo <a href="estruturas.html#estruturas">4</a>) – e a controlar o comportamento dos programas com <strong>estruturas de selecção</strong>, <strong>funções</strong>, <strong>scripts</strong>, ciclos <code>for</code> e ciclos <code>while</code>.</p>
+<p>A segunda parte do percurso aproxima-nos dos dados reais. Aprendemos a ler informação a partir de ficheiros, a encadear operações com o operador pipe, a manipular tabelas, a produzir gráficos básicos e a construir visualizações mais elaboradas com <code>ggplot2</code>. Nesta fase, o R deixa de ser apenas uma calculadora e passa a ser um laboratório de análise de dados.</p>
+<p>A terceira parte introduz a linguagem da <strong>probabilidade</strong>. Estudamos experiências aleatórias, amostragem, distribuições de probabilidade e as funções do R associadas a essas distribuições – as famílias <code>d</code>, <code>p</code>, <code>q</code> e <code>r</code>. A partir daqui, o computador passa a ser usado não só para calcular, mas também para gerar aleatoriedade controlada.</p>
+<p>Na parte final, todos estes elementos convergem na <strong>simulação estatística</strong>. Exploramos o método de Monte Carlo, a geração de variáveis aleatórias, a transformada inversa, o método de aceitação-rejeição e, por fim, a aproximação de integrais por simulação. O último capítulo, dedicado ao <strong>cálculo de integrais por Monte Carlo</strong>, ilustra bem o espírito do livro: usar programação, probabilidade e estatística para resolver problemas que seriam difíceis, ou mesmo impraticáveis, apenas com cálculo analítico.</p>
+<p>Assim, o percurso vai do primeiro contacto com o R até à simulação de fenómenos aleatórios e à resolução computacional de problemas estatísticos. O objectivo não é apenas aprender comandos, mas desenvolver uma forma de pensar: transformar uma pergunta quantitativa num procedimento claro, reprodutível e verificável.</p>
 <div class="dica">
-<p>Se está a ler este livro no âmbito de uma disciplina, use os capítulos como um
-guia de laboratório: leia com o RStudio aberto, execute cada exemplo e resolva
-os exercícios no fim de cada capítulo antes de avançar. A programação aprende-se
-com as mãos, não apenas com os olhos.</p>
+<p>Se está a ler este livro no âmbito de uma disciplina, use os capítulos como um guia de laboratório: leia com o RStudio aberto, execute cada exemplo e resolva os exercícios no fim de cada capítulo antes de avançar. A programação aprende-se com as mãos, não apenas com os olhos.</p>
 </div>
 <p>Comecemos, então, pelo princípio: pôr as ferramentas a funcionar.</p>
 
@@ -219,7 +181,7 @@ com as mãos, não apenas com os olhos.</p>
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Introdução ao R e à Simulação Estatística</strong>: Um Laboratório de Estatística Computacional" was written by Renato de Paula and Nuno Brites. It was last built on 07 de July de 2026.</p>
+    <p>"<strong>Introdução ao R e à Simulação Estatística</strong>: Um Laboratório de Estatística Computacional" was written by Renato de Paula and Nuno Brites. It was last built on 11 de July de 2026.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

@@ -109,12 +109,26 @@ estocástica como instrumento de cálculo científico — precisamente na altura
 que surgiam os primeiros computadores eletrónicos capazes de produzir e
 manipular grandes quantidades de números pseudoaleatórios.</p>
 <p>O que torna o método notável é a sua generalidade e a elegância do argumento
-que o sustenta. Não exige o conhecimento da função de distribuição, nem sequer
-que a densidade <span class="math inline">\(f\)</span> esteja normalizada (mais à frente veremos por que razão
-isto é útil): basta saber avaliar <span class="math inline">\(f\)</span> ponto a ponto e dispor de uma
-distribuição auxiliar cómoda. Mais de setenta anos depois, continua a ser um
-dos pilares da simulação e o ponto de partida conceptual para técnicas
-modernas, como os métodos de Monte Carlo por cadeias de Markov (MCMC).</p>
+que o sustenta. Não exige o conhecimento da função de distribuição: basta saber
+avaliar a densidade alvo, ou uma função proporcional a ela, ponto a ponto, e
+dispor de uma distribuição auxiliar cómoda. Mais à frente veremos que esta
+possibilidade é particularmente útil quando a constante de normalização da
+distribuição alvo é desconhecida.</p>
+<div class="objetivo">
+<p>Neste capítulo aprendemos a gerar observações de uma distribuição cuja densidade
+alvo <span class="math inline">\(f\)</span> é conhecida, mas cuja função de distribuição acumulada pode ser
+difícil de obter ou de inverter.</p>
+<p>O método da aceitação-rejeição constrói amostras dessa distribuição a partir de
+uma densidade auxiliar <span class="math inline">\(g\)</span>, da qual sabemos simular, desde que exista uma
+constante <span class="math inline">\(c&gt;0\)</span> tal que
+<span class="math display">\[
+f(x) \leq c\,g(x)
+\]</span>
+para todos os valores <span class="math inline">\(x\)</span> no suporte da distribuição alvo.</p>
+<p>A ideia central é gerar candidatos a partir de <span class="math inline">\(g\)</span> e aceitá-los com uma
+probabilidade cuidadosamente escolhida, de modo que os valores aceites tenham
+exactamente a distribuição pretendida.</p>
+</div>
 </div>
 <div id="a-ideia-geométrica" class="section level2" number="23.2">
 <h2>
@@ -132,13 +146,6 @@ mais simples — a região sob uma curva <span class="math inline">\(c\,g(x)\)</
 de simular e <span class="math inline">\(c\)</span> é uma constante que garante que <span class="math inline">\(c\,g\)</span> fica sempre <em>acima</em> de
 <span class="math inline">\(f\)</span>. Amostramos uniformemente sob a curva mais fácil e ficamos apenas com os
 pontos que caem também sob <span class="math inline">\(f\)</span>. Os restantes são descartados.</p>
-<div class="objetivo">
-<p>Aprender a gerar observações de uma densidade <span class="math inline">\(f\)</span> da qual não sabemos amostrar
-diretamente, recorrendo a uma densidade auxiliar <span class="math inline">\(g\)</span> de fácil simulação, através
-do critério de aceitação-rejeição de von Neumann. No fim do capítulo, deverá ser
-capaz de escolher uma proposta <span class="math inline">\(g\)</span> adequada, determinar a constante <span class="math inline">\(c\)</span> e
-implementar o algoritmo em R.</p>
-</div>
 </div>
 <div id="formalização-do-método" class="section level2" number="23.3">
 <h2>
@@ -208,6 +215,33 @@ p = P(\text{aceitar})
 = \frac{1}{c}\int f(y)\, dy
 = \frac{1}{c}.
 \]</span></p>
+<div class="nota">
+<p>A identidade <span class="math inline">\(P(\text{aceitar})=1/c\)</span> pressupõe que <span class="math inline">\(f\)</span> é uma densidade
+normalizada, isto é,
+<span class="math display">\[
+\int f(y)\,dy = 1.
+\]</span>
+Se, em vez de uma densidade normalizada, trabalharmos com uma função
+<span class="math inline">\(\tilde f\)</span> apenas proporcional à densidade alvo, então a interpretação da
+taxa de aceitação muda. Nesse caso, existe uma constante <span class="math inline">\(Z&gt;0\)</span> tal que
+<span class="math display">\[
+f(y)=\frac{\tilde f(y)}{Z},
+\]</span>
+onde <span class="math inline">\(f\)</span> é a densidade normalizada e <span class="math inline">\(Z=\int \tilde f(y)\,dy\)</span> é a constante
+de normalização. Se usarmos uma constante <span class="math inline">\(\tilde c\)</span> tal que
+<span class="math display">\[
+\tilde f(y) \leq \tilde c\,g(y),
+\]</span>
+a probabilidade média de aceitação passa a ser
+<span class="math display">\[
+P(\text{aceitar})=\frac{Z}{\tilde c},
+\]</span>
+e não necessariamente <span class="math inline">\(1/\tilde c\)</span>.</p>
+<p>Assim, quando a função alvo usada no algoritmo já está normalizada como
+densidade, a taxa teórica de aceitação é <span class="math inline">\(1/c\)</span>. Quando se trabalha com uma
+função proporcional à densidade, a constante de normalização altera a
+interpretação directa dessa taxa.</p>
+</div>
 <p>Agora, a função de distribuição do valor devolvido é a de <span class="math inline">\(Y\)</span> condicionada à
 aceitação. Para qualquer <span class="math inline">\(x\)</span>,</p>
 <p><span class="math display">\[
@@ -266,7 +300,7 @@ número de observações desejadas, a densidade alvo <code>f</code>, uma funçã
 que gera observações da proposta, a densidade da proposta <code>g_dens</code> e a constante
 <code>c</code>. Para além da amostra, devolve a taxa de aceitação observada, que nos
 permite verificar empiricamente se ela se aproxima de <span class="math inline">\(1/c\)</span>.</p>
-<div class="sourceCode" id="cb299"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb300"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">aceita_rejeita</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">n</span>, <span class="va">f</span>, <span class="va">g_amostra</span>, <span class="va">g_dens</span>, <span class="va">c</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="va">amostra</span>    <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html">numeric</a></span><span class="op">(</span><span class="va">n</span><span class="op">)</span></span>
 <span>  <span class="va">aceites</span>    <span class="op">&lt;-</span> <span class="fl">0</span></span>
@@ -311,7 +345,7 @@ c = \sup_{0&lt;x&lt;1} \frac{f(x)}{g(x)} = \max_{0&lt;x&lt;1} 6\,x\,(1-x).
 <p>Derivando e igualando a zero, o máximo ocorre em <span class="math inline">\(x = 1/2\)</span>, onde
 <span class="math inline">\(f(1/2) = 6 \cdot \tfrac{1}{2} \cdot \tfrac{1}{2} = \tfrac{3}{2}\)</span>. Logo
 <span class="math inline">\(c = 1{,}5\)</span>, e esperamos uma taxa de aceitação de <span class="math inline">\(1/c \approx 0{,}667\)</span>.</p>
-<div class="sourceCode" id="cb300"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb301"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">2024</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">f_beta</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html">ifelse</a></span><span class="op">(</span><span class="va">x</span> <span class="op">&gt;</span> <span class="fl">0</span> <span class="op">&amp;</span> <span class="va">x</span> <span class="op">&lt;</span> <span class="fl">1</span>, <span class="fl">6</span> <span class="op">*</span> <span class="va">x</span> <span class="op">*</span> <span class="op">(</span><span class="fl">1</span> <span class="op">-</span> <span class="va">x</span><span class="op">)</span>, <span class="fl">0</span><span class="op">)</span></span>
@@ -330,7 +364,7 @@ c = \sup_{0&lt;x&lt;1} \frac{f(x)}{g(x)} = \max_{0&lt;x&lt;1} 6\,x\,(1-x).
 <p>A taxa de aceitação observada está muito próxima do valor teórico <span class="math inline">\(1/1{,}5\)</span>, o
 que confirma o funcionamento do algoritmo. Comparemos agora o histograma das
 observações geradas com a densidade teórica.</p>
-<div class="sourceCode" id="cb301"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb302"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/hist.html">hist</a></span><span class="op">(</span><span class="va">resultado</span><span class="op">$</span><span class="va">amostra</span>, breaks <span class="op">=</span> <span class="fl">40</span>, probability <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>     col <span class="op">=</span> <span class="st">"grey85"</span>, border <span class="op">=</span> <span class="st">"white"</span>,</span>
 <span>     main <span class="op">=</span> <span class="st">""</span>, xlab <span class="op">=</span> <span class="st">"x"</span>, ylab <span class="op">=</span> <span class="st">"densidade"</span><span class="op">)</span></span>
@@ -381,7 +415,7 @@ condição de aceitação simplifica-se de forma elegante:</p>
 <p><span class="math display">\[
 U \leq \frac{f(Y)}{c\,g(Y)} = e^{-(Y-1)^2/2}.
 \]</span></p>
-<div class="sourceCode" id="cb302"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb303"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">2024</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">c_norm</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="fl">2</span> <span class="op">*</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html">exp</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span> <span class="op">/</span> <span class="va">pi</span><span class="op">)</span></span>
@@ -408,7 +442,7 @@ U \leq \frac{f(Y)}{c\,g(Y)} = e^{-(Y-1)^2/2}.
 <span><span class="va">normais</span> <span class="op">&lt;-</span> <span class="fu">gerar_normal_ar</span><span class="op">(</span><span class="fl">10000</span><span class="op">)</span></span>
 <span><span class="va">normais</span><span class="op">$</span><span class="va">taxa_aceitacao</span>                  <span class="co"># deverá rondar 0.760</span></span>
 <span><span class="co">## [1] 0.7596</span></span></code></pre></div>
-<div class="sourceCode" id="cb303"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb304"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/hist.html">hist</a></span><span class="op">(</span><span class="va">normais</span><span class="op">$</span><span class="va">amostra</span>, breaks <span class="op">=</span> <span class="fl">50</span>, probability <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>     col <span class="op">=</span> <span class="st">"grey85"</span>, border <span class="op">=</span> <span class="st">"white"</span>,</span>
 <span>     main <span class="op">=</span> <span class="st">""</span>, xlab <span class="op">=</span> <span class="st">"x"</span>, ylab <span class="op">=</span> <span class="st">"densidade"</span><span class="op">)</span></span>
@@ -423,7 +457,7 @@ Figura 23.2: Observações da normal padrão geradas por aceitação-rejeição 
 </div>
 <p>Uma verificação numérica adicional: a média e o desvio-padrão amostrais devem
 aproximar-se de <span class="math inline">\(0\)</span> e <span class="math inline">\(1\)</span>, respetivamente.</p>
-<div class="sourceCode" id="cb304"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb305"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span>media <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">normais</span><span class="op">$</span><span class="va">amostra</span><span class="op">)</span>, desvio <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/sd.html">sd</a></span><span class="op">(</span><span class="va">normais</span><span class="op">$</span><span class="va">amostra</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">##      media     desvio </span></span>
 <span><span class="co">## -0.0002611  1.0000975</span></span></code></pre></div>
@@ -436,20 +470,44 @@ aceitação-rejeição permanece o mais transparente para compreender <em>porque
 tais geradores funcionam.</p>
 </div>
 </div>
-<div id="o-caso-de-densidades-não-normalizadas" class="section level2" number="23.7">
+<div id="o-caso-de-funções-não-normalizadas" class="section level2" number="23.7">
 <h2>
-<span class="header-section-number">23.7</span> O caso de densidades não normalizadas<a class="anchor" aria-label="anchor" href="#o-caso-de-densidades-n%C3%A3o-normalizadas"><i class="fas fa-link"></i></a>
+<span class="header-section-number">23.7</span> O caso de funções não normalizadas<a class="anchor" aria-label="anchor" href="#o-caso-de-fun%C3%A7%C3%B5es-n%C3%A3o-normalizadas"><i class="fas fa-link"></i></a>
 </h2>
-<p>Uma virtude do método, que merece destaque, é a seguinte: para aplicar a
-aceitação-rejeição não precisamos de conhecer a <em>constante de normalização</em> de
-<span class="math inline">\(f\)</span>. Suponhamos que só sabemos que a densidade alvo é proporcional a uma função
-conhecida <span class="math inline">\(\tilde f\)</span>, isto é, <span class="math inline">\(f(x) = \tilde f(x)/Z\)</span>, com <span class="math inline">\(Z = \int \tilde f\)</span>
-possivelmente desconhecido ou difícil de calcular. Se encontrarmos <span class="math inline">\(\tilde c\)</span>
-tal que <span class="math inline">\(\tilde f(x) \leq \tilde c\, g(x)\)</span>, o critério de aceitação
-<span class="math inline">\(U \leq \tilde f(Y)/[\tilde c\, g(Y)]\)</span> produz observações de <span class="math inline">\(f\)</span> na mesma, porque
-a constante <span class="math inline">\(Z\)</span> se cancela no quociente. Esta propriedade é decisiva na
-estatística bayesiana, onde as distribuições <em>a posteriori</em> são frequentemente
-conhecidas apenas a menos de uma constante.</p>
+<p>Uma virtude importante do método é que, em muitas situações, não precisamos de
+conhecer explicitamente a constante de normalização da distribuição alvo.</p>
+<p>Suponhamos que queremos amostrar de uma densidade <span class="math inline">\(f\)</span>, mas conhecemos apenas
+uma função <span class="math inline">\(\tilde f\)</span> proporcional a ela. Isto significa que</p>
+<p><span class="math display">\[
+f(x)=\frac{\tilde f(x)}{Z},
+\qquad
+Z=\int \tilde f(x)\,dx,
+\]</span></p>
+<p>onde <span class="math inline">\(Z\)</span> é a constante de normalização. Em muitas aplicações, sobretudo em
+estatística bayesiana, <span class="math inline">\(Z\)</span> pode ser difícil ou impossível de calcular
+analiticamente.</p>
+<p>O método da aceitação-rejeição continua a ser aplicável se encontrarmos uma
+densidade de proposta <span class="math inline">\(g\)</span> e uma constante <span class="math inline">\(\tilde c\)</span> tais que</p>
+<p><span class="math display">\[
+\tilde f(x) \leq \tilde c\,g(x)
+\]</span></p>
+<p>para todos os <span class="math inline">\(x\)</span> no suporte da distribuição alvo. Nesse caso, podemos aceitar
+um candidato <span class="math inline">\(Y\sim g\)</span> quando</p>
+<p><span class="math display">\[
+U \leq \frac{\tilde f(Y)}{\tilde c\,g(Y)}.
+\]</span></p>
+<p>Os valores aceites têm densidade proporcional a <span class="math inline">\(\tilde f\)</span>, logo têm a
+densidade alvo <span class="math inline">\(f\)</span>. A constante de normalização <span class="math inline">\(Z\)</span> não precisa de ser
+conhecida para executar o algoritmo.</p>
+<p>Contudo, há uma diferença importante: quando usamos uma densidade normalizada
+<span class="math inline">\(f\)</span>, a probabilidade média de aceitação é <span class="math inline">\(1/c\)</span>. Quando usamos uma função
+não normalizada <span class="math inline">\(\tilde f\)</span>, a probabilidade média de aceitação é</p>
+<p><span class="math display">\[
+P(\text{aceitar})=\frac{Z}{\tilde c}.
+\]</span></p>
+<p>Portanto, a taxa de aceitação observada pode até fornecer informação sobre a
+constante de normalização <span class="math inline">\(Z\)</span>, mas já não deve ser interpretada simplesmente
+como <span class="math inline">\(1/\tilde c\)</span>.</p>
 </div>
 <div id="síntese" class="section level2" number="23.8">
 <h2>
@@ -541,7 +599,7 @@ aceitação, o valor da constante de normalização.</p>
 <li><a class="nav-link" href="#implementa%C3%A7%C3%A3o-gen%C3%A9rica-em-r"><span class="header-section-number">23.4</span> Implementação genérica em R</a></li>
 <li><a class="nav-link" href="#exemplo-1-uma-densidade-limitada-com-proposta-uniforme"><span class="header-section-number">23.5</span> Exemplo 1 — uma densidade limitada com proposta uniforme</a></li>
 <li><a class="nav-link" href="#exemplo-2-a-normal-padr%C3%A3o-a-partir-da-exponencial"><span class="header-section-number">23.6</span> Exemplo 2 — a normal padrão a partir da exponencial</a></li>
-<li><a class="nav-link" href="#o-caso-de-densidades-n%C3%A3o-normalizadas"><span class="header-section-number">23.7</span> O caso de densidades não normalizadas</a></li>
+<li><a class="nav-link" href="#o-caso-de-fun%C3%A7%C3%B5es-n%C3%A3o-normalizadas"><span class="header-section-number">23.7</span> O caso de funções não normalizadas</a></li>
 <li><a class="nav-link" href="#s%C3%ADntese"><span class="header-section-number">23.8</span> Síntese</a></li>
 <li><a class="nav-link" href="#exerc%C3%ADcios-35"><span class="header-section-number">23.9</span> Exercícios</a></li>
 </ul>
@@ -560,7 +618,7 @@ aceitação, o valor da constante de normalização.</p>
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Introdução ao R e à Simulação Estatística</strong>: Um Laboratório de Estatística Computacional" was written by Renato de Paula and Nuno Brites. It was last built on 07 de July de 2026.</p>
+    <p>"<strong>Introdução ao R e à Simulação Estatística</strong>: Um Laboratório de Estatística Computacional" was written by Renato de Paula and Nuno Brites. It was last built on 11 de July de 2026.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

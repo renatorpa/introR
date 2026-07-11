@@ -6,14 +6,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Capítulo 2 O R e o RStudio | Introdução ao R e à Simulação Estatística</title>
 <meta name="author" content="Renato de Paula and Nuno Brites">
-<meta name="description" content="Toda a aprendizagem começa por preparar as ferramentas. Neste capítulo damos os primeiros passos práticos: percebemos o que é o R, instalamo-lo no computador, instalamos também o RStudio — o...">
+<meta name="description" content="No capítulo anterior vimos por que razão a estatística moderna é inseparável da computação e por que motivo o R se tornou uma linguagem central para trabalhar com dados, incerteza e simulação....">
 <meta name="generator" content="bookdown 0.46 with bs4_book()">
 <meta property="og:title" content="Capítulo 2 O R e o RStudio | Introdução ao R e à Simulação Estatística">
 <meta property="og:type" content="book">
-<meta property="og:description" content="Toda a aprendizagem começa por preparar as ferramentas. Neste capítulo damos os primeiros passos práticos: percebemos o que é o R, instalamo-lo no computador, instalamos também o RStudio — o...">
+<meta property="og:description" content="No capítulo anterior vimos por que razão a estatística moderna é inseparável da computação e por que motivo o R se tornou uma linguagem central para trabalhar com dados, incerteza e simulação....">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Capítulo 2 O R e o RStudio | Introdução ao R e à Simulação Estatística">
-<meta name="twitter:description" content="Toda a aprendizagem começa por preparar as ferramentas. Neste capítulo damos os primeiros passos práticos: percebemos o que é o R, instalamo-lo no computador, instalamos também o RStudio — o...">
+<meta name="twitter:description" content="No capítulo anterior vimos por que razão a estatística moderna é inseparável da computação e por que motivo o R se tornou uma linguagem central para trabalhar com dados, incerteza e simulação....">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.11.0/transition.js"></script><script src="libs/bs3compat-0.11.0/tabs.js"></script><script src="libs/bs3compat-0.11.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
@@ -82,90 +82,43 @@
 <h1>
 <span class="header-section-number">Capítulo 2</span> O R e o RStudio<a class="anchor" aria-label="anchor" href="#rrstudio"><i class="fas fa-link"></i></a>
 </h1>
-<p>Toda a aprendizagem começa por preparar as ferramentas. Neste capítulo damos os
-primeiros passos práticos: percebemos o que é o R, instalamo-lo no computador,
-instalamos também o RStudio — o ambiente que torna o trabalho com R muito mais
-confortável — e fazemos uma primeira visita guiada ao seu ecrã. No fim, o leitor
-terá um laboratório de estatística a funcionar e estará pronto para escrever os
-primeiros comandos.</p>
-<div id="o-que-é-o-r-1" class="section level2" number="2.1">
+<p>No capítulo anterior vimos por que razão a estatística moderna é inseparável da computação e por que motivo o R se tornou uma linguagem central para trabalhar com dados, incerteza e simulação. Neste capítulo passamos da motivação à prática: vamos preparar o ambiente de trabalho.</p>
+<p>Trabalhar com R implica, na prática, instalar dois programas complementares. O primeiro é o <strong>R</strong>, isto é, o motor que executa os cálculos, interpreta os comandos e contém as funções fundamentais da linguagem. O segundo é o <strong>RStudio</strong>, uma interface que torna a escrita, a organização e a execução do código muito mais cómodas.</p>
+<p>O objectivo deste capítulo é simples: instalar o R, instalar o RStudio e fazer uma primeira visita guiada ao ambiente onde iremos trabalhar ao longo do livro. No fim, o leitor terá um pequeno laboratório de estatística computacional a funcionar no seu computador e estará pronto para escrever os primeiros comandos.</p>
+<div id="instalação" class="section level2" number="2.1">
 <h2>
-<span class="header-section-number">2.1</span> O que é o R<a class="anchor" aria-label="anchor" href="#o-que-%C3%A9-o-r-1"><i class="fas fa-link"></i></a>
+<span class="header-section-number">2.1</span> Instalação<a class="anchor" aria-label="anchor" href="#instala%C3%A7%C3%A3o"><i class="fas fa-link"></i></a>
 </h2>
-<p>O R é um software de código aberto, desenvolvido como uma implementação gratuita
-da linguagem <strong>S</strong>, concebida especificamente para computação estatística,
-programação e produção de gráficos. A intenção original era dar a quem trabalha
-com dados a capacidade de os explorar de forma intuitiva e interativa,
-recorrendo a representações gráficas que facilitassem a sua compreensão. O R foi
-criado por Ross Ihaka e Robert Gentleman, da Universidade de Auckland, na Nova
-Zelândia — e o nome, com o seu toque de humor, brinca com as iniciais dos dois
-autores e com a linguagem S que lhe deu origem.</p>
-<p>Mais importante do que a história é perceber o que o R oferece a quem faz
-estatística. Em termos práticos, o R reúne num só ambiente:</p>
-<ul>
-<li>manipulação eficiente de dados e formas flexíveis de os armazenar;</li>
-<li>operadores poderosos para cálculos com vetores e matrizes;</li>
-<li>uma coleção abrangente e coerente de ferramentas para análise de dados;</li>
-<li>capacidades gráficas avançadas, tanto para visualização no ecrã como para
-produção de figuras de qualidade de publicação;</li>
-<li>uma linguagem de programação completa, com estruturas de decisão, ciclos,
-funções definidas pelo utilizador e ferramentas de entrada e saída de dados.</li>
-</ul>
-<div class="nota">
-<p>Repare que a última destas capacidades — o R ser uma <strong>linguagem de programação</strong>
-completa — é o que distingue o R de uma folha de cálculo. Numa folha de cálculo,
-descrevemos <em>onde</em> estão os dados; em R, descrevemos <em>o que queremos fazer</em> com
-eles. É essa mudança de perspetiva que dá ao R a sua flexibilidade, e é o que
-vamos aprender ao longo do livro.</p>
-</div>
-</div>
-<div id="instalação" class="section level2" number="2.2">
-<h2>
-<span class="header-section-number">2.2</span> Instalação<a class="anchor" aria-label="anchor" href="#instala%C3%A7%C3%A3o"><i class="fas fa-link"></i></a>
-</h2>
-<p>Trabalhar com R implica, na prática, instalar <strong>dois</strong> programas
-complementares. O primeiro é o R propriamente dito — o motor que executa os
-cálculos. O segundo é o RStudio, uma interface que torna a escrita e a
-organização do código muito mais agradáveis.</p>
-<div id="instalar-o-r" class="section level3" number="2.2.1">
+<div id="instalar-o-r" class="section level3" number="2.1.1">
 <h3>
-<span class="header-section-number">2.2.1</span> Instalar o R<a class="anchor" aria-label="anchor" href="#instalar-o-r"><i class="fas fa-link"></i></a>
+<span class="header-section-number">2.1.1</span> Instalar o R<a class="anchor" aria-label="anchor" href="#instalar-o-r"><i class="fas fa-link"></i></a>
 </h3>
-<p>A versão base do R, que inclui o conjunto fundamental de funções, descarrega-se
-do sítio oficial do projeto:</p>
+<p>A versão base do R, que inclui o conjunto fundamental de funções, descarrega-se do sítio oficial do projecto:</p>
 <blockquote>
 <p><a href="https://www.r-project.org/" class="uri">https://www.r-project.org/</a></p>
 </blockquote>
-<p>Basta seguir a ligação para o CRAN (a rede de repositórios do R), escolher o
-sistema operativo (Windows, macOS ou Linux) e instalar como qualquer outro
-programa.</p>
+<p>A partir dessa página, basta seguir a ligação para o <strong>CRAN</strong> (<em>Comprehensive R Archive Network</em>), escolher o sistema operativo – Windows, macOS ou Linux – e instalar o programa como qualquer outra aplicação. O CRAN é a rede oficial de repositórios do R: além de disponibilizar o próprio R, é também a partir dele que, mais tarde, instalaremos muitos dos pacotes usados para alargar as capacidades da linguagem.</p>
 </div>
-<div id="instalar-o-rstudio" class="section level3" number="2.2.2">
+<div id="instalar-o-rstudio" class="section level3" number="2.1.2">
 <h3>
-<span class="header-section-number">2.2.2</span> Instalar o RStudio<a class="anchor" aria-label="anchor" href="#instalar-o-rstudio"><i class="fas fa-link"></i></a>
+<span class="header-section-number">2.1.2</span> Instalar o RStudio<a class="anchor" aria-label="anchor" href="#instalar-o-rstudio"><i class="fas fa-link"></i></a>
 </h3>
-<p>Poderíamos trabalhar apenas com o R base, mas escrever código dessa forma é
-pouco confortável. Por isso, instala-se quase sempre um <strong>ambiente de
-desenvolvimento integrado</strong> (IDE) — um programa que ajuda a escrever, guardar e
-organizar os <em>scripts</em>, a executar comandos e a gerir os resultados. A escolha
-habitual é o <strong>RStudio</strong>, gratuito e disponível em:</p>
+<p>Poderíamos trabalhar apenas com o R base, mas escrever código dessa forma é pouco confortável. Por isso, instala-se quase sempre um <strong>ambiente de desenvolvimento integrado</strong> – em inglês, <em>Integrated Development Environment</em> ou <strong>IDE</strong>. Um IDE ajuda a escrever, guardar e organizar scripts, executar comandos, visualizar objectos, consultar gráficos e acompanhar os resultados.</p>
+<p>A escolha habitual para trabalhar com R é o <strong>RStudio Desktop</strong>, gratuito e disponível em:</p>
 <blockquote>
 <p><a href="https://posit.co/download/rstudio-desktop/" class="uri">https://posit.co/download/rstudio-desktop/</a></p>
 </blockquote>
 <div class="atencao">
-<p>A ordem importa: instale <strong>primeiro</strong> o R e <strong>só depois</strong> o RStudio. O RStudio
-não substitui o R — precisa de o encontrar já instalado no computador para
-funcionar. Se instalar o RStudio sem ter o R, ele não terá motor para executar
-os comandos.</p>
+<p>A ordem importa: instale <strong>primeiro</strong> o R e <strong>só depois</strong> o RStudio. O RStudio não substitui o R – precisa de o encontrar já instalado no computador para conseguir executar os comandos. Se instalar apenas o RStudio, terá a interface, mas não terá o motor da linguagem.</p>
 </div>
 </div>
-<div id="pacotes-estender-o-r" class="section level3" number="2.2.3">
+<div id="pacotes-estender-o-r" class="section level3" number="2.1.3">
 <h3>
-<span class="header-section-number">2.2.3</span> Pacotes: estender o R<a class="anchor" aria-label="anchor" href="#pacotes-estender-o-r"><i class="fas fa-link"></i></a>
+<span class="header-section-number">2.1.3</span> Pacotes: estender o R<a class="anchor" aria-label="anchor" href="#pacotes-estender-o-r"><i class="fas fa-link"></i></a>
 </h3>
 <p>Além do conjunto base de funções, o R oferece milhares de <strong>pacotes</strong> adicionais,
 desenvolvidos e partilhados pela comunidade. Um pacote é uma coleção de funções e
-dados que acrescenta novas capacidades ao R — desde gráficos elegantes até
+dados que acrescenta novas capacidades ao R – desde gráficos elegantes até
 modelos estatísticos sofisticados.</p>
 <p>Instalar um pacote faz-se uma única vez, com a função <code><a href="https://rdrr.io/r/utils/install.packages.html">install.packages()</a></code>
 (é preciso estar ligado à Internet):</p>
@@ -176,18 +129,18 @@ modelos estatísticos sofisticados.</p>
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/installed.packages.html">installed.packages</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <div class="dica">
 <p>Distinga bem dois passos que são frequentemente confundidos. <strong>Instalar</strong> um
-pacote (com <code><a href="https://rdrr.io/r/utils/install.packages.html">install.packages()</a></code>) faz-se uma vez só — descarrega o pacote para o
+pacote (com <code><a href="https://rdrr.io/r/utils/install.packages.html">install.packages()</a></code>) faz-se uma vez só – descarrega o pacote para o
 computador. <strong>Carregar</strong> um pacote (com <code><a href="https://rdrr.io/r/base/library.html">library()</a></code>) faz-se em cada sessão em que
-o queremos usar — torna as suas funções disponíveis. É como comprar um livro
+o queremos usar – torna as suas funções disponíveis. É como comprar um livro
 (uma vez) e depois tirá-lo da estante sempre que precisamos dele.</p>
 </div>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span>   <span class="co"># torna as funções do pacote disponíveis nesta sessão</span></span></code></pre></div>
 </div>
 </div>
-<div id="uma-visita-guiada-ao-rstudio" class="section level2" number="2.3">
+<div id="uma-visita-guiada-ao-rstudio" class="section level2" number="2.2">
 <h2>
-<span class="header-section-number">2.3</span> Uma visita guiada ao RStudio<a class="anchor" aria-label="anchor" href="#uma-visita-guiada-ao-rstudio"><i class="fas fa-link"></i></a>
+<span class="header-section-number">2.2</span> Uma visita guiada ao RStudio<a class="anchor" aria-label="anchor" href="#uma-visita-guiada-ao-rstudio"><i class="fas fa-link"></i></a>
 </h2>
 <p>Ao abrir o RStudio pela primeira vez, o ecrã pode parecer intimidante, com
 vários painéis ao mesmo tempo. Na verdade, são quatro áreas, cada uma com uma
@@ -195,7 +148,7 @@ função clara. Vale a pena conhecê-las, porque vamos passar muitas horas neste
 ambiente.</p>
 <p><strong>O Editor de <em>scripts</em></strong> (por omissão, no canto superior esquerdo) é onde
 escrevemos e guardamos o nosso código. Um <em>script</em> é um ficheiro de texto com uma
-sequência de comandos — o “guião” da nossa análise. O editor oferece realce de
+sequência de comandos – o “guião” da nossa análise. O editor oferece realce de
 sintaxe (que colore o código para o tornar legível), completamento automático e a
 possibilidade de executar linhas ou blocos de código diretamente. É aqui que
 deve escrever o código que quer conservar.</p>
@@ -205,7 +158,7 @@ na consola para testes rápidos, mas, ao contrário do editor, o que escrevemos 
 consola não fica guardado. Pense na consola como uma folha de rascunho e no
 editor como o caderno definitivo.</p>
 <p><strong>O painel <em>Environment</em>/<em>History</em></strong> (canto superior direito) mostra, no
-separador <em>Environment</em>, todos os objetos atualmente na memória da sessão — os
+separador <em>Environment</em>, todos os objetos atualmente na memória da sessão – os
 dados e variáveis que fomos criando. O separador <em>History</em> guarda o histórico de
 comandos executados, permitindo recuperá-los facilmente.</p>
 <p><strong>O painel inferior direito</strong> é multifuncional e reúne vários separadores úteis:
@@ -218,9 +171,9 @@ e aprender a ler essa documentação é uma competência que compensa cultivar d
 cedo. Veremos, já no próximo capítulo, como pedir ajuda sobre qualquer função.</p>
 </div>
 </div>
-<div id="atalhos-que-poupam-tempo" class="section level2" number="2.4">
+<div id="atalhos-que-poupam-tempo" class="section level2" number="2.3">
 <h2>
-<span class="header-section-number">2.4</span> Atalhos que poupam tempo<a class="anchor" aria-label="anchor" href="#atalhos-que-poupam-tempo"><i class="fas fa-link"></i></a>
+<span class="header-section-number">2.3</span> Atalhos que poupam tempo<a class="anchor" aria-label="anchor" href="#atalhos-que-poupam-tempo"><i class="fas fa-link"></i></a>
 </h2>
 <p>Programar é uma atividade repetitiva, e os bons atalhos de teclado fazem uma
 diferença real ao fim de algumas horas. Estes são os mais úteis para começar:</p>
@@ -306,16 +259,15 @@ mais poderoso.</p>
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
 <li><a class="nav-link" href="#rrstudio"><span class="header-section-number">2</span> O R e o RStudio</a></li>
-<li><a class="nav-link" href="#o-que-%C3%A9-o-r-1"><span class="header-section-number">2.1</span> O que é o R</a></li>
 <li>
-<a class="nav-link" href="#instala%C3%A7%C3%A3o"><span class="header-section-number">2.2</span> Instalação</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#instalar-o-r"><span class="header-section-number">2.2.1</span> Instalar o R</a></li>
-<li><a class="nav-link" href="#instalar-o-rstudio"><span class="header-section-number">2.2.2</span> Instalar o RStudio</a></li>
-<li><a class="nav-link" href="#pacotes-estender-o-r"><span class="header-section-number">2.2.3</span> Pacotes: estender o R</a></li>
+<a class="nav-link" href="#instala%C3%A7%C3%A3o"><span class="header-section-number">2.1</span> Instalação</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#instalar-o-r"><span class="header-section-number">2.1.1</span> Instalar o R</a></li>
+<li><a class="nav-link" href="#instalar-o-rstudio"><span class="header-section-number">2.1.2</span> Instalar o RStudio</a></li>
+<li><a class="nav-link" href="#pacotes-estender-o-r"><span class="header-section-number">2.1.3</span> Pacotes: estender o R</a></li>
 </ul>
 </li>
-<li><a class="nav-link" href="#uma-visita-guiada-ao-rstudio"><span class="header-section-number">2.3</span> Uma visita guiada ao RStudio</a></li>
-<li><a class="nav-link" href="#atalhos-que-poupam-tempo"><span class="header-section-number">2.4</span> Atalhos que poupam tempo</a></li>
+<li><a class="nav-link" href="#uma-visita-guiada-ao-rstudio"><span class="header-section-number">2.2</span> Uma visita guiada ao RStudio</a></li>
+<li><a class="nav-link" href="#atalhos-que-poupam-tempo"><span class="header-section-number">2.3</span> Atalhos que poupam tempo</a></li>
 </ul>
 
       <div class="book-extra">
@@ -332,7 +284,7 @@ mais poderoso.</p>
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Introdução ao R e à Simulação Estatística</strong>: Um Laboratório de Estatística Computacional" was written by Renato de Paula and Nuno Brites. It was last built on 07 de July de 2026.</p>
+    <p>"<strong>Introdução ao R e à Simulação Estatística</strong>: Um Laboratório de Estatística Computacional" was written by Renato de Paula and Nuno Brites. It was last built on 11 de July de 2026.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

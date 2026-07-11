@@ -24,7 +24,9 @@ fig:gg-tema
 fig:prob-exp
 fig:prob-troços
 fig:prob-area
+tab:tab-lln-repeticoes
 fig:sim-espera
+tab:tab-funcoes-distribuicoes
 fig:ecdf-exemplo
 fig:bin-teorica
 fig:bin-sim
@@ -70,7 +72,6 @@ o-que-é-o-r
 a-ideia-central-simular
 o-caminho-que-vamos-percorrer
 rrstudio
-o-que-é-o-r-1
 instalação
 instalar-o-r
 instalar-o-rstudio
@@ -289,7 +290,7 @@ eficiência-o-papel-da-constante-c
 implementação-genérica-em-r
 exemplo-1-uma-densidade-limitada-com-proposta-uniforme
 exemplo-2-a-normal-padrão-a-partir-da-exponencial
-o-caso-de-densidades-não-normalizadas
+o-caso-de-funções-não-normalizadas
 síntese
 exercícios-35
 teoremas-limites
