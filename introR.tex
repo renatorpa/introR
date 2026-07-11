@@ -1102,46 +1102,38 @@ estiver entre 0 e 100 (inclusive), ou \texttt{FALSE} caso contrário.
 
 \chapter{Estruturas de dados}\label{estruturas}
 
-Até aqui, trabalhámos sobretudo com valores isolados: um número, um texto ou um resultado lógico. Mas a estatística raramente lida com valores isolados. Lida, quase sempre, com \textbf{conjuntos de dados}. As alturas dos alunos de uma turma, as vendas mensais de uma empresa, as respostas de um inquérito ou as medições recolhidas por um sensor são colecções de valores que queremos guardar, organizar e analisar em conjunto. É aqui que entram as \textbf{estruturas de dados}.
+Até aqui, trabalhámos sobretudo com valores isolados: um número, um texto ou um resultado lógico. Mas a estatística raramente lida com valores isolados. Lida, quase sempre, com \textbf{conjuntos de dados}. As alturas dos estudantes de uma turma, as vendas mensais de uma empresa, as respostas de um inquérito ou as medições recolhidas por um sensor são coleções de valores que queremos guardar, organizar e analisar em conjunto. É aqui que entram as \textbf{estruturas de dados}.
 
-Uma estrutura de dados é uma forma de organizar vários valores num único objecto, para que possamos manipulá-los como um todo. Escolher a estrutura certa para cada problema é um passo fundamental: cada estrutura tem a sua finalidade própria, e conhecê-las bem é essencial para programar de forma clara, eficiente e segura em R.
+Uma estrutura de dados é uma forma de organizar vários valores num único objeto, para que possamos manipulá-los como um todo. Escolher a estrutura certa para cada problema é um passo fundamental: cada estrutura tem a sua finalidade própria, e conhecê-las bem é essencial para programar de forma clara, eficiente e segura em R.
 
 Antes de as estudarmos uma a uma, convém reter que, em R, existem dois grandes tipos de objetos:
 
 \begin{itemize}
 \tightlist
 \item
-  \textbf{Funções} --- objetos que \emph{executam} operações, como \texttt{cos()}, \texttt{print()},
+  \textbf{Funções} -- objetos que \emph{executam} operações, como \texttt{cos()}, \texttt{print()},
   \texttt{plot()} ou \texttt{integrate()}.
 \item
-  \textbf{Dados} --- objetos que \emph{contêm} informação, como \texttt{23}, \texttt{"Olá"}, \texttt{TRUE}, ou as
+  \textbf{Dados} -- objetos que \emph{contêm} informação, como \texttt{23}, \texttt{"Olá"}, \texttt{TRUE}, ou as
   estruturas que vamos conhecer agora.
 \end{itemize}
 
-Neste capítulo percorremos as quatro estruturas de dados fundamentais, das mais
-simples às mais flexíveis: os \textbf{vetores} (coleções homogéneas), os \textbf{fatores}
-(vetores para dados categóricos), as \textbf{matrizes e arrays} (coleções
-bidimensionais e multidimensionais), os \textbf{data frames} (tabelas) e as \textbf{listas}
-(coleções heterogéneas). Cada uma responde a uma necessidade diferente.
+Neste capítulo percorremos as principais estruturas de dados do R, das mais simples às mais flexíveis: os \textbf{vetores}, que guardam vários valores do mesmo tipo; os \textbf{fatores}, usados para representar dados categóricos; as \textbf{matrizes} e os \textbf{arrays}, que organizam valores em duas ou mais dimensões; os \textbf{data frames}, que representam tabelas de dados; e as \textbf{listas}, que permitem reunir objetos de tipos diferentes. Cada uma destas estruturas responde a uma necessidade própria, e aprender a distingui-las é essencial para escolher a ferramenta certa em cada problema.
 
 \section{Vetor}\label{vetor}
 
-O \textbf{vetor} é a estrutura mais elementar e, ao mesmo tempo, a mais importante do
-R --- a tal ponto que, mesmo um único número, é internamente um vetor de comprimento
-um. Um vetor é uma sequência ordenada de elementos \textbf{do mesmo tipo}: todos
-números, ou todos texto, ou todos valores lógicos.
+O \textbf{vetor} é a estrutura de dados mais elementar do R e, ao mesmo tempo, uma das mais importantes. Mesmo um único número é tratado internamente como um vetor de comprimento um. Um vetor é uma sequência ordenada de elementos do mesmo tipo: apenas números, apenas texto ou apenas valores lógicos.
 
-Três ideias a reter desde já:
+Há três ideias essenciais a reter desde já:
 
 \begin{itemize}
 \tightlist
 \item
-  todos os elementos de um vetor têm de ser do mesmo tipo;
+  todos os elementos de um vetor têm de pertencer ao mesmo tipo;
 \item
-  os elementos são indexados a partir de \textbf{1} (o primeiro elemento está na
-  posição 1, não 0, como em muitas outras linguagens);
+  os elementos são indexados a partir de \textbf{1}, ou seja, o primeiro elemento está na posição 1, e não na posição 0, como acontece em muitas outras linguagens de programação;
 \item
-  criam-se com a função \texttt{c()} e manipulam-se com uma vasta coleção de funções.
+  os vetores são normalmente criados com a função \texttt{c()} e podem ser manipulados com uma vasta coleção de funções do R.
 \end{itemize}
 
 \subsection{Tipos de vetores}\label{tipos-de-vetores}
@@ -1167,7 +1159,7 @@ Três ideias a reter desde já:
 \end{Shaded}
 
 Repare no último exemplo. Ao tentarmos misturar um número, um valor lógico e um
-texto, o R \textbf{não} dá erro: converte tudo para o tipo mais ``geral'' --- neste caso,
+texto, o R \textbf{não} dá erro: converte tudo para o tipo mais ``geral'', neste caso,
 texto. A este fenómeno chamamos \textbf{coerção}. É cómodo, mas traiçoeiro: se
 esperava um vetor de números e o R o converteu silenciosamente em texto, os
 cálculos seguintes falharão. Convém, por isso, garantir que cada vetor contém um
@@ -1215,15 +1207,13 @@ oferece atalhos poderosos para os construir:
 O operador \texttt{:} e as funções \texttt{seq()} e \texttt{rep()} vão aparecer constantemente. Note a
 diferença subtil entre \texttt{times} e \texttt{each} em \texttt{rep()}: \texttt{times} repete a sequência
 inteira; \texttt{each} repete cada elemento antes de passar ao seguinte. Confundir os
-dois é comum --- experimente ambos até a distinção ficar natural.
+dois é comum, experimente ambos até a distinção ficar natural.
 
 \subsection{Aceder a elementos}\label{aceder-a-elementos}
 
-Guardar um vetor só é útil se depois conseguirmos extrair partes dele. Fazemo-lo
-com \textbf{colchetes} \texttt{{[}\ {]}} e índices. Esta é uma das operações que mais vamos usar,
-por isso vale a pena dominá-la bem. Há três formas principais de indexar.
+Guardar um vetor só é útil se conseguirmos recuperar, selecionar ou modificar partes dele. Em R, fazemos isso com \textbf{parênteses retos} \texttt{{[}\ {]}} e índices. Esta operação chama-se \textbf{indexação} e será uma das mais usadas ao longo do livro. Por isso, vale a pena compreendê-la bem desde o início. Há três formas principais de indexar um vetor.
 
-\textbf{Por posição.} Indicamos os índices dos elementos que queremos:
+\textbf{Por posição.} Indicamos os índices dos elementos que queremos selecionar:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1231,27 +1221,37 @@ por isso vale a pena dominá-la bem. Há três formas principais de indexar.
 \NormalTok{x}
 \DocumentationTok{\#\#  [1] {-}5 {-}4 {-}3 {-}2 {-}1  0  1  2  3  4  5}
 
+\NormalTok{x[}\DecValTok{1}\NormalTok{]             }\CommentTok{\# primeiro elemento}
+\DocumentationTok{\#\# [1] {-}5}
+
 \NormalTok{x[}\DecValTok{4}\SpecialCharTok{:}\DecValTok{8}\NormalTok{]           }\CommentTok{\# do quarto ao oitavo elemento}
 \DocumentationTok{\#\# [1] {-}2 {-}1  0  1  2}
 
-\NormalTok{x[}\SpecialCharTok{{-}}\FunctionTok{length}\NormalTok{(x)]    }\CommentTok{\# todos menos o último}
-\DocumentationTok{\#\# [1] {-}5 {-}4 {-}3 {-}2 {-}1  0  1  2  3  4}
+\NormalTok{x[}\FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{5}\NormalTok{)]    }\CommentTok{\# primeiro, terceiro e quinto elementos}
+\DocumentationTok{\#\# [1] {-}5 {-}3 {-}1}
 \end{Highlighting}
 \end{Shaded}
 
-\textbf{Por exclusão.} Um índice negativo \emph{remove} elementos:
+\textbf{Por exclusão.} Também podemos indicar as posições que queremos remover. Para isso, usamos índices negativos:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{x[}\SpecialCharTok{{-}}\FunctionTok{c}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\DecValTok{3}\NormalTok{, }\DecValTok{9}\SpecialCharTok{:}\DecValTok{11}\NormalTok{)]   }\CommentTok{\# remove os três primeiros e os três últimos}
+\NormalTok{x[}\SpecialCharTok{{-}}\DecValTok{1}\NormalTok{]            }\CommentTok{\# todos os elementos exceto o primeiro}
+\DocumentationTok{\#\#  [1] {-}4 {-}3 {-}2 {-}1  0  1  2  3  4  5}
+
+\NormalTok{x[}\SpecialCharTok{{-}}\FunctionTok{length}\NormalTok{(x)]    }\CommentTok{\# todos os elementos exceto o último}
+\DocumentationTok{\#\# [1] {-}5 {-}4 {-}3 {-}2 {-}1  0  1  2  3  4}
+
+\NormalTok{x[}\SpecialCharTok{{-}}\FunctionTok{c}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\DecValTok{3}\NormalTok{, }\DecValTok{9}\SpecialCharTok{:}\DecValTok{11}\NormalTok{)] }\CommentTok{\# remove os três primeiros e os três últimos}
 \DocumentationTok{\#\# [1] {-}2 {-}1  0  1  2}
 \end{Highlighting}
 \end{Shaded}
 
-\textbf{Por condição lógica.} Esta é a forma mais poderosa: fornecemos um vetor de
-\texttt{TRUE}/\texttt{FALSE}, e o R devolve os elementos nas posições onde há \texttt{TRUE}. Como as
-comparações produzem exatamente esses vetores lógicos, podemos filtrar dados de
-forma muito expressiva:
+A expressão \texttt{length(x)} devolve o comprimento do vetor \texttt{x}. Em R, índices negativos removem posições, não valores. Portanto, \texttt{x{[}-length(x){]}} significa: remover o elemento que está na última posição de \texttt{x}, e não remover um valor igual a \texttt{length(x)}.
+
+\textbf{Por condição lógica.} A terceira forma de indexação é uma das mais úteis em análise de dados. Em vez de indicarmos diretamente as posições que queremos selecionar, fornecemos ao R um vetor lógico, isto é, um vetor formado por valores \texttt{TRUE} e \texttt{FALSE}. O R devolve apenas os elementos que estão nas posições onde aparece \texttt{TRUE}.
+
+Esta ideia é particularmente poderosa porque as comparações em R produzem precisamente vetores lógicos. Assim, podemos selecionar elementos que satisfazem uma certa condição.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1263,31 +1263,35 @@ forma muito expressiva:
 \NormalTok{x[index]}
 \DocumentationTok{\#\# [1] {-}2 {-}1  0  1  2}
 
-\CommentTok{\# ... ou tudo de uma vez, sem variável auxiliar}
+\CommentTok{\# A mesma seleção, sem criar uma variável auxiliar}
 \NormalTok{x[}\FunctionTok{abs}\NormalTok{(x) }\SpecialCharTok{\textless{}} \DecValTok{3}\NormalTok{]}
 \DocumentationTok{\#\# [1] {-}2 {-}1  0  1  2}
 \end{Highlighting}
 \end{Shaded}
 
-Mais exemplos desta indexação condicional, que convém estudar com calma:
+No exemplo anterior, \texttt{abs(x)\ \textless{}\ 3} cria uma condição lógica. O R verifica essa condição elemento a elemento e devolve \texttt{TRUE} nas posições em que o valor absoluto de \texttt{x} é menor que 3. Quando usamos esse vetor lógico dentro dos parênteses retos, ficamos apenas com os elementos correspondentes às posições verdadeiras.
+
+Vejamos mais alguns exemplos:
 
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{y }\OtherTok{\textless{}{-}} \DecValTok{1}\SpecialCharTok{:}\DecValTok{10}
-\NormalTok{y[y }\SpecialCharTok{\textgreater{}} \DecValTok{5}\NormalTok{]           }\CommentTok{\# os maiores que 5}
+
+\NormalTok{y[y }\SpecialCharTok{\textgreater{}} \DecValTok{5}\NormalTok{]           }\CommentTok{\# elementos maiores que 5}
 \DocumentationTok{\#\# [1]  6  7  8  9 10}
 
-\NormalTok{y[y }\SpecialCharTok{\%\%} \DecValTok{2} \SpecialCharTok{==} \DecValTok{0}\NormalTok{]     }\CommentTok{\# os pares}
+\NormalTok{y[y }\SpecialCharTok{\%\%} \DecValTok{2} \SpecialCharTok{==} \DecValTok{0}\NormalTok{]     }\CommentTok{\# elementos pares}
 \DocumentationTok{\#\# [1]  2  4  6  8 10}
 
 \NormalTok{y[}\DecValTok{5}\NormalTok{] }\OtherTok{\textless{}{-}} \ConstantTok{NA}
-\NormalTok{y[}\SpecialCharTok{!}\FunctionTok{is.na}\NormalTok{(y)]       }\CommentTok{\# todos os que não são NA}
+\NormalTok{y[}\SpecialCharTok{!}\FunctionTok{is.na}\NormalTok{(y)]       }\CommentTok{\# elementos que não são NA}
 \DocumentationTok{\#\# [1]  1  2  3  4  6  7  8  9 10}
 \end{Highlighting}
 \end{Shaded}
 
-O R traz ainda alguns vetores predefinidos convenientes, como \texttt{letters} e
-\texttt{LETTERS} (o alfabeto em minúsculas e maiúsculas):
+Neste último exemplo, \texttt{is.na(y)} identifica os valores ausentes e devolve \texttt{TRUE} nas posições em que há \texttt{NA}. O operador \texttt{!} inverte essa condição. Por isso, \texttt{!is.na(y)} seleciona os elementos que \textbf{não} são valores ausentes.
+
+O R inclui ainda alguns vetores predefinidos úteis, como \texttt{letters} e \texttt{LETTERS}, que contêm o alfabeto em minúsculas e em maiúsculas, respetivamente:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1335,7 +1339,7 @@ numérico:
 \end{Shaded}
 
 Uma função particularmente útil é \texttt{which()}, que devolve as \textbf{posições} dos
-elementos que satisfazem uma condição --- e não os valores em si:
+elementos que satisfazem uma condição, e não os valores em si:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1402,7 +1406,7 @@ não for múltiplo do menor, a reciclagem fica ``incompleta'' e o R emite um avi
 \end{Highlighting}
 \end{Shaded}
 
-Aqui, \texttt{c(2,\ 3,\ 4)} foi reciclado para \texttt{c(2,\ 3,\ 4,\ 2)} --- o último elemento repetiu
+Aqui, \texttt{c(2,\ 3,\ 4)} foi reciclado para \texttt{c(2,\ 3,\ 4,\ 2)}, o último elemento repetiu
 apenas parcialmente. \textbf{Leia sempre os avisos do R:} um aviso de reciclagem é,
 muitas vezes, o sintoma de um vetor com o comprimento errado.
 
@@ -1438,7 +1442,7 @@ muitas vezes, o sintoma de um vetor com o comprimento errado.
 
 \textbf{6.} Crie o vetor \texttt{notas\ \textless{}-\ c(7,\ 8,\ 9)} e atribua-lhe os nomes dos alunos
 ``Ana'', ``João'' e ``Pedro''. Aceda à nota do ``João'' usando o nome.
-\emph{Sugestão:} use a função \texttt{names()}.
+\emph{Sugestão:} Use a função \texttt{names()}.
 
 \textbf{7.} Crie um vetor de 15 números aleatórios entre 1 e 100 (use \texttt{sample()}).
 Ordene-o por ordem crescente e depois decrescente. Encontre o menor e o maior
@@ -1476,7 +1480,7 @@ posições 2, 4 e 6. Substitua o último elemento por 100.
 \def\labelenumi{(\alph{enumi})}
 \tightlist
 \item
-  um vetor com os valores \(e^{x}\sin(x)\) nos pontos \(x = 2, 2{,}1, 2{,}2,
+  um vetor com os valores \(e^{x}\sin(x)\) nos pontos \(x = 2, 2.1, 2.2,
   \ldots, 6\);
 \item
   o vetor \(\left(3, \dfrac{3^2}{2}, \dfrac{3^3}{3}, \ldots,
@@ -1504,7 +1508,7 @@ durante 30 dias, guardando-os num vetor \texttt{consumo}.
 \tightlist
 \item
   Defina \texttt{consumo} com 30 valores gerados aleatoriamente entre 10 e 40 kWh,
-  usando \texttt{runif()} com semente 2025 (\texttt{set.seed(2025)}). Consulte \texttt{?runif} para
+  usando \texttt{runif()} com semente 2026 (\texttt{set.seed(2026)}). Consulte \texttt{?runif} para
   os parâmetros.
 \item
   Calcule o consumo médio e guarde-o em \texttt{media}.
@@ -1568,16 +1572,9 @@ de 12 propriedades.
 
 \section{Fatores}\label{fatores}
 
-Nem todos os dados são números ou textos livres. Muitas variáveis são
-\textbf{categóricas}: assumem um número limitado de valores possíveis --- o sexo, o
-estado civil, o grau de satisfação, o nível de escolaridade. Poderíamos
-guardá-las como vetores de texto, mas o R oferece uma estrutura feita à medida
-para elas: o \textbf{fator}.
+Nem todos os dados são números ou textos livres. Muitas variáveis são \textbf{categóricas}, isto é, assumem um número limitado de valores possíveis. É o caso do género, do estado civil, do grau de satisfação ou do nível de escolaridade. Poderíamos guardar estas variáveis como vetores de texto, mas o R oferece uma estrutura própria para as representar: o \textbf{fator}.
 
-Um fator é um vetor especial, concebido para representar dados categóricos. À
-primeira vista parece um vetor de texto, mas por baixo esconde uma organização
-mais inteligente, que torna as análises estatísticas mais eficientes e mais
-corretas. Três conceitos definem um fator:
+Um fator é um vetor especial, concebido para trabalhar com dados categóricos. À primeira vista, pode parecer um vetor de texto. No entanto, internamente, o R organiza as categorias de forma mais adequada para análise estatística, gráficos e modelos. Para compreender bem um fator, precisamos de conhecer três ideias:
 
 \begin{itemize}
 \tightlist
@@ -1586,7 +1583,7 @@ corretas. Três conceitos definem um fator:
   uma variável ``tamanho'', os níveis poderiam ser ``pequeno'', ``médio'' e ``grande''.
 \item
   \textbf{Armazenamento interno}: internamente, o R guarda cada valor como um inteiro
-  que aponta para um nível. É mais eficiente e evita erros de escrita --- se ``médio''
+  que aponta para um nível. É mais eficiente e evita erros de escrita, se ``médio''
   é um nível, não há forma de acidentalmente escrever ``medio'' numa observação.
 \item
   \textbf{Ordem}: os fatores podem ser \textbf{ordenados} (quando há uma hierarquia natural,
@@ -1608,11 +1605,7 @@ Criamos um fator com a função \texttt{factor()}:
 \end{Highlighting}
 \end{Shaded}
 
-Por omissão, o R ordena os níveis \textbf{alfabeticamente} --- repare que ficaram ``alto'',
-``baixo'', ``medio'', o que quase nunca é a ordem que queremos. Para variáveis com uma
-hierarquia natural, isto é um problema: um gráfico ou uma tabela apareceriam por
-ordem alfabética em vez da ordem lógica. A solução é indicar explicitamente a
-ordem dos níveis.
+Por omissão, o R ordena os níveis \textbf{alfabeticamente}. Repare que a ordem ficou \texttt{"alto"}, \texttt{"baixo"}, \texttt{"medio"}, o que quase nunca corresponde à ordem pretendida. Para variáveis com uma hierarquia natural, isto pode ser um problema: gráficos, tabelas e resumos podem aparecer por ordem alfabética, e não pela ordem lógica das categorias. A solução é indicar explicitamente a ordem dos níveis.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1658,9 +1651,7 @@ Podemos consultar e modificar os níveis de um fator:
 
 \subsection{\texorpdfstring{Gerar fatores com \texttt{gl()}}{Gerar fatores com gl()}}\label{gerar-fatores-com-gl}
 
-Quando precisamos de fatores com padrões regulares --- típico em desenhos
-experimentais, onde há grupos de igual dimensão --- a função \texttt{gl()} (\emph{generate
-levels}) poupa trabalho:
+Quando precisamos de criar fatores com padrões regulares, como acontece frequentemente em desenhos experimentais com grupos de igual dimensão, a função \texttt{gl()} (\emph{generate levels}) permite fazê-lo de forma simples e rápida.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1683,8 +1674,8 @@ levels}) poupa trabalho:
 transforme-o num fator com níveis ordenados ``pequeno'', ``médio'', ``grande''. Exiba os
 níveis.
 
-\textbf{2.} Crie um fator com as cores de carros \texttt{c("vermelho",\ "azul",\ "preto",\ "vermelho",\ "branco",\ "azul")}. Use \texttt{table()} para contar quantos carros há de
-cada cor.
+\textbf{2.} Crie um fator com as cores de carros \texttt{c("vermelho",\ "azul",\ "preto",\ "vermelho",\ "branco",\ "azul")}.
+\emph{Sugestão:} Use \texttt{table()} para contar quantos carros há de cada cor.
 
 \textbf{3.} Crie um fator com avaliações ``bom'', ``médio'', ``mau'' e modifique os níveis
 para ``excelente'', ``razoável'' e ``insatisfatório''. Exiba o fator modificado.
@@ -1771,8 +1762,7 @@ Converta-o num fator não ordenado \texttt{phda\_fator}.
 \item
   Obtenha as frequências absolutas e relativas de cada desafio.
 \item
-  Quantos estudantes indicaram ``Concentração'' ou ``Procrastinação'' como principal
-  dificuldade?
+  Quantos estudantes indicaram ``Concentração'' ou ``Procrastinação'' como principal dificuldade?
 \item
   Recodifique ``Nenhum'' para ``Sem dificuldade declarada''.
 \item
