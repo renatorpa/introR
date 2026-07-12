@@ -15,8 +15,8 @@
 <meta name="twitter:title" content="Capítulo 5 Estruturas de decisão | Introdução ao R e à Simulação Estatística">
 <meta name="twitter:description" content="Até agora, os nossos programas executavam sempre a mesma sequência de comandos, do princípio ao fim, sem alternativas. Mas um programa útil precisa, muitas vezes, de decidir: se a nota é...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link href="libs/bootstrap-5.3.8/bootstrap.min.css" rel="stylesheet">
-<script src="libs/bootstrap-5.3.8/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.11.0/transition.js"></script><script src="libs/bs3compat-0.11.0/tabs.js"></script><script src="libs/bs3compat-0.11.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.11.0/transition.js"></script><script src="libs/bs3compat-0.11.0/tabs.js"></script><script src="libs/bs3compat-0.11.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
 <script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
     
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
@@ -110,14 +110,14 @@ e o programa continua.</p>
 <code class="sourceCode R"><span><span class="va">idade</span> <span class="op">&lt;-</span> <span class="fl">18</span></span>
 <span></span>
 <span><span class="kw">if</span> <span class="op">(</span><span class="va">idade</span> <span class="op">&gt;=</span> <span class="fl">18</span><span class="op">)</span> <span class="op">{</span></span>
-<span>  <span class="fu">print</span><span class="op">(</span><span class="st">"Maior de idade"</span><span class="op">)</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="st">"Maior de idade"</span><span class="op">)</span></span>
 <span><span class="op">}</span></span>
 <span><span class="co">## [1] "Maior de idade"</span></span></code></pre></div>
 <p>Como <code>idade</code> vale 18, a condição <code>idade &gt;= 18</code> é verdadeira, e o R executa o
 código dentro das chavetas.</p>
 <div class="nota">
 <p>Repare na anatomia da instrução: a condição vai entre <strong>parênteses</strong> <code>( )</code> e o
-bloco de código a executar vai entre <strong>chavetas</strong> <code>{ }</code>. Habitue-se a esta
+bloco de código a executar vai entre <strong>chavetas</strong> <code><a href="https://rdrr.io/r/base/Paren.html">{ }</a></code>. Habitue-se a esta
 pontuação desde já — esquecer uma chaveta é um dos erros mais frequentes.</p>
 </div>
 </div>
@@ -139,9 +139,9 @@ acrescenta um caminho alternativo, executado quando a condição é falsa.</p>
 <code class="sourceCode R"><span><span class="va">idade</span> <span class="op">&lt;-</span> <span class="fl">16</span></span>
 <span></span>
 <span><span class="kw">if</span> <span class="op">(</span><span class="va">idade</span> <span class="op">&gt;=</span> <span class="fl">18</span><span class="op">)</span> <span class="op">{</span></span>
-<span>  <span class="fu">print</span><span class="op">(</span><span class="st">"Maior de idade"</span><span class="op">)</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="st">"Maior de idade"</span><span class="op">)</span></span>
 <span><span class="op">}</span> <span class="kw">else</span> <span class="op">{</span></span>
-<span>  <span class="fu">print</span><span class="op">(</span><span class="st">"Menor de idade"</span><span class="op">)</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="st">"Menor de idade"</span><span class="op">)</span></span>
 <span><span class="op">}</span></span>
 <span><span class="co">## [1] "Menor de idade"</span></span></code></pre></div>
 <p>Agora, como <code>idade</code> vale 16, a condição é falsa e o R executa o bloco do <code>else</code>.
@@ -168,11 +168,11 @@ respetivo bloco e ignora todos os restantes.</p>
 <code class="sourceCode R"><span><span class="va">nota</span> <span class="op">&lt;-</span> <span class="fl">85</span></span>
 <span></span>
 <span><span class="kw">if</span> <span class="op">(</span><span class="va">nota</span> <span class="op">&gt;=</span> <span class="fl">90</span><span class="op">)</span> <span class="op">{</span></span>
-<span>  <span class="fu">print</span><span class="op">(</span><span class="st">"Excelente"</span><span class="op">)</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="st">"Excelente"</span><span class="op">)</span></span>
 <span><span class="op">}</span> <span class="kw">else</span> <span class="kw">if</span> <span class="op">(</span><span class="va">nota</span> <span class="op">&gt;=</span> <span class="fl">70</span><span class="op">)</span> <span class="op">{</span></span>
-<span>  <span class="fu">print</span><span class="op">(</span><span class="st">"Bom"</span><span class="op">)</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="st">"Bom"</span><span class="op">)</span></span>
 <span><span class="op">}</span> <span class="kw">else</span> <span class="op">{</span></span>
-<span>  <span class="fu">print</span><span class="op">(</span><span class="st">"Insuficiente"</span><span class="op">)</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="st">"Insuficiente"</span><span class="op">)</span></span>
 <span><span class="op">}</span></span>
 <span><span class="co">## [1] "Bom"</span></span></code></pre></div>
 <div class="dica">
@@ -191,15 +191,15 @@ erradamente rotulada de “Bom”.</p>
 lembremo-nos de que, em R, trabalhamos constantemente com vetores. E se
 quiséssemos classificar <em>cada elemento</em> de um vetor? Escrever um <code>if</code> para cada um
 seria absurdo.</p>
-<p>É aqui que entra a função <code>ifelse()</code>, a versão <strong>vetorizada</strong> da decisão. Aplica
+<p>É aqui que entra a função <code><a href="https://rdrr.io/r/base/ifelse.html">ifelse()</a></code>, a versão <strong>vetorizada</strong> da decisão. Aplica
 uma condição a cada elemento de um vetor de uma só vez, devolvendo um valor
 consoante a condição seja verdadeira ou falsa:</p>
 <div class="sourceCode" id="cb88"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">resultado</span> <span class="op">&lt;-</span> <span class="fu">ifelse</span><span class="op">(</span><span class="va">condição</span>, <span class="va">valor_se_true</span>, <span class="va">valor_se_false</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">resultado</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html">ifelse</a></span><span class="op">(</span><span class="va">condição</span>, <span class="va">valor_se_true</span>, <span class="va">valor_se_false</span><span class="op">)</span></span></code></pre></div>
 <p>Vejamos:</p>
 <div class="sourceCode" id="cb89"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">valores</span> <span class="op">&lt;-</span> <span class="fu">c</span><span class="op">(</span><span class="fl">4</span>, <span class="fl">6</span>, <span class="fl">9</span>, <span class="fl">3</span><span class="op">)</span></span>
-<span><span class="fu">ifelse</span><span class="op">(</span><span class="va">valores</span> <span class="op">&gt;</span> <span class="fl">5</span>, <span class="st">"maior que 5"</span>, <span class="st">"não é maior que 5"</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="va">valores</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">4</span>, <span class="fl">6</span>, <span class="fl">9</span>, <span class="fl">3</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/ifelse.html">ifelse</a></span><span class="op">(</span><span class="va">valores</span> <span class="op">&gt;</span> <span class="fl">5</span>, <span class="st">"maior que 5"</span>, <span class="st">"não é maior que 5"</span><span class="op">)</span></span>
 <span><span class="co">## [1] "não é maior que 5" "maior que 5"       "maior que 5"      </span></span>
 <span><span class="co">## [4] "não é maior que 5"</span></span></code></pre></div>
 <p>A função avaliou <code>valores &gt; 5</code> para cada elemento e devolveu, elemento a elemento,
@@ -207,11 +207,11 @@ a etiqueta correspondente. É uma ferramenta indispensável para criar novas
 variáveis a partir de condições — algo que faremos muitas vezes ao trabalhar com
 dados.</p>
 <div class="atencao">
-<p>Não confunda <code>if</code> com <code>ifelse()</code>. O <code>if</code> decide sobre <strong>uma</strong> condição e executa
-um <strong>bloco</strong> de código; espera uma condição de comprimento 1. O <code>ifelse()</code> é uma
+<p>Não confunda <code>if</code> com <code><a href="https://rdrr.io/r/base/ifelse.html">ifelse()</a></code>. O <code>if</code> decide sobre <strong>uma</strong> condição e executa
+um <strong>bloco</strong> de código; espera uma condição de comprimento 1. O <code><a href="https://rdrr.io/r/base/ifelse.html">ifelse()</a></code> é uma
 <strong>função</strong> que percorre um vetor e devolve um vetor. Regra prática: se está a
 decidir o rumo do programa, use <code>if</code>; se está a transformar um vetor elemento a
-elemento, use <code>ifelse()</code>.</p>
+elemento, use <code><a href="https://rdrr.io/r/base/ifelse.html">ifelse()</a></code>.</p>
 </div>
 </div>
 <div id="erros-comuns-e-exemplos-de-análise" class="section level2" number="5.5">
@@ -229,10 +229,10 @@ seguintes treinam esse olhar crítico — começando por identificar erros.</p>
 <p>O erro está no <code>=</code>: dentro da condição queremos <strong>testar</strong> a igualdade, não
 atribuir. A forma correta usa <code>==</code>:</p>
 <div class="sourceCode" id="cb91"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw">if</span> <span class="op">(</span><span class="va">x</span> <span class="op">%%</span> <span class="fl">2</span> <span class="op">==</span> <span class="fl">0</span><span class="op">)</span> <span class="op">{</span></span>
-<span>  <span class="fu">print</span><span class="op">(</span><span class="st">"Par"</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="kw">if</span> <span class="op">(</span><span class="va">x</span> <span class="op"><a href="https://rdrr.io/r/base/Arithmetic.html">%%</a></span> <span class="fl">2</span> <span class="op">==</span> <span class="fl">0</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="st">"Par"</span><span class="op">)</span></span>
 <span><span class="op">}</span> <span class="kw">else</span> <span class="op">{</span></span>
-<span>  <span class="fu">print</span><span class="op">(</span><span class="st">"Ímpar"</span><span class="op">)</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="st">"Ímpar"</span><span class="op">)</span></span>
 <span><span class="op">}</span></span></code></pre></div>
 <p><strong>Exemplo 2.</strong> Que erros há neste código?</p>
 <div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb92-1"><a href="selecao.html#cb92-1" tabindex="-1"></a><span class="cf">if</span> (a <span class="sc">&gt;</span> <span class="dv">0</span>) {</span>
@@ -248,17 +248,17 @@ atribuir. A forma correta usa <code>==</code>:</p>
 condição (que devia ser apenas <code>else</code>). A versão corrigida:</p>
 <div class="sourceCode" id="cb93"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw">if</span> <span class="op">(</span><span class="va">a</span> <span class="op">&gt;</span> <span class="fl">0</span><span class="op">)</span> <span class="op">{</span></span>
-<span>  <span class="fu">print</span><span class="op">(</span><span class="st">"Positivo"</span><span class="op">)</span></span>
-<span>  <span class="kw">if</span> <span class="op">(</span><span class="va">a</span> <span class="op">%%</span> <span class="fl">5</span> <span class="op">==</span> <span class="fl">0</span><span class="op">)</span> <span class="op">{</span></span>
-<span>    <span class="fu">print</span><span class="op">(</span><span class="st">"Divisível por 5"</span><span class="op">)</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="st">"Positivo"</span><span class="op">)</span></span>
+<span>  <span class="kw">if</span> <span class="op">(</span><span class="va">a</span> <span class="op"><a href="https://rdrr.io/r/base/Arithmetic.html">%%</a></span> <span class="fl">5</span> <span class="op">==</span> <span class="fl">0</span><span class="op">)</span> <span class="op">{</span></span>
+<span>    <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="st">"Divisível por 5"</span><span class="op">)</span></span>
 <span>  <span class="op">}</span></span>
 <span><span class="op">}</span> <span class="kw">else</span> <span class="kw">if</span> <span class="op">(</span><span class="va">a</span> <span class="op">==</span> <span class="fl">0</span><span class="op">)</span> <span class="op">{</span></span>
-<span>  <span class="fu">print</span><span class="op">(</span><span class="st">"Zero"</span><span class="op">)</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="st">"Zero"</span><span class="op">)</span></span>
 <span><span class="op">}</span> <span class="kw">else</span> <span class="op">{</span></span>
-<span>  <span class="fu">print</span><span class="op">(</span><span class="st">"Negativo"</span><span class="op">)</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="st">"Negativo"</span><span class="op">)</span></span>
 <span><span class="op">}</span></span></code></pre></div>
 <div class="dica">
-<p>Use sempre chavetas <code>{ }</code>, mesmo quando o bloco tem uma só linha. É verdade que o
+<p>Use sempre chavetas <code><a href="https://rdrr.io/r/base/Paren.html">{ }</a></code>, mesmo quando o bloco tem uma só linha. É verdade que o
 R as dispensa nesse caso, mas incluí-las torna o código mais claro, evita
 surpresas quando mais tarde acrescentamos linhas ao bloco, e previne muitos dos
 erros que vimos acima.</p>
@@ -333,13 +333,13 @@ representação em numeração romana. Fora de <span class="math inline">\([1, 5
 intervalo”. Por exemplo, para 3, deve exibir “III”.</p>
 <p><strong>10.</strong> Escreva um programa que leia quatro inteiros (um de cada vez) e exiba,
 após cada leitura, o menor número lido até ao momento.</p>
-<p><strong>11.</strong> Crie um vetor com os números de 1 a 10 e use <code>ifelse()</code> para rotular cada
+<p><strong>11.</strong> Crie um vetor com os números de 1 a 10 e use <code><a href="https://rdrr.io/r/base/ifelse.html">ifelse()</a></code> para rotular cada
 número como “par” ou “ímpar”.</p>
-<p><strong>12.</strong> Crie o vetor de notas <code>c(50, 85, 70, 40, 60, 90)</code>. Use <code>ifelse()</code> para
+<p><strong>12.</strong> Crie o vetor de notas <code>c(50, 85, 70, 40, 60, 90)</code>. Use <code><a href="https://rdrr.io/r/base/ifelse.html">ifelse()</a></code> para
 marcar como “Aprovado” quem tem nota <span class="math inline">\(\geq 50\)</span> e “Reprovado” os restantes. Depois,
 modifique o programa para que as notas entre 50 e 59 sejam “Aprovado com
 Restrição”.</p>
-<p><strong>13.</strong> Dado um vetor de idades, use <code>ifelse()</code> (encadeado) para as categorizar em
+<p><strong>13.</strong> Dado um vetor de idades, use <code><a href="https://rdrr.io/r/base/ifelse.html">ifelse()</a></code> (encadeado) para as categorizar em
 “Criança” (<span class="math inline">\(\leq 12\)</span>), “Adolescente” (13-18) e “Adulto” (&gt; 18).</p>
 
 </div>
@@ -373,7 +373,7 @@ Restrição”.</p>
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Introdução ao R e à Simulação Estatística</strong>: Um Laboratório de Estatística Computacional" was written by Renato de Paula and Nuno Brites. It was last built on 11 de July de 2026.</p>
+    <p>"<strong>Introdução ao R e à Simulação Estatística</strong>: Um Laboratório de Estatística Computacional" was written by Renato de Paula and Nuno Brites. It was last built on 12 de July de 2026.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

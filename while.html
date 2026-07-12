@@ -15,8 +15,8 @@
 <meta name="twitter:title" content="Capítulo 10 O ciclo while | Introdução ao R e à Simulação Estatística">
 <meta name="twitter:description" content="Até aqui, cada instrução do nosso código corria uma só vez. Mas há tarefas que exigem repetição: somar os números até um certo limite, pedir dados ao utilizador até ele decidir parar, refinar um...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link href="libs/bootstrap-5.3.8/bootstrap.min.css" rel="stylesheet">
-<script src="libs/bootstrap-5.3.8/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.11.0/transition.js"></script><script src="libs/bs3compat-0.11.0/tabs.js"></script><script src="libs/bs3compat-0.11.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.11.0/transition.js"></script><script src="libs/bs3compat-0.11.0/tabs.js"></script><script src="libs/bs3compat-0.11.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
 <script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
     
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
@@ -106,7 +106,7 @@ executa o bloco; volta a avaliar a condição. Repete-se assim até a condição
 falsa, momento em que o programa segue para a instrução seguinte ao <code>while</code>.</p>
 <div class="objetivo">
 <p>Neste capítulo aprendemos a repetir código com <code>while</code>, a garantir que o ciclo
-termina, a interrompê-lo com <code>break</code> e a reconhecer e evitar os ciclos infinitos.</p>
+termina, a interrompê-lo com <code><a href="https://rdrr.io/r/base/Control.html">break</a></code> e a reconhecer e evitar os ciclos infinitos.</p>
 </div>
 <div id="exemplos" class="section level2" number="10.1">
 <h2>
@@ -123,7 +123,7 @@ termina, a interrompê-lo com <code>break</code> e a reconhecer e evitar os cicl
 <span>  <span class="va">contador</span> <span class="op">&lt;-</span> <span class="va">contador</span> <span class="op">+</span> <span class="fl">1</span></span>
 <span><span class="op">}</span></span>
 <span></span>
-<span><span class="fu">print</span><span class="op">(</span><span class="fu">paste</span><span class="op">(</span><span class="st">"A soma dos números de 1 a"</span>, <span class="va">limite</span>, <span class="st">"é:"</span>, <span class="va">soma</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="st">"A soma dos números de 1 a"</span>, <span class="va">limite</span>, <span class="st">"é:"</span>, <span class="va">soma</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">## [1] "A soma dos números de 1 a 10 é: 55"</span></span></code></pre></div>
 <p>Em cada repetição, o valor de <code>contador</code> é somado a <code>soma</code> e depois incrementado.
 Quando <code>contador</code> ultrapassa <code>limite</code>, a condição torna-se falsa e o ciclo termina. A
@@ -132,12 +132,12 @@ precisamente aí que reside o erro mais comum, como o próximo exemplo mostra.</
 <p><strong>Escrever a tabuada de um número.</strong> O programa seguinte deveria imprimir a tabuada
 de um número dado pelo utilizador — mas <strong>nunca termina</strong>. Consegue ver porquê?</p>
 <div class="sourceCode" id="cb142"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">n</span> <span class="op">&lt;-</span> <span class="fu">as.numeric</span><span class="op">(</span><span class="fu">readline</span><span class="op">(</span><span class="st">"Introduza um número inteiro: "</span><span class="op">)</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="va">n</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html">as.numeric</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/readline.html">readline</a></span><span class="op">(</span><span class="st">"Introduza um número inteiro: "</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
-<span><span class="fu">print</span><span class="op">(</span><span class="fu">paste</span><span class="op">(</span><span class="st">"Tabuada do"</span>, <span class="va">n</span>, <span class="st">":"</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="st">"Tabuada do"</span>, <span class="va">n</span>, <span class="st">":"</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="va">i</span> <span class="op">&lt;-</span> <span class="fl">1</span></span>
 <span><span class="kw">while</span> <span class="op">(</span><span class="va">i</span> <span class="op">&lt;=</span> <span class="fl">10</span><span class="op">)</span> <span class="op">{</span></span>
-<span>  <span class="fu">print</span><span class="op">(</span><span class="fu">paste</span><span class="op">(</span><span class="va">n</span>, <span class="st">"x"</span>, <span class="va">i</span>, <span class="st">"="</span>, <span class="va">n</span> <span class="op">*</span> <span class="va">i</span><span class="op">)</span><span class="op">)</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="va">n</span>, <span class="st">"x"</span>, <span class="va">i</span>, <span class="st">"="</span>, <span class="va">n</span> <span class="op">*</span> <span class="va">i</span><span class="op">)</span><span class="op">)</span></span>
 <span>  <span class="va">i</span> <span class="op">+</span> <span class="fl">1</span>          <span class="co"># &lt;- o erro está aqui</span></span>
 <span><span class="op">}</span></span></code></pre></div>
 <div class="atencao">
@@ -150,7 +150,7 @@ resultado de volta à variável:</p>
 <p>Sempre que um <code>while</code> parece não terminar, o primeiro suspeito é uma variável de
 controlo que não está a ser atualizada.</p>
 </div>
-<p><strong>Interromper com <code>break</code>.</strong> A instrução <code>break</code> sai imediatamente do ciclo, mesmo
+<p><strong>Interromper com <code><a href="https://rdrr.io/r/base/Control.html">break</a></code>.</strong> A instrução <code><a href="https://rdrr.io/r/base/Control.html">break</a></code> sai imediatamente do ciclo, mesmo
 que a condição ainda seja verdadeira:</p>
 <div class="sourceCode" id="cb144"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">limite</span> <span class="op">&lt;-</span> <span class="fl">10</span></span>
@@ -159,7 +159,7 @@ que a condição ainda seja verdadeira:</p>
 <span></span>
 <span><span class="kw">while</span> <span class="op">(</span><span class="va">contador</span> <span class="op">&lt;=</span> <span class="va">limite</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="va">soma</span> <span class="op">&lt;-</span> <span class="va">soma</span> <span class="op">+</span> <span class="va">contador</span></span>
-<span>  <span class="fu">print</span><span class="op">(</span><span class="va">contador</span><span class="op">)</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">contador</span><span class="op">)</span></span>
 <span>  <span class="kw">if</span> <span class="op">(</span><span class="va">contador</span> <span class="op">==</span> <span class="fl">3</span><span class="op">)</span> <span class="op">{</span></span>
 <span>    <span class="kw">break</span>            <span class="co"># sai do ciclo quando contador chega a 3</span></span>
 <span>  <span class="op">}</span></span>
@@ -169,10 +169,10 @@ que a condição ainda seja verdadeira:</p>
 <span><span class="co">## [1] 2</span></span>
 <span><span class="co">## [1] 3</span></span></code></pre></div>
 <div class="nota">
-<p>Há duas instruções irmãs do <code>break</code>. A <code>next</code> não termina o ciclo — apenas <strong>salta</strong>
+<p>Há duas instruções irmãs do <code><a href="https://rdrr.io/r/base/Control.html">break</a></code>. A <code><a href="https://rdrr.io/r/base/Control.html">next</a></code> não termina o ciclo — apenas <strong>salta</strong>
 para a repetição seguinte, ignorando o resto do bloco na iteração atual. E, além do
 <code>while</code>, o R tem o <code>repeat</code>, que repete indefinidamente e só para quando encontra um
-<code>break</code>; é útil quando queremos executar o bloco <strong>pelo menos uma vez</strong> antes de
+<code><a href="https://rdrr.io/r/base/Control.html">break</a></code>; é útil quando queremos executar o bloco <strong>pelo menos uma vez</strong> antes de
 testar a condição de paragem.</p>
 </div>
 </div>
@@ -191,8 +191,8 @@ atualizada dentro do ciclo, no sentido correto — foi o que faltou no exemplo d
 tabuada.</li>
 <li>
 <strong>Desempenho.</strong> Em R, os ciclos são muitas vezes mais lentos do que as operações
-<strong>vetorizadas</strong>. Para grandes volumes de dados, prefira funções como <code>sum()</code>,
-<code>mean()</code> ou a família <code>apply</code> a percorrer os elementos um a um.</li>
+<strong>vetorizadas</strong>. Para grandes volumes de dados, prefira funções como <code><a href="https://rdrr.io/r/base/sum.html">sum()</a></code>,
+<code><a href="https://rdrr.io/r/base/mean.html">mean()</a></code> ou a família <code>apply</code> a percorrer os elementos um a um.</li>
 </ul>
 </div>
 <div id="exercícios-11" class="section level2" number="10.3">
@@ -256,7 +256,7 @@ capítulo.</p>
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Introdução ao R e à Simulação Estatística</strong>: Um Laboratório de Estatística Computacional" was written by Renato de Paula and Nuno Brites. It was last built on 11 de July de 2026.</p>
+    <p>"<strong>Introdução ao R e à Simulação Estatística</strong>: Um Laboratório de Estatística Computacional" was written by Renato de Paula and Nuno Brites. It was last built on 12 de July de 2026.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

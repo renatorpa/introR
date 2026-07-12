@@ -15,8 +15,8 @@
 <meta name="twitter:title" content="Capítulo 18 Probabilidade e variáveis aleatórias | Introdução ao R e à Simulação Estatística">
 <meta name="twitter:description" content="No capítulo anterior aprendemos a gerar acaso. Agora precisamos da linguagem matemática para o descrever com rigor — a linguagem das variáveis aleatórias, que está no coração de toda a estatística...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link href="libs/bootstrap-5.3.8/bootstrap.min.css" rel="stylesheet">
-<script src="libs/bootstrap-5.3.8/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.11.0/transition.js"></script><script src="libs/bs3compat-0.11.0/tabs.js"></script><script src="libs/bs3compat-0.11.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.11.0/transition.js"></script><script src="libs/bs3compat-0.11.0/tabs.js"></script><script src="libs/bs3compat-0.11.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
 <script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
     
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
@@ -103,7 +103,7 @@ caras em três lançamentos de uma moeda;</li>
 <p>Neste capítulo revemos as ferramentas que descrevem uma variável aleatória — função de
 probabilidade, função densidade, função de distribuição, valor esperado e variância — e
 aprendemos a calculá-las no R, com particular destaque para a integração numérica com
-<code>integrate()</code>.</p>
+<code><a href="https://rdrr.io/r/stats/integrate.html">integrate()</a></code>.</p>
 </div>
 <div id="como-se-descreve-uma-variável-aleatória" class="section level2" number="18.1">
 <h2>
@@ -152,22 +152,22 @@ discreta <span class="math inline">\(X\)</span> com a seguinte f.m.p.:</p>
 variância das reclamações, e (c) a probabilidade de haver mais de 2 reclamações num dia.</p>
 <p>Para (a), verificamos que as probabilidades são não negativas e somam 1:</p>
 <div class="sourceCode" id="cb229"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">X_valores</span> <span class="op">&lt;-</span> <span class="fu">c</span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">3</span>, <span class="fl">4</span><span class="op">)</span></span>
-<span><span class="va">P_X</span> <span class="op">&lt;-</span> <span class="fu">c</span><span class="op">(</span><span class="fl">0.10</span>, <span class="fl">0.25</span>, <span class="fl">0.30</span>, <span class="fl">0.20</span>, <span class="fl">0.15</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="va">X_valores</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">3</span>, <span class="fl">4</span><span class="op">)</span></span>
+<span><span class="va">P_X</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0.10</span>, <span class="fl">0.25</span>, <span class="fl">0.30</span>, <span class="fl">0.20</span>, <span class="fl">0.15</span><span class="op">)</span></span>
 <span></span>
-<span><span class="fu">sum</span><span class="op">(</span><span class="va">P_X</span><span class="op">)</span>          <span class="co"># deve dar 1</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">P_X</span><span class="op">)</span>          <span class="co"># deve dar 1</span></span>
 <span><span class="co">## [1] 1</span></span></code></pre></div>
 <p>Para (b), aplicamos diretamente as definições de <span class="math inline">\(E(X)\)</span> e <span class="math inline">\(V(X)\)</span>:</p>
 <div class="sourceCode" id="cb230"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">E_X</span>   <span class="op">&lt;-</span> <span class="fu">sum</span><span class="op">(</span><span class="va">X_valores</span> <span class="op">*</span> <span class="va">P_X</span><span class="op">)</span>                 <span class="co"># valor esperado</span></span>
-<span><span class="va">Var_X</span> <span class="op">&lt;-</span> <span class="fu">sum</span><span class="op">(</span><span class="op">(</span><span class="va">X_valores</span> <span class="op">-</span> <span class="va">E_X</span><span class="op">)</span><span class="op">^</span><span class="fl">2</span> <span class="op">*</span> <span class="va">P_X</span><span class="op">)</span>       <span class="co"># variância</span></span>
+<code class="sourceCode R"><span><span class="va">E_X</span>   <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">X_valores</span> <span class="op">*</span> <span class="va">P_X</span><span class="op">)</span>                 <span class="co"># valor esperado</span></span>
+<span><span class="va">Var_X</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="op">(</span><span class="va">X_valores</span> <span class="op">-</span> <span class="va">E_X</span><span class="op">)</span><span class="op">^</span><span class="fl">2</span> <span class="op">*</span> <span class="va">P_X</span><span class="op">)</span>       <span class="co"># variância</span></span>
 <span><span class="va">E_X</span></span>
 <span><span class="co">## [1] 2.05</span></span>
 <span><span class="va">Var_X</span></span>
 <span><span class="co">## [1] 1.448</span></span></code></pre></div>
 <p>E para (c), somamos as probabilidades dos valores superiores a 2:</p>
 <div class="sourceCode" id="cb231"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">P_X_maior_2</span> <span class="op">&lt;-</span> <span class="fu">sum</span><span class="op">(</span><span class="va">P_X</span><span class="op">[</span><span class="va">X_valores</span> <span class="op">&gt;</span> <span class="fl">2</span><span class="op">]</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="va">P_X_maior_2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">P_X</span><span class="op">[</span><span class="va">X_valores</span> <span class="op">&gt;</span> <span class="fl">2</span><span class="op">]</span><span class="op">)</span></span>
 <span><span class="va">P_X_maior_2</span></span>
 <span><span class="co">## [1] 0.35</span></span></code></pre></div>
 <p>Em média, a empresa recebe cerca de 2 reclamações por dia, e a probabilidade de receber
@@ -184,11 +184,11 @@ mais de 2 é de 0,35.</p>
 <p>Começamos por definir a função em R:</p>
 <div class="sourceCode" id="cb232"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">f1</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">{</span></span>
-<span>  <span class="fu">ifelse</span><span class="op">(</span><span class="va">x</span> <span class="op">&lt;</span> <span class="fl">0</span>, <span class="fl">0</span>, <span class="fl">2</span> <span class="op">*</span> <span class="fu">exp</span><span class="op">(</span><span class="op">-</span><span class="fl">2</span> <span class="op">*</span> <span class="va">x</span><span class="op">)</span><span class="op">)</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html">ifelse</a></span><span class="op">(</span><span class="va">x</span> <span class="op">&lt;</span> <span class="fl">0</span>, <span class="fl">0</span>, <span class="fl">2</span> <span class="op">*</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html">exp</a></span><span class="op">(</span><span class="op">-</span><span class="fl">2</span> <span class="op">*</span> <span class="va">x</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="op">}</span></span></code></pre></div>
 <p>O seu gráfico mostra a forma típica de decaimento da exponencial:</p>
 <div class="sourceCode" id="cb233"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">plot</span><span class="op">(</span><span class="va">f1</span>, from <span class="op">=</span> <span class="fl">0</span>, to <span class="op">=</span> <span class="fl">5</span>,</span>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">f1</span>, from <span class="op">=</span> <span class="fl">0</span>, to <span class="op">=</span> <span class="fl">5</span>,</span>
 <span>     main <span class="op">=</span> <span class="st">"Densidade exponencial"</span>,</span>
 <span>     xlab <span class="op">=</span> <span class="st">"x"</span>, ylab <span class="op">=</span> <span class="st">"f(x)"</span>, col <span class="op">=</span> <span class="st">"steelblue"</span>, lwd <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span></code></pre></div>
 <div class="figure" style="text-align: center">
@@ -198,20 +198,20 @@ Figura 18.1: Função densidade da distribuição exponencial de parâmetro 2.
 </p>
 </div>
 <p>Para (a), a condição <span class="math inline">\(\int_{-\infty}^{+\infty} f(x)\,dx = 1\)</span> verifica-se por integração
-numérica com <code>integrate()</code>:</p>
+numérica com <code><a href="https://rdrr.io/r/stats/integrate.html">integrate()</a></code>:</p>
 <div class="sourceCode" id="cb234"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">integrate</span><span class="op">(</span><span class="va">f1</span>, lower <span class="op">=</span> <span class="fl">0</span>, upper <span class="op">=</span> <span class="cn">Inf</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/integrate.html">integrate</a></span><span class="op">(</span><span class="va">f1</span>, lower <span class="op">=</span> <span class="fl">0</span>, upper <span class="op">=</span> <span class="cn">Inf</span><span class="op">)</span></span>
 <span><span class="co">## 1 with absolute error &lt; 5e-07</span></span></code></pre></div>
 <p>As alíneas (b) e (c) correspondem a áreas sob a curva, ou seja, a integrais nos
 intervalos pedidos:
 <span class="math display">\[P(X &gt; 2) = \int_2^{+\infty} 2e^{-2x}\,dx, \qquad P(0{,}3 &lt; X &lt; 0{,}7) = \int_{0{,}3}^{0{,}7} 2e^{-2x}\,dx.\]</span></p>
 <div class="sourceCode" id="cb235"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">integrate</span><span class="op">(</span><span class="va">f1</span>, lower <span class="op">=</span> <span class="fl">2</span>, upper <span class="op">=</span> <span class="cn">Inf</span><span class="op">)</span>      <span class="co"># P(X &gt; 2)</span></span>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/integrate.html">integrate</a></span><span class="op">(</span><span class="va">f1</span>, lower <span class="op">=</span> <span class="fl">2</span>, upper <span class="op">=</span> <span class="cn">Inf</span><span class="op">)</span>      <span class="co"># P(X &gt; 2)</span></span>
 <span><span class="co">## 0.01832 with absolute error &lt; 2.8e-06</span></span>
-<span><span class="fu">integrate</span><span class="op">(</span><span class="va">f1</span>, lower <span class="op">=</span> <span class="fl">0.3</span>, upper <span class="op">=</span> <span class="fl">0.7</span><span class="op">)</span>    <span class="co"># P(0.3 &lt; X &lt; 0.7)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/stats/integrate.html">integrate</a></span><span class="op">(</span><span class="va">f1</span>, lower <span class="op">=</span> <span class="fl">0.3</span>, upper <span class="op">=</span> <span class="fl">0.7</span><span class="op">)</span>    <span class="co"># P(0.3 &lt; X &lt; 0.7)</span></span>
 <span><span class="co">## 0.3022 with absolute error &lt; 3.4e-15</span></span></code></pre></div>
 <div class="dica">
-<p>A <code>integrate()</code> devolve um objeto com vários elementos; o valor do integral está em
+<p>A <code><a href="https://rdrr.io/r/stats/integrate.html">integrate()</a></code> devolve um objeto com vários elementos; o valor do integral está em
 <code>$value</code>. Assim, para usar o resultado num cálculo posterior, escrevemos, por exemplo,
 <code>integrate(f1, 0, Inf)$value</code>. Guardar este pormenor evita muita frustração quando se
 encadeiam contas.</p>
@@ -236,19 +236,19 @@ aleatória <span class="math inline">\(X\)</span> com f.d.p.</p>
 0, &amp; x &lt; 0 \ \text{ou} \ x \geq 3
 \end{cases}\]</span></p>
 <p>Queremos (a) a probabilidade de se venderem mais de 150 kg num dia e (b) a venda
-esperada em 30 dias. Definimos a função por troços com <code>ifelse()</code> encadeados:</p>
+esperada em 30 dias. Definimos a função por troços com <code><a href="https://rdrr.io/r/base/ifelse.html">ifelse()</a></code> encadeados:</p>
 <div class="sourceCode" id="cb236"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">f2</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">{</span></span>
-<span>  <span class="fu">ifelse</span><span class="op">(</span><span class="va">x</span> <span class="op">&gt;=</span> <span class="fl">0</span> <span class="op">&amp;</span> <span class="va">x</span> <span class="op">&lt;</span> <span class="fl">1</span>, <span class="op">(</span><span class="fl">2</span><span class="op">/</span><span class="fl">3</span><span class="op">)</span> <span class="op">*</span> <span class="va">x</span>,</span>
-<span>         <span class="fu">ifelse</span><span class="op">(</span><span class="va">x</span> <span class="op">&gt;=</span> <span class="fl">1</span> <span class="op">&amp;</span> <span class="va">x</span> <span class="op">&lt;</span> <span class="fl">3</span>, <span class="op">-</span><span class="va">x</span><span class="op">/</span><span class="fl">3</span> <span class="op">+</span> <span class="fl">1</span>, <span class="fl">0</span><span class="op">)</span><span class="op">)</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html">ifelse</a></span><span class="op">(</span><span class="va">x</span> <span class="op">&gt;=</span> <span class="fl">0</span> <span class="op">&amp;</span> <span class="va">x</span> <span class="op">&lt;</span> <span class="fl">1</span>, <span class="op">(</span><span class="fl">2</span><span class="op">/</span><span class="fl">3</span><span class="op">)</span> <span class="op">*</span> <span class="va">x</span>,</span>
+<span>         <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html">ifelse</a></span><span class="op">(</span><span class="va">x</span> <span class="op">&gt;=</span> <span class="fl">1</span> <span class="op">&amp;</span> <span class="va">x</span> <span class="op">&lt;</span> <span class="fl">3</span>, <span class="op">-</span><span class="va">x</span><span class="op">/</span><span class="fl">3</span> <span class="op">+</span> <span class="fl">1</span>, <span class="fl">0</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="op">}</span></span></code></pre></div>
 <p>Confirmamos que é uma f.d.p. (o integral vale 1) e vemos o seu gráfico — uma densidade
 triangular:</p>
 <div class="sourceCode" id="cb237"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">integrate</span><span class="op">(</span><span class="va">f2</span>, <span class="fl">0</span>, <span class="fl">3</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/integrate.html">integrate</a></span><span class="op">(</span><span class="va">f2</span>, <span class="fl">0</span>, <span class="fl">3</span><span class="op">)</span></span>
 <span><span class="co">## 1 with absolute error &lt; 1.1e-15</span></span>
 <span></span>
-<span><span class="fu">plot</span><span class="op">(</span><span class="va">f2</span>, from <span class="op">=</span> <span class="op">-</span><span class="fl">1</span>, to <span class="op">=</span> <span class="fl">4</span>,</span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">f2</span>, from <span class="op">=</span> <span class="op">-</span><span class="fl">1</span>, to <span class="op">=</span> <span class="fl">4</span>,</span>
 <span>     main <span class="op">=</span> <span class="st">"Densidade da procura de arroz"</span>,</span>
 <span>     xlab <span class="op">=</span> <span class="st">"x (centenas de kg)"</span>, ylab <span class="op">=</span> <span class="st">"f(x)"</span>, col <span class="op">=</span> <span class="st">"steelblue"</span>, lwd <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span></code></pre></div>
 <div class="figure" style="text-align: center">
@@ -260,9 +260,9 @@ Figura 18.2: Densidade da procura de arroz, definida por dois troços.
 <p>Para (a), 150 kg correspondem a <span class="math inline">\(x = 1{,}5\)</span> centenas de quilogramas, pelo que queremos
 <span class="math inline">\(P(X &gt; 1{,}5) = \int_{1{,}5}^{3} f(x)\,dx\)</span>. Podemos assinalar essa área no gráfico:</p>
 <div class="sourceCode" id="cb238"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">plot</span><span class="op">(</span><span class="va">f2</span>, from <span class="op">=</span> <span class="op">-</span><span class="fl">1</span>, to <span class="op">=</span> <span class="fl">4</span>,</span>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">f2</span>, from <span class="op">=</span> <span class="op">-</span><span class="fl">1</span>, to <span class="op">=</span> <span class="fl">4</span>,</span>
 <span>     main <span class="op">=</span> <span class="st">"P(X &gt; 1,5)"</span>, xlab <span class="op">=</span> <span class="st">"x"</span>, ylab <span class="op">=</span> <span class="st">"f(x)"</span>, col <span class="op">=</span> <span class="st">"steelblue"</span>, lwd <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
-<span><span class="fu">polygon</span><span class="op">(</span>x <span class="op">=</span> <span class="fu">c</span><span class="op">(</span><span class="fl">1.5</span>, <span class="fl">1.5</span>, <span class="fl">3</span><span class="op">)</span>, y <span class="op">=</span> <span class="fu">c</span><span class="op">(</span><span class="fl">0</span>, <span class="fu">f2</span><span class="op">(</span><span class="fl">1.5</span><span class="op">)</span>, <span class="fl">0</span><span class="op">)</span>, density <span class="op">=</span> <span class="fl">15</span>, col <span class="op">=</span> <span class="st">"firebrick"</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/polygon.html">polygon</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1.5</span>, <span class="fl">1.5</span>, <span class="fl">3</span><span class="op">)</span>, y <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fu">f2</span><span class="op">(</span><span class="fl">1.5</span><span class="op">)</span>, <span class="fl">0</span><span class="op">)</span>, density <span class="op">=</span> <span class="fl">15</span>, col <span class="op">=</span> <span class="st">"firebrick"</span><span class="op">)</span></span></code></pre></div>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:prob-area"></span>
 <img src="introR_files/figure-html/prob-area-1.png" alt="A área sombreada representa P(X &gt; 1,5)." width="80%"><p class="caption">
@@ -270,7 +270,7 @@ Figura 18.3: A área sombreada representa P(X &gt; 1,5).
 </p>
 </div>
 <div class="sourceCode" id="cb239"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">integrate</span><span class="op">(</span><span class="va">f2</span>, <span class="fl">1.5</span>, <span class="fl">3</span><span class="op">)</span>      <span class="co"># P(X &gt; 1,5)</span></span>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/integrate.html">integrate</a></span><span class="op">(</span><span class="va">f2</span>, <span class="fl">1.5</span>, <span class="fl">3</span><span class="op">)</span>      <span class="co"># P(X &gt; 1,5)</span></span>
 <span><span class="co">## 0.375 with absolute error &lt; 4.2e-15</span></span></code></pre></div>
 <p>Para (b), a venda esperada num dia é <span class="math inline">\(E(X) = \int_{-\infty}^{+\infty} x\, f(x)\,dx\)</span>;
 definimos a função integranda <span class="math inline">\(x\,f(x)\)</span> e integramos. A venda esperada em 30 dias é 30
@@ -278,7 +278,7 @@ vezes esse valor:</p>
 <div class="sourceCode" id="cb240"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">ef2</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="va">x</span> <span class="op">*</span> <span class="fu">f2</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
 <span></span>
-<span><span class="va">E_X</span> <span class="op">&lt;-</span> <span class="fu">integrate</span><span class="op">(</span><span class="va">ef2</span>, <span class="fl">0</span>, <span class="fl">3</span><span class="op">)</span><span class="op">$</span><span class="va">value</span></span>
+<span><span class="va">E_X</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/integrate.html">integrate</a></span><span class="op">(</span><span class="va">ef2</span>, <span class="fl">0</span>, <span class="fl">3</span><span class="op">)</span><span class="op">$</span><span class="va">value</span></span>
 <span><span class="va">E_X</span>            <span class="co"># venda esperada num dia (centenas de kg)</span></span>
 <span><span class="co">## [1] 1.333</span></span>
 <span><span class="fl">30</span> <span class="op">*</span> <span class="va">E_X</span>       <span class="co"># venda esperada em 30 dias</span></span>
@@ -288,7 +288,7 @@ vezes esse valor:</p>
 analiticamente, sem métodos numéricos — foram escolhidos apenas para ilustrar as
 funções do R. O verdadeiro valor da integração numérica revela-se nos problemas
 complexos, em que a solução analítica é difícil ou impossível de obter. É aí que
-ferramentas como a <code>integrate()</code> se tornam indispensáveis.</p>
+ferramentas como a <code><a href="https://rdrr.io/r/stats/integrate.html">integrate()</a></code> se tornam indispensáveis.</p>
 </div>
 </div>
 <div id="exercícios-23" class="section level2" number="18.5">
@@ -390,7 +390,7 @@ que o R lhes dedica. É esse o tema do próximo capítulo.</p>
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Introdução ao R e à Simulação Estatística</strong>: Um Laboratório de Estatística Computacional" was written by Renato de Paula and Nuno Brites. It was last built on 11 de July de 2026.</p>
+    <p>"<strong>Introdução ao R e à Simulação Estatística</strong>: Um Laboratório de Estatística Computacional" was written by Renato de Paula and Nuno Brites. It was last built on 12 de July de 2026.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

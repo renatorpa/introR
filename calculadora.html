@@ -15,8 +15,8 @@
 <meta name="twitter:title" content="Capítulo 3 O R como calculadora | Introdução ao R e à Simulação Estatística">
 <meta name="twitter:description" content="A melhor forma de começar a programar em R é usá-lo primeiro para aquilo que ele faz de modo mais imediato: calcular. Neste capítulo, tratamos o R como uma calculadora muito poderosa. No entanto,...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link href="libs/bootstrap-5.3.8/bootstrap.min.css" rel="stylesheet">
-<script src="libs/bootstrap-5.3.8/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.11.0/transition.js"></script><script src="libs/bs3compat-0.11.0/tabs.js"></script><script src="libs/bs3compat-0.11.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.11.0/transition.js"></script><script src="libs/bs3compat-0.11.0/tabs.js"></script><script src="libs/bs3compat-0.11.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
 <script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
     
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
@@ -91,7 +91,7 @@
 </h2>
 <p>O R aceita comandos numa interface de linha de comando, assinalada pelo símbolo <code>&gt;</code>, a que chamamos <strong>prompt</strong>. Quando escrevemos directamente na <strong>Consola</strong>, basta escrever o comando a seguir ao <em>prompt</em> e pressionar <code>Enter</code>: o R interpreta o comando, executa-o e mostra o resultado.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">print</span><span class="op">(</span><span class="st">"O meu primeiro comando em R!"</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="st">"O meu primeiro comando em R!"</span><span class="op">)</span></span>
 <span><span class="co">## [1] "O meu primeiro comando em R!"</span></span></code></pre></div>
 <p>No RStudio, contudo, é comum escrevermos os comandos num <strong>script</strong> e enviá-los depois para a Consola. Nesse caso, colocamos o cursor na linha que queremos executar e usamos <code>Ctrl + Enter</code> no Windows ou no Linux, ou <code>Cmd + Enter</code> no macOS.</p>
 <div class="nota">
@@ -119,11 +119,11 @@
 <p>Ninguém decora todas as funções do R, nem precisa de o fazer. O essencial é saber consultar a documentação. Se conhece o nome de uma função, basta precedê-lo de um ponto de interrogação para abrir a respectiva página de ajuda:</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="op">?</span><span class="va">sum</span></span></code></pre></div>
-<p>A ajuda descreve o que a função faz, quais são os seus argumentos (isto é, os valores ou opções que fornecemos à função para ela executar uma tarefa) e o que devolve. Para além disso, muitas funções trazem exemplos prontos a correr, que podem ser vistos com <code>example()</code>:</p>
+<p>A ajuda descreve o que a função faz, quais são os seus argumentos (isto é, os valores ou opções que fornecemos à função para ela executar uma tarefa) e o que devolve. Para além disso, muitas funções trazem exemplos prontos a correr, que podem ser vistos com <code><a href="https://rdrr.io/r/utils/example.html">example()</a></code>:</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">example</span><span class="op">(</span><span class="va">sum</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/example.html">example</a></span><span class="op">(</span><span class="va">sum</span><span class="op">)</span></span></code></pre></div>
 <div class="nota">
-<p>No comando <code>example(sum)</code>, o argumento da função <code>example()</code> é <code>sum</code>. Isto significa que estamos a pedir ao R para mostrar exemplos de utilização da função <code>sum()</code>.</p>
+<p>No comando <code>example(sum)</code>, o argumento da função <code><a href="https://rdrr.io/r/utils/example.html">example()</a></code> é <code>sum</code>. Isto significa que estamos a pedir ao R para mostrar exemplos de utilização da função <code><a href="https://rdrr.io/r/base/sum.html">sum()</a></code>.</p>
 </div>
 <p>Aprender a ler estas páginas é uma das competências mais rentáveis para quem programa em R.</p>
 </div>
@@ -153,9 +153,9 @@ variável pode ser reutilizada:</p>
 <div class="atencao">
 <p>Uma atribuição <strong>não é</strong> uma equação matemática. Escrever <code>a + 2 &lt;- 10</code> não faz sentido: do lado esquerdo tem de estar um nome, não uma expressão a calcular. Embora o R também aceite <code>=</code> e <code>-&gt;</code> para atribuir, recomendamos o uso de <code>&lt;-</code>, para não confundir a atribuição (<code>&lt;-</code>) com o teste de igualdade (<code>==</code>), que veremos mais adiante.</p>
 </div>
-<p>Podemos guardar não só um número, mas uma sequência de valores. A função <code>c()</code> (de <em>combine</em>, combinar) junta vários valores num <strong>vetor</strong>:</p>
+<p>Podemos guardar não só um número, mas uma sequência de valores. A função <code><a href="https://rdrr.io/r/base/c.html">c()</a></code> (de <em>combine</em>, combinar) junta vários valores num <strong>vetor</strong>:</p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">X</span> <span class="op">&lt;-</span> <span class="fu">c</span><span class="op">(</span><span class="fl">2</span>, <span class="fl">12</span>, <span class="fl">22</span>, <span class="fl">32</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="va">X</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">12</span>, <span class="fl">22</span>, <span class="fl">32</span><span class="op">)</span></span>
 <span><span class="va">X</span></span>
 <span><span class="co">## [1]  2 12 22 32</span></span></code></pre></div>
 <div class="atencao">
@@ -163,9 +163,9 @@ variável pode ser reutilizada:</p>
 diferentes. Este é um dos erros mais comuns de quem começa, por isso convém
 gravá-lo desde já.</p>
 </div>
-<p>Para ver todos os objetos que existem atualmente na memória da sessão, usamos <code>ls()</code> (ou consultamos o separador <em>Environment</em> no RStudio):</p>
+<p>Para ver todos os objetos que existem atualmente na memória da sessão, usamos <code><a href="https://rdrr.io/r/base/ls.html">ls()</a></code> (ou consultamos o separador <em>Environment</em> no RStudio):</p>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">ls</span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/ls.html">ls</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div id="regras-para-nomear-variáveis" class="section level3" number="3.4.2">
 <h3>
@@ -218,44 +218,44 @@ Capítulo <a href="estruturas.html#estruturas">4</a>. Um primeiro contacto:</p>
 <code class="sourceCode R"><span><span class="va">a</span> <span class="op">&lt;-</span> <span class="fl">3.14</span>                <span class="co"># numeric</span></span>
 <span><span class="va">b</span> <span class="op">&lt;-</span> <span class="st">"Programação R"</span>     <span class="co"># character</span></span>
 <span><span class="va">c</span> <span class="op">&lt;-</span> <span class="fl">3</span> <span class="op">&lt;</span> <span class="fl">2</span>               <span class="co"># logical (resultado de uma comparação)</span></span>
-<span><span class="va">d</span> <span class="op">&lt;-</span> <span class="fu">c</span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">3</span><span class="op">)</span>          <span class="co"># vetor</span></span></code></pre></div>
+<span><span class="va">d</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">3</span><span class="op">)</span>          <span class="co"># vetor</span></span></code></pre></div>
 <div id="tipagem-dinâmica" class="section level3" number="3.5.1">
 <h3>
 <span class="header-section-number">3.5.1</span> Tipagem dinâmica<a class="anchor" aria-label="anchor" href="#tipagem-din%C3%A2mica"><i class="fas fa-link"></i></a>
 </h3>
 <p>Uma característica cómoda do R é a <strong>tipagem dinâmica</strong>: não precisamos de
 declarar o tipo de uma variável, o R deduz-o a partir do valor que lhe
-atribuímos. A função <code>class()</code> diz-nos o tipo (a <em>classe</em>) de um objeto:</p>
+atribuímos. A função <code><a href="https://rdrr.io/r/base/class.html">class()</a></code> diz-nos o tipo (a <em>classe</em>) de um objeto:</p>
 <div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fl">5</span></span>
-<span><span class="fu">class</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
 <span><span class="co">## [1] "numeric"</span></span>
 <span></span>
 <span><span class="va">y</span> <span class="op">&lt;-</span> <span class="st">"Cinco"</span></span>
-<span><span class="fu">class</span><span class="op">(</span><span class="va">y</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="va">y</span><span class="op">)</span></span>
 <span><span class="co">## [1] "character"</span></span>
 <span></span>
 <span><span class="va">z</span> <span class="op">&lt;-</span> <span class="cn">TRUE</span></span>
-<span><span class="fu">class</span><span class="op">(</span><span class="va">z</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="va">z</span><span class="op">)</span></span>
 <span><span class="co">## [1] "logical"</span></span></code></pre></div>
-<p>Existe ainda a função <code>typeof()</code>, que revela o tipo de armazenamento interno, o modo como o R guarda o objeto na memória. Nem sempre coincide com <code>class()</code>, e essa distinção é por vezes reveladora:</p>
+<p>Existe ainda a função <code><a href="https://rdrr.io/r/base/typeof.html">typeof()</a></code>, que revela o tipo de armazenamento interno, o modo como o R guarda o objeto na memória. Nem sempre coincide com <code><a href="https://rdrr.io/r/base/class.html">class()</a></code>, e essa distinção é por vezes reveladora:</p>
 <div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fl">1</span><span class="op">:</span><span class="fl">10</span></span>
-<span><span class="fu">class</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
 <span><span class="co">## [1] "integer"</span></span>
-<span><span class="fu">typeof</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/typeof.html">typeof</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
 <span><span class="co">## [1] "integer"</span></span>
 <span></span>
-<span><span class="va">y</span> <span class="op">&lt;-</span> <span class="fu">c</span><span class="op">(</span><span class="fl">1.1</span>, <span class="fl">2.2</span>, <span class="fl">3.3</span><span class="op">)</span></span>
-<span><span class="fu">class</span><span class="op">(</span><span class="va">y</span><span class="op">)</span></span>
+<span><span class="va">y</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1.1</span>, <span class="fl">2.2</span>, <span class="fl">3.3</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="va">y</span><span class="op">)</span></span>
 <span><span class="co">## [1] "numeric"</span></span>
-<span><span class="fu">typeof</span><span class="op">(</span><span class="va">y</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/typeof.html">typeof</a></span><span class="op">(</span><span class="va">y</span><span class="op">)</span></span>
 <span><span class="co">## [1] "double"</span></span>
 <span></span>
-<span><span class="va">z</span> <span class="op">&lt;-</span> <span class="fu">data.frame</span><span class="op">(</span>a <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">3</span>, b <span class="op">=</span> <span class="fu">c</span><span class="op">(</span><span class="st">"A"</span>, <span class="st">"B"</span>, <span class="st">"C"</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="fu">class</span><span class="op">(</span><span class="va">z</span><span class="op">)</span></span>
+<span><span class="va">z</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>a <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">3</span>, b <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"A"</span>, <span class="st">"B"</span>, <span class="st">"C"</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="va">z</span><span class="op">)</span></span>
 <span><span class="co">## [1] "data.frame"</span></span>
-<span><span class="fu">typeof</span><span class="op">(</span><span class="va">z</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/typeof.html">typeof</a></span><span class="op">(</span><span class="va">z</span><span class="op">)</span></span>
 <span><span class="co">## [1] "list"</span></span></code></pre></div>
 <p>Repare no último caso: uma tabela (<code>data.frame</code>) tem classe <code>"data.frame"</code> mas, internamente, é armazenada como uma <strong>lista</strong>. Voltaremos a este facto quando estudarmos as estruturas de dados.</p>
 </div>
@@ -266,15 +266,15 @@ atribuímos. A função <code>class()</code> diz-nos o tipo (a <em>classe</em>) 
 <p>Muitas vezes, sobretudo quando importamos dados de fontes externas, um valor
 chega-nos com o tipo “errado”: um número guardado como texto, por exemplo. As funções da família <code>as.*()</code> convertem entre tipos:</p>
 <div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">b</span> <span class="op">&lt;-</span> <span class="fu">as.character</span><span class="op">(</span><span class="fl">15</span><span class="op">)</span>   <span class="co"># de número para texto</span></span>
+<code class="sourceCode R"><span><span class="va">b</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html">as.character</a></span><span class="op">(</span><span class="fl">15</span><span class="op">)</span>   <span class="co"># de número para texto</span></span>
 <span><span class="va">b</span></span>
 <span><span class="co">## [1] "15"</span></span>
 <span></span>
-<span><span class="va">y</span> <span class="op">&lt;-</span> <span class="fu">as.integer</span><span class="op">(</span><span class="fl">1.5</span><span class="op">)</span>    <span class="co"># de decimal para inteiro (trunca)</span></span>
+<span><span class="va">y</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/integer.html">as.integer</a></span><span class="op">(</span><span class="fl">1.5</span><span class="op">)</span>    <span class="co"># de decimal para inteiro (trunca)</span></span>
 <span><span class="va">y</span></span>
 <span><span class="co">## [1] 1</span></span>
 <span></span>
-<span><span class="va">w</span> <span class="op">&lt;-</span> <span class="fu">as.numeric</span><span class="op">(</span><span class="st">"10"</span><span class="op">)</span>   <span class="co"># de texto para número</span></span>
+<span><span class="va">w</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html">as.numeric</a></span><span class="op">(</span><span class="st">"10"</span><span class="op">)</span>   <span class="co"># de texto para número</span></span>
 <span><span class="va">w</span></span>
 <span><span class="co">## [1] 10</span></span></code></pre></div>
 </div>
@@ -347,19 +347,19 @@ chega-nos com o tipo “errado”: um número guardado como texto, por exemplo. 
 <code class="sourceCode R"><span><span class="fl">5</span> <span class="op">*</span> <span class="fl">21</span></span>
 <span><span class="co">## [1] 105</span></span>
 <span></span>
-<span><span class="fu">sqrt</span><span class="op">(</span><span class="fl">9</span><span class="op">)</span>      <span class="co"># raiz quadrada</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="fl">9</span><span class="op">)</span>      <span class="co"># raiz quadrada</span></span>
 <span><span class="co">## [1] 3</span></span>
 <span></span>
 <span><span class="fl">3</span><span class="op">^</span><span class="fl">3</span></span>
 <span><span class="co">## [1] 27</span></span>
 <span></span>
-<span><span class="fu">log</span><span class="op">(</span><span class="fl">9</span><span class="op">)</span>       <span class="co"># logaritmo natural</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/Log.html">log</a></span><span class="op">(</span><span class="fl">9</span><span class="op">)</span>       <span class="co"># logaritmo natural</span></span>
 <span><span class="co">## [1] 2.197</span></span>
 <span></span>
-<span><span class="fu">log10</span><span class="op">(</span><span class="fl">9</span><span class="op">)</span>     <span class="co"># logaritmo de base 10</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/Log.html">log10</a></span><span class="op">(</span><span class="fl">9</span><span class="op">)</span>     <span class="co"># logaritmo de base 10</span></span>
 <span><span class="co">## [1] 0.9542</span></span>
 <span></span>
-<span><span class="fu">exp</span><span class="op">(</span><span class="fl">1</span><span class="op">)</span>       <span class="co"># número de Euler, e</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/Log.html">exp</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span>       <span class="co"># número de Euler, e</span></span>
 <span><span class="co">## [1] 2.718</span></span></code></pre></div>
 <div class="dica">
 <p>Os operadores <code>%%</code> e <code>%/%</code> são mais úteis do que parecem. O resto <code>%%</code> responde a perguntas como “este número é par?” (<code>n %% 2 == 0</code>) ou “esta hora, somadas algumas horas, dá que horas no relógio de 24?” – questões que aparecerão nos exercícios. Vale a pena habituar-se a eles.</p>
@@ -382,15 +382,15 @@ chega-nos com o tipo “errado”: um número guardado como texto, por exemplo. 
 </h3>
 <p>Por vezes queremos ver mais (ou menos) casas decimais. A opção global <code>digits</code> controla quantos algarismos significativos o R apresenta:</p>
 <div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">exp</span><span class="op">(</span><span class="fl">1</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Log.html">exp</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span></span>
 <span><span class="co">## [1] 2.718282</span></span>
 <span></span>
-<span><span class="fu">options</span><span class="op">(</span>digits <span class="op">=</span> <span class="fl">20</span><span class="op">)</span></span>
-<span><span class="fu">exp</span><span class="op">(</span><span class="fl">1</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/options.html">options</a></span><span class="op">(</span>digits <span class="op">=</span> <span class="fl">20</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/Log.html">exp</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span></span>
 <span><span class="co">## [1] 2.718281828459045091</span></span>
 <span></span>
-<span><span class="fu">options</span><span class="op">(</span>digits <span class="op">=</span> <span class="fl">7</span><span class="op">)</span>   <span class="co"># o valor por omissão</span></span>
-<span><span class="fu">exp</span><span class="op">(</span><span class="fl">1</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/options.html">options</a></span><span class="op">(</span>digits <span class="op">=</span> <span class="fl">7</span><span class="op">)</span>   <span class="co"># o valor por omissão</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/Log.html">exp</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span></span>
 <span><span class="co">## [1] 2.718282</span></span></code></pre></div>
 <div class="nota">
 <p>Isto altera apenas a <em>apresentação</em>: internamente, o R continua a guardar o valor com toda a precisão disponível. Mudar <code>digits</code> nunca arredonda os cálculos, apenas o que vemos no ecrã.</p>
@@ -416,7 +416,7 @@ representações para situações que a aritmética habitual não cobre.</p>
 <span><span class="fl">0</span><span class="op">/</span><span class="fl">0</span></span>
 <span><span class="co">## [1] NaN</span></span>
 <span></span>
-<span><span class="fu">sqrt</span><span class="op">(</span><span class="op">-</span><span class="fl">1</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="op">-</span><span class="fl">1</span><span class="op">)</span></span>
 <span><span class="co">## Warning: NaNs produced</span></span>
 <span><span class="co">## [1] NaN</span></span></code></pre></div>
 <p>Estes resultados especiais têm nomes e significados precisos, que importa
@@ -436,32 +436,32 @@ distinguir:</p>
 </h3>
 <p>Os valores ausentes são frequentes em dados reais: questionários com perguntas por responder, sensores que falharam, registos incompletos ou medições que não chegaram a ser feitas. Por isso, o R trata estes casos com prudência. Por omissão, qualquer cálculo que envolva um <code>NA</code> devolve também <code>NA</code>. A razão é simples: se um dos valores é desconhecido, o resultado do cálculo pode também ser desconhecido. No caso da média, por exemplo, não podemos determinar o seu valor exacto sem saber todos os valores que entram no cálculo.</p>
 <div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">mean</span><span class="op">(</span><span class="fu">c</span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">3</span>, <span class="cn">NA</span>, <span class="fl">5</span><span class="op">)</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">3</span>, <span class="cn">NA</span>, <span class="fl">5</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">## [1] NA</span></span></code></pre></div>
 <p>Quando queremos, ainda assim, calcular ignorando os valores em falta, usamos o
 argumento <code>na.rm = TRUE</code> (<em>remove NA</em>), disponível na maioria das funções de
 resumo:</p>
 <div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">mean</span><span class="op">(</span><span class="fu">c</span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">3</span>, <span class="cn">NA</span>, <span class="fl">5</span><span class="op">)</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">3</span>, <span class="cn">NA</span>, <span class="fl">5</span><span class="op">)</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
 <span><span class="co">## [1] 2.75</span></span>
 <span></span>
-<span><span class="fu">sum</span><span class="op">(</span><span class="fu">c</span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">3</span>, <span class="cn">NA</span>, <span class="fl">5</span><span class="op">)</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">3</span>, <span class="cn">NA</span>, <span class="fl">5</span><span class="op">)</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
 <span><span class="co">## [1] 11</span></span></code></pre></div>
 <div class="atencao">
 <p>Não se pode testar a ausência com o operador de igualdade. <code>x == NA</code> <strong>não</strong>
 devolve <code>TRUE</code>/<code>FALSE</code> – devolve <code>NA</code>, porque comparar algo com um valor
-desconhecido é, ele próprio, desconhecido. Para detetar valores em falta, usamos a função <code>is.na()</code>:</p>
+desconhecido é, ele próprio, desconhecido. Para detetar valores em falta, usamos a função <code><a href="https://rdrr.io/r/base/NA.html">is.na()</a></code>:</p>
 </div>
 <div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">y</span> <span class="op">&lt;-</span> <span class="fu">c</span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span>, <span class="cn">NA</span>, <span class="fl">4</span>, <span class="fl">5</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="va">y</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span>, <span class="cn">NA</span>, <span class="fl">4</span>, <span class="fl">5</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">y</span> <span class="op">==</span> <span class="cn">NA</span>        <span class="co"># não funciona como se poderia esperar</span></span>
 <span><span class="co">## [1] NA NA NA NA NA</span></span>
 <span></span>
-<span><span class="fu">is.na</span><span class="op">(</span><span class="va">y</span><span class="op">)</span>       <span class="co"># a forma correta</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">y</span><span class="op">)</span>       <span class="co"># a forma correta</span></span>
 <span><span class="co">## [1] FALSE FALSE  TRUE FALSE FALSE</span></span></code></pre></div>
 <div class="nota">
-<p>Existe ainda <code>is.nan()</code>, específica para detetar <code>NaN</code>. Note a relação entre as duas: <code>is.na()</code> deteta tanto <code>NA</code> como <code>NaN</code> (afinal, um <code>NaN</code> também não é um valor disponível), ao passo que <code>is.nan()</code> só deteta <code>NaN</code>.</p>
+<p>Existe ainda <code><a href="https://rdrr.io/r/base/is.finite.html">is.nan()</a></code>, específica para detetar <code>NaN</code>. Note a relação entre as duas: <code><a href="https://rdrr.io/r/base/NA.html">is.na()</a></code> deteta tanto <code>NA</code> como <code>NaN</code> (afinal, um <code>NaN</code> também não é um valor disponível), ao passo que <code><a href="https://rdrr.io/r/base/is.finite.html">is.nan()</a></code> só deteta <code>NaN</code>.</p>
 </div>
 </div>
 </div>
@@ -472,73 +472,73 @@ desconhecido é, ele próprio, desconhecido. Para detetar valores em falta, usam
 <p>Para além de calcular, precisamos frequentemente de <strong>comunicar</strong> resultados – mostrá-los ao utilizador, combiná-los com texto explicativo, ou pedir dados a quem executa o programa. Algumas funções essenciais para isso:</p>
 <ul>
 <li>
-<code>print()</code> – exibe valores e resultados na consola.</li>
+<code><a href="https://rdrr.io/r/base/print.html">print()</a></code> – exibe valores e resultados na consola.</li>
 <li>
-<code>readline()</code> – recebe uma entrada escrita pelo utilizador via teclado.</li>
+<code><a href="https://rdrr.io/r/base/readline.html">readline()</a></code> – recebe uma entrada escrita pelo utilizador via teclado.</li>
 <li>
-<code>paste()</code> – junta (concatena) textos, com um separador (por omissão, um
+<code><a href="https://rdrr.io/r/base/paste.html">paste()</a></code> – junta (concatena) textos, com um separador (por omissão, um
 espaço).</li>
 <li>
-<code>paste0()</code> – como <code>paste()</code>, mas sem separador.</li>
+<code><a href="https://rdrr.io/r/base/paste.html">paste0()</a></code> – como <code><a href="https://rdrr.io/r/base/paste.html">paste()</a></code>, mas sem separador.</li>
 <li>
-<code>cat()</code> – junta e exibe textos e valores de forma direta, sem as aspas de
-<code>print()</code>.</li>
+<code><a href="https://rdrr.io/r/base/cat.html">cat()</a></code> – junta e exibe textos e valores de forma direta, sem as aspas de
+<code><a href="https://rdrr.io/r/base/print.html">print()</a></code>.</li>
 </ul>
 <p>Um primeiro exemplo, combinando duas palavras:</p>
 <div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">nome1</span> <span class="op">&lt;-</span> <span class="st">"faculdade"</span></span>
 <span><span class="va">nome2</span> <span class="op">&lt;-</span> <span class="st">"ciências"</span></span>
-<span><span class="fu">print</span><span class="op">(</span><span class="fu">paste</span><span class="op">(</span><span class="va">nome1</span>, <span class="va">nome2</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="va">nome1</span>, <span class="va">nome2</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">## [1] "faculdade ciências"</span></span></code></pre></div>
-<p>A função <code>readline()</code> permite escrever programas interativos, que pedem
+<p>A função <code><a href="https://rdrr.io/r/base/readline.html">readline()</a></code> permite escrever programas interativos, que pedem
 informação a quem os executa. O que o utilizador escreve chega sempre como
-<strong>texto</strong>, pelo que muitas vezes é preciso convertê-lo com <code>as.numeric()</code> ou
-<code>as.integer()</code>:</p>
+<strong>texto</strong>, pelo que muitas vezes é preciso convertê-lo com <code><a href="https://rdrr.io/r/base/numeric.html">as.numeric()</a></code> ou
+<code><a href="https://rdrr.io/r/base/integer.html">as.integer()</a></code>:</p>
 <div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">n</span> <span class="op">&lt;-</span> <span class="fu">readline</span><span class="op">(</span>prompt <span class="op">=</span> <span class="st">"Digite um número: "</span><span class="op">)</span></span>
-<span><span class="va">n</span> <span class="op">&lt;-</span> <span class="fu">as.integer</span><span class="op">(</span><span class="va">n</span><span class="op">)</span>   <span class="co"># converte o texto num inteiro</span></span>
-<span><span class="fu">print</span><span class="op">(</span><span class="va">n</span> <span class="op">+</span> <span class="fl">1</span><span class="op">)</span></span></code></pre></div>
-<p>Um exemplo mais completo, que usa <code>cat()</code> para uma saudação e trata uma entrada
+<code class="sourceCode R"><span><span class="va">n</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/readline.html">readline</a></span><span class="op">(</span>prompt <span class="op">=</span> <span class="st">"Digite um número: "</span><span class="op">)</span></span>
+<span><span class="va">n</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/integer.html">as.integer</a></span><span class="op">(</span><span class="va">n</span><span class="op">)</span>   <span class="co"># converte o texto num inteiro</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">n</span> <span class="op">+</span> <span class="fl">1</span><span class="op">)</span></span></code></pre></div>
+<p>Um exemplo mais completo, que usa <code><a href="https://rdrr.io/r/base/cat.html">cat()</a></code> para uma saudação e trata uma entrada
 inválida:</p>
 <div class="sourceCode" id="cb27"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">idade</span> <span class="op">&lt;-</span> <span class="fu">readline</span><span class="op">(</span>prompt <span class="op">=</span> <span class="st">"Digite a sua idade: "</span><span class="op">)</span></span>
-<span><span class="va">idade</span> <span class="op">&lt;-</span> <span class="fu">as.numeric</span><span class="op">(</span><span class="va">idade</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="va">idade</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/readline.html">readline</a></span><span class="op">(</span>prompt <span class="op">=</span> <span class="st">"Digite a sua idade: "</span><span class="op">)</span></span>
+<span><span class="va">idade</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html">as.numeric</a></span><span class="op">(</span><span class="va">idade</span><span class="op">)</span></span>
 <span></span>
-<span><span class="kw">if</span> <span class="op">(</span><span class="fu">is.na</span><span class="op">(</span><span class="va">idade</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
-<span>  <span class="fu">cat</span><span class="op">(</span><span class="st">"Entrada inválida. Insira um valor numérico.\n"</span><span class="op">)</span></span>
+<span><span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">idade</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"Entrada inválida. Insira um valor numérico.\n"</span><span class="op">)</span></span>
 <span><span class="op">}</span> <span class="kw">else</span> <span class="op">{</span></span>
-<span>  <span class="fu">cat</span><span class="op">(</span><span class="st">"Tem"</span>, <span class="va">idade</span>, <span class="st">"anos.\n"</span><span class="op">)</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"Tem"</span>, <span class="va">idade</span>, <span class="st">"anos.\n"</span><span class="op">)</span></span>
 <span><span class="op">}</span></span></code></pre></div>
 <div class="nota">
-<p>A função <code>readline()</code> destina-se a uso interactivo, isto é, a situações em que existe uma consola à espera da resposta do utilizador. Por isso, estes exemplos devem ser experimentados directamente na Consola. Num documento compilado, como um ficheiro R Markdown ou bookdown, ou num script executado de forma não interactiva, não há oportunidade para responder ao pedido, e o código pode ficar bloqueado ou falhar.</p>
+<p>A função <code><a href="https://rdrr.io/r/base/readline.html">readline()</a></code> destina-se a uso interactivo, isto é, a situações em que existe uma consola à espera da resposta do utilizador. Por isso, estes exemplos devem ser experimentados directamente na Consola. Num documento compilado, como um ficheiro R Markdown ou bookdown, ou num script executado de forma não interactiva, não há oportunidade para responder ao pedido, e o código pode ficar bloqueado ou falhar.</p>
 </div>
 <div id="a-função-paste-com-mais-detalhe" class="section level3" number="3.8.1">
 <h3>
 <span class="header-section-number">3.8.1</span> A função <code>paste()</code> com mais detalhe<a class="anchor" aria-label="anchor" href="#a-fun%C3%A7%C3%A3o-paste-com-mais-detalhe"><i class="fas fa-link"></i></a>
 </h3>
-<p>A função <code>paste()</code> é muito versátil. Aceita vários argumentos,
+<p>A função <code><a href="https://rdrr.io/r/base/paste.html">paste()</a></code> é muito versátil. Aceita vários argumentos,
 combina vetores elemento a elemento e deixa-nos escolher o separador:</p>
 <div class="sourceCode" id="cb28"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Vários argumentos</span></span>
-<span><span class="fu">paste</span><span class="op">(</span><span class="st">"Data"</span>, <span class="st">"Science"</span>, <span class="st">"com"</span>, <span class="st">"R"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="st">"Data"</span>, <span class="st">"Science"</span>, <span class="st">"com"</span>, <span class="st">"R"</span><span class="op">)</span></span>
 <span><span class="co">## [1] "Data Science com R"</span></span>
 <span></span>
 <span><span class="co"># Separador específico</span></span>
-<span><span class="fu">paste</span><span class="op">(</span><span class="st">"2026"</span>, <span class="st">"04"</span>, <span class="st">"28"</span>, sep <span class="op">=</span> <span class="st">"-"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="st">"2026"</span>, <span class="st">"04"</span>, <span class="st">"28"</span>, sep <span class="op">=</span> <span class="st">"-"</span><span class="op">)</span></span>
 <span><span class="co">## [1] "2026-04-28"</span></span>
 <span></span>
 <span><span class="co"># Combinação elemento a elemento de dois vetores</span></span>
-<span><span class="va">nomes</span>  <span class="op">&lt;-</span> <span class="fu">c</span><span class="op">(</span><span class="st">"Ana"</span>, <span class="st">"Bruno"</span>, <span class="st">"Carlos"</span><span class="op">)</span></span>
-<span><span class="va">apelidos</span> <span class="op">&lt;-</span> <span class="fu">c</span><span class="op">(</span><span class="st">"Silva"</span>, <span class="st">"Oliveira"</span>, <span class="st">"Santos"</span><span class="op">)</span></span>
-<span><span class="fu">paste</span><span class="op">(</span><span class="va">nomes</span>, <span class="va">apelidos</span><span class="op">)</span></span>
+<span><span class="va">nomes</span>  <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Ana"</span>, <span class="st">"Bruno"</span>, <span class="st">"Carlos"</span><span class="op">)</span></span>
+<span><span class="va">apelidos</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Silva"</span>, <span class="st">"Oliveira"</span>, <span class="st">"Santos"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="va">nomes</span>, <span class="va">apelidos</span><span class="op">)</span></span>
 <span><span class="co">## [1] "Ana Silva"      "Bruno Oliveira" "Carlos Santos"</span></span>
 <span></span>
 <span><span class="co"># Colar texto a cada elemento de um vetor</span></span>
-<span><span class="fu">paste</span><span class="op">(</span><span class="st">"Número"</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="st">"Número"</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">)</span></span>
 <span><span class="co">## [1] "Número 1" "Número 2" "Número 3"</span></span>
 <span></span>
 <span><span class="co"># Sem separador, com paste0()</span></span>
-<span><span class="fu">paste0</span><span class="op">(</span><span class="st">"Olá"</span>, <span class="st">"Mundo"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="st">"Olá"</span>, <span class="st">"Mundo"</span><span class="op">)</span></span>
 <span><span class="co">## [1] "OláMundo"</span></span></code></pre></div>
 </div>
 </div>
@@ -643,8 +643,8 @@ verdadeira.</li>
 <h2>
 <span class="header-section-number">3.10</span> Exercícios<a class="anchor" aria-label="anchor" href="#exerc%C3%ADcios"><i class="fas fa-link"></i></a>
 </h2>
-<p><strong>1.</strong> Escreva um programa em R que leia dois inteiros inseridos pelo utilizador e imprima: a soma dos dois números; o produto; a diferença entre o primeiro e o segundo; a divisão do primeiro pelo segundo; o resto dessa divisão; e o primeiro número elevado à potência do segundo. <br><em>Sugestão:</em> Use <code>readline()</code> para a entrada e <code>as.integer()</code> para a conversão.</p>
-<p><strong>2.</strong> Escreva um programa em R que leia dois números decimais e imprima a soma, a diferença, o produto e o primeiro número elevado à potência do segundo. <br><em>Sugestão:</em> Use <code>as.numeric()</code> para a conversão.</p>
+<p><strong>1.</strong> Escreva um programa em R que leia dois inteiros inseridos pelo utilizador e imprima: a soma dos dois números; o produto; a diferença entre o primeiro e o segundo; a divisão do primeiro pelo segundo; o resto dessa divisão; e o primeiro número elevado à potência do segundo. <br><em>Sugestão:</em> Use <code><a href="https://rdrr.io/r/base/readline.html">readline()</a></code> para a entrada e <code><a href="https://rdrr.io/r/base/integer.html">as.integer()</a></code> para a conversão.</p>
+<p><strong>2.</strong> Escreva um programa em R que leia dois números decimais e imprima a soma, a diferença, o produto e o primeiro número elevado à potência do segundo. <br><em>Sugestão:</em> Use <code><a href="https://rdrr.io/r/base/numeric.html">as.numeric()</a></code> para a conversão.</p>
 <p><strong>3.</strong> Escreva um programa em R que leia uma distância em milhas e a converta para quilómetros, usando a fórmula <span class="math inline">\(K = M \times 1.609344\)</span>.</p>
 <p><strong>4.</strong> Escreva um programa em R que leia três inteiros correspondentes ao
 comprimento, à largura e à altura de um paralelepípedo, e imprima o seu volume.</p>
@@ -721,7 +721,7 @@ estiver entre 0 e 100 (inclusive), ou <code>FALSE</code> caso contrário.</p>
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Introdução ao R e à Simulação Estatística</strong>: Um Laboratório de Estatística Computacional" was written by Renato de Paula and Nuno Brites. It was last built on 11 de July de 2026.</p>
+    <p>"<strong>Introdução ao R e à Simulação Estatística</strong>: Um Laboratório de Estatística Computacional" was written by Renato de Paula and Nuno Brites. It was last built on 12 de July de 2026.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

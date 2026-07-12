@@ -15,8 +15,8 @@
 <meta name="twitter:title" content="Capítulo 19 Simulação | Introdução ao R e à Simulação Estatística">
 <meta name="twitter:description" content="Chegámos ao coração do livro. Simular é usar o computador para imitar um fenómeno aleatório — repeti-lo milhares ou milhões de vezes — e, a partir dos resultados observados, responder a perguntas...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link href="libs/bootstrap-5.3.8/bootstrap.min.css" rel="stylesheet">
-<script src="libs/bootstrap-5.3.8/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.11.0/transition.js"></script><script src="libs/bs3compat-0.11.0/tabs.js"></script><script src="libs/bs3compat-0.11.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.11.0/transition.js"></script><script src="libs/bs3compat-0.11.0/tabs.js"></script><script src="libs/bs3compat-0.11.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
 <script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
     
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
@@ -166,9 +166,9 @@ que <strong>diminui</strong> claramente à medida que <span class="math inline">
 </tr>
 </tbody>
 </table></div>
-<p>Para gerar uma amostra uniforme em <span class="math inline">\([0, 1]\)</span> usa-se a função <code>runif()</code>:</p>
+<p>Para gerar uma amostra uniforme em <span class="math inline">\([0, 1]\)</span> usa-se a função <code><a href="https://rdrr.io/r/stats/Uniform.html">runif()</a></code>:</p>
 <div class="sourceCode" id="cb241"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">runif</span><span class="op">(</span><span class="fl">100</span>, min <span class="op">=</span> <span class="fl">0</span>, max <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html">runif</a></span><span class="op">(</span><span class="fl">100</span>, min <span class="op">=</span> <span class="fl">0</span>, max <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span></code></pre></div>
 <p>Aqui não havia necessidade real de simular, pois conhecíamos a média analiticamente —
 o exemplo serve apenas para mostrar que a simulação reproduz a teoria. A lição a reter
 é esta: por maior que seja a amostra, a média amostral <strong>não</strong> será exatamente igual à
@@ -193,19 +193,19 @@ que segue uma distribuição <strong>gama</strong> de forma <span class="math in
 simulação resolve o problema em poucas linhas: geramos muitos pares <span class="math inline">\((X, Y)\)</span>, calculamos
 <span class="math inline">\(Z = |X - Y|\)</span> em cada um, e estimamos <span class="math inline">\(E(|X - Y|)\)</span> pela média dos valores de <span class="math inline">\(Z\)</span>.</p>
 <div class="sourceCode" id="cb242"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">set.seed</span><span class="op">(</span><span class="fl">123</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Tempos para atender 10 clientes: soma de 10 exponenciais = Gama(forma=10, taxa=0.3)</span></span>
-<span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu">rgamma</span><span class="op">(</span><span class="fl">10000</span>, shape <span class="op">=</span> <span class="fl">10</span>, rate <span class="op">=</span> <span class="fl">0.3</span><span class="op">)</span></span>
-<span><span class="va">y</span> <span class="op">&lt;-</span> <span class="fu">rgamma</span><span class="op">(</span><span class="fl">10000</span>, shape <span class="op">=</span> <span class="fl">10</span>, rate <span class="op">=</span> <span class="fl">0.3</span><span class="op">)</span></span>
+<span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/GammaDist.html">rgamma</a></span><span class="op">(</span><span class="fl">10000</span>, shape <span class="op">=</span> <span class="fl">10</span>, rate <span class="op">=</span> <span class="fl">0.3</span><span class="op">)</span></span>
+<span><span class="va">y</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/GammaDist.html">rgamma</a></span><span class="op">(</span><span class="fl">10000</span>, shape <span class="op">=</span> <span class="fl">10</span>, rate <span class="op">=</span> <span class="fl">0.3</span><span class="op">)</span></span>
 <span></span>
-<span><span class="va">z</span> <span class="op">&lt;-</span> <span class="fu">abs</span><span class="op">(</span><span class="va">x</span> <span class="op">-</span> <span class="va">y</span><span class="op">)</span>      <span class="co"># tempo de espera em cada réplica</span></span>
-<span><span class="fu">mean</span><span class="op">(</span><span class="va">z</span><span class="op">)</span>              <span class="co"># estimativa de E(|X - Y|)</span></span>
+<span><span class="va">z</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">abs</a></span><span class="op">(</span><span class="va">x</span> <span class="op">-</span> <span class="va">y</span><span class="op">)</span>      <span class="co"># tempo de espera em cada réplica</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">z</span><span class="op">)</span>              <span class="co"># estimativa de E(|X - Y|)</span></span>
 <span><span class="co">## [1] 11.76</span></span></code></pre></div>
 <p>A simulação estima um tempo médio de espera de cerca de 11,7 minutos. O histograma
 mostra a distribuição completa desses tempos:</p>
 <div class="sourceCode" id="cb243"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">hist</span><span class="op">(</span><span class="va">z</span>,</span>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/hist.html">hist</a></span><span class="op">(</span><span class="va">z</span>,</span>
 <span>     main <span class="op">=</span> <span class="st">"Tempo de espera"</span>,</span>
 <span>     xlab <span class="op">=</span> <span class="st">"Tempo de espera (minutos)"</span>,</span>
 <span>     ylab <span class="op">=</span> <span class="st">"Frequência absoluta"</span>,</span>
@@ -262,12 +262,12 @@ delicada — os geradores usados na prática têm períodos astronomicamente lon
 <h2>
 <span class="header-section-number">19.4</span> A função <code>set.seed()</code><a class="anchor" aria-label="anchor" href="#a-fun%C3%A7%C3%A3o-set.seed"><i class="fas fa-link"></i></a>
 </h2>
-<p>No R, a semente do gerador fixa-se com <code>set.seed()</code>. Executar <code>set.seed()</code> com o mesmo
+<p>No R, a semente do gerador fixa-se com <code><a href="https://rdrr.io/r/base/Random.html">set.seed()</a></code>. Executar <code><a href="https://rdrr.io/r/base/Random.html">set.seed()</a></code> com o mesmo
 número antes de uma operação aleatória garante que ela produz sempre os mesmos
 resultados:</p>
 <div class="sourceCode" id="cb244"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">set.seed</span><span class="op">(</span><span class="fl">123</span><span class="op">)</span></span>
-<span><span class="fu">sample</span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">100</span>, <span class="fl">5</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">100</span>, <span class="fl">5</span><span class="op">)</span></span>
 <span><span class="co">## [1] 31 79 51 14 67</span></span></code></pre></div>
 <p>Reexecutando o mesmo código com a mesma semente, obtêm-se exatamente os mesmos cinco
 números. O gerador que o R usa por omissão é o <em>Mersenne Twister</em>, com um período
@@ -276,14 +276,14 @@ e da sessão, pelo que cada execução parte de um ponto diferente.</p>
 <div class="dica">
 <p>Fixar a semente é um hábito, não uma limitação: os resultados continuam a comportar-se
 como acaso, mas tornam-se reprodutíveis. Todas as simulações deste livro que devam dar
-sempre o mesmo resultado começam por <code>set.seed()</code>.</p>
+sempre o mesmo resultado começam por <code><a href="https://rdrr.io/r/base/Random.html">set.seed()</a></code>.</p>
 </div>
 </div>
 <div id="exercícios-24" class="section level2" number="19.5">
 <h2>
 <span class="header-section-number">19.5</span> Exercícios<a class="anchor" aria-label="anchor" href="#exerc%C3%ADcios-24"><i class="fas fa-link"></i></a>
 </h2>
-<p><strong>1.</strong> Fixe uma semente à sua escolha com <code>set.seed()</code>.</p>
+<p><strong>1.</strong> Fixe uma semente à sua escolha com <code><a href="https://rdrr.io/r/base/Random.html">set.seed()</a></code>.</p>
 <ul>
 <li>Gere duas amostras de dimensão 10 dos números de 1 a 50, sem reposição.</li>
 <li>Mude a semente e gere novamente as amostras.</li>
@@ -295,7 +295,7 @@ sempre o mesmo resultado começam por <code>set.seed()</code>.</p>
 <li>Repita o processo sem redefinir a semente.</li>
 <li>Volte a fixar <code>set.seed(123)</code> e repita. Compare com a primeira simulação.</li>
 </ul>
-<p><strong>3.</strong> Use <code>set.seed()</code> para gerar 50 valores de uma normal <span class="math inline">\(N(\mu = 10, \sigma = 2)\)</span>
+<p><strong>3.</strong> Use <code><a href="https://rdrr.io/r/base/Random.html">set.seed()</a></code> para gerar 50 valores de uma normal <span class="math inline">\(N(\mu = 10, \sigma = 2)\)</span>
 com <code>rnorm(50, mean = 10, sd = 2)</code>.</p>
 <ul>
 <li>Com a mesma semente, gere 50 valores de uma uniforme <span class="math inline">\(U(0, 1)\)</span> com <code>runif(50)</code>.</li>
@@ -303,12 +303,12 @@ com <code>rnorm(50, mean = 10, sd = 2)</code>.</p>
 </ul>
 <p><strong>4.</strong> Fixe a semente com <code>set.seed(42)</code>.</p>
 <ul>
-<li>Divida os números de 1 a 100 em dois grupos aleatórios de 50 (use <code>sample()</code> e
+<li>Divida os números de 1 a 100 em dois grupos aleatórios de 50 (use <code><a href="https://rdrr.io/r/base/sample.html">sample()</a></code> e
 <code><a href="https://generics.r-lib.org/reference/setops.html">setdiff()</a></code>).</li>
 <li>Repita a divisão sem fixar a semente.</li>
 <li>Volte a fixar <code>set.seed(42)</code> e repita. Verifique se os grupos são os mesmos.</li>
 </ul>
-<p><strong>5.</strong> Use <code>set.seed()</code> para simular as respostas de 50 participantes a uma pergunta de
+<p><strong>5.</strong> Use <code><a href="https://rdrr.io/r/base/Random.html">set.seed()</a></code> para simular as respostas de 50 participantes a uma pergunta de
 escolha múltipla com 4 opções (A, B, C, D).</p>
 <ul>
 <li>Mude a semente e repita a simulação.</li>
@@ -350,7 +350,7 @@ o vocabulário indispensável de qualquer simulação.</p>
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Introdução ao R e à Simulação Estatística</strong>: Um Laboratório de Estatística Computacional" was written by Renato de Paula and Nuno Brites. It was last built on 11 de July de 2026.</p>
+    <p>"<strong>Introdução ao R e à Simulação Estatística</strong>: Um Laboratório de Estatística Computacional" was written by Renato de Paula and Nuno Brites. It was last built on 12 de July de 2026.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

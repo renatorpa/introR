@@ -15,8 +15,8 @@
 <meta name="twitter:title" content="Capítulo 7 Scripts em R | Introdução ao R e à Simulação Estatística">
 <meta name="twitter:description" content="Nos capítulos anteriores escrevemos código diretamente na consola e definimos as nossas próprias funções (Capítulo 6). Enquanto experimentamos, a consola é cómoda; mas o trabalho que fica apenas...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link href="libs/bootstrap-5.3.8/bootstrap.min.css" rel="stylesheet">
-<script src="libs/bootstrap-5.3.8/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.11.0/transition.js"></script><script src="libs/bs3compat-0.11.0/tabs.js"></script><script src="libs/bs3compat-0.11.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.11.0/transition.js"></script><script src="libs/bs3compat-0.11.0/tabs.js"></script><script src="libs/bs3compat-0.11.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
 <script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
     
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
@@ -96,7 +96,7 @@ qualquer pessoa — incluindo o nosso próprio “eu” de daqui a seis meses �
 obter exatamente os mesmos resultados a partir dos mesmos dados.</p>
 <div class="objetivo">
 <p>Neste capítulo aprendemos a guardar código num ficheiro <code>.R</code>, a executá-lo com
-<code>source()</code>, a compreender o papel do diretório de trabalho e a adotar hábitos que
+<code><a href="https://rdrr.io/r/base/source.html">source()</a></code>, a compreender o papel do diretório de trabalho e a adotar hábitos que
 tornam a nossa análise reprodutível.</p>
 </div>
 <div id="criar-um-script" class="section level2" number="7.1">
@@ -109,7 +109,7 @@ o ficheiro com a extensão <code>.R</code>.</p>
 <p>Guarde, por exemplo, o código seguinte num ficheiro chamado <code>meu_script.R</code>:</p>
 <div class="sourceCode" id="cb107"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">produto</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span><span class="op">)</span> <span class="op">{</span></span>
-<span>  <span class="kw">return</span><span class="op">(</span><span class="va">x</span> <span class="op">*</span> <span class="va">y</span><span class="op">)</span></span>
+<span>  <span class="kw"><a href="https://rdrr.io/r/base/function.html">return</a></span><span class="op">(</span><span class="va">x</span> <span class="op">*</span> <span class="va">y</span><span class="op">)</span></span>
 <span><span class="op">}</span></span></code></pre></div>
 <p>Repare que guardar o script <strong>não executa</strong> o código — apenas o preserva. Definir a
 função e poder usá-la são dois passos distintos.</p>
@@ -118,19 +118,19 @@ função e poder usá-la são dois passos distintos.</p>
 <h2>
 <span class="header-section-number">7.2</span> Executar um script<a class="anchor" aria-label="anchor" href="#executar-um-script"><i class="fas fa-link"></i></a>
 </h2>
-<p>Para correr um script guardado, usamos a função <code>source()</code>, na consola ou dentro de
+<p>Para correr um script guardado, usamos a função <code><a href="https://rdrr.io/r/base/source.html">source()</a></code>, na consola ou dentro de
 outro script. O R lê o ficheiro e executa, uma a uma, todas as suas linhas.</p>
 <p>Se o ficheiro <code>meu_script.R</code> estiver no <strong>diretório de trabalho atual</strong>, basta:</p>
 <div class="sourceCode" id="cb108"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw">source</span><span class="op">(</span><span class="st">"meu_script.R"</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/source.html">source</a></span><span class="op">(</span><span class="st">"meu_script.R"</span><span class="op">)</span></span></code></pre></div>
 <p>Se estiver noutra pasta, indicamos o caminho completo:</p>
 <div class="sourceCode" id="cb109"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw">source</span><span class="op">(</span><span class="st">"/caminho/para/o/seu/script/meu_script.R"</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/source.html">source</a></span><span class="op">(</span><span class="st">"/caminho/para/o/seu/script/meu_script.R"</span><span class="op">)</span></span></code></pre></div>
 <div id="o-que-acontece-quando-executamos-um-script" class="section level3" number="7.2.1">
 <h3>
 <span class="header-section-number">7.2.1</span> O que acontece quando executamos um script?<a class="anchor" aria-label="anchor" href="#o-que-acontece-quando-executamos-um-script"><i class="fas fa-link"></i></a>
 </h3>
-<p>Ao chamar <code>source()</code>, todas as funções, variáveis e resultados definidos no script
+<p>Ao chamar <code><a href="https://rdrr.io/r/base/source.html">source()</a></code>, todas as funções, variáveis e resultados definidos no script
 passam a estar disponíveis no ambiente de trabalho. Depois de executar o
 <code>meu_script.R</code> acima, a função <code>produto()</code> fica pronta a usar:</p>
 <div class="sourceCode" id="cb110"><pre class="downlit sourceCode r">
@@ -156,18 +156,18 @@ de referência: é aí que procura os ficheiros a ler e onde guarda os resultado
 menos que indiquemos um caminho completo. Duas funções bastam para o gerir:</p>
 <ul>
 <li>
-<code>getwd()</code> — devolve o caminho do diretório de trabalho atual.</li>
+<code><a href="https://rdrr.io/r/base/getwd.html">getwd()</a></code> — devolve o caminho do diretório de trabalho atual.</li>
 <li>
 <code>setwd("caminho/da/pasta")</code> — muda o diretório de trabalho para o caminho
 indicado.</li>
 </ul>
 <div class="sourceCode" id="cb111"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">getwd</span><span class="op">(</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/getwd.html">getwd</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">## [1] "C:/Users/Utilizador/Documents"</span></span></code></pre></div>
 <p>Com o diretório de trabalho bem definido, referimo-nos aos ficheiros pelo nome, sem
 escrever o caminho todo. Se <code>dados.csv</code> estiver no diretório de trabalho:</p>
 <div class="sourceCode" id="cb112"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">dados</span> <span class="op">&lt;-</span> <span class="fu">read.csv</span><span class="op">(</span><span class="st">"dados.csv"</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">dados</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.csv</a></span><span class="op">(</span><span class="st">"dados.csv"</span><span class="op">)</span></span></code></pre></div>
 <div class="atencao">
 <p>Evite espalhar chamadas a <code>setwd("C:/Users/...")</code> pelos seus scripts. Um caminho
 absoluto só existe no seu computador: quando o script chega às mãos de outra pessoa
@@ -260,7 +260,7 @@ R <strong>dados reais</strong>, guardados em ficheiros de texto, CSV ou Excel.</
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Introdução ao R e à Simulação Estatística</strong>: Um Laboratório de Estatística Computacional" was written by Renato de Paula and Nuno Brites. It was last built on 11 de July de 2026.</p>
+    <p>"<strong>Introdução ao R e à Simulação Estatística</strong>: Um Laboratório de Estatística Computacional" was written by Renato de Paula and Nuno Brites. It was last built on 12 de July de 2026.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

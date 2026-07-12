@@ -15,8 +15,8 @@
 <meta name="twitter:title" content="Capítulo 23 Método da aceitação-rejeição | Introdução ao R e à Simulação Estatística">
 <meta name="twitter:description" content="No capítulo anterior vimos que o método da transformação inversa nos permite gerar observações de uma variável aleatória sempre que conhecemos — e sabemos inverter — a sua função de distribuição....">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link href="libs/bootstrap-5.3.8/bootstrap.min.css" rel="stylesheet">
-<script src="libs/bootstrap-5.3.8/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.11.0/transition.js"></script><script src="libs/bs3compat-0.11.0/tabs.js"></script><script src="libs/bs3compat-0.11.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.11.0/transition.js"></script><script src="libs/bs3compat-0.11.0/tabs.js"></script><script src="libs/bs3compat-0.11.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
 <script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
     
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
@@ -302,19 +302,19 @@ que gera observações da proposta, a densidade da proposta <code>g_dens</code> 
 permite verificar empiricamente se ela se aproxima de <span class="math inline">\(1/c\)</span>.</p>
 <div class="sourceCode" id="cb300"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">aceita_rejeita</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">n</span>, <span class="va">f</span>, <span class="va">g_amostra</span>, <span class="va">g_dens</span>, <span class="va">c</span><span class="op">)</span> <span class="op">{</span></span>
-<span>  <span class="va">amostra</span>    <span class="op">&lt;-</span> <span class="fu">numeric</span><span class="op">(</span><span class="va">n</span><span class="op">)</span></span>
+<span>  <span class="va">amostra</span>    <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html">numeric</a></span><span class="op">(</span><span class="va">n</span><span class="op">)</span></span>
 <span>  <span class="va">aceites</span>    <span class="op">&lt;-</span> <span class="fl">0</span></span>
 <span>  <span class="va">tentativas</span> <span class="op">&lt;-</span> <span class="fl">0</span></span>
 <span>  <span class="kw">while</span> <span class="op">(</span><span class="va">aceites</span> <span class="op">&lt;</span> <span class="va">n</span><span class="op">)</span> <span class="op">{</span></span>
 <span>    <span class="va">y</span> <span class="op">&lt;-</span> <span class="fu">g_amostra</span><span class="op">(</span><span class="fl">1</span><span class="op">)</span>              <span class="co"># observação da proposta</span></span>
-<span>    <span class="va">u</span> <span class="op">&lt;-</span> <span class="fu">runif</span><span class="op">(</span><span class="fl">1</span><span class="op">)</span>                  <span class="co"># uniforme para o teste</span></span>
+<span>    <span class="va">u</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html">runif</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span>                  <span class="co"># uniforme para o teste</span></span>
 <span>    <span class="va">tentativas</span> <span class="op">&lt;-</span> <span class="va">tentativas</span> <span class="op">+</span> <span class="fl">1</span></span>
 <span>    <span class="kw">if</span> <span class="op">(</span><span class="va">u</span> <span class="op">&lt;=</span> <span class="fu">f</span><span class="op">(</span><span class="va">y</span><span class="op">)</span> <span class="op">/</span> <span class="op">(</span><span class="va">c</span> <span class="op">*</span> <span class="fu">g_dens</span><span class="op">(</span><span class="va">y</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
 <span>      <span class="va">aceites</span> <span class="op">&lt;-</span> <span class="va">aceites</span> <span class="op">+</span> <span class="fl">1</span></span>
 <span>      <span class="va">amostra</span><span class="op">[</span><span class="va">aceites</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="va">y</span></span>
 <span>    <span class="op">}</span></span>
 <span>  <span class="op">}</span></span>
-<span>  <span class="fu">list</span><span class="op">(</span>amostra <span class="op">=</span> <span class="va">amostra</span>,</span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>amostra <span class="op">=</span> <span class="va">amostra</span>,</span>
 <span>       taxa_aceitacao <span class="op">=</span> <span class="va">aceites</span> <span class="op">/</span> <span class="va">tentativas</span><span class="op">)</span></span>
 <span><span class="op">}</span></span></code></pre></div>
 <div class="dica">
@@ -346,15 +346,15 @@ c = \sup_{0&lt;x&lt;1} \frac{f(x)}{g(x)} = \max_{0&lt;x&lt;1} 6\,x\,(1-x).
 <span class="math inline">\(f(1/2) = 6 \cdot \tfrac{1}{2} \cdot \tfrac{1}{2} = \tfrac{3}{2}\)</span>. Logo
 <span class="math inline">\(c = 1{,}5\)</span>, e esperamos uma taxa de aceitação de <span class="math inline">\(1/c \approx 0{,}667\)</span>.</p>
 <div class="sourceCode" id="cb301"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">set.seed</span><span class="op">(</span><span class="fl">2024</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">2024</span><span class="op">)</span></span>
 <span></span>
-<span><span class="va">f_beta</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="fu">ifelse</span><span class="op">(</span><span class="va">x</span> <span class="op">&gt;</span> <span class="fl">0</span> <span class="op">&amp;</span> <span class="va">x</span> <span class="op">&lt;</span> <span class="fl">1</span>, <span class="fl">6</span> <span class="op">*</span> <span class="va">x</span> <span class="op">*</span> <span class="op">(</span><span class="fl">1</span> <span class="op">-</span> <span class="va">x</span><span class="op">)</span>, <span class="fl">0</span><span class="op">)</span></span>
-<span><span class="va">g_unif</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="fu">ifelse</span><span class="op">(</span><span class="va">x</span> <span class="op">&gt;</span> <span class="fl">0</span> <span class="op">&amp;</span> <span class="va">x</span> <span class="op">&lt;</span> <span class="fl">1</span>, <span class="fl">1</span>, <span class="fl">0</span><span class="op">)</span></span>
+<span><span class="va">f_beta</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html">ifelse</a></span><span class="op">(</span><span class="va">x</span> <span class="op">&gt;</span> <span class="fl">0</span> <span class="op">&amp;</span> <span class="va">x</span> <span class="op">&lt;</span> <span class="fl">1</span>, <span class="fl">6</span> <span class="op">*</span> <span class="va">x</span> <span class="op">*</span> <span class="op">(</span><span class="fl">1</span> <span class="op">-</span> <span class="va">x</span><span class="op">)</span>, <span class="fl">0</span><span class="op">)</span></span>
+<span><span class="va">g_unif</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html">ifelse</a></span><span class="op">(</span><span class="va">x</span> <span class="op">&gt;</span> <span class="fl">0</span> <span class="op">&amp;</span> <span class="va">x</span> <span class="op">&lt;</span> <span class="fl">1</span>, <span class="fl">1</span>, <span class="fl">0</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">resultado</span> <span class="op">&lt;-</span> <span class="fu">aceita_rejeita</span><span class="op">(</span></span>
 <span>  n         <span class="op">=</span> <span class="fl">10000</span>,</span>
 <span>  f         <span class="op">=</span> <span class="va">f_beta</span>,</span>
-<span>  g_amostra <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">n</span><span class="op">)</span> <span class="fu">runif</span><span class="op">(</span><span class="va">n</span><span class="op">)</span>,</span>
+<span>  g_amostra <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">n</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html">runif</a></span><span class="op">(</span><span class="va">n</span><span class="op">)</span>,</span>
 <span>  g_dens    <span class="op">=</span> <span class="va">g_unif</span>,</span>
 <span>  c         <span class="op">=</span> <span class="fl">1.5</span></span>
 <span><span class="op">)</span></span>
@@ -365,11 +365,11 @@ c = \sup_{0&lt;x&lt;1} \frac{f(x)}{g(x)} = \max_{0&lt;x&lt;1} 6\,x\,(1-x).
 que confirma o funcionamento do algoritmo. Comparemos agora o histograma das
 observações geradas com a densidade teórica.</p>
 <div class="sourceCode" id="cb302"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">hist</span><span class="op">(</span><span class="va">resultado</span><span class="op">$</span><span class="va">amostra</span>, breaks <span class="op">=</span> <span class="fl">40</span>, probability <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/hist.html">hist</a></span><span class="op">(</span><span class="va">resultado</span><span class="op">$</span><span class="va">amostra</span>, breaks <span class="op">=</span> <span class="fl">40</span>, probability <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>     col <span class="op">=</span> <span class="st">"grey85"</span>, border <span class="op">=</span> <span class="st">"white"</span>,</span>
 <span>     main <span class="op">=</span> <span class="st">""</span>, xlab <span class="op">=</span> <span class="st">"x"</span>, ylab <span class="op">=</span> <span class="st">"densidade"</span><span class="op">)</span></span>
-<span><span class="fu">curve</span><span class="op">(</span><span class="va">f_beta</span>, from <span class="op">=</span> <span class="fl">0</span>, to <span class="op">=</span> <span class="fl">1</span>, add <span class="op">=</span> <span class="cn">TRUE</span>, lwd <span class="op">=</span> <span class="fl">2</span>, col <span class="op">=</span> <span class="st">"#10656d"</span><span class="op">)</span></span>
-<span><span class="fu">legend</span><span class="op">(</span><span class="st">"topright"</span>, legend <span class="op">=</span> <span class="st">"densidade Beta(2,2)"</span>,</span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/curve.html">curve</a></span><span class="op">(</span><span class="va">f_beta</span>, from <span class="op">=</span> <span class="fl">0</span>, to <span class="op">=</span> <span class="fl">1</span>, add <span class="op">=</span> <span class="cn">TRUE</span>, lwd <span class="op">=</span> <span class="fl">2</span>, col <span class="op">=</span> <span class="st">"#10656d"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/legend.html">legend</a></span><span class="op">(</span><span class="st">"topright"</span>, legend <span class="op">=</span> <span class="st">"densidade Beta(2,2)"</span>,</span>
 <span>       lwd <span class="op">=</span> <span class="fl">2</span>, col <span class="op">=</span> <span class="st">"#10656d"</span>, bty <span class="op">=</span> <span class="st">"n"</span><span class="op">)</span></span></code></pre></div>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:ar-beta-hist"></span>
@@ -416,38 +416,38 @@ condição de aceitação simplifica-se de forma elegante:</p>
 U \leq \frac{f(Y)}{c\,g(Y)} = e^{-(Y-1)^2/2}.
 \]</span></p>
 <div class="sourceCode" id="cb303"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">set.seed</span><span class="op">(</span><span class="fl">2024</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">2024</span><span class="op">)</span></span>
 <span></span>
-<span><span class="va">c_norm</span> <span class="op">&lt;-</span> <span class="fu">sqrt</span><span class="op">(</span><span class="fl">2</span> <span class="op">*</span> <span class="fu">exp</span><span class="op">(</span><span class="fl">1</span><span class="op">)</span> <span class="op">/</span> <span class="va">pi</span><span class="op">)</span></span>
+<span><span class="va">c_norm</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="fl">2</span> <span class="op">*</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html">exp</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span> <span class="op">/</span> <span class="va">pi</span><span class="op">)</span></span>
 <span><span class="va">c_norm</span></span>
 <span><span class="co">## [1] 1.315</span></span>
 <span></span>
 <span><span class="va">gerar_normal_ar</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">n</span><span class="op">)</span> <span class="op">{</span></span>
-<span>  <span class="va">x</span> <span class="op">&lt;-</span> <span class="fu">numeric</span><span class="op">(</span><span class="va">n</span><span class="op">)</span></span>
+<span>  <span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html">numeric</a></span><span class="op">(</span><span class="va">n</span><span class="op">)</span></span>
 <span>  <span class="va">aceites</span> <span class="op">&lt;-</span> <span class="fl">0</span></span>
 <span>  <span class="va">tentativas</span> <span class="op">&lt;-</span> <span class="fl">0</span></span>
 <span>  <span class="kw">while</span> <span class="op">(</span><span class="va">aceites</span> <span class="op">&lt;</span> <span class="va">n</span><span class="op">)</span> <span class="op">{</span></span>
-<span>    <span class="va">y</span> <span class="op">&lt;-</span> <span class="fu">rexp</span><span class="op">(</span><span class="fl">1</span>, rate <span class="op">=</span> <span class="fl">1</span><span class="op">)</span>              <span class="co"># proposta: Exp(1)</span></span>
-<span>    <span class="va">u</span> <span class="op">&lt;-</span> <span class="fu">runif</span><span class="op">(</span><span class="fl">1</span><span class="op">)</span></span>
+<span>    <span class="va">y</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Exponential.html">rexp</a></span><span class="op">(</span><span class="fl">1</span>, rate <span class="op">=</span> <span class="fl">1</span><span class="op">)</span>              <span class="co"># proposta: Exp(1)</span></span>
+<span>    <span class="va">u</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html">runif</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span></span>
 <span>    <span class="va">tentativas</span> <span class="op">&lt;-</span> <span class="va">tentativas</span> <span class="op">+</span> <span class="fl">1</span></span>
-<span>    <span class="kw">if</span> <span class="op">(</span><span class="va">u</span> <span class="op">&lt;=</span> <span class="fu">exp</span><span class="op">(</span><span class="op">-</span><span class="op">(</span><span class="va">y</span> <span class="op">-</span> <span class="fl">1</span><span class="op">)</span><span class="op">^</span><span class="fl">2</span> <span class="op">/</span> <span class="fl">2</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span>     <span class="co"># teste simplificado</span></span>
+<span>    <span class="kw">if</span> <span class="op">(</span><span class="va">u</span> <span class="op">&lt;=</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html">exp</a></span><span class="op">(</span><span class="op">-</span><span class="op">(</span><span class="va">y</span> <span class="op">-</span> <span class="fl">1</span><span class="op">)</span><span class="op">^</span><span class="fl">2</span> <span class="op">/</span> <span class="fl">2</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span>     <span class="co"># teste simplificado</span></span>
 <span>      <span class="va">aceites</span> <span class="op">&lt;-</span> <span class="va">aceites</span> <span class="op">+</span> <span class="fl">1</span></span>
-<span>      <span class="va">s</span> <span class="op">&lt;-</span> <span class="fu">sample</span><span class="op">(</span><span class="fu">c</span><span class="op">(</span><span class="op">-</span><span class="fl">1</span>, <span class="fl">1</span><span class="op">)</span>, <span class="fl">1</span><span class="op">)</span>          <span class="co"># sinal aleatório</span></span>
+<span>      <span class="va">s</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">1</span>, <span class="fl">1</span><span class="op">)</span>, <span class="fl">1</span><span class="op">)</span>          <span class="co"># sinal aleatório</span></span>
 <span>      <span class="va">x</span><span class="op">[</span><span class="va">aceites</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="va">s</span> <span class="op">*</span> <span class="va">y</span></span>
 <span>    <span class="op">}</span></span>
 <span>  <span class="op">}</span></span>
-<span>  <span class="fu">list</span><span class="op">(</span>amostra <span class="op">=</span> <span class="va">x</span>, taxa_aceitacao <span class="op">=</span> <span class="va">aceites</span> <span class="op">/</span> <span class="va">tentativas</span><span class="op">)</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>amostra <span class="op">=</span> <span class="va">x</span>, taxa_aceitacao <span class="op">=</span> <span class="va">aceites</span> <span class="op">/</span> <span class="va">tentativas</span><span class="op">)</span></span>
 <span><span class="op">}</span></span>
 <span></span>
 <span><span class="va">normais</span> <span class="op">&lt;-</span> <span class="fu">gerar_normal_ar</span><span class="op">(</span><span class="fl">10000</span><span class="op">)</span></span>
 <span><span class="va">normais</span><span class="op">$</span><span class="va">taxa_aceitacao</span>                  <span class="co"># deverá rondar 0.760</span></span>
 <span><span class="co">## [1] 0.7596</span></span></code></pre></div>
 <div class="sourceCode" id="cb304"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">hist</span><span class="op">(</span><span class="va">normais</span><span class="op">$</span><span class="va">amostra</span>, breaks <span class="op">=</span> <span class="fl">50</span>, probability <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/hist.html">hist</a></span><span class="op">(</span><span class="va">normais</span><span class="op">$</span><span class="va">amostra</span>, breaks <span class="op">=</span> <span class="fl">50</span>, probability <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>     col <span class="op">=</span> <span class="st">"grey85"</span>, border <span class="op">=</span> <span class="st">"white"</span>,</span>
 <span>     main <span class="op">=</span> <span class="st">""</span>, xlab <span class="op">=</span> <span class="st">"x"</span>, ylab <span class="op">=</span> <span class="st">"densidade"</span><span class="op">)</span></span>
-<span><span class="fu">curve</span><span class="op">(</span><span class="fu">dnorm</span><span class="op">(</span><span class="va">x</span><span class="op">)</span>, from <span class="op">=</span> <span class="op">-</span><span class="fl">4</span>, to <span class="op">=</span> <span class="fl">4</span>, add <span class="op">=</span> <span class="cn">TRUE</span>, lwd <span class="op">=</span> <span class="fl">2</span>, col <span class="op">=</span> <span class="st">"#10656d"</span><span class="op">)</span></span>
-<span><span class="fu">legend</span><span class="op">(</span><span class="st">"topright"</span>, legend <span class="op">=</span> <span class="st">"densidade N(0,1)"</span>,</span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/curve.html">curve</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">dnorm</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>, from <span class="op">=</span> <span class="op">-</span><span class="fl">4</span>, to <span class="op">=</span> <span class="fl">4</span>, add <span class="op">=</span> <span class="cn">TRUE</span>, lwd <span class="op">=</span> <span class="fl">2</span>, col <span class="op">=</span> <span class="st">"#10656d"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/legend.html">legend</a></span><span class="op">(</span><span class="st">"topright"</span>, legend <span class="op">=</span> <span class="st">"densidade N(0,1)"</span>,</span>
 <span>       lwd <span class="op">=</span> <span class="fl">2</span>, col <span class="op">=</span> <span class="st">"#10656d"</span>, bty <span class="op">=</span> <span class="st">"n"</span><span class="op">)</span></span></code></pre></div>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:ar-normal-hist"></span>
@@ -458,7 +458,7 @@ Figura 23.2: Observações da normal padrão geradas por aceitação-rejeição 
 <p>Uma verificação numérica adicional: a média e o desvio-padrão amostrais devem
 aproximar-se de <span class="math inline">\(0\)</span> e <span class="math inline">\(1\)</span>, respetivamente.</p>
 <div class="sourceCode" id="cb305"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">c</span><span class="op">(</span>media <span class="op">=</span> <span class="fu">mean</span><span class="op">(</span><span class="va">normais</span><span class="op">$</span><span class="va">amostra</span><span class="op">)</span>, desvio <span class="op">=</span> <span class="fu">sd</span><span class="op">(</span><span class="va">normais</span><span class="op">$</span><span class="va">amostra</span><span class="op">)</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span>media <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">normais</span><span class="op">$</span><span class="va">amostra</span><span class="op">)</span>, desvio <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/sd.html">sd</a></span><span class="op">(</span><span class="va">normais</span><span class="op">$</span><span class="va">amostra</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">##      media     desvio </span></span>
 <span><span class="co">## -0.0002611  1.0000975</span></span></code></pre></div>
 <div class="nota">
@@ -551,14 +551,14 @@ densidade.</p>
 dificuldades que surgem por a log-normal ter cauda mais pesada do que a normal.</p>
 <p><strong>6.</strong> Use o método da aceitação-rejeição para gerar variáveis de Weibull
 <span class="math inline">\(W(\text{forma}=2, \text{escala}=1)\)</span> usando uma proposta exponencial. Determine
-<span class="math inline">\(c\)</span> numericamente maximizando o rácio das densidades com <code>optimize()</code>.</p>
+<span class="math inline">\(c\)</span> numericamente maximizando o rácio das densidades com <code><a href="https://rdrr.io/r/stats/optimize.html">optimize()</a></code>.</p>
 <p><strong>7.</strong> Considere a densidade <span class="math inline">\(f(x) = \frac{1}{2}\,(1 + \cos x)\)</span> no intervalo
 <span class="math inline">\([-\pi, \pi]\)</span> e nula fora dele. Gere observações desta distribuição com uma
 proposta uniforme em <span class="math inline">\([-\pi, \pi]\)</span> e verifique o resultado graficamente.</p>
 <p><strong>8.</strong> Implemente uma versão <strong>vetorizada</strong> da função <code>aceita_rejeita</code> que gere
 os candidatos em lotes (por exemplo, de tamanho <span class="math inline">\(2n\)</span> de cada vez) e aceite em
 bloco os que passam no teste, repetindo apenas se necessário. Compare o tempo de
-execução com a versão baseada num ciclo <code>while</code>, usando <code>system.time()</code>, para
+execução com a versão baseada num ciclo <code>while</code>, usando <code><a href="https://rdrr.io/r/base/system.time.html">system.time()</a></code>, para
 gerar <span class="math inline">\(10^5\)</span> observações da Beta(2,2).</p>
 <p><strong>9.</strong> Estude, por simulação, como a <strong>eficiência</strong> do método depende da
 constante <span class="math inline">\(c\)</span>. Para gerar observações da meia-normal a partir da exponencial,
@@ -618,7 +618,7 @@ aceitação, o valor da constante de normalização.</p>
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Introdução ao R e à Simulação Estatística</strong>: Um Laboratório de Estatística Computacional" was written by Renato de Paula and Nuno Brites. It was last built on 11 de July de 2026.</p>
+    <p>"<strong>Introdução ao R e à Simulação Estatística</strong>: Um Laboratório de Estatística Computacional" was written by Renato de Paula and Nuno Brites. It was last built on 12 de July de 2026.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

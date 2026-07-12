@@ -15,8 +15,8 @@
 <meta name="twitter:title" content="Capítulo 17 A função sample() | Introdução ao R e à Simulação Estatística">
 <meta name="twitter:description" content="Começa aqui a parte central do livro: a aleatoriedade e a simulação. Simular é imitar, no computador, um fenómeno sujeito ao acaso — lançar um dado, extrair uma amostra, esperar numa fila — e...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link href="libs/bootstrap-5.3.8/bootstrap.min.css" rel="stylesheet">
-<script src="libs/bootstrap-5.3.8/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.11.0/transition.js"></script><script src="libs/bs3compat-0.11.0/tabs.js"></script><script src="libs/bs3compat-0.11.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.11.0/transition.js"></script><script src="libs/bs3compat-0.11.0/tabs.js"></script><script src="libs/bs3compat-0.11.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
 <script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
     
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
@@ -87,11 +87,11 @@ imitar, no computador, um fenómeno sujeito ao acaso — lançar um dado, extrai
 amostra, esperar numa fila — e observar o que acontece quando o repetimos muitas vezes.
 É uma forma poderosa de estudar a probabilidade: em vez de resolver um problema apenas
 com fórmulas, podemos <em>fazê-lo acontecer</em> milhares de vezes e medir o resultado.</p>
-<p>A ferramenta mais elementar para gerar acaso no R é a função <code>sample()</code>, que extrai
+<p>A ferramenta mais elementar para gerar acaso no R é a função <code><a href="https://rdrr.io/r/base/sample.html">sample()</a></code>, que extrai
 elementos ao acaso de um conjunto. Com ela lançam-se dados e moedas, baralham-se
 cartas, sorteiam-se amostras — os alicerces de quase todas as simulações que se seguem.</p>
 <div class="sourceCode" id="cb224"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">sample</span><span class="op">(</span><span class="va">x</span>, <span class="va">size</span>, replace <span class="op">=</span> <span class="cn">FALSE</span>, prob <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">size</span>, replace <span class="op">=</span> <span class="cn">FALSE</span>, prob <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span></code></pre></div>
 <ul>
 <li>
 <code>x</code> — o vetor de onde se extraem os elementos;</li>
@@ -105,9 +105,9 @@ cartas, sorteiam-se amostras — os alicerces de quase todas as simulações que
 todos são igualmente prováveis.</li>
 </ul>
 <div class="objetivo">
-<p>Neste capítulo aprendemos a extrair amostras aleatórias com <code>sample()</code> — com e sem
+<p>Neste capítulo aprendemos a extrair amostras aleatórias com <code><a href="https://rdrr.io/r/base/sample.html">sample()</a></code> — com e sem
 reposição, com probabilidades iguais ou diferentes — e a tornar as simulações
-reprodutíveis com <code>set.seed()</code>.</p>
+reprodutíveis com <code><a href="https://rdrr.io/r/base/Random.html">set.seed()</a></code>.</p>
 </div>
 <div id="extrair-amostras" class="section level2" number="17.1">
 <h2>
@@ -117,12 +117,12 @@ reprodutíveis com <code>set.seed()</code>.</p>
 sem as repor. Extraiamos 5 números de uma população de 1 a 10:</p>
 <div class="sourceCode" id="cb225"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">pop</span> <span class="op">&lt;-</span> <span class="fl">1</span><span class="op">:</span><span class="fl">10</span></span>
-<span><span class="fu">sample</span><span class="op">(</span><span class="va">pop</span>, size <span class="op">=</span> <span class="fl">5</span>, replace <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="va">pop</span>, size <span class="op">=</span> <span class="fl">5</span>, replace <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
 <span><span class="co">## [1]  5  2  4 10  8      # um resultado possível</span></span></code></pre></div>
 <p><strong>Com reposição.</strong> Cada elemento pode sair mais do que uma vez, como ao lançar
 repetidamente o mesmo dado. É <code>replace = TRUE</code> que permite repetições:</p>
 <div class="sourceCode" id="cb226"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">sample</span><span class="op">(</span><span class="va">pop</span>, size <span class="op">=</span> <span class="fl">5</span>, replace <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="va">pop</span>, size <span class="op">=</span> <span class="fl">5</span>, replace <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
 <span><span class="co">## [1] 6 8 9 9 6           # o 6 e o 9 repetem-se</span></span></code></pre></div>
 <div class="atencao">
 <p>Sem reposição, a dimensão da amostra não pode exceder o número de elementos disponíveis:
@@ -134,8 +134,8 @@ quanto quisermos.</p>
 mais prováveis do que outros — indispensável para simular dados ou moedas
 enviesados. Aqui, os dois últimos valores têm metade da probabilidade dos restantes:</p>
 <div class="sourceCode" id="cb227"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">prob</span> <span class="op">&lt;-</span> <span class="fu">c</span><span class="op">(</span><span class="fl">0.1</span>, <span class="fl">0.1</span>, <span class="fl">0.1</span>, <span class="fl">0.1</span>, <span class="fl">0.1</span>, <span class="fl">0.1</span>, <span class="fl">0.1</span>, <span class="fl">0.1</span>, <span class="fl">0.05</span>, <span class="fl">0.05</span><span class="op">)</span></span>
-<span><span class="fu">sample</span><span class="op">(</span><span class="va">pop</span>, size <span class="op">=</span> <span class="fl">5</span>, prob <span class="op">=</span> <span class="va">prob</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="va">prob</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0.1</span>, <span class="fl">0.1</span>, <span class="fl">0.1</span>, <span class="fl">0.1</span>, <span class="fl">0.1</span>, <span class="fl">0.1</span>, <span class="fl">0.1</span>, <span class="fl">0.1</span>, <span class="fl">0.05</span>, <span class="fl">0.05</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="va">pop</span>, size <span class="op">=</span> <span class="fl">5</span>, prob <span class="op">=</span> <span class="va">prob</span><span class="op">)</span></span>
 <span><span class="co">## [1] 2 4 6 5 3           # um resultado possível</span></span></code></pre></div>
 <div class="nota">
 <p>As probabilidades em <code>prob</code> não têm de somar 1: o R normaliza-as automaticamente,
@@ -153,26 +153,26 @@ que o R diz serem “aleatórios” são, na verdade, <strong>pseudoaleatórios<
 algoritmo determinístico que, partindo de um valor inicial (a <em>semente</em>), produz uma
 sequência que <em>parece</em> aleatória. Isto tem uma consequência muito útil: se fixarmos a
 semente, obtemos sempre a mesma sequência.</p>
-<p>A função <code>set.seed()</code> fixa essa semente. Executar <code>set.seed()</code> com o mesmo número antes
+<p>A função <code><a href="https://rdrr.io/r/base/Random.html">set.seed()</a></code> fixa essa semente. Executar <code><a href="https://rdrr.io/r/base/Random.html">set.seed()</a></code> com o mesmo número antes
 de uma simulação garante que ela produz exatamente o mesmo resultado de cada vez — em
 qualquer computador:</p>
 <div class="sourceCode" id="cb228"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">set.seed</span><span class="op">(</span><span class="fl">42</span><span class="op">)</span></span>
-<span><span class="fu">sample</span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span>, size <span class="op">=</span> <span class="fl">5</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">42</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span>, size <span class="op">=</span> <span class="fl">5</span><span class="op">)</span></span>
 <span><span class="co">## [1] 1 5 10 8 2</span></span>
 <span></span>
-<span><span class="fu">set.seed</span><span class="op">(</span><span class="fl">42</span><span class="op">)</span>     <span class="co"># a mesma semente...</span></span>
-<span><span class="fu">sample</span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span>, size <span class="op">=</span> <span class="fl">5</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">42</span><span class="op">)</span>     <span class="co"># a mesma semente...</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span>, size <span class="op">=</span> <span class="fl">5</span><span class="op">)</span></span>
 <span><span class="co">## [1] 1 5 10 8 2   # ...produz exatamente o mesmo resultado</span></span></code></pre></div>
 <div class="dica">
-<p>Adquira o hábito de começar qualquer simulação com <code>set.seed()</code>. Não torna os resultados
+<p>Adquira o hábito de começar qualquer simulação com <code><a href="https://rdrr.io/r/base/Random.html">set.seed()</a></code>. Não torna os resultados
 menos aleatórios — a sequência continua a comportar-se como se fosse acaso —, mas torna
 o seu trabalho <strong>reprodutível</strong>: quem executar o seu código obterá os mesmos números,
 poderá confirmar as suas conclusões e depurar erros. A reprodutibilidade é uma exigência
 central da ciência, e no computador consegue-se com uma linha.</p>
 </div>
 <div class="atencao">
-<p>Cuidado com uma armadilha de <code>sample()</code>: quando o primeiro argumento é um <strong>único
+<p>Cuidado com uma armadilha de <code><a href="https://rdrr.io/r/base/sample.html">sample()</a></code>: quando o primeiro argumento é um <strong>único
 número</strong> positivo <code>n</code>, o R interpreta-o como <code>1:n</code>. Assim, <code>sample(10)</code> devolve uma
 permutação de 1 a 10, e não o número 10. Isto raramente é o que se quer quando <code>x</code> é
 calculado dentro de um programa e pode, por acaso, ter comprimento 1. Para amostrar com
@@ -190,7 +190,7 @@ elementos, sem reposição.</p>
 amostra de 10 elementos com reposição.</p>
 <p><strong>3.</strong> Crie um vetor com as letras A, B, C, D, E e extraia uma amostra de 3 letras, em
 que a probabilidade de cada uma é dada por <code>c(0.1, 0.2, 0.3, 0.25, 0.15)</code>.</p>
-<p><strong>4.</strong> Crie um vetor com os números de 1 a 10 e use <code>sample()</code> para o reordenar
+<p><strong>4.</strong> Crie um vetor com os números de 1 a 10 e use <code><a href="https://rdrr.io/r/base/sample.html">sample()</a></code> para o reordenar
 aleatoriamente (uma permutação).</p>
 <p><strong>5.</strong> Crie um vetor com cinco frutas (“Maçã”, “Banana”, “Laranja”, “Uva”, “Pera”).
 Selecione aleatoriamente uma fruta e, depois, uma amostra de 3 frutas.</p>
@@ -198,16 +198,16 @@ Selecione aleatoriamente uma fruta e, depois, uma amostra de 3 frutas.</p>
 numerados de 1 a 1000. Extraia uma amostra aleatória de 50 produtos para inspeção, sem
 reposição.</p>
 <p><strong>7.</strong> Simule o lançamento de dois dados equilibrados 10 000 vezes e registe a soma das
-faces. Use <code>sample()</code> e, no fim, faça um histograma das somas obtidas.</p>
+faces. Use <code><a href="https://rdrr.io/r/base/sample.html">sample()</a></code> e, no fim, faça um histograma das somas obtidas.</p>
 <p><strong>8.</strong> Tem 200 estudantes distribuídos por três turmas — A, B e C — com 50, 100 e 50
-alunos, respetivamente. Usando <code>sample()</code>, extraia uma amostra de 20 alunos que mantenha
+alunos, respetivamente. Usando <code><a href="https://rdrr.io/r/base/sample.html">sample()</a></code>, extraia uma amostra de 20 alunos que mantenha
 a proporção das turmas.</p>
 <p><strong>9.</strong> Um cartão de Bingo contém 24 números aleatórios entre 1 e 75 (excluindo a casa
-central “livre”). Crie 5 cartões de Bingo distintos com <code>sample()</code>.</p>
+central “livre”). Crie 5 cartões de Bingo distintos com <code><a href="https://rdrr.io/r/base/sample.html">sample()</a></code>.</p>
 <p><strong>10.</strong> Num ensaio clínico, 30 pacientes têm de ser aleatorizados em dois grupos:
-tratamento (20 pacientes) e controlo (10). Faça a aleatorização com <code>sample()</code>.
+tratamento (20 pacientes) e controlo (10). Faça a aleatorização com <code><a href="https://rdrr.io/r/base/sample.html">sample()</a></code>.
 <em>Sugestão:</em> selecione os 20 do tratamento e obtenha os restantes com <code><a href="https://generics.r-lib.org/reference/setops.html">setdiff()</a></code>.</p>
-<p>Com a <code>sample()</code> sabemos gerar acaso. Falta-nos a linguagem para o descrever
+<p>Com a <code><a href="https://rdrr.io/r/base/sample.html">sample()</a></code> sabemos gerar acaso. Falta-nos a linguagem para o descrever
 rigorosamente: as <strong>variáveis aleatórias</strong> e a <strong>probabilidade</strong>, tema do próximo
 capítulo.</p>
 
@@ -239,7 +239,7 @@ capítulo.</p>
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Introdução ao R e à Simulação Estatística</strong>: Um Laboratório de Estatística Computacional" was written by Renato de Paula and Nuno Brites. It was last built on 11 de July de 2026.</p>
+    <p>"<strong>Introdução ao R e à Simulação Estatística</strong>: Um Laboratório de Estatística Computacional" was written by Renato de Paula and Nuno Brites. It was last built on 12 de July de 2026.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

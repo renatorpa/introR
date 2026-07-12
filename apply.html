@@ -15,8 +15,8 @@
 <meta name="twitter:title" content="Capítulo 12 A família apply | Introdução ao R e à Simulação Estatística">
 <meta name="twitter:description" content="Os ciclos for e while (Capítulos 10 e 11) dão-nos controlo total sobre a repetição, mas em R há muitas vezes um caminho mais curto — e mais rápido. A família de funções apply foi desenhada...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link href="libs/bootstrap-5.3.8/bootstrap.min.css" rel="stylesheet">
-<script src="libs/bootstrap-5.3.8/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.11.0/transition.js"></script><script src="libs/bs3compat-0.11.0/tabs.js"></script><script src="libs/bs3compat-0.11.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.11.0/transition.js"></script><script src="libs/bs3compat-0.11.0/tabs.js"></script><script src="libs/bs3compat-0.11.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
 <script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
     
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
@@ -151,10 +151,10 @@ definidos por um fator), escrevendo código mais curto e mais expressivo.</p>
 <h2>
 <span class="header-section-number">12.1</span> A função <code>apply()</code><a class="anchor" aria-label="anchor" href="#a-fun%C3%A7%C3%A3o-apply"><i class="fas fa-link"></i></a>
 </h2>
-<p>A <code>apply()</code> aplica uma função às <strong>margens</strong> de uma matriz ou <em>data frame</em>: às linhas,
+<p>A <code><a href="https://rdrr.io/r/base/apply.html">apply()</a></code> aplica uma função às <strong>margens</strong> de uma matriz ou <em>data frame</em>: às linhas,
 às colunas, ou a ambas.</p>
 <div class="sourceCode" id="cb152"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">apply</span><span class="op">(</span><span class="va">X</span>, <span class="va">MARGIN</span>, <span class="va">FUN</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/apply.html">apply</a></span><span class="op">(</span><span class="va">X</span>, <span class="va">MARGIN</span>, <span class="va">FUN</span><span class="op">)</span></span></code></pre></div>
 <ul>
 <li>
 <code>X</code> — a matriz ou <em>data frame</em>;</li>
@@ -165,15 +165,15 @@ definidos por um fator), escrevendo código mais curto e mais expressivo.</p>
 </ul>
 <p>Para calcular a soma, a média e a raiz quadrada de cada coluna de uma matriz:</p>
 <div class="sourceCode" id="cb153"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">matriz</span> <span class="op">&lt;-</span> <span class="fu">matrix</span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">9</span>, nrow <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="va">matriz</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">9</span>, nrow <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></span>
 <span></span>
-<span><span class="fu">apply</span><span class="op">(</span><span class="va">matriz</span>, <span class="fl">2</span>, <span class="va">sum</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/apply.html">apply</a></span><span class="op">(</span><span class="va">matriz</span>, <span class="fl">2</span>, <span class="va">sum</span><span class="op">)</span></span>
 <span><span class="co">## [1]  6 15 24</span></span>
 <span></span>
-<span><span class="fu">apply</span><span class="op">(</span><span class="va">matriz</span>, <span class="fl">2</span>, <span class="va">mean</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/apply.html">apply</a></span><span class="op">(</span><span class="va">matriz</span>, <span class="fl">2</span>, <span class="va">mean</span><span class="op">)</span></span>
 <span><span class="co">## [1] 2 5 8</span></span>
 <span></span>
-<span><span class="fu">apply</span><span class="op">(</span><span class="va">matriz</span>, <span class="fl">2</span>, <span class="va">sqrt</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/apply.html">apply</a></span><span class="op">(</span><span class="va">matriz</span>, <span class="fl">2</span>, <span class="va">sqrt</span><span class="op">)</span></span>
 <span><span class="co">##      [,1] [,2] [,3]</span></span>
 <span><span class="co">## [1,] 1.00 2.00 2.65</span></span>
 <span><span class="co">## [2,] 1.41 2.24 2.83</span></span>
@@ -185,15 +185,15 @@ definidos por um fator), escrevendo código mais curto e mais expressivo.</p>
 <h2>
 <span class="header-section-number">12.2</span> A função <code>lapply()</code><a class="anchor" aria-label="anchor" href="#a-fun%C3%A7%C3%A3o-lapply"><i class="fas fa-link"></i></a>
 </h2>
-<p>A <code>lapply()</code> aplica uma função a cada elemento de uma lista ou vetor e devolve
+<p>A <code><a href="https://rdrr.io/r/base/lapply.html">lapply()</a></code> aplica uma função a cada elemento de uma lista ou vetor e devolve
 <strong>sempre uma lista</strong> — daí o <code>l</code> do nome.</p>
 <div class="sourceCode" id="cb154"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">lapply</span><span class="op">(</span><span class="va">X</span>, <span class="va">FUN</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/lapply.html">lapply</a></span><span class="op">(</span><span class="va">X</span>, <span class="va">FUN</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
 <p>Por exemplo, para pôr uma série de nomes em minúsculas:</p>
 <div class="sourceCode" id="cb155"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">nomes</span> <span class="op">&lt;-</span> <span class="fu">c</span><span class="op">(</span><span class="st">"ANA"</span>, <span class="st">"JOAO"</span>, <span class="st">"PAULO"</span>, <span class="st">"FILIPA"</span><span class="op">)</span></span>
-<span><span class="va">nomes_minusc</span> <span class="op">&lt;-</span> <span class="fu">lapply</span><span class="op">(</span><span class="va">nomes</span>, <span class="va">tolower</span><span class="op">)</span></span>
-<span><span class="fu">str</span><span class="op">(</span><span class="va">nomes_minusc</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="va">nomes</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"ANA"</span>, <span class="st">"JOAO"</span>, <span class="st">"PAULO"</span>, <span class="st">"FILIPA"</span><span class="op">)</span></span>
+<span><span class="va">nomes_minusc</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html">lapply</a></span><span class="op">(</span><span class="va">nomes</span>, <span class="va">tolower</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">nomes_minusc</span><span class="op">)</span></span>
 <span><span class="co">## List of 4</span></span>
 <span><span class="co">##  $ : chr "ana"</span></span>
 <span><span class="co">##  $ : chr "joao"</span></span>
@@ -202,8 +202,8 @@ definidos por um fator), escrevendo código mais curto e mais expressivo.</p>
 <p>A função aplica-se também a cada elemento de uma lista — aqui, a raiz quadrada de dois
 vetores:</p>
 <div class="sourceCode" id="cb156"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">dados</span> <span class="op">&lt;-</span> <span class="fu">list</span><span class="op">(</span>a <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">4</span>, b <span class="op">=</span> <span class="fl">5</span><span class="op">:</span><span class="fl">8</span><span class="op">)</span></span>
-<span><span class="fu">lapply</span><span class="op">(</span><span class="va">dados</span>, <span class="va">sqrt</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="va">dados</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>a <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">4</span>, b <span class="op">=</span> <span class="fl">5</span><span class="op">:</span><span class="fl">8</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/lapply.html">lapply</a></span><span class="op">(</span><span class="va">dados</span>, <span class="va">sqrt</span><span class="op">)</span></span>
 <span><span class="co">## $a</span></span>
 <span><span class="co">## [1] 1.00 1.41 1.73 2.00</span></span>
 <span><span class="co">##</span></span>
@@ -214,25 +214,25 @@ vetores:</p>
 <h2>
 <span class="header-section-number">12.3</span> A função <code>sapply()</code><a class="anchor" aria-label="anchor" href="#a-fun%C3%A7%C3%A3o-sapply"><i class="fas fa-link"></i></a>
 </h2>
-<p>A <code>sapply()</code> faz o mesmo que a <code>lapply()</code>, mas <strong>simplifica</strong> o resultado sempre que
+<p>A <code><a href="https://rdrr.io/r/base/lapply.html">sapply()</a></code> faz o mesmo que a <code><a href="https://rdrr.io/r/base/lapply.html">lapply()</a></code>, mas <strong>simplifica</strong> o resultado sempre que
 possível — para um vetor ou uma matriz — em vez de devolver uma lista. O <code>s</code> vem de
 <em>simplify</em>.</p>
 <div class="sourceCode" id="cb157"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">dados</span> <span class="op">&lt;-</span> <span class="fl">1</span><span class="op">:</span><span class="fl">5</span></span>
 <span><span class="va">f</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="va">x</span><span class="op">^</span><span class="fl">2</span></span>
 <span></span>
-<span><span class="fu">lapply</span><span class="op">(</span><span class="va">dados</span>, <span class="va">f</span><span class="op">)</span>     <span class="co"># devolve uma lista com cinco elementos</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/lapply.html">lapply</a></span><span class="op">(</span><span class="va">dados</span>, <span class="va">f</span><span class="op">)</span>     <span class="co"># devolve uma lista com cinco elementos</span></span>
 <span><span class="co">## [[1]]</span></span>
 <span><span class="co">## [1] 1</span></span>
 <span><span class="co">## ... (até [[5]] com 25)</span></span>
 <span></span>
-<span><span class="fu">sapply</span><span class="op">(</span><span class="va">dados</span>, <span class="va">f</span><span class="op">)</span>     <span class="co"># devolve um vetor</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/lapply.html">sapply</a></span><span class="op">(</span><span class="va">dados</span>, <span class="va">f</span><span class="op">)</span>     <span class="co"># devolve um vetor</span></span>
 <span><span class="co">## [1]  1  4  9 16 25</span></span></code></pre></div>
 <div class="atencao">
-<p>A simplificação da <code>sapply()</code> é cómoda, mas tem um senão: quando os resultados não
+<p>A simplificação da <code><a href="https://rdrr.io/r/base/lapply.html">sapply()</a></code> é cómoda, mas tem um senão: quando os resultados não
 têm todos o mesmo comprimento, a função devolve silenciosamente uma lista, e o nosso
 código a jusante pode partir-se sem aviso claro. Em programas onde a robustez importa,
-prefira a <code>vapply()</code>, que obriga a declarar de antemão o tipo e o tamanho do
+prefira a <code><a href="https://rdrr.io/r/base/lapply.html">vapply()</a></code>, que obriga a declarar de antemão o tipo e o tamanho do
 resultado de cada elemento e falha imediatamente se algo não corresponder — tornando
 o erro visível e fácil de localizar.</p>
 </div>
@@ -241,10 +241,10 @@ o erro visível e fácil de localizar.</p>
 <h2>
 <span class="header-section-number">12.4</span> A função <code>tapply()</code><a class="anchor" aria-label="anchor" href="#a-fun%C3%A7%C3%A3o-tapply"><i class="fas fa-link"></i></a>
 </h2>
-<p>A <code>tapply()</code> aplica uma função a <strong>subconjuntos</strong> de um vetor, definidos por um fator.
+<p>A <code><a href="https://rdrr.io/r/base/tapply.html">tapply()</a></code> aplica uma função a <strong>subconjuntos</strong> de um vetor, definidos por um fator.
 É a ferramenta natural para calcular estatísticas por grupo.</p>
 <div class="sourceCode" id="cb158"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">tapply</span><span class="op">(</span><span class="va">X</span>, <span class="va">INDEX</span>, <span class="va">FUN</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/tapply.html">tapply</a></span><span class="op">(</span><span class="va">X</span>, <span class="va">INDEX</span>, <span class="va">FUN</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
 <ul>
 <li>
 <code>X</code> — o vetor de dados;</li>
@@ -257,7 +257,7 @@ o erro visível e fácil de localizar.</p>
 medições morfológicas (comprimento e largura de sépalas e pétalas) de três espécies de
 íris (<em>setosa</em>, <em>versicolor</em> e <em>virginica</em>). Vejamos as primeiras linhas:</p>
 <div class="sourceCode" id="cb159"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">head</span><span class="op">(</span><span class="va">iris</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">iris</span><span class="op">)</span></span>
 <span><span class="co">##   Sepal.Length Sepal.Width Petal.Length Petal.Width Species</span></span>
 <span><span class="co">## 1          5.1         3.5          1.4         0.2  setosa</span></span>
 <span><span class="co">## 2          4.9         3.0          1.4         0.2  setosa</span></span>
@@ -267,15 +267,15 @@ medições morfológicas (comprimento e largura de sépalas e pétalas) de três
 <span><span class="co">## 6          5.4         3.9          1.7         0.4  setosa</span></span></code></pre></div>
 <p>Para obter o comprimento médio da pétala <strong>em cada espécie</strong>, uma única linha basta:</p>
 <div class="sourceCode" id="cb160"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">tapply</span><span class="op">(</span><span class="va">iris</span><span class="op">$</span><span class="va">Petal.Length</span>, <span class="va">iris</span><span class="op">$</span><span class="va">Species</span>, <span class="va">mean</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/tapply.html">tapply</a></span><span class="op">(</span><span class="va">iris</span><span class="op">$</span><span class="va">Petal.Length</span>, <span class="va">iris</span><span class="op">$</span><span class="va">Species</span>, <span class="va">mean</span><span class="op">)</span></span>
 <span><span class="co">##     setosa versicolor  virginica</span></span>
 <span><span class="co">##       1.46       4.26       5.55</span></span></code></pre></div>
 <p>O resultado revela de imediato o que distingue as espécies: as pétalas da <em>virginica</em>
 são, em média, quase quatro vezes mais compridas do que as da <em>setosa</em>.</p>
 <div class="nota">
-<p>A família tem outros membros úteis. A <code>vapply()</code> é uma <code>sapply()</code> mais segura (com tipo
-de saída declarado); a <code>mapply()</code> aplica uma função a <strong>vários</strong> vetores em paralelo,
-elemento a elemento; e a <code>Map()</code> faz o mesmo devolvendo uma lista. Dominadas as
+<p>A família tem outros membros úteis. A <code><a href="https://rdrr.io/r/base/lapply.html">vapply()</a></code> é uma <code><a href="https://rdrr.io/r/base/lapply.html">sapply()</a></code> mais segura (com tipo
+de saída declarado); a <code><a href="https://rdrr.io/r/base/mapply.html">mapply()</a></code> aplica uma função a <strong>vários</strong> vetores em paralelo,
+elemento a elemento; e a <code><a href="https://rdrr.io/r/base/funprog.html">Map()</a></code> faz o mesmo devolvendo uma lista. Dominadas as
 quatro funções deste capítulo, estas variantes seguem-se com naturalidade.</p>
 </div>
 </div>
@@ -283,67 +283,67 @@ quatro funções deste capítulo, estas variantes seguem-se com naturalidade.</p
 <h2>
 <span class="header-section-number">12.5</span> Exercícios<a class="anchor" aria-label="anchor" href="#exerc%C3%ADcios-13"><i class="fas fa-link"></i></a>
 </h2>
-<p><strong>1.</strong> Crie um vetor <code>nomes</code> com “Alice”, “Bruno”, “Carla” e “Daniel”. Use <code>lapply()</code>
+<p><strong>1.</strong> Crie um vetor <code>nomes</code> com “Alice”, “Bruno”, “Carla” e “Daniel”. Use <code><a href="https://rdrr.io/r/base/lapply.html">lapply()</a></code>
 para os converter em maiúsculas e verifique o resultado.</p>
 <div class="sourceCode" id="cb161"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">nomes</span> <span class="op">&lt;-</span> <span class="fu">c</span><span class="op">(</span><span class="st">"Alice"</span>, <span class="st">"Bruno"</span>, <span class="st">"Carla"</span>, <span class="st">"Daniel"</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="va">nomes</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Alice"</span>, <span class="st">"Bruno"</span>, <span class="st">"Carla"</span>, <span class="st">"Daniel"</span><span class="op">)</span></span>
 <span><span class="co"># A sua solução aqui</span></span></code></pre></div>
-<p><strong>2.</strong> Crie um vetor <code>palavras</code> com “cão”, “gato”, “elefante” e “leão”. Use <code>sapply()</code>
+<p><strong>2.</strong> Crie um vetor <code>palavras</code> com “cão”, “gato”, “elefante” e “leão”. Use <code><a href="https://rdrr.io/r/base/lapply.html">sapply()</a></code>
 para calcular o comprimento (número de carateres) de cada palavra. <em>Sugestão:</em> veja
-<code>?nchar</code>.</p>
+<code><a href="https://rdrr.io/r/base/nchar.html">?nchar</a></code>.</p>
 <div class="sourceCode" id="cb162"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">palavras</span> <span class="op">&lt;-</span> <span class="fu">c</span><span class="op">(</span><span class="st">"cão"</span>, <span class="st">"gato"</span>, <span class="st">"elefante"</span>, <span class="st">"leão"</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="va">palavras</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"cão"</span>, <span class="st">"gato"</span>, <span class="st">"elefante"</span>, <span class="st">"leão"</span><span class="op">)</span></span>
 <span><span class="co"># A sua solução aqui</span></span></code></pre></div>
 <p><strong>3.</strong> Crie uma matriz <span class="math inline">\(3 \times 3\)</span> chamada <code>matriz_exemplo</code> com os números de 1 a 9.
-Use <code>apply()</code> para calcular a soma de cada linha e, depois, a média de cada coluna.</p>
+Use <code><a href="https://rdrr.io/r/base/apply.html">apply()</a></code> para calcular a soma de cada linha e, depois, a média de cada coluna.</p>
 <div class="sourceCode" id="cb163"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">matriz_exemplo</span> <span class="op">&lt;-</span> <span class="fu">matrix</span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">9</span>, nrow <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="va">matriz_exemplo</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">9</span>, nrow <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></span>
 <span><span class="co"># A sua solução aqui</span></span></code></pre></div>
-<p><strong>4.</strong> No conjunto <code>mtcars</code>, use <code>tapply()</code> para calcular o consumo médio (<code>mpg</code>) para
+<p><strong>4.</strong> No conjunto <code>mtcars</code>, use <code><a href="https://rdrr.io/r/base/tapply.html">tapply()</a></code> para calcular o consumo médio (<code>mpg</code>) para
 cada número de cilindros (<code>cyl</code>).</p>
 <div class="sourceCode" id="cb164"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">data</span><span class="op">(</span><span class="va">mtcars</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="va">mtcars</span><span class="op">)</span></span>
 <span><span class="co"># A sua solução aqui</span></span></code></pre></div>
 <p><strong>5.</strong> Crie uma lista <code>minha_lista</code> com três elementos: um vetor numérico de 1 a 5, um
 vetor de carateres <code>c("A", "B", "C")</code> e uma matriz <span class="math inline">\(2 \times 2\)</span> com os valores de 1 a
-4. Use <code>lapply()</code> para calcular o comprimento de cada elemento e, depois, <code>sapply()</code>
+4. Use <code><a href="https://rdrr.io/r/base/lapply.html">lapply()</a></code> para calcular o comprimento de cada elemento e, depois, <code><a href="https://rdrr.io/r/base/lapply.html">sapply()</a></code>
 para simplificar o resultado num vetor.</p>
 <div class="sourceCode" id="cb165"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">minha_lista</span> <span class="op">&lt;-</span> <span class="fu">list</span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span>, <span class="fu">c</span><span class="op">(</span><span class="st">"A"</span>, <span class="st">"B"</span>, <span class="st">"C"</span><span class="op">)</span>, <span class="fu">matrix</span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">4</span>, nrow <span class="op">=</span> <span class="fl">2</span><span class="op">)</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="va">minha_lista</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"A"</span>, <span class="st">"B"</span>, <span class="st">"C"</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">4</span>, nrow <span class="op">=</span> <span class="fl">2</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co"># A sua solução aqui</span></span></code></pre></div>
-<p><strong>6.</strong> Crie um vetor <code>numeros</code> de 1 a 10. Use <code>sapply()</code> com uma função personalizada
+<p><strong>6.</strong> Crie um vetor <code>numeros</code> de 1 a 10. Use <code><a href="https://rdrr.io/r/base/lapply.html">sapply()</a></code> com uma função personalizada
 que devolva <code>"par"</code> se o número for par e <code>"ímpar"</code> caso contrário.</p>
 <div class="sourceCode" id="cb166"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">numeros</span> <span class="op">&lt;-</span> <span class="fl">1</span><span class="op">:</span><span class="fl">10</span></span>
 <span><span class="co"># A sua solução aqui</span></span></code></pre></div>
-<p><strong>7.</strong> No conjunto <code>iris</code>, use <code>tapply()</code> para calcular a média do comprimento das
+<p><strong>7.</strong> No conjunto <code>iris</code>, use <code><a href="https://rdrr.io/r/base/tapply.html">tapply()</a></code> para calcular a média do comprimento das
 pétalas (<code>Petal.Length</code>) por espécie e a variância da largura das sépalas
 (<code>Sepal.Width</code>) por espécie.</p>
 <div class="sourceCode" id="cb167"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">data</span><span class="op">(</span><span class="va">iris</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="va">iris</span><span class="op">)</span></span>
 <span><span class="co"># A sua solução aqui</span></span></code></pre></div>
-<p><strong>8.</strong> No conjunto <code>mtcars</code>, use <code>apply()</code> para normalizar (escala de 0 a 1) todas as
-colunas numéricas e converta o resultado numa <em>data frame</em>. Depois, use <code>lapply()</code>
-para aplicar <code>summary()</code> a cada coluna normalizada. O valor normalizado é
+<p><strong>8.</strong> No conjunto <code>mtcars</code>, use <code><a href="https://rdrr.io/r/base/apply.html">apply()</a></code> para normalizar (escala de 0 a 1) todas as
+colunas numéricas e converta o resultado numa <em>data frame</em>. Depois, use <code><a href="https://rdrr.io/r/base/lapply.html">lapply()</a></code>
+para aplicar <code><a href="https://rdrr.io/r/base/summary.html">summary()</a></code> a cada coluna normalizada. O valor normalizado é
 <span class="math inline">\(\dfrac{x - \min(x)}{\max(x) - \min(x)}\)</span>.</p>
 <div class="sourceCode" id="cb168"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">data</span><span class="op">(</span><span class="va">mtcars</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="va">mtcars</span><span class="op">)</span></span>
 <span><span class="co"># A sua solução aqui</span></span></code></pre></div>
 <p><strong>9.</strong> Um professor quer analisar o desempenho de 30 alunos em quatro exames.</p>
 <ul>
 <li>Crie uma <em>data frame</em> <code>notas_alunos</code> com 30 linhas (alunos) e 4 colunas (exames),
-preenchida com valores aleatórios entre 0 e 100 (use <code>runif()</code>).</li>
-<li>Use <code>apply()</code> para calcular a média de cada aluno nos quatro exames.</li>
-<li>Use <code>sapply()</code> para calcular a nota mínima e máxima de cada exame.</li>
+preenchida com valores aleatórios entre 0 e 100 (use <code><a href="https://rdrr.io/r/stats/Uniform.html">runif()</a></code>).</li>
+<li>Use <code><a href="https://rdrr.io/r/base/apply.html">apply()</a></code> para calcular a média de cada aluno nos quatro exames.</li>
+<li>Use <code><a href="https://rdrr.io/r/base/lapply.html">sapply()</a></code> para calcular a nota mínima e máxima de cada exame.</li>
 </ul>
 <p><strong>10.</strong> Um gestor de <em>marketing</em> analisa o número de clientes de quatro lojas ao longo
 de um mês.</p>
 <ul>
 <li>Crie uma matriz <code>frequencia_lojas</code> com 4 linhas (lojas) e 30 colunas (dias),
-preenchida com valores aleatórios entre 0 e 200 (use <code>sample()</code>).</li>
-<li>Use <code>apply()</code> para calcular a média diária de clientes em cada loja.</li>
-<li>Use <code>apply()</code> para calcular o total de clientes de cada loja no mês.</li>
-<li>Converta a matriz numa <em>data frame</em> e use <code>sapply()</code> para calcular o desvio padrão
+preenchida com valores aleatórios entre 0 e 200 (use <code><a href="https://rdrr.io/r/base/sample.html">sample()</a></code>).</li>
+<li>Use <code><a href="https://rdrr.io/r/base/apply.html">apply()</a></code> para calcular a média diária de clientes em cada loja.</li>
+<li>Use <code><a href="https://rdrr.io/r/base/apply.html">apply()</a></code> para calcular o total de clientes de cada loja no mês.</li>
+<li>Converta a matriz numa <em>data frame</em> e use <code><a href="https://rdrr.io/r/base/lapply.html">sapply()</a></code> para calcular o desvio padrão
 do número de clientes em cada dia (cada coluna).</li>
 </ul>
 <p>Com a família <code>apply</code> fechamos as ferramentas essenciais de programação. O próximo
@@ -380,7 +380,7 @@ que combinam estruturas de dados, decisões, ciclos e funções.</p>
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Introdução ao R e à Simulação Estatística</strong>: Um Laboratório de Estatística Computacional" was written by Renato de Paula and Nuno Brites. It was last built on 11 de July de 2026.</p>
+    <p>"<strong>Introdução ao R e à Simulação Estatística</strong>: Um Laboratório de Estatística Computacional" was written by Renato de Paula and Nuno Brites. It was last built on 12 de July de 2026.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

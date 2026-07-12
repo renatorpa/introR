@@ -15,8 +15,8 @@
 <meta name="twitter:title" content="Capítulo 9 O operador pipe | Introdução ao R e à Simulação Estatística">
 <meta name="twitter:description" content="Depois de trazer os dados para o R (Capítulo 8), raramente lhes aplicamos uma única operação. O mais comum é encadear várias — filtrar, transformar, resumir — umas a seguir às outras. Escrever...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link href="libs/bootstrap-5.3.8/bootstrap.min.css" rel="stylesheet">
-<script src="libs/bootstrap-5.3.8/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.11.0/transition.js"></script><script src="libs/bs3compat-0.11.0/tabs.js"></script><script src="libs/bs3compat-0.11.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.11.0/transition.js"></script><script src="libs/bs3compat-0.11.0/tabs.js"></script><script src="libs/bs3compat-0.11.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
 <script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
     
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
@@ -89,8 +89,8 @@ problema que o operador <em>pipe</em> resolve com elegância.</p>
 <p>Considere uma tarefa simples: calcular a raiz quadrada da soma de um vetor. Sem
 <em>pipe</em>, escrevemos as funções aninhadas umas dentro das outras:</p>
 <div class="sourceCode" id="cb126"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu">c</span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">3</span>, <span class="fl">4</span><span class="op">)</span></span>
-<span><span class="fu">sqrt</span><span class="op">(</span><span class="fu">sum</span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">3</span>, <span class="fl">4</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">## [1] 3.16</span></span></code></pre></div>
 <p>O problema é que lemos este código <strong>de dentro para fora</strong>: primeiro <code>sum</code>, depois
 <code>sqrt</code>, embora a escrita seja a ordem inversa. Com duas funções ainda se gere; com
@@ -105,27 +105,27 @@ nome é uma homenagem ao pintor surrealista René Magritte e à sua obra <em>Cec
 une pipe</em> (“Isto não é um cachimbo”) — um trocadilho com a ideia de fazer os dados
 “fluírem” por uma sequência de operações.</p>
 <div class="sourceCode" id="cb127"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">install.packages</span><span class="op">(</span><span class="st">"magrittr"</span><span class="op">)</span></span>
-<span><span class="kw">library</span><span class="op">(</span><span class="va"><a href="https://magrittr.tidyverse.org">magrittr</a></span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"magrittr"</span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://magrittr.tidyverse.org">magrittr</a></span><span class="op">)</span></span></code></pre></div>
 <p>O operador <code>%&gt;%</code> pega no <strong>valor à sua esquerda</strong> e passa-o como <strong>primeiro
 argumento</strong> da função à sua direita. O exemplo anterior reescreve-se assim:</p>
 <div class="sourceCode" id="cb128"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw">library</span><span class="op">(</span><span class="va"><a href="https://magrittr.tidyverse.org">magrittr</a></span><span class="op">)</span></span>
-<span><span class="va">x</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu">sum</span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu">sqrt</span><span class="op">(</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://magrittr.tidyverse.org">magrittr</a></span><span class="op">)</span></span>
+<span><span class="va">x</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">## [1] 3.16</span></span></code></pre></div>
 <p>Lê-se de forma quase literal: “pega em <code>x</code>, soma, e depois tira a raiz quadrada”. A
 vantagem cresce com o número de passos. Para calcular a raiz quadrada da soma dos
 logaritmos dos valores absolutos de um vetor:</p>
 <div class="sourceCode" id="cb129"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Sem pipe: lê-se de dentro para fora</span></span>
-<span><span class="va">resultado</span> <span class="op">&lt;-</span> <span class="fu">sqrt</span><span class="op">(</span><span class="fu">sum</span><span class="op">(</span><span class="fu">log</span><span class="op">(</span><span class="fu">abs</span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">resultado</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Log.html">log</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">abs</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Com pipe: lê-se na ordem das operações</span></span>
 <span><span class="va">resultado</span> <span class="op">&lt;-</span> <span class="va">x</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
-<span>  <span class="fu">abs</span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
-<span>  <span class="fu">log</span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
-<span>  <span class="fu">sum</span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
-<span>  <span class="fu">sqrt</span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">abs</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/Log.html">log</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <div id="o-ponto-.-como-marcador-de-posição" class="section level3" number="9.1.1">
 <h3>
 <span class="header-section-number">9.1.1</span> O ponto (<code>.</code>) como marcador de posição<a class="anchor" aria-label="anchor" href="#o-ponto-.-como-marcador-de-posi%C3%A7%C3%A3o"><i class="fas fa-link"></i></a>
@@ -133,13 +133,13 @@ logaritmos dos valores absolutos de um vetor:</p>
 <p>Por vezes queremos passar o valor da esquerda para um argumento que <strong>não é o
 primeiro</strong>. Nesses casos, usamos um ponto (<code>.</code>) para marcar a posição exata onde o
 valor deve entrar.</p>
-<p>Por exemplo, na função <code>lm()</code>, que ajusta um modelo linear, os dados vão no argumento
+<p>Por exemplo, na função <code><a href="https://rdrr.io/r/stats/lm.html">lm()</a></code>, que ajusta um modelo linear, os dados vão no argumento
 <code>data =</code> (o segundo). Usamos o <code>.</code> para lá os colocar:</p>
 <div class="sourceCode" id="cb130"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">airquality</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
-<span>  <span class="fu">na.omit</span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>                                     <span class="co"># remove valores em falta</span></span>
-<span>  <span class="fu">lm</span><span class="op">(</span><span class="va">Ozone</span> <span class="op">~</span> <span class="va">Wind</span> <span class="op">+</span> <span class="va">Temp</span> <span class="op">+</span> <span class="va">Solar.R</span>, data <span class="op">=</span> <span class="va">.</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>   <span class="co"># ajusta o modelo linear</span></span>
-<span>  <span class="fu">summary</span><span class="op">(</span><span class="op">)</span>                                         <span class="co"># resume o modelo</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/stats/na.fail.html">na.omit</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>                                     <span class="co"># remove valores em falta</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">Ozone</span> <span class="op">~</span> <span class="va">Wind</span> <span class="op">+</span> <span class="va">Temp</span> <span class="op">+</span> <span class="va">Solar.R</span>, data <span class="op">=</span> <span class="va">.</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>   <span class="co"># ajusta o modelo linear</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="op">)</span>                                         <span class="co"># resume o modelo</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## Coefficients:</span></span>
 <span><span class="co">##             Estimate Std. Error t value Pr(&gt;|t|)    </span></span>
@@ -150,8 +150,8 @@ valor deve entrar.</p>
 <span><span class="co">## ---</span></span>
 <span><span class="co">## Residual standard error: 21.2 on 107 degrees of freedom</span></span>
 <span><span class="co">## Multiple R-squared:  0.606,  Adjusted R-squared:  0.595</span></span></code></pre></div>
-<p>O conjunto <code>airquality</code> é limpo de valores em falta com <code>na.omit()</code>, o resultado
-entra como <code>data</code> em <code>lm()</code>, e o modelo é finalmente resumido — toda a cadeia se lê
+<p>O conjunto <code>airquality</code> é limpo de valores em falta com <code><a href="https://rdrr.io/r/stats/na.fail.html">na.omit()</a></code>, o resultado
+entra como <code>data</code> em <code><a href="https://rdrr.io/r/stats/lm.html">lm()</a></code>, e o modelo é finalmente resumido — toda a cadeia se lê
 de uma só vez, de cima para baixo.</p>
 </div>
 </div>
@@ -163,7 +163,7 @@ de uma só vez, de cima para baixo.</p>
 <code>|&gt;</code>, que <strong>não exige nenhum pacote</strong>. O seu comportamento essencial é o mesmo:
 passa o valor da esquerda como primeiro argumento da função à direita.</p>
 <div class="sourceCode" id="cb131"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">x</span> <span class="op">|&gt;</span> <span class="fu">sum</span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu">sqrt</span><span class="op">(</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="va">x</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">## [1] 3.16</span></span></code></pre></div>
 <p>Como faz parte da base do R e é hoje a forma recomendada em código novo, vale a pena
 conhecer as duas diferenças principais em relação ao <code>%&gt;%</code>:</p>
@@ -176,9 +176,9 @@ versão 4.2). O exemplo do modelo linear fica:</li>
 </ul>
 <div class="sourceCode" id="cb132"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">airquality</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu">na.omit</span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu">lm</span><span class="op">(</span><span class="va">Ozone</span> <span class="op">~</span> <span class="va">Wind</span> <span class="op">+</span> <span class="va">Temp</span> <span class="op">+</span> <span class="va">Solar.R</span>, data <span class="op">=</span> <span class="va">_</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu">summary</span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<span>  <span class="fu"><a href="https://rdrr.io/r/stats/na.fail.html">na.omit</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">Ozone</span> <span class="op">~</span> <span class="va">Wind</span> <span class="op">+</span> <span class="va">Temp</span> <span class="op">+</span> <span class="va">Solar.R</span>, data <span class="op">=</span> <span class="va">_</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <div class="nota">
 <p>Qual usar? Para código novo e simples, o <code>|&gt;</code> é a escolha natural: é nativo, não
 depende de pacotes e será compreendido por qualquer instalação recente do R. O <code>%&gt;%</code>
@@ -198,48 +198,48 @@ funções auxiliares usam, por isso, o <code>%&gt;%</code>.</p>
 </h2>
 <p><strong>1.</strong> Reescreva a expressão seguinte usando o <code>%&gt;%</code>.</p>
 <div class="sourceCode" id="cb133"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">round</span><span class="op">(</span><span class="fu">mean</span><span class="op">(</span><span class="fu">sum</span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">)</span> <span class="op">/</span> <span class="fl">3</span><span class="op">)</span>, digits <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">)</span> <span class="op">/</span> <span class="fl">3</span><span class="op">)</span>, digits <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span></code></pre></div>
 <p><em>Sugestão:</em> use a função <code><a href="https://magrittr.tidyverse.org/reference/aliases.html">magrittr::divide_by()</a></code>. Consulte a ajuda da função.</p>
 <p><strong>2.</strong> Reescreva o código seguinte usando o <code>%&gt;%</code>.</p>
 <div class="sourceCode" id="cb134"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu">rnorm</span><span class="op">(</span><span class="fl">100</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="fl">100</span><span class="op">)</span></span>
 <span><span class="va">x.pos</span> <span class="op">&lt;-</span> <span class="va">x</span><span class="op">[</span><span class="va">x</span> <span class="op">&gt;</span> <span class="fl">0</span><span class="op">]</span></span>
-<span><span class="va">media</span> <span class="op">&lt;-</span> <span class="fu">mean</span><span class="op">(</span><span class="va">x.pos</span><span class="op">)</span></span>
-<span><span class="va">saida</span> <span class="op">&lt;-</span> <span class="fu">round</span><span class="op">(</span><span class="va">media</span>, <span class="fl">2</span><span class="op">)</span></span></code></pre></div>
+<span><span class="va">media</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">x.pos</span><span class="op">)</span></span>
+<span><span class="va">saida</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="va">media</span>, <span class="fl">2</span><span class="op">)</span></span></code></pre></div>
 <p><em>Sugestão:</em> use a função <code><a href="https://magrittr.tidyverse.org/reference/aliases.html">magrittr::extract()</a></code>. Consulte a ajuda da função.</p>
 <p><strong>3.</strong> Sem executar, indique qual é o resultado do código seguinte. Consulte a ajuda
 das funções, se precisar.</p>
 <div class="sourceCode" id="cb135"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fl">2</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://magrittr.tidyverse.org/reference/aliases.html">add</a></span><span class="op">(</span><span class="fl">2</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
-<span>  <span class="fu">c</span><span class="op">(</span><span class="fl">6</span>, <span class="cn">NA</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
-<span>  <span class="fu">mean</span><span class="op">(</span>na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">6</span>, <span class="cn">NA</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span>na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://magrittr.tidyverse.org/reference/aliases.html">equals</a></span><span class="op">(</span><span class="fl">5</span><span class="op">)</span></span></code></pre></div>
 <p><strong>4.</strong> No conjunto <code>mtcars</code>, selecione as colunas <code>mpg</code>, <code>hp</code> e <code>wt</code>, filtre os
 carros com mais de 100 cavalos (<code>hp &gt; 100</code>) e ordene-os por <code>wt</code> (peso) de forma
 crescente. Reescreva o código seguinte usando o <em>pipe</em>:</p>
 <div class="sourceCode" id="cb136"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">install.packages</span><span class="op">(</span><span class="st">"dplyr"</span><span class="op">)</span></span>
-<span><span class="kw">library</span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"dplyr"</span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span></span>
 <span><span class="va">result</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">mtcars</span>, <span class="va">mpg</span>, <span class="va">hp</span>, <span class="va">wt</span><span class="op">)</span>, <span class="va">hp</span> <span class="op">&gt;</span> <span class="fl">100</span><span class="op">)</span>, <span class="va">wt</span><span class="op">)</span></span>
-<span><span class="fu">print</span><span class="op">(</span><span class="va">result</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">result</span><span class="op">)</span></span></code></pre></div>
 <p><strong>5.</strong> No conjunto <code>iris</code>, filtre as linhas com <code>Sepal.Length &gt; 5</code>, selecione as
 colunas <code>Sepal.Length</code> e <code>Species</code> e calcule a média de <code>Sepal.Length</code> por espécie.
 Reescreva o código seguinte usando o <em>pipe</em>:</p>
 <div class="sourceCode" id="cb137"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">result</span> <span class="op">&lt;-</span> <span class="fu">aggregate</span><span class="op">(</span><span class="va">Sepal.Length</span> <span class="op">~</span> <span class="va">Species</span>,</span>
+<code class="sourceCode R"><span><span class="va">result</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/aggregate.html">aggregate</a></span><span class="op">(</span><span class="va">Sepal.Length</span> <span class="op">~</span> <span class="va">Species</span>,</span>
 <span>                    data <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">iris</span>, <span class="va">Sepal.Length</span> <span class="op">&gt;</span> <span class="fl">5</span><span class="op">)</span>,</span>
 <span>                                  <span class="va">Sepal.Length</span>, <span class="va">Species</span><span class="op">)</span>,</span>
 <span>                    <span class="va">mean</span><span class="op">)</span></span>
-<span><span class="fu">print</span><span class="op">(</span><span class="va">result</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">result</span><span class="op">)</span></span></code></pre></div>
 <p><strong>6.</strong> No conjunto <code>airquality</code>, remova as linhas com valores em falta, selecione as
 colunas <code>Ozone</code> e <code>Wind</code> e calcule a média de <code>Ozone</code> nas observações em que
 <code>Wind &gt; 10</code>. Reescreva o código seguinte usando o <em>pipe</em>. <br><em>Sugestão:</em> Use a função <code><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise()</a></code> para calcular a média.</p>
 <div class="sourceCode" id="cb138"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">cleaned_data</span> <span class="op">&lt;-</span> <span class="fu">na.omit</span><span class="op">(</span><span class="va">airquality</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="va">cleaned_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/na.fail.html">na.omit</a></span><span class="op">(</span><span class="va">airquality</span><span class="op">)</span></span>
 <span><span class="va">filtered_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">cleaned_data</span>, <span class="va">Wind</span> <span class="op">&gt;</span> <span class="fl">10</span><span class="op">)</span></span>
-<span><span class="va">result</span> <span class="op">&lt;-</span> <span class="fu">mean</span><span class="op">(</span><span class="va">filtered_data</span><span class="op">$</span><span class="va">Ozone</span><span class="op">)</span></span>
-<span><span class="fu">print</span><span class="op">(</span><span class="va">result</span><span class="op">)</span></span></code></pre></div>
+<span><span class="va">result</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">filtered_data</span><span class="op">$</span><span class="va">Ozone</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">result</span><span class="op">)</span></span></code></pre></div>
 <p><strong>7.</strong> No conjunto <code>mtcars</code>, crie uma coluna <code>hp_per_wt</code> igual à razão entre <code>hp</code> e
 <code>wt</code>, filtre os carros com essa razão maior que 30 e selecione as colunas <code>mpg</code>,
 <code>hp_per_wt</code> e <code>gear</code>. Reescreva o código seguinte usando o <em>pipe</em>. <br><em>Sugestão:</em> Use a função <code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code> para criar a nova coluna.</p>
@@ -247,7 +247,7 @@ colunas <code>Ozone</code> e <code>Wind</code> e calcule a média de <code>Ozone
 <code class="sourceCode R"><span><span class="va">mtcars</span><span class="op">$</span><span class="va">hp_per_wt</span> <span class="op">&lt;-</span> <span class="va">mtcars</span><span class="op">$</span><span class="va">hp</span> <span class="op">/</span> <span class="va">mtcars</span><span class="op">$</span><span class="va">wt</span></span>
 <span><span class="va">filtered_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">mtcars</span>, <span class="va">hp_per_wt</span> <span class="op">&gt;</span> <span class="fl">30</span><span class="op">)</span></span>
 <span><span class="va">result</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">filtered_data</span>, <span class="va">mpg</span>, <span class="va">hp_per_wt</span>, <span class="va">gear</span><span class="op">)</span></span>
-<span><span class="fu">print</span><span class="op">(</span><span class="va">result</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">result</span><span class="op">)</span></span></code></pre></div>
 <p>O <em>pipe</em> encadeia operações que corremos <strong>uma vez</strong>. Mas muitas tarefas exigem
 <strong>repetir</strong> o mesmo cálculo várias vezes — e é aí que entram os ciclos, tema dos
 dois capítulos seguintes.</p>
@@ -282,7 +282,7 @@ dois capítulos seguintes.</p>
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Introdução ao R e à Simulação Estatística</strong>: Um Laboratório de Estatística Computacional" was written by Renato de Paula and Nuno Brites. It was last built on 11 de July de 2026.</p>
+    <p>"<strong>Introdução ao R e à Simulação Estatística</strong>: Um Laboratório de Estatística Computacional" was written by Renato de Paula and Nuno Brites. It was last built on 12 de July de 2026.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

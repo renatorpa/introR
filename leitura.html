@@ -15,8 +15,8 @@
 <meta name="twitter:title" content="Capítulo 8 Leitura de dados | Introdução ao R e à Simulação Estatística">
 <meta name="twitter:description" content="Até aqui os dados com que trabalhámos foram sempre escritos à mão, dentro do próprio código. Mas a estatística vive de dados reais — recolhidos em inquéritos, sensores, registos administrativos ou...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link href="libs/bootstrap-5.3.8/bootstrap.min.css" rel="stylesheet">
-<script src="libs/bootstrap-5.3.8/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.11.0/transition.js"></script><script src="libs/bs3compat-0.11.0/tabs.js"></script><script src="libs/bs3compat-0.11.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.11.0/transition.js"></script><script src="libs/bs3compat-0.11.0/tabs.js"></script><script src="libs/bs3compat-0.11.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
 <script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
     
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
@@ -110,13 +110,13 @@ decimal, acentos), e a guardar resultados de volta em disco.</p>
 <h2>
 <span class="header-section-number">8.1</span> Ler dados do teclado<a class="anchor" aria-label="anchor" href="#ler-dados-do-teclado"><i class="fas fa-link"></i></a>
 </h2>
-<p>A função <code>scan()</code> lê valores da entrada padrão (o teclado) ou de um ficheiro e
+<p>A função <code><a href="https://rdrr.io/r/base/scan.html">scan()</a></code> lê valores da entrada padrão (o teclado) ou de um ficheiro e
 devolve-os num vetor. É útil para introduzir manualmente pequenas quantidades de
 dados:</p>
 <div class="sourceCode" id="cb113"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Pede ao utilizador uma série de números</span></span>
-<span><span class="va">numeros</span> <span class="op">&lt;-</span> <span class="fu">scan</span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<p>Depois de escrever <code>scan()</code> e premir <em>Enter</em>, introduzem-se os valores separados por
+<span><span class="va">numeros</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/scan.html">scan</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<p>Depois de escrever <code><a href="https://rdrr.io/r/base/scan.html">scan()</a></code> e premir <em>Enter</em>, introduzem-se os valores separados por
 espaços; uma linha vazia (novo <em>Enter</em>) termina a entrada.</p>
 </div>
 <div id="o-diretório-de-trabalho-1" class="section level2" number="8.2">
@@ -128,20 +128,20 @@ R usa como referência para ler e guardar ficheiros. Vale a pena recordar as dua
 funções que o gerem:</p>
 <ul>
 <li>
-<code>getwd()</code> — devolve o caminho do diretório de trabalho atual;</li>
+<code><a href="https://rdrr.io/r/base/getwd.html">getwd()</a></code> — devolve o caminho do diretório de trabalho atual;</li>
 <li>
 <code>setwd("caminho/da/pasta")</code> — define um novo diretório de trabalho.</li>
 </ul>
 <div class="sourceCode" id="cb114"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">getwd</span><span class="op">(</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/getwd.html">getwd</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">## [1] "C:/Users/Utilizador/Documents"</span></span></code></pre></div>
 <p>Com o diretório bem definido, se o ficheiro <code>dados.csv</code> estiver nessa pasta, lê-se
 simplesmente pelo nome, sem o caminho completo:</p>
 <div class="sourceCode" id="cb115"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">dados</span> <span class="op">&lt;-</span> <span class="fu">read.csv</span><span class="op">(</span><span class="st">"dados.csv"</span><span class="op">)</span></span>
-<span><span class="fu">head</span><span class="op">(</span><span class="va">dados</span><span class="op">)</span>   <span class="co"># mostra as primeiras linhas</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">dados</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.csv</a></span><span class="op">(</span><span class="st">"dados.csv"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">dados</span><span class="op">)</span>   <span class="co"># mostra as primeiras linhas</span></span></code></pre></div>
 <div class="dica">
-<p>No RStudio não é sequer necessário escrever <code>setwd()</code>: o menu <em>Session &gt; Set Working
+<p>No RStudio não é sequer necessário escrever <code><a href="https://rdrr.io/r/base/getwd.html">setwd()</a></code>: o menu <em>Session &gt; Set Working
 Directory &gt; To Source File Location</em> fixa o diretório na pasta do script. Ainda
 melhor, trabalhar dentro de um <strong>Projeto do RStudio</strong> dispensa por completo caminhos
 absolutos.</p>
@@ -151,14 +151,14 @@ absolutos.</p>
 <h2>
 <span class="header-section-number">8.3</span> A função <code>read.table()</code><a class="anchor" aria-label="anchor" href="#a-fun%C3%A7%C3%A3o-read.table"><i class="fas fa-link"></i></a>
 </h2>
-<p>A <code>read.table()</code> é a função mais versátil para ler ficheiros de texto em formato
+<p>A <code><a href="https://rdrr.io/r/utils/read.table.html">read.table()</a></code> é a função mais versátil para ler ficheiros de texto em formato
 tabular. Importa os dados e permite configurá-los ao pormenor. (Pode descarregar o
 ficheiro <code>dados.txt</code> a partir do
 <a href="https://renatorpaula.wixsite.com/renato/laboratorio-estatistica">site da disciplina</a>
 para praticar.)</p>
 <div class="sourceCode" id="cb116"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">dados</span> <span class="op">&lt;-</span> <span class="fu">read.table</span><span class="op">(</span>file <span class="op">=</span> <span class="st">"dados.txt"</span>, header <span class="op">=</span> <span class="cn">TRUE</span>, sep <span class="op">=</span> <span class="st">""</span><span class="op">)</span></span>
-<span><span class="fu">print</span><span class="op">(</span><span class="va">dados</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">dados</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.table</a></span><span class="op">(</span>file <span class="op">=</span> <span class="st">"dados.txt"</span>, header <span class="op">=</span> <span class="cn">TRUE</span>, sep <span class="op">=</span> <span class="st">""</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">dados</span><span class="op">)</span></span></code></pre></div>
 <p>Os seus argumentos mais usados são:</p>
 <ul>
 <li>
@@ -185,49 +185,49 @@ ignoradas.</li>
 </ul>
 <div class="atencao">
 <p>É frequente confundir os separadores por omissão. Ao contrário do que se poderia
-pensar, o separador por omissão de <code>read.table()</code> <strong>não é a vírgula, mas sim o
-espaço em branco</strong>. A vírgula é o separador por omissão da <code>read.csv()</code>, que veremos
+pensar, o separador por omissão de <code><a href="https://rdrr.io/r/utils/read.table.html">read.table()</a></code> <strong>não é a vírgula, mas sim o
+espaço em branco</strong>. A vírgula é o separador por omissão da <code><a href="https://rdrr.io/r/utils/read.table.html">read.csv()</a></code>, que veremos
 já a seguir. Confundir os dois é uma das causas mais comuns de leituras que “correm
 bem” mas produzem uma única coluna com tudo lá dentro.</p>
 </div>
 <p>Para consultar todos os argumentos e os seus valores por omissão:</p>
 <div class="sourceCode" id="cb117"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">args</span><span class="op">(</span><span class="va">read.table</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/args.html">args</a></span><span class="op">(</span><span class="va">read.table</span><span class="op">)</span></span>
 <span><span class="co">## function (file, header = FALSE, sep = "", quote = "\"'", dec = ".",</span></span>
 <span><span class="co">##     numerals = c("allow.loss", "warn.loss", "no.loss"), row.names,</span></span>
 <span><span class="co">##     col.names, as.is = !stringsAsFactors, na.strings = "NA", ...)</span></span>
 <span><span class="co">## NULL</span></span></code></pre></div>
 <p>Se o ficheiro for um CSV, basta indicar o separador apropriado:</p>
 <div class="sourceCode" id="cb118"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">dados_csv</span> <span class="op">&lt;-</span> <span class="fu">read.table</span><span class="op">(</span><span class="st">"dados.csv"</span>, header <span class="op">=</span> <span class="cn">TRUE</span>, sep <span class="op">=</span> <span class="st">","</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">dados_csv</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.table</a></span><span class="op">(</span><span class="st">"dados.csv"</span>, header <span class="op">=</span> <span class="cn">TRUE</span>, sep <span class="op">=</span> <span class="st">","</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div id="a-função-read.csv" class="section level2" number="8.4">
 <h2>
 <span class="header-section-number">8.4</span> A função <code>read.csv()</code><a class="anchor" aria-label="anchor" href="#a-fun%C3%A7%C3%A3o-read.csv"><i class="fas fa-link"></i></a>
 </h2>
-<p>A <code>read.csv()</code> está otimizada para ficheiros CSV (<em>Comma-Separated Values</em>),
+<p>A <code><a href="https://rdrr.io/r/utils/read.table.html">read.csv()</a></code> está otimizada para ficheiros CSV (<em>Comma-Separated Values</em>),
 ficheiros de texto em que cada linha é um registo e os valores são separados por
-vírgulas. Na prática, é a <code>read.table()</code> com outros valores por omissão: separador
+vírgulas. Na prática, é a <code><a href="https://rdrr.io/r/utils/read.table.html">read.table()</a></code> com outros valores por omissão: separador
 <code>","</code> e <code>header = TRUE</code>.</p>
 <div class="sourceCode" id="cb119"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">dados_csv</span> <span class="op">&lt;-</span> <span class="fu">read.csv</span><span class="op">(</span><span class="st">"dados.csv"</span>, header <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">dados_csv</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.csv</a></span><span class="op">(</span><span class="st">"dados.csv"</span>, header <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div id="a-função-read.csv2" class="section level2" number="8.5">
 <h2>
 <span class="header-section-number">8.5</span> A função <code>read.csv2()</code><a class="anchor" aria-label="anchor" href="#a-fun%C3%A7%C3%A3o-read.csv2"><i class="fas fa-link"></i></a>
 </h2>
-<p>A <code>read.csv2()</code> destina-se a ficheiros CSV “à europeia”: separador de campos <strong>ponto
+<p>A <code><a href="https://rdrr.io/r/utils/read.table.html">read.csv2()</a></code> destina-se a ficheiros CSV “à europeia”: separador de campos <strong>ponto
 e vírgula</strong> (<code>;</code>) e separador decimal <strong>vírgula</strong> (<code>,</code>). É o formato que a maioria
 dos programas exporta em Portugal, precisamente porque cá a vírgula é o separador
 decimal.</p>
 <div class="sourceCode" id="cb120"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">dados_csv2</span> <span class="op">&lt;-</span> <span class="fu">read.csv2</span><span class="op">(</span><span class="st">"dados.csv"</span>, header <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">dados_csv2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.csv2</a></span><span class="op">(</span><span class="st">"dados.csv"</span>, header <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 <div class="nota">
 <p>Esta distinção é essencial em Portugal. Um valor como <code>1.234,56</code> num ficheiro
 português significa “mil duzentos e trinta e quatro vírgula cinquenta e seis”. Se o
-lermos com <code>read.csv()</code> (que espera a vírgula como separador de campos e o ponto como
+lermos com <code><a href="https://rdrr.io/r/utils/read.table.html">read.csv()</a></code> (que espera a vírgula como separador de campos e o ponto como
 decimal), o R interpreta tudo mal. A regra prática: ficheiros gerados por sistemas
-portugueses leem-se, quase sempre, com <code>read.csv2()</code>.</p>
+portugueses leem-se, quase sempre, com <code><a href="https://rdrr.io/r/utils/read.table.html">read.csv2()</a></code>.</p>
 </div>
 </div>
 <div id="a-função-read_excel" class="section level2" number="8.6">
@@ -237,8 +237,8 @@ portugueses leem-se, quase sempre, com <code>read.csv2()</code>.</p>
 <p>Para ler ficheiros Excel (<code>.xls</code> e <code>.xlsx</code>) usamos a função <code><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_excel()</a></code> do pacote
 <code>readxl</code>, que precisa de ser instalado e carregado antes da primeira utilização:</p>
 <div class="sourceCode" id="cb121"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">install.packages</span><span class="op">(</span><span class="st">"readxl"</span><span class="op">)</span>   <span class="co"># apenas uma vez</span></span>
-<span><span class="kw">library</span><span class="op">(</span><span class="va"><a href="https://readxl.tidyverse.org">readxl</a></span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"readxl"</span><span class="op">)</span>   <span class="co"># apenas uma vez</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://readxl.tidyverse.org">readxl</a></span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Sintaxe básica</span></span>
 <span><span class="fu"><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_excel</a></span><span class="op">(</span><span class="va">path</span>, sheet <span class="op">=</span> <span class="cn">NULL</span>, range <span class="op">=</span> <span class="cn">NULL</span>, col_names <span class="op">=</span> <span class="cn">TRUE</span>,</span>
@@ -287,17 +287,17 @@ argumentos (separador, decimal, codificação) sem tentativa e erro.</p>
 função de leitura apropriada ao formato:</p>
 <div class="sourceCode" id="cb123"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">url</span> <span class="op">&lt;-</span> <span class="st">"https://exemplo.com/dados.csv"</span></span>
-<span><span class="va">dados_online</span> <span class="op">&lt;-</span> <span class="fu">read.table</span><span class="op">(</span><span class="va">url</span>, header <span class="op">=</span> <span class="cn">TRUE</span>, sep <span class="op">=</span> <span class="st">","</span><span class="op">)</span></span></code></pre></div>
+<span><span class="va">dados_online</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.table</a></span><span class="op">(</span><span class="va">url</span>, header <span class="op">=</span> <span class="cn">TRUE</span>, sep <span class="op">=</span> <span class="st">","</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div id="guardar-resultados-em-disco" class="section level2" number="8.8">
 <h2>
 <span class="header-section-number">8.8</span> Guardar resultados em disco<a class="anchor" aria-label="anchor" href="#guardar-resultados-em-disco"><i class="fas fa-link"></i></a>
 </h2>
 <p>Ler dados é só metade da história: depois de os analisar, queremos muitas vezes
-<strong>guardar</strong> o resultado. As funções <code>write.table()</code> e <code>write.csv()</code> fazem o percurso
+<strong>guardar</strong> o resultado. As funções <code><a href="https://rdrr.io/r/utils/write.table.html">write.table()</a></code> e <code><a href="https://rdrr.io/r/utils/write.table.html">write.csv()</a></code> fazem o percurso
 inverso das que vimos, escrevendo uma <em>data frame</em> num ficheiro de texto:</p>
 <div class="sourceCode" id="cb124"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">write.csv</span><span class="op">(</span><span class="va">dados</span>, file <span class="op">=</span> <span class="st">"resultado.csv"</span>, row.names <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/write.table.html">write.csv</a></span><span class="op">(</span><span class="va">dados</span>, file <span class="op">=</span> <span class="st">"resultado.csv"</span>, row.names <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
 <p>O argumento <code>row.names = FALSE</code> evita que o R acrescente uma coluna extra com os
 números das linhas — um pormenor pequeno, mas que poupa confusão a quem voltar a ler
 o ficheiro.</p>
@@ -316,8 +316,8 @@ especifique a codificação com o argumento <code>fileEncoding</code>, tipicamen
 3 dias. Os dados estão no ficheiro
 <a href="docs/temperaturas.txt">temperaturas.txt</a>, com separador de tabulação e cabeçalho.</p>
 <ol style="list-style-type: lower-alpha">
-<li><p>Leia <code>temperaturas.txt</code> com <code>read.table()</code>.</p></li>
-<li><p>Veja as 6 primeiras linhas com <code>head()</code>.</p></li>
+<li><p>Leia <code>temperaturas.txt</code> com <code><a href="https://rdrr.io/r/utils/read.table.html">read.table()</a></code>.</p></li>
+<li><p>Veja as 6 primeiras linhas com <code><a href="https://rdrr.io/r/utils/head.html">head()</a></code>.</p></li>
 <li><p>Qual foi a temperatura máxima no segundo dia?</p></li>
 <li><p>Crie uma coluna <code>diferenca_temp</code> com a diferença entre a temperatura máxima e a
 mínima e guarde o resultado num ficheiro <code>temperaturas_nova.txt</code>. <em>Sugestão:</em>
@@ -327,7 +327,7 @@ mínima e guarde o resultado num ficheiro <code>temperaturas_nova.txt</code>. <e
 receitas mensais: <a href="docs/financas.csv">financas.csv</a>. Os valores usam vírgula como
 separador decimal e ponto e vírgula como separador de campos.</p>
 <ol style="list-style-type: lower-alpha">
-<li><p>Importe os dados com <code>read.csv2()</code>.</p></li>
+<li><p>Importe os dados com <code><a href="https://rdrr.io/r/utils/read.table.html">read.csv2()</a></code>.</p></li>
 <li><p>Calcule a soma total das receitas.</p></li>
 <li><p>Crie uma coluna <code>saldo = receitas - despesas</code>.</p></li>
 <li><p>Guarde o resultado num ficheiro <code>financas_nova.csv</code>. <em>Sugestão:</em>
@@ -346,7 +346,7 @@ tempo, concentração e erro, separadas por espaços:
 (“quatro mil”), o que impede que a coluna seja lida como numérica:
 <a href="docs/dados_com_erros.csv">dados_com_erros.csv</a>.</p>
 <ol style="list-style-type: lower-alpha">
-<li><p>Importe com <code>read.csv()</code> e verifique a classe da coluna <code>salario</code>.</p></li>
+<li><p>Importe com <code><a href="https://rdrr.io/r/utils/read.table.html">read.csv()</a></code> e verifique a classe da coluna <code>salario</code>.</p></li>
 <li><p>Corrija os dados e converta <code>salario</code> em <code>numeric</code>.</p></li>
 </ol>
 <p><strong>5.</strong> Leia o ficheiro <code>instagram.xlsx</code>
@@ -364,35 +364,35 @@ Para as variáveis numéricas, agrupe em classes. O código seguinte fá-lo para
 <span><span class="co"># ---------------------------------</span></span>
 <span></span>
 <span><span class="co"># Número de classes pela Regra de Sturges</span></span>
-<span><span class="va">n</span> <span class="op">&lt;-</span> <span class="fu">length</span><span class="op">(</span><span class="va">dados_instagram</span><span class="op">$</span><span class="va">indice_influencia</span><span class="op">)</span>     <span class="co"># número de observações</span></span>
-<span><span class="va">k</span> <span class="op">&lt;-</span> <span class="fu">ceiling</span><span class="op">(</span><span class="fl">1</span> <span class="op">+</span> <span class="fl">3.322</span> <span class="op">*</span> <span class="fu">log10</span><span class="op">(</span><span class="va">n</span><span class="op">)</span><span class="op">)</span>                 <span class="co"># número de classes (arredondado)</span></span>
+<span><span class="va">n</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">dados_instagram</span><span class="op">$</span><span class="va">indice_influencia</span><span class="op">)</span>     <span class="co"># número de observações</span></span>
+<span><span class="va">k</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Round.html">ceiling</a></span><span class="op">(</span><span class="fl">1</span> <span class="op">+</span> <span class="fl">3.322</span> <span class="op">*</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html">log10</a></span><span class="op">(</span><span class="va">n</span><span class="op">)</span><span class="op">)</span>                 <span class="co"># número de classes (arredondado)</span></span>
 <span></span>
 <span><span class="co"># Limites das classes</span></span>
-<span><span class="va">min_val</span> <span class="op">&lt;-</span> <span class="fu">min</span><span class="op">(</span><span class="va">dados_instagram</span><span class="op">$</span><span class="va">indice_influencia</span><span class="op">)</span></span>
-<span><span class="va">max_val</span> <span class="op">&lt;-</span> <span class="fu">max</span><span class="op">(</span><span class="va">dados_instagram</span><span class="op">$</span><span class="va">indice_influencia</span><span class="op">)</span></span>
-<span><span class="va">intervalos</span> <span class="op">&lt;-</span> <span class="fu">seq</span><span class="op">(</span><span class="va">min_val</span>, <span class="va">max_val</span>, length.out <span class="op">=</span> <span class="va">k</span> <span class="op">+</span> <span class="fl">1</span><span class="op">)</span></span>
+<span><span class="va">min_val</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">min</a></span><span class="op">(</span><span class="va">dados_instagram</span><span class="op">$</span><span class="va">indice_influencia</span><span class="op">)</span></span>
+<span><span class="va">max_val</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="va">dados_instagram</span><span class="op">$</span><span class="va">indice_influencia</span><span class="op">)</span></span>
+<span><span class="va">intervalos</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="va">min_val</span>, <span class="va">max_val</span>, length.out <span class="op">=</span> <span class="va">k</span> <span class="op">+</span> <span class="fl">1</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Tabela de frequências absolutas</span></span>
-<span><span class="va">tabela_if</span> <span class="op">&lt;-</span> <span class="fu">cut</span><span class="op">(</span><span class="va">dados_instagram</span><span class="op">$</span><span class="va">indice_influencia</span>,</span>
+<span><span class="va">tabela_if</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cut.html">cut</a></span><span class="op">(</span><span class="va">dados_instagram</span><span class="op">$</span><span class="va">indice_influencia</span>,</span>
 <span>                 breaks <span class="op">=</span> <span class="va">intervalos</span>, include.lowest <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
-<span><span class="va">tabela_if</span> <span class="op">&lt;-</span> <span class="fu">table</span><span class="op">(</span><span class="va">tabela_if</span><span class="op">)</span></span>
+<span><span class="va">tabela_if</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/table.html">table</a></span><span class="op">(</span><span class="va">tabela_if</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Converter em data frame para uma leitura mais organizada</span></span>
-<span><span class="va">tabela_if_df</span> <span class="op">&lt;-</span> <span class="fu">as.data.frame</span><span class="op">(</span><span class="va">tabela_if</span><span class="op">)</span></span>
-<span><span class="fu">names</span><span class="op">(</span><span class="va">tabela_if_df</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu">c</span><span class="op">(</span><span class="st">"Intervalo"</span>, <span class="st">"Frequencia"</span><span class="op">)</span></span>
+<span><span class="va">tabela_if_df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html">as.data.frame</a></span><span class="op">(</span><span class="va">tabela_if</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">tabela_if_df</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Intervalo"</span>, <span class="st">"Frequencia"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Frequência relativa</span></span>
-<span><span class="va">tabela_if_df</span><span class="op">$</span><span class="va">Freq_Relativa</span> <span class="op">&lt;-</span> <span class="fu">round</span><span class="op">(</span><span class="va">tabela_if_df</span><span class="op">$</span><span class="va">Frequencia</span> <span class="op">/</span> <span class="va">n</span>, digits <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></span>
+<span><span class="va">tabela_if_df</span><span class="op">$</span><span class="va">Freq_Relativa</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="va">tabela_if_df</span><span class="op">$</span><span class="va">Frequencia</span> <span class="op">/</span> <span class="va">n</span>, digits <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Frequências acumuladas (absoluta e relativa)</span></span>
-<span><span class="va">tabela_if_df</span><span class="op">$</span><span class="va">Freq_Abs_Acum</span>  <span class="op">&lt;-</span> <span class="fu">cumsum</span><span class="op">(</span><span class="va">tabela_if_df</span><span class="op">$</span><span class="va">Frequencia</span><span class="op">)</span></span>
-<span><span class="va">tabela_if_df</span><span class="op">$</span><span class="va">Freq_Rela_Acum</span> <span class="op">&lt;-</span> <span class="fu">cumsum</span><span class="op">(</span><span class="va">tabela_if_df</span><span class="op">$</span><span class="va">Freq_Relativa</span><span class="op">)</span></span>
+<span><span class="va">tabela_if_df</span><span class="op">$</span><span class="va">Freq_Abs_Acum</span>  <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cumsum.html">cumsum</a></span><span class="op">(</span><span class="va">tabela_if_df</span><span class="op">$</span><span class="va">Frequencia</span><span class="op">)</span></span>
+<span><span class="va">tabela_if_df</span><span class="op">$</span><span class="va">Freq_Rela_Acum</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cumsum.html">cumsum</a></span><span class="op">(</span><span class="va">tabela_if_df</span><span class="op">$</span><span class="va">Freq_Relativa</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">tabela_if_df</span></span></code></pre></div>
 <ol start="3" style="list-style-type: lower-alpha">
 <li><p><strong>Representação gráfica.</strong> Crie o gráfico adequado a cada variável: histogramas
-(<code>hist()</code>) para variáveis contínuas, gráficos de barras (<code>barplot()</code>) para
-variáveis categóricas, e caixas de bigodes (<code>boxplot()</code>) para observar a
+(<code><a href="https://rdrr.io/r/graphics/hist.html">hist()</a></code>) para variáveis contínuas, gráficos de barras (<code><a href="https://rdrr.io/r/graphics/barplot.html">barplot()</a></code>) para
+variáveis categóricas, e caixas de bigodes (<code><a href="https://rdrr.io/r/graphics/boxplot.html">boxplot()</a></code>) para observar a
 dispersão.</p></li>
 <li><p><strong>Medidas descritivas.</strong> Determine, para cada variável, a média, a mediana, a
 variância, o desvio padrão, o coeficiente de variação, o primeiro e o terceiro
@@ -412,7 +412,7 @@ de popularidade.</p></li>
 publicações, número de seguidores e média de gostos.</p></li>
 <li><p><strong>Correlação.</strong> Calcule a correlação entre o índice de influência e a média de
 gostos. Comente se um índice de influência elevado tende a associar-se a mais
-gostos. <em>Sugestão:</em> Use a função <code>cor()</code>.</p></li>
+gostos. <em>Sugestão:</em> Use a função <code><a href="https://rdrr.io/r/stats/cor.html">cor()</a></code>.</p></li>
 </ol>
 <p><strong>6.</strong> Importe o ficheiro <code>dataset.csv</code>
 (<a href="https://renatorpaula.wixsite.com/renato/laboratorio-estatistica">aqui</a>) e
@@ -471,7 +471,7 @@ muito mais legíveis.</p>
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Introdução ao R e à Simulação Estatística</strong>: Um Laboratório de Estatística Computacional" was written by Renato de Paula and Nuno Brites. It was last built on 11 de July de 2026.</p>
+    <p>"<strong>Introdução ao R e à Simulação Estatística</strong>: Um Laboratório de Estatística Computacional" was written by Renato de Paula and Nuno Brites. It was last built on 12 de July de 2026.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
