@@ -90,7 +90,7 @@ estudamos é o <code>while</code>.</p>
 <p>O <code>while</code> repete um bloco de código <strong>enquanto</strong> uma condição lógica se mantiver
 verdadeira. É a estrutura ideal quando não sabemos de antemão quantas repetições
 serão precisas — sabemos apenas a <em>condição</em> que faz o ciclo parar.</p>
-<div class="sourceCode" id="cb140"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb148"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw">while</span> <span class="op">(</span><span class="va">condição</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="co"># bloco de código a repetir</span></span>
 <span><span class="op">}</span></span></code></pre></div>
@@ -113,7 +113,7 @@ termina, a interrompê-lo com <code><a href="https://rdrr.io/r/base/Control.html
 <span class="header-section-number">10.1</span> Exemplos<a class="anchor" aria-label="anchor" href="#exemplos"><i class="fas fa-link"></i></a>
 </h2>
 <p><strong>Somar números até um limite.</strong> O ciclo seguinte soma todos os inteiros de 1 a 10:</p>
-<div class="sourceCode" id="cb141"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb149"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">limite</span> <span class="op">&lt;-</span> <span class="fl">10</span></span>
 <span><span class="va">soma</span> <span class="op">&lt;-</span> <span class="fl">0</span></span>
 <span><span class="va">contador</span> <span class="op">&lt;-</span> <span class="fl">1</span></span>
@@ -131,7 +131,7 @@ linha <code>contador &lt;- contador + 1</code> é o que garante o progresso rumo
 precisamente aí que reside o erro mais comum, como o próximo exemplo mostra.</p>
 <p><strong>Escrever a tabuada de um número.</strong> O programa seguinte deveria imprimir a tabuada
 de um número dado pelo utilizador — mas <strong>nunca termina</strong>. Consegue ver porquê?</p>
-<div class="sourceCode" id="cb142"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb150"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">n</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html">as.numeric</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/readline.html">readline</a></span><span class="op">(</span><span class="st">"Introduza um número inteiro: "</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="st">"Tabuada do"</span>, <span class="va">n</span>, <span class="st">":"</span><span class="op">)</span><span class="op">)</span></span>
@@ -145,14 +145,14 @@ de um número dado pelo utilizador — mas <strong>nunca termina</strong>. Conse
 resultado é simplesmente descartado. Como <code>i</code> nunca muda, a condição <code>i &lt;= 10</code>
 mantém-se eternamente verdadeira e o ciclo corre para sempre. A correção é atribuir o
 resultado de volta à variável:</p>
-<div class="sourceCode" id="cb143"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb151"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">i</span> <span class="op">&lt;-</span> <span class="va">i</span> <span class="op">+</span> <span class="fl">1</span></span></code></pre></div>
 <p>Sempre que um <code>while</code> parece não terminar, o primeiro suspeito é uma variável de
 controlo que não está a ser atualizada.</p>
 </div>
 <p><strong>Interromper com <code><a href="https://rdrr.io/r/base/Control.html">break</a></code>.</strong> A instrução <code><a href="https://rdrr.io/r/base/Control.html">break</a></code> sai imediatamente do ciclo, mesmo
 que a condição ainda seja verdadeira:</p>
-<div class="sourceCode" id="cb144"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb152"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">limite</span> <span class="op">&lt;-</span> <span class="fl">10</span></span>
 <span><span class="va">soma</span> <span class="op">&lt;-</span> <span class="fl">0</span></span>
 <span><span class="va">contador</span> <span class="op">&lt;-</span> <span class="fl">1</span></span>
@@ -256,7 +256,7 @@ capítulo.</p>
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Introdução ao R e à Simulação Estatística</strong>: Um Laboratório de Estatística Computacional" was written by Renato de Paula and Nuno Brites. It was last built on 12 de July de 2026.</p>
+    <p>"<strong>Introdução ao R e à Simulação Estatística</strong>: Um Laboratório de Estatística Computacional" was written by Renato de Paula and Nuno Brites. It was last built on 15 de July de 2026.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

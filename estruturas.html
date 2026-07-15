@@ -109,7 +109,7 @@ estruturas que vamos conhecer agora.</li>
 <h3>
 <span class="header-section-number">4.1.1</span> Tipos de vetores<a class="anchor" aria-label="anchor" href="#tipos-de-vetores"><i class="fas fa-link"></i></a>
 </h3>
-<div class="sourceCode" id="cb31"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb39"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Vetor numérico</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1.1</span>, <span class="fl">2.2</span>, <span class="fl">3.3</span><span class="op">)</span></span>
 <span><span class="co">## [1] 1.1 2.2 3.3</span></span>
@@ -140,7 +140,7 @@ só tipo de dados.</p>
 </h3>
 <p>Escrever todos os elementos à mão seria impraticável para vetores longos. O R
 oferece atalhos poderosos para os construir:</p>
-<div class="sourceCode" id="cb32"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb40"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Inteiros de 1 a 10</span></span>
 <span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fl">1</span><span class="op">:</span><span class="fl">10</span></span>
 <span><span class="va">x</span></span>
@@ -183,7 +183,7 @@ dois é comum, experimente ambos até a distinção ficar natural.</p>
 </h3>
 <p>Guardar um vetor só é útil se conseguirmos recuperar, selecionar ou modificar partes dele. Em R, fazemos isso com <strong>parênteses retos</strong> <code>[ ]</code> e índices. Esta operação chama-se <strong>indexação</strong> e será uma das mais usadas ao longo do livro. Por isso, vale a pena compreendê-la bem desde o início. Há três formas principais de indexar um vetor.</p>
 <p><strong>Por posição.</strong> Indicamos os índices dos elementos que queremos selecionar:</p>
-<div class="sourceCode" id="cb33"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb41"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="op">(</span><span class="op">-</span><span class="fl">5</span><span class="op">)</span><span class="op">:</span><span class="fl">5</span></span>
 <span><span class="va">x</span></span>
 <span><span class="co">##  [1] -5 -4 -3 -2 -1  0  1  2  3  4  5</span></span>
@@ -197,7 +197,7 @@ dois é comum, experimente ambos até a distinção ficar natural.</p>
 <span><span class="va">x</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">3</span>, <span class="fl">5</span><span class="op">)</span><span class="op">]</span>    <span class="co"># primeiro, terceiro e quinto elementos</span></span>
 <span><span class="co">## [1] -5 -3 -1</span></span></code></pre></div>
 <p><strong>Por exclusão.</strong> Também podemos indicar as posições que queremos remover. Para isso, usamos índices negativos:</p>
-<div class="sourceCode" id="cb34"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb42"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">x</span><span class="op">[</span><span class="op">-</span><span class="fl">1</span><span class="op">]</span>            <span class="co"># todos os elementos exceto o primeiro</span></span>
 <span><span class="co">##  [1] -4 -3 -2 -1  0  1  2  3  4  5</span></span>
 <span></span>
@@ -211,7 +211,7 @@ dois é comum, experimente ambos até a distinção ficar natural.</p>
 </div>
 <p><strong>Por condição lógica.</strong> A terceira forma de indexação é uma das mais úteis em análise de dados. Em vez de indicarmos diretamente as posições que queremos selecionar, fornecemos ao R um vetor lógico, isto é, um vetor formado por valores <code>TRUE</code> e <code>FALSE</code>. O R devolve apenas os elementos que estão nas posições onde aparece <code>TRUE</code>.</p>
 <p>Esta ideia é particularmente poderosa porque as comparações em R produzem precisamente vetores lógicos. Assim, podemos selecionar elementos que satisfazem uma certa condição.</p>
-<div class="sourceCode" id="cb35"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb43"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Selecionar os elementos com valor absoluto menor que 3</span></span>
 <span><span class="va">index</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">abs</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">&lt;</span> <span class="fl">3</span></span>
 <span><span class="va">index</span></span>
@@ -225,7 +225,7 @@ dois é comum, experimente ambos até a distinção ficar natural.</p>
 <span><span class="co">## [1] -2 -1  0  1  2</span></span></code></pre></div>
 <p>No exemplo anterior, <code>abs(x) &lt; 3</code> cria uma condição lógica. O R verifica essa condição elemento a elemento e devolve <code>TRUE</code> nas posições em que o valor absoluto de <code>x</code> é menor que 3. Quando usamos esse vetor lógico dentro dos parênteses retos, ficamos apenas com os elementos correspondentes às posições verdadeiras.</p>
 <p>Vejamos mais alguns exemplos:</p>
-<div class="sourceCode" id="cb36"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb44"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">y</span> <span class="op">&lt;-</span> <span class="fl">1</span><span class="op">:</span><span class="fl">10</span></span>
 <span></span>
 <span><span class="va">y</span><span class="op">[</span><span class="va">y</span> <span class="op">&gt;</span> <span class="fl">5</span><span class="op">]</span>           <span class="co"># elementos maiores que 5</span></span>
@@ -239,7 +239,7 @@ dois é comum, experimente ambos até a distinção ficar natural.</p>
 <span><span class="co">## [1]  1  2  3  4  6  7  8  9 10</span></span></code></pre></div>
 <p>Neste último exemplo, <code>is.na(y)</code> identifica os valores ausentes e devolve <code>TRUE</code> nas posições em que há <code>NA</code>. O operador <code>!</code> inverte essa condição. Por isso, <code>!is.na(y)</code> seleciona os elementos que <strong>não</strong> são valores ausentes.</p>
 <p>O R inclui ainda alguns vetores predefinidos úteis, como <code>letters</code> e <code>LETTERS</code>, que contêm o alfabeto em minúsculas e em maiúsculas, respetivamente:</p>
-<div class="sourceCode" id="cb37"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb45"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">letters</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">]</span></span>
 <span><span class="co">## [1] "a" "b" "c"</span></span>
 <span></span>
@@ -253,7 +253,7 @@ dois é comum, experimente ambos até a distinção ficar natural.</p>
 <p>Grande parte do valor dos vetores está nas dezenas de funções que operam sobre
 eles de uma só vez. Eis um catálogo das mais frequentes, aplicadas a um vetor
 numérico:</p>
-<div class="sourceCode" id="cb38"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb46"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">v</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2.2</span>, <span class="fl">1.1</span>, <span class="fl">3.3</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">v</span><span class="op">)</span>     <span class="co"># número de elementos</span></span>
@@ -280,7 +280,7 @@ numérico:</p>
 <span><span class="co">## [1] 2.2 3.3 6.6</span></span></code></pre></div>
 <p>Uma função particularmente útil é <code><a href="https://rdrr.io/r/base/which.html">which()</a></code>, que devolve as <strong>posições</strong> dos
 elementos que satisfazem uma condição, e não os valores em si:</p>
-<div class="sourceCode" id="cb39"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb47"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">y</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">8</span>, <span class="fl">3</span>, <span class="fl">5</span>, <span class="fl">7</span>, <span class="fl">6</span>, <span class="fl">6</span>, <span class="fl">8</span>, <span class="fl">9</span>, <span class="fl">2</span>, <span class="fl">3</span>, <span class="fl">9</span>, <span class="fl">4</span>, <span class="fl">10</span>, <span class="fl">4</span>, <span class="fl">11</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/which.html">which</a></span><span class="op">(</span><span class="va">y</span> <span class="op">&gt;</span> <span class="fl">5</span><span class="op">)</span>     <span class="co"># as posições dos elementos maiores que 5</span></span>
@@ -301,7 +301,7 @@ valores.</p>
 </h3>
 <p>As operações aritméticas em R são <strong>vetorizadas</strong>: aplicam-se a cada elemento do
 vetor, sem necessidade de escrever ciclos. Isto torna o código curto e legível:</p>
-<div class="sourceCode" id="cb40"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb48"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">v</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2.2</span>, <span class="fl">1.1</span>, <span class="fl">3.3</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">v</span> <span class="op">+</span> <span class="fl">1</span>        <span class="co"># soma 1 a cada elemento</span></span>
@@ -318,7 +318,7 @@ vetor, sem necessidade de escrever ciclos. Isto torna o código curto e legível
 <p>Mas o que acontece quando operamos com dois vetores de <strong>comprimentos
 diferentes</strong>? O R aplica a chamada <strong>regra da reciclagem</strong>: repete o vetor mais
 curto até igualar o comprimento do mais longo.</p>
-<div class="sourceCode" id="cb41"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb49"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">3</span>, <span class="fl">5</span>, <span class="fl">7</span><span class="op">)</span><span class="op">^</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">3</span><span class="op">)</span></span>
 <span><span class="co">## [1]   4  27  25 343</span></span></code></pre></div>
 <p>Internamente, o vetor <code>c(2, 3)</code> foi reciclado para <code>c(2, 3, 2, 3)</code>, de modo que a
@@ -326,7 +326,7 @@ operação passou a ser <code>c(2, 3, 5, 7)^c(2, 3, 2, 3)</code>.</p>
 <div class="atencao">
 <p>A reciclagem é cómoda, mas pode esconder erros. Se o comprimento do vetor maior
 não for múltiplo do menor, a reciclagem fica “incompleta” e o R emite um aviso:</p>
-<div class="sourceCode" id="cb42"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb50"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">3</span>, <span class="fl">5</span>, <span class="fl">7</span><span class="op">)</span><span class="op">^</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">3</span>, <span class="fl">4</span><span class="op">)</span></span>
 <span><span class="co">## Warning: longer object length is not a multiple of shorter object length</span></span>
 <span><span class="co">## [1]   4  27 625  49</span></span></code></pre></div>
@@ -411,7 +411,7 @@ de 12 propriedades.</p>
 <ol style="list-style-type: lower-alpha">
 <li>Crie o vetor <code>producao</code>:</li>
 </ol>
-<div class="sourceCode" id="cb43"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb51"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">producao</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">80</span>, <span class="fl">95</span>, <span class="fl">70</span>, <span class="fl">68</span>, <span class="fl">105</span>, <span class="fl">120</span>, <span class="fl">73</span>, <span class="fl">89</span>, <span class="fl">110</span>, <span class="fl">66</span>, <span class="fl">92</span>, <span class="fl">78</span><span class="op">)</span></span></code></pre></div>
 <ol start="2" style="list-style-type: lower-alpha">
 <li>Calcule a produção média por propriedade e guarde-a em <code>media_total</code>.</li>
@@ -452,7 +452,7 @@ ordem intrínseca, como cores).</li>
 <span class="header-section-number">4.2.1</span> Criar fatores<a class="anchor" aria-label="anchor" href="#criar-fatores"><i class="fas fa-link"></i></a>
 </h3>
 <p>Criamos um fator com a função <code><a href="https://rdrr.io/r/base/factor.html">factor()</a></code>:</p>
-<div class="sourceCode" id="cb44"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb52"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">dados</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"baixo"</span>, <span class="st">"medio"</span>, <span class="st">"alto"</span>, <span class="st">"medio"</span>, <span class="st">"baixo"</span>, <span class="st">"alto"</span><span class="op">)</span></span>
 <span><span class="va">factor_dados</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">dados</span><span class="op">)</span></span>
 <span><span class="va">factor_dados</span></span>
@@ -461,7 +461,7 @@ ordem intrínseca, como cores).</li>
 <div class="atencao">
 <p>Por omissão, o R ordena os níveis <strong>alfabeticamente</strong>. Repare que a ordem ficou <code>"alto"</code>, <code>"baixo"</code>, <code>"medio"</code>, o que quase nunca corresponde à ordem pretendida. Para variáveis com uma hierarquia natural, isto pode ser um problema: gráficos, tabelas e resumos podem aparecer por ordem alfabética, e não pela ordem lógica das categorias. A solução é indicar explicitamente a ordem dos níveis.</p>
 </div>
-<div class="sourceCode" id="cb45"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb53"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Especificar a ordem dos níveis</span></span>
 <span><span class="va">factor_dados</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">dados</span>, levels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"baixo"</span>, <span class="st">"medio"</span>, <span class="st">"alto"</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="va">factor_dados</span></span>
@@ -470,7 +470,7 @@ ordem intrínseca, como cores).</li>
 <p>Se, além da ordem de apresentação, quisermos que o R reconheça uma verdadeira
 <strong>hierarquia</strong> entre os níveis (para poder responder a perguntas do tipo “é este
 nível maior do que aquele?”), usamos <code>ordered = TRUE</code>:</p>
-<div class="sourceCode" id="cb46"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb54"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">fator_ordenado</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">dados</span>,</span>
 <span>                         levels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"baixo"</span>, <span class="st">"medio"</span>, <span class="st">"alto"</span><span class="op">)</span>,</span>
 <span>                         ordered <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
@@ -482,7 +482,7 @@ nível maior do que aquele?”), usamos <code>ordered = TRUE</code>:</p>
 <span class="header-section-number">4.2.2</span> Manipular fatores<a class="anchor" aria-label="anchor" href="#manipular-fatores"><i class="fas fa-link"></i></a>
 </h3>
 <p>Podemos consultar e modificar os níveis de um fator:</p>
-<div class="sourceCode" id="cb47"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb55"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Consultar os níveis</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/levels.html">levels</a></span><span class="op">(</span><span class="va">factor_dados</span><span class="op">)</span></span>
 <span><span class="co">## [1] "baixo" "medio" "alto"</span></span>
@@ -498,7 +498,7 @@ nível maior do que aquele?”), usamos <code>ordered = TRUE</code>:</p>
 <span class="header-section-number">4.2.3</span> Gerar fatores com <code>gl()</code><a class="anchor" aria-label="anchor" href="#gerar-fatores-com-gl"><i class="fas fa-link"></i></a>
 </h3>
 <p>Quando precisamos de criar fatores com padrões regulares, como acontece frequentemente em desenhos experimentais com grupos de igual dimensão, a função <code><a href="https://rdrr.io/r/base/gl.html">gl()</a></code> (<em>generate levels</em>) permite fazê-lo de forma simples e rápida.</p>
-<div class="sourceCode" id="cb48"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb56"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># gl(n, k): n níveis, cada um repetido k vezes</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/gl.html">gl</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">4</span>, k <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></span>
 <span><span class="co">##  [1] 1 1 1 2 2 2 3 3 3 4 4 4</span></span>
@@ -536,7 +536,7 @@ classificando as respostas em “Muito insatisfeito”, “Insatisfeito”, “N
 <ol style="list-style-type: lower-alpha">
 <li>Crie o vetor <code>respostas</code>:</li>
 </ol>
-<div class="sourceCode" id="cb49"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb57"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">respostas</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Satisfeito"</span>, <span class="st">"Muito satisfeito"</span>, <span class="st">"Neutro"</span>, <span class="st">"Insatisfeito"</span>, <span class="st">"Satisfeito"</span>,</span>
 <span>  <span class="st">"Muito insatisfeito"</span>, <span class="st">"Satisfeito"</span>, <span class="st">"Neutro"</span>, <span class="st">"Insatisfeito"</span>, <span class="st">"Satisfeito"</span>,</span>
 <span>  <span class="st">"Muito satisfeito"</span>, <span class="st">"Neutro"</span>, <span class="st">"Insatisfeito"</span>, <span class="st">"Satisfeito"</span>, <span class="st">"Neutro"</span>,</span>
@@ -555,7 +555,7 @@ níveis.</li>
 <ol style="list-style-type: lower-alpha">
 <li>Crie o vetor <code>phda_desafios</code>:</li>
 </ol>
-<div class="sourceCode" id="cb50"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb58"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">phda_desafios</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Concentração"</span>, <span class="st">"Procrastinação"</span>, <span class="st">"Gestão do tempo"</span>, <span class="st">"Organização"</span>,</span>
 <span>  <span class="st">"Nenhum"</span>, <span class="st">"Concentração"</span>, <span class="st">"Concentração"</span>, <span class="st">"Organização"</span>, <span class="st">"Organização"</span>, <span class="st">"Organização"</span>,</span>
 <span>  <span class="st">"Gestão do tempo"</span>, <span class="st">"Gestão do tempo"</span>, <span class="st">"Procrastinação"</span>, <span class="st">"Procrastinação"</span>,</span>
@@ -575,7 +575,7 @@ essencial para ambientes de ensino inclusivos.</p>
 <ol style="list-style-type: lower-alpha">
 <li>Crie o vetor <code>dificuldades</code> com as respostas de 10 crianças:</li>
 </ol>
-<div class="sourceCode" id="cb51"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb59"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">dificuldades</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Leitura"</span>, <span class="st">"Escrita"</span>, <span class="st">"Ortografia"</span>, <span class="st">"Leitura"</span>, <span class="st">"Compreensão"</span>,</span>
 <span>  <span class="st">"Ortografia"</span>, <span class="st">"Memória auditiva"</span>, <span class="st">"Leitura"</span>, <span class="st">"Escrita"</span>, <span class="st">"Ortografia"</span><span class="op">)</span></span></code></pre></div>
 <p>Converta-o num fator não ordenado <code>dislexia_fator</code>.</p>
@@ -603,7 +603,7 @@ retangular. O <strong>array</strong> generaliza a ideia a três ou mais dimensõ
 </h3>
 <p>Criamos uma matriz com <code><a href="https://rdrr.io/r/base/matrix.html">matrix()</a></code>, indicando o número de linhas (<code>nrow</code>) e de
 colunas (<code>ncol</code>):</p>
-<div class="sourceCode" id="cb52"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb60"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">3</span>, <span class="fl">4</span>, <span class="fl">5</span>, <span class="fl">6</span><span class="op">)</span>, nrow <span class="op">=</span> <span class="fl">2</span>, ncol <span class="op">=</span> <span class="fl">3</span>, byrow <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
 <span><span class="co">##      [,1] [,2] [,3]</span></span>
 <span><span class="co">## [1,]    1    3    5</span></span>
@@ -615,7 +615,7 @@ preencher por linhas, use <code>byrow = TRUE</code>. Esta é outra fonte frequen
 surpresa para quem começa — se a matriz “sai trocada”, verifique este argumento.</p>
 </div>
 <p>As operações vetorizadas também se aplicam a matrizes:</p>
-<div class="sourceCode" id="cb53"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb61"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">3</span>, <span class="fl">4</span>, <span class="fl">5</span>, <span class="fl">6</span><span class="op">)</span>, nrow <span class="op">=</span> <span class="fl">2</span>, ncol <span class="op">=</span> <span class="fl">3</span><span class="op">)</span> <span class="op">&gt;</span> <span class="fl">5</span></span>
 <span><span class="co">##       [,1]  [,2]  [,3]</span></span>
 <span><span class="co">## [1,] FALSE FALSE FALSE</span></span>
@@ -628,7 +628,7 @@ surpresa para quem começa — se a matriz “sai trocada”, verifique este arg
 <p>Frequentemente, temos vetores que queremos juntar como linhas ou colunas de uma
 matriz. As funções <code><a href="https://rdrr.io/r/base/cbind.html">rbind()</a></code> (<em>row bind</em>, juntar por linhas) e <code><a href="https://rdrr.io/r/base/cbind.html">cbind()</a></code> (<em>column
 bind</em>, juntar por colunas) fazem exatamente isso:</p>
-<div class="sourceCode" id="cb54"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb62"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">v1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">3</span><span class="op">)</span></span>
 <span><span class="va">v2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">4</span>, <span class="fl">5</span>, <span class="fl">6</span><span class="op">)</span></span>
 <span></span>
@@ -649,7 +649,7 @@ bind</em>, juntar por colunas) fazem exatamente isso:</p>
 </h3>
 <p>A indexação estende naturalmente a dos vetores, agora com <strong>dois</strong> índices,
 <code>[linha, coluna]</code>. Deixar um deles em branco significa “todas”:</p>
-<div class="sourceCode" id="cb55"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb63"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">A</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="op">(</span><span class="op">-</span><span class="fl">4</span><span class="op">)</span><span class="op">:</span><span class="fl">5</span>, nrow <span class="op">=</span> <span class="fl">2</span>, ncol <span class="op">=</span> <span class="fl">5</span><span class="op">)</span></span>
 <span><span class="va">A</span></span>
 <span><span class="co">##      [,1] [,2] [,3] [,4] [,5]</span></span>
@@ -682,7 +682,7 @@ bind</em>, juntar por colunas) fazem exatamente isso:</p>
 </h3>
 <p>Tal como os vetores, as matrizes podem ter nomes nas linhas e colunas, o que
 torna os resultados muito mais legíveis:</p>
-<div class="sourceCode" id="cb56"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb64"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="fl">12</span><span class="op">)</span>, nrow <span class="op">=</span> <span class="fl">4</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="st">"dados"</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html">rownames</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">letters</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">4</span><span class="op">]</span></span></code></pre></div>
@@ -694,7 +694,7 @@ torna os resultados muito mais legíveis:</p>
 <p>Aqui reside uma das grandes vantagens do R para a estatística: a álgebra linear é
 imediata. A <strong>multiplicação de matrizes</strong> faz-se com o operador <code>%*%</code> (repare que
 <code>*</code> faria a multiplicação elemento a elemento, que é outra coisa):</p>
-<div class="sourceCode" id="cb57"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb65"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">M</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="fl">20</span><span class="op">)</span>, nrow <span class="op">=</span> <span class="fl">4</span>, ncol <span class="op">=</span> <span class="fl">5</span><span class="op">)</span></span>
 <span><span class="va">N</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="fl">15</span><span class="op">)</span>, nrow <span class="op">=</span> <span class="fl">5</span>, ncol <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></span>
 <span></span>
@@ -743,7 +743,7 @@ uma matriz quadrada:</p>
 </table></div>
 <p>Há ainda a poderosa função <code><a href="https://rdrr.io/r/base/apply.html">apply()</a></code>, que aplica uma função a cada linha ou a cada
 coluna. O segundo argumento indica a margem: <code>1</code> para linhas, <code>2</code> para colunas:</p>
-<div class="sourceCode" id="cb58"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb66"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/apply.html">apply</a></span><span class="op">(</span><span class="va">M</span>, <span class="fl">1</span>, <span class="va">sum</span><span class="op">)</span>    <span class="co"># soma de cada linha</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/apply.html">apply</a></span><span class="op">(</span><span class="va">M</span>, <span class="fl">2</span>, <span class="va">mean</span><span class="op">)</span>   <span class="co"># média de cada coluna</span></span></code></pre></div>
 </div>
@@ -753,7 +753,7 @@ coluna. O segundo argumento indica a margem: <code>1</code> para linhas, <code>2
 </h3>
 <p><code><a href="https://rdrr.io/r/base/cbind.html">rbind()</a></code> e <code><a href="https://rdrr.io/r/base/cbind.html">cbind()</a></code> também servem para acrescentar linhas e colunas a uma matriz
 já existente:</p>
-<div class="sourceCode" id="cb59"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb67"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">X</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">3</span>, <span class="fl">4</span>, <span class="fl">5</span>, <span class="fl">6</span><span class="op">)</span>, nrow <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html">cbind</a></span><span class="op">(</span><span class="va">X</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">7</span>, <span class="fl">8</span><span class="op">)</span><span class="op">)</span>          <span class="co"># nova coluna à direita</span></span>
@@ -766,11 +766,11 @@ já existente:</p>
 <p>Quando duas dimensões não bastam, generalizamos para o <strong>array</strong>. Um array
 tridimensional pode imaginar-se como um “empilhamento” de matrizes (camadas).
 Criamo-lo com <code><a href="https://rdrr.io/r/base/array.html">array()</a></code>, indicando as dimensões em <code>dim</code>:</p>
-<div class="sourceCode" id="cb60"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb68"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># 4 linhas, 3 colunas, 2 camadas</span></span>
 <span><span class="va">A</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/array.html">array</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">24</span>, dim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">4</span>, <span class="fl">3</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <p>A indexação usa agora três índices, <code>[linha, coluna, camada]</code>:</p>
-<div class="sourceCode" id="cb61"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb69"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">A</span><span class="op">[</span><span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">1</span><span class="op">]</span>     <span class="co"># elemento na linha 1, coluna 2, camada 1</span></span>
 <span><span class="co">## [1] 5</span></span>
 <span></span>
@@ -837,7 +837,7 @@ imagem <span class="math inline">\(10 \times 10\)</span>:</p>
 <ol style="list-style-type: lower-alpha">
 <li>Crie a matriz <code>I</code>:</li>
 </ol>
-<div class="sourceCode" id="cb62"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb70"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">I</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span></span>
 <span>  <span class="fl">0</span>,<span class="fl">0</span>,<span class="fl">0</span>,<span class="fl">0</span>,<span class="fl">0</span>,<span class="fl">0</span>,<span class="fl">0</span>,<span class="fl">0</span>,<span class="fl">0</span>,<span class="fl">0</span>,</span>
 <span>  <span class="fl">0</span>,<span class="fl">9</span>,<span class="fl">9</span>,<span class="fl">9</span>,<span class="fl">0</span>,<span class="fl">0</span>,<span class="fl">9</span>,<span class="fl">9</span>,<span class="fl">9</span>,<span class="fl">0</span>,</span>
@@ -913,7 +913,7 @@ até nós.</p>
 <span class="header-section-number">4.4.1</span> Criar um data frame<a class="anchor" aria-label="anchor" href="#criar-um-data-frame"><i class="fas fa-link"></i></a>
 </h3>
 <p>Criamo-lo com <code><a href="https://rdrr.io/r/base/data.frame.html">data.frame()</a></code>, indicando cada coluna pelo seu nome:</p>
-<div class="sourceCode" id="cb63"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb71"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span></span>
 <span>  id <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">4</span>,</span>
 <span>  nome <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Ana"</span>, <span class="st">"Bruno"</span>, <span class="st">"Carlos"</span>, <span class="st">"Diana"</span><span class="op">)</span>,</span>
@@ -928,7 +928,7 @@ até nós.</p>
 <span><span class="co">## 4  4  Diana    28    8000</span></span></code></pre></div>
 <p>Para perceber porque não basta uma matriz, tentemos criar a “mesma” tabela com
 <code><a href="https://rdrr.io/r/base/cbind.html">cbind()</a></code>:</p>
-<div class="sourceCode" id="cb64"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb72"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html">cbind</a></span><span class="op">(</span>id <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">4</span>, nome <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Ana"</span>, <span class="st">"Bruno"</span>, <span class="st">"Carlos"</span>, <span class="st">"Diana"</span><span class="op">)</span>,</span>
 <span>      idade <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">23</span>, <span class="fl">35</span>, <span class="fl">31</span>, <span class="fl">28</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">##      id  nome     idade </span></span>
@@ -949,7 +949,7 @@ coluna preserva o seu tipo.</p>
 <p>Um data frame oferece várias formas de aceder às suas colunas, e vale a pena
 conhecê-las porque devolvem coisas subtilmente diferentes. A forma mais legível é
 o operador <code>$</code>:</p>
-<div class="sourceCode" id="cb65"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb73"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">df</span><span class="op">$</span><span class="va">id</span>           <span class="co"># a coluna 'id' como vetor</span></span>
 <span><span class="co">## [1] 1 2 3 4</span></span>
 <span></span>
@@ -976,7 +976,7 @@ simples <code>[ ]</code> preservam a <strong>estrutura</strong> (um data frame).
 </h3>
 <p>As linhas acedem-se com a notação <code>[linha, coluna]</code>, tal como nas matrizes,
 deixando em branco a dimensão que queremos por inteiro:</p>
-<div class="sourceCode" id="cb66"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb74"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">df</span><span class="op">[</span><span class="fl">1</span>, <span class="op">]</span>         <span class="co"># a primeira linha (todas as colunas)</span></span>
 <span><span class="va">df</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">2</span>, <span class="op">]</span>       <span class="co"># as duas primeiras linhas</span></span>
 <span><span class="va">df</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">4</span><span class="op">)</span>, <span class="op">]</span>   <span class="co"># as linhas 1 e 4</span></span>
@@ -990,7 +990,7 @@ deixando em branco a dimensão que queremos por inteiro:</p>
 </h3>
 <p>Acrescentar uma coluna é tão simples como atribuir-lhe um valor com <code>$</code>; muitas
 vezes, a nova coluna é calculada a partir das existentes:</p>
-<div class="sourceCode" id="cb67"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb75"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Nova coluna calculada (aumento de 10% no salário)</span></span>
 <span><span class="va">df</span><span class="op">$</span><span class="va">novo_salario</span> <span class="op">&lt;-</span> <span class="va">df</span><span class="op">$</span><span class="va">salario</span> <span class="op">*</span> <span class="fl">1.1</span></span>
 <span></span>
@@ -1005,7 +1005,7 @@ vezes, a nova coluna é calculada a partir das existentes:</p>
 típicas, cada uma com a sua ferramenta.</p>
 <p><strong>Acrescentar observações (linhas)</strong> com <code><a href="https://rdrr.io/r/base/cbind.html">rbind()</a></code>, quando as tabelas têm as
 mesmas colunas:</p>
-<div class="sourceCode" id="cb68"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb76"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">df1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>id <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">2</span>, nome <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Ana"</span>, <span class="st">"Bruno"</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="va">df2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>id <span class="op">=</span> <span class="fl">3</span><span class="op">:</span><span class="fl">4</span>, nome <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Carlos"</span>, <span class="st">"Diana"</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html">rbind</a></span><span class="op">(</span><span class="va">df1</span>, <span class="va">df2</span><span class="op">)</span></span></code></pre></div>
@@ -1014,7 +1014,7 @@ número de linhas, alinhadas pela ordem.</p>
 <p><strong>Cruzar tabelas por uma chave comum</strong> com <code><a href="https://rdrr.io/r/base/merge.html">merge()</a></code> — a operação mais poderosa e
 a mais próxima do que se faz numa base de dados. Cruzamos duas tabelas por uma
 variável partilhada (como <code>id</code> ou <code>curso</code>):</p>
-<div class="sourceCode" id="cb69"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb77"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">df1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>id <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">3</span>, nome <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Ana"</span>, <span class="st">"Bruno"</span>, <span class="st">"Carlos"</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="va">df2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>id <span class="op">=</span> <span class="fl">2</span><span class="op">:</span><span class="fl">4</span>, idade <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">35</span>, <span class="fl">40</span>, <span class="fl">28</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
@@ -1039,7 +1039,7 @@ capítulo de manipulação de dados.</p>
 <p>Perante um conjunto de dados novo, o primeiro passo é sempre <em>conhecê-lo</em>. Um
 punhado de funções permite fazê-lo rapidamente. Usemos como exemplo o <code>iris</code>, um
 famoso conjunto de dados incluído no R:</p>
-<div class="sourceCode" id="cb70"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb78"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">df</span> <span class="op">&lt;-</span> <span class="va">iris</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">df</span><span class="op">)</span>     <span class="co"># nomes das colunas</span></span>
@@ -1063,7 +1063,7 @@ poupam horas de confusão mais à frente.</p>
 <p>Uma das tarefas mais comuns é selecionar as linhas que satisfazem uma condição.
 A função <code><a href="https://rdrr.io/r/base/subset.html">subset()</a></code> fá-lo de forma clara, permitindo filtrar linhas e escolher
 colunas ao mesmo tempo:</p>
-<div class="sourceCode" id="cb71"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb79"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span></span>
 <span>  id <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">4</span>,</span>
 <span>  nome <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Ana"</span>, <span class="st">"Bruno"</span>, <span class="st">"Carlos"</span>, <span class="st">"Diana"</span><span class="op">)</span>,</span>
@@ -1083,7 +1083,7 @@ colunas ao mesmo tempo:</p>
 Adapta-se ao objeto: para uma variável numérica, dá os quartis, a média e os
 extremos; para um fator, conta as frequências; para um data frame inteiro,
 resume cada coluna à sua maneira:</p>
-<div class="sourceCode" id="cb72"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb80"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">iris</span><span class="op">)</span></span>
 <span><span class="co">##   Sepal.Length   Sepal.Width    Petal.Length   Petal.Width         Species  </span></span>
 <span><span class="co">##  Min.   :4.30   Min.   :2.00   Min.   :1.00   Min.   :0.1   setosa    :50  </span></span>
@@ -1100,12 +1100,12 @@ resume cada coluna à sua maneira:</p>
 <p>Como já vimos com os vetores, os valores em falta exigem cuidado. O conjunto de
 dados <code>airquality</code>, por exemplo, tem <code>NA</code> em algumas colunas, o que faz com que a
 sua média direta seja <code>NA</code>:</p>
-<div class="sourceCode" id="cb73"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb81"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/colSums.html">colMeans</a></span><span class="op">(</span><span class="va">airquality</span><span class="op">)</span></span>
 <span><span class="co">##   Ozone Solar.R    Wind    Temp   Month     Day </span></span>
 <span><span class="co">##      NA      NA   9.958  77.882   6.993  15.804</span></span></code></pre></div>
 <p>A solução é a mesma: o argumento <code>na.rm = TRUE</code> ignora os valores em falta:</p>
-<div class="sourceCode" id="cb74"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb82"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">airquality</span><span class="op">$</span><span class="va">Ozone</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
 <span><span class="co">## [1] 42.13</span></span>
 <span></span>
@@ -1155,7 +1155,7 @@ fictícia:</p>
 <ol style="list-style-type: lower-alpha">
 <li>Crie o data frame:</li>
 </ol>
-<div class="sourceCode" id="cb75"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb83"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">titanic</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span></span>
 <span>  nome <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Ana"</span>, <span class="st">"Bruno"</span>, <span class="st">"Clara"</span>, <span class="st">"Daniel"</span>, <span class="st">"Eva"</span>, <span class="st">"Filipe"</span><span class="op">)</span>,</span>
 <span>  sexo <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"F"</span>, <span class="st">"M"</span>, <span class="st">"F"</span>, <span class="st">"M"</span>, <span class="st">"F"</span>, <span class="st">"M"</span><span class="op">)</span>,</span>
@@ -1190,7 +1190,7 @@ devolvia <code>"list"</code>).</p>
 <span class="header-section-number">4.5.1</span> Criar e manipular listas<a class="anchor" aria-label="anchor" href="#criar-e-manipular-listas"><i class="fas fa-link"></i></a>
 </h3>
 <p>Criamos uma lista com <code><a href="https://rdrr.io/r/base/list.html">list()</a></code>, dando (opcionalmente) um nome a cada elemento:</p>
-<div class="sourceCode" id="cb76"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb84"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">minha_lista</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span></span>
 <span>  nome <span class="op">=</span> <span class="st">"Estudante"</span>,</span>
 <span>  idade <span class="op">=</span> <span class="fl">21</span>,</span>
@@ -1202,7 +1202,7 @@ devolvia <code>"list"</code>).</p>
 <p>Repare na variedade: um texto, um número, dois vetores, uma matriz e uma função —
 tudo dentro de um único objeto. Aceder aos elementos faz-se de três formas, cuja
 distinção é importante:</p>
-<div class="sourceCode" id="cb77"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb85"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># [[ ]] ou $ extraem o CONTEÚDO do elemento (o vetor, o número, etc.)</span></span>
 <span><span class="va">minha_lista</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span></span>
 <span><span class="co">## [1] "Estudante"</span></span>
@@ -1226,7 +1226,7 @@ mala com compartimentos, <code>[[ ]]</code> tira o objeto do compartimento, ao p
 <code>[ ]</code> dá-nos uma mala mais pequena só com esse compartimento.</p>
 </div>
 <p>Acrescentar e remover elementos segue a lógica habitual:</p>
-<div class="sourceCode" id="cb78"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb86"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Acrescentar um elemento</span></span>
 <span><span class="va">minha_lista</span><span class="op">$</span><span class="va">nota_final</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">minha_lista</span><span class="op">$</span><span class="va">notas</span><span class="op">)</span></span>
 <span></span>
@@ -1274,7 +1274,7 @@ produção mensal.</li>
 </ol>
 <p><strong>7.</strong> Investigadores registaram, para três estudantes, o número de mensagens
 trocadas com o ChatGPT e o tempo total de uso (minutos) numa semana:</p>
-<div class="sourceCode" id="cb79"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb87"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">chatgpt_logs</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span></span>
 <span>  estudante1 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>nome <span class="op">=</span> <span class="st">"Ana"</span>, mensagens <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">12</span>, <span class="fl">15</span>, <span class="fl">9</span><span class="op">)</span>, tempo_total <span class="op">=</span> <span class="fl">35</span><span class="op">)</span>,</span>
 <span>  estudante2 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>nome <span class="op">=</span> <span class="st">"Bruno"</span>, mensagens <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">7</span>, <span class="fl">6</span>, <span class="fl">5</span>, <span class="fl">12</span><span class="op">)</span>, tempo_total <span class="op">=</span> <span class="fl">42</span><span class="op">)</span>,</span>
@@ -1290,7 +1290,7 @@ forma mais intensiva?</li>
 </ol>
 <p><strong>8.</strong> Três perfis de Instagram sobre estatística publicaram vários conteúdos numa
 semana:</p>
-<div class="sourceCode" id="cb80"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb88"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">instagram</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span></span>
 <span>  biostats_girl <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>temas <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"café"</span>, <span class="st">"dados"</span>, <span class="st">"meme"</span><span class="op">)</span>,</span>
 <span>                       visualizacoes <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1200</span>, <span class="fl">1800</span>, <span class="fl">2400</span><span class="op">)</span><span class="op">)</span>,</span>
@@ -1309,7 +1309,7 @@ melhor desempenho médio?</li>
 </ol>
 <p><strong>9.</strong> Os resultados de três turmas na disciplina de Probabilidades incluem, por
 turma, as notas dos alunos em dois testes (T1 e T2) e se entregaram o projeto:</p>
-<div class="sourceCode" id="cb81"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb89"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">avaliacoes</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span></span>
 <span>  turmaA <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>notas_t1 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">14</span>, <span class="fl">12</span>, <span class="fl">16</span><span class="op">)</span>, notas_t2 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">15</span>, <span class="fl">13</span>, <span class="fl">14</span><span class="op">)</span>,</span>
 <span>                projeto <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="cn">TRUE</span>, <span class="cn">TRUE</span>, <span class="cn">FALSE</span><span class="op">)</span><span class="op">)</span>,</span>
@@ -1402,7 +1402,7 @@ aprovados (quem entregou o projeto e teve média <span class="math inline">\(\ge
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Introdução ao R e à Simulação Estatística</strong>: Um Laboratório de Estatística Computacional" was written by Renato de Paula and Nuno Brites. It was last built on 12 de July de 2026.</p>
+    <p>"<strong>Introdução ao R e à Simulação Estatística</strong>: Um Laboratório de Estatística Computacional" was written by Renato de Paula and Nuno Brites. It was last built on 15 de July de 2026.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

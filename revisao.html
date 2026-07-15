@@ -100,7 +100,7 @@ funções, estruturas de decisão, ciclos e a família <code>apply</code>.</p>
 <p><strong>1.</strong> Um investigador analisa uma sondagem que avalia a satisfação de clientes com
 três serviços (A, B e C). Cada linha representa um cliente e cada coluna a pontuação
 (de 1 a 10) atribuída a cada serviço:</p>
-<div class="sourceCode" id="cb169"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb177"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">satisfacao</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span></span>
 <span>  servico_A <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">8</span>, <span class="fl">5</span>, <span class="fl">9</span>, <span class="fl">6</span>, <span class="fl">7</span>, <span class="fl">4</span>, <span class="fl">10</span>, <span class="fl">6</span>, <span class="fl">3</span>, <span class="fl">7</span><span class="op">)</span>,</span>
 <span>  servico_B <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">7</span>, <span class="fl">6</span>, <span class="fl">8</span>, <span class="fl">5</span>, <span class="fl">8</span>, <span class="fl">5</span>, <span class="fl">9</span>, <span class="fl">7</span>, <span class="fl">4</span>, <span class="fl">6</span><span class="op">)</span>,</span>
@@ -118,7 +118,7 @@ contrário). Acrescente essa informação numa nova coluna <code>classificacao</
 longo de 5 dias úteis. A meta é realizar pelo menos 20 tarefas por dia; pretende-se
 saber quem atingiu a meta em pelo menos 3 dos 5 dias. Cada linha é um colaborador,
 cada coluna um dia:</p>
-<div class="sourceCode" id="cb170"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb178"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">tarefa_funcionarios</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span></span>
 <span>  dia1 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">22</span>, <span class="fl">18</span>, <span class="fl">19</span>, <span class="fl">25</span>, <span class="fl">30</span>, <span class="fl">15</span>, <span class="fl">21</span>, <span class="fl">24</span>, <span class="fl">20</span>, <span class="fl">19</span>, <span class="fl">28</span>, <span class="fl">26</span>, <span class="fl">12</span>, <span class="fl">20</span>, <span class="fl">18</span><span class="op">)</span>,</span>
 <span>  dia2 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">18</span>, <span class="fl">21</span>, <span class="fl">23</span>, <span class="fl">20</span>, <span class="fl">27</span>, <span class="fl">18</span>, <span class="fl">20</span>, <span class="fl">25</span>, <span class="fl">16</span>, <span class="fl">21</span>, <span class="fl">22</span>, <span class="fl">29</span>, <span class="fl">17</span>, <span class="fl">19</span>, <span class="fl">20</span><span class="op">)</span>,</span>
@@ -137,7 +137,7 @@ lógico indicando, para cada colaborador, se atingiu a meta em pelo menos 3 dias
 <p><strong>3.</strong> Um estatístico estuda o comportamento da média amostral. Simulou 6 amostras de
 tamanho 15 (valores entre 0 e 100) e quer calcular a média de cada uma, interrompendo
 o processo assim que encontrar uma média superior a 75. Os dados estão na matriz:</p>
-<div class="sourceCode" id="cb171"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb179"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">amostras</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span></span>
 <span>    <span class="fl">52</span>, <span class="fl">68</span>, <span class="fl">75</span>, <span class="fl">48</span>, <span class="fl">60</span>, <span class="fl">55</span>, <span class="fl">72</span>, <span class="fl">81</span>, <span class="fl">64</span>, <span class="fl">70</span>, <span class="fl">45</span>, <span class="fl">69</span>, <span class="fl">74</span>, <span class="fl">60</span>, <span class="fl">71</span>,</span>
@@ -191,7 +191,7 @@ desvio padrão 2.</p>
 <p><strong>7.</strong> Um climatologista estuda as temperaturas médias diárias em 12 cidades ao longo
 de uma semana. Quer a temperatura média semanal de cada cidade e verificar se está
 acima ou abaixo de 25 ºC. Cada linha é uma cidade, cada coluna um dia:</p>
-<div class="sourceCode" id="cb172"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb180"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">temperaturas_cidades</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span></span>
 <span>  segunda  <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">28</span>, <span class="fl">22</span>, <span class="fl">25</span>, <span class="fl">19</span>, <span class="fl">30</span>, <span class="fl">24</span>, <span class="fl">21</span>, <span class="fl">26</span>, <span class="fl">27</span>, <span class="fl">23</span>, <span class="fl">31</span>, <span class="fl">20</span><span class="op">)</span>,</span>
 <span>  terca    <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">29</span>, <span class="fl">24</span>, <span class="fl">23</span>, <span class="fl">20</span>, <span class="fl">32</span>, <span class="fl">25</span>, <span class="fl">22</span>, <span class="fl">27</span>, <span class="fl">26</span>, <span class="fl">24</span>, <span class="fl">33</span>, <span class="fl">21</span><span class="op">)</span>,</span>
@@ -214,7 +214,7 @@ ou <code>"Abaixo de 25ºC"</code> (caso contrário).</p></li>
 fenómeno relevante em contextos críticos como a aviação, a medicina ou a criptografia.
 Um engenheiro simula o impacto da radiação em blocos de memória RAM, procurando os
 blocos mais afetados:</p>
-<div class="sourceCode" id="cb173"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb181"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">2025</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Estado original de 1000 bits (0 ou 1)</span></span>
@@ -258,7 +258,7 @@ próximo capítulo aprendemos a representar dados graficamente com o R base.</p>
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Introdução ao R e à Simulação Estatística</strong>: Um Laboratório de Estatística Computacional" was written by Renato de Paula and Nuno Brites. It was last built on 12 de July de 2026.</p>
+    <p>"<strong>Introdução ao R e à Simulação Estatística</strong>: Um Laboratório de Estatística Computacional" was written by Renato de Paula and Nuno Brites. It was last built on 15 de July de 2026.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

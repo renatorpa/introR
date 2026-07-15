@@ -202,7 +202,7 @@ F^{-1}(u)=\inf\{x:F(x)\geq u\}
 \]</span>
 é a mais rigorosa e a mais usada em teoria da probabilidade.</p>
 </div>
-<div class="sourceCode" id="cb289"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb297"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Esquema do algoritmo</span></span>
 <span><span class="co"># 1. Gerar u ~ U(0, 1)</span></span>
 <span><span class="co"># 2. Percorrer os valores, acumulando probabilidades, até F(x_i) &gt;= u</span></span>
@@ -215,7 +215,7 @@ F^{-1}(u)=\inf\{x:F(x)\geq u\}
 <span class="math inline">\(0{,}20 &lt; U \leq 0{,}35\)</span>; 3 se <span class="math inline">\(0{,}35 &lt; U \leq 0{,}60\)</span>; e 4 se
 <span class="math inline">\(0{,}60 &lt; U \leq 1\)</span>. Na prática computacional, devido à continuidade de <span class="math inline">\(U\)</span>, escrever
 as desigualdades com <code>&lt;</code> ou <code>&lt;=</code> nos pontos de corte não altera a distribuição gerada.</p>
-<div class="sourceCode" id="cb290"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb298"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">gerar_inversa</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="va">u</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html">runif</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span></span>
 <span>  <span class="kw">if</span> <span class="op">(</span><span class="va">u</span> <span class="op">&lt;=</span> <span class="fl">0.20</span><span class="op">)</span>      <span class="kw"><a href="https://rdrr.io/r/base/function.html">return</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span></span>
@@ -233,7 +233,7 @@ as desigualdades com <code>&lt;</code> ou <code>&lt;=</code> nos pontos de corte
 <p><strong>Exemplo 2 (uniforme discreta, algoritmo geral).</strong> Para <span class="math inline">\(X\)</span> uniforme em
 <span class="math inline">\(\{1, 2, \ldots, 10\}\)</span> (todas as probabilidades iguais a <span class="math inline">\(1/10\)</span>), o algoritmo geral
 percorre os valores acumulando probabilidade até ultrapassar <span class="math inline">\(U\)</span>:</p>
-<div class="sourceCode" id="cb291"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb299"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">gerar_va_inversa</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="va">u</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html">runif</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span></span>
 <span>  <span class="va">p</span> <span class="op">&lt;-</span> <span class="fl">1</span><span class="op">/</span><span class="fl">10</span>       <span class="co"># P(X = 1)</span></span>
@@ -257,7 +257,7 @@ Figura 22.1: Amostra de uma uniforme discreta gerada por transformada inversa.
 </div>
 <p><strong>Exemplo 3 (Bernoulli).</strong> Para <span class="math inline">\(X \sim \text{Bernoulli}(p)\)</span>, a receita reduz-se a: gerar
 <span class="math inline">\(U\)</span> e devolver 1 se <span class="math inline">\(U \leq p\)</span>, e 0 caso contrário.</p>
-<div class="sourceCode" id="cb292"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb300"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">gerar_bernoulli_inversa</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">p</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="va">U</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html">runif</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span></span>
 <span>  <span class="kw">if</span> <span class="op">(</span><span class="va">U</span> <span class="op">&lt;=</span> <span class="va">p</span><span class="op">)</span> <span class="fl">1</span> <span class="kw">else</span> <span class="fl">0</span></span>
@@ -269,7 +269,7 @@ Figura 22.1: Amostra de uma uniforme discreta gerada por transformada inversa.
 <span><span class="co">## [1] 0.82</span></span></code></pre></div>
 <p><strong>Exemplo 4 (binomial).</strong> Uma <span class="math inline">\(\text{Binomial}(n, p)\)</span> é a soma de <span class="math inline">\(n\)</span> Bernoullis i.i.d.,
 pelo que basta somar <span class="math inline">\(n\)</span> chamadas ao gerador anterior:</p>
-<div class="sourceCode" id="cb293"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb301"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">gerar_binomial_inversa</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">n</span>, <span class="va">p</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/lapply.html">replicate</a></span><span class="op">(</span><span class="va">n</span>, <span class="fu">gerar_bernoulli_inversa</span><span class="op">(</span><span class="va">p</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="op">}</span></span>
@@ -290,7 +290,7 @@ Figura 22.2: Amostra de uma Binomial(10, 0.5) obtida somando Bernoullis.
 <span class="math inline">\(F(y) = 1 - (1-p)^{y+1}\)</span>, <span class="math inline">\(y \geq 0\)</span>. Invertendo <span class="math inline">\(u = F(y)\)</span> obtém-se um algoritmo direto,
 sem ciclos: resolvendo <span class="math inline">\(1 - (1-p)^{y+1} = u\)</span> chega-se a
 <span class="math display">\[Y = \left\lceil \frac{\ln(1 - U)}{\ln(1 - p)} \right\rceil - 1.\]</span></p>
-<div class="sourceCode" id="cb294"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb302"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">gerar_geometrica_inversa</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">p</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="va">U</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html">runif</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/Round.html">ceiling</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Log.html">log</a></span><span class="op">(</span><span class="fl">1</span> <span class="op">-</span> <span class="va">U</span><span class="op">)</span> <span class="op">/</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html">log</a></span><span class="op">(</span><span class="fl">1</span> <span class="op">-</span> <span class="va">p</span><span class="op">)</span><span class="op">)</span> <span class="op">-</span> <span class="fl">1</span></span>
@@ -334,7 +334,7 @@ P(X=k)=(1-p)^{k-1}p, \qquad k=1,2,3,\ldots
 X = Y+1.
 \]</span></p>
 <p>Assim, em R:</p>
-<div class="sourceCode" id="cb295"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb303"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Número de insucessos antes do primeiro sucesso</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/stats/Geometric.html">rgeom</a></span><span class="op">(</span><span class="va">n</span>, prob <span class="op">=</span> <span class="va">p</span><span class="op">)</span></span>
 <span></span>
@@ -347,7 +347,7 @@ qual das duas convenções está a ser usada.</p>
 Exemplo 2, mas usa a recursão que liga probabilidades consecutivas,
 <span class="math display">\[p_{i+1} = \frac{\lambda}{i + 1}\, p_i, \qquad p_0 = e^{-\lambda},\]</span>
 o que evita recalcular fatoriais e exponenciais a cada passo:</p>
-<div class="sourceCode" id="cb296"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb304"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">gerar_poisson_inversa</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">lambda</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="va">U</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html">runif</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span></span>
 <span>  <span class="va">p</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html">exp</a></span><span class="op">(</span><span class="op">-</span><span class="va">lambda</span><span class="op">)</span>   <span class="co"># P(X = 0)</span></span>
@@ -423,7 +423,7 @@ número uniforme.</p>
 <span class="math display">\[F(x) = \int_0^x 2t\, dt = x^2, \qquad 0 &lt; x &lt; 1.\]</span>
 Como <span class="math inline">\(F(x) = x^2\)</span> é invertível em <span class="math inline">\((0, 1)\)</span>, com <span class="math inline">\(F^{-1}(u) = \sqrt{u}\)</span>, a receita diz que
 <span class="math inline">\(X = \sqrt{U}\)</span> tem a distribuição pretendida:</p>
-<div class="sourceCode" id="cb297"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb305"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span></span>
 <span><span class="va">n</span> <span class="op">&lt;-</span> <span class="fl">10000</span></span>
 <span><span class="va">simlist</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html">runif</a></span><span class="op">(</span><span class="va">n</span><span class="op">)</span><span class="op">)</span></span>
@@ -439,7 +439,7 @@ Figura 22.5: Amostra da densidade f(x) = 2x gerada por X = sqrt(U).
 <p><strong>Exemplo 2 (uniforme <span class="math inline">\(U(a, b)\)</span>).</strong> A função de distribuição da uniforme é
 <span class="math inline">\(F(x) = \frac{x - a}{b - a}\)</span>, cuja inversa é <span class="math inline">\(F^{-1}(u) = a + (b - a)u\)</span>. Logo,
 <span class="math inline">\(X = a + (b - a)U\)</span>:</p>
-<div class="sourceCode" id="cb298"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb306"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">a</span> <span class="op">&lt;-</span> <span class="op">-</span><span class="fl">2</span>; <span class="va">b</span> <span class="op">&lt;-</span> <span class="fl">2</span>; <span class="va">n</span> <span class="op">&lt;-</span> <span class="fl">10000</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span></span>
 <span><span class="va">simlist</span> <span class="op">&lt;-</span> <span class="va">a</span> <span class="op">+</span> <span class="op">(</span><span class="va">b</span> <span class="op">-</span> <span class="va">a</span><span class="op">)</span> <span class="op">*</span> <span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html">runif</a></span><span class="op">(</span><span class="va">n</span><span class="op">)</span></span>
@@ -461,7 +461,7 @@ Assim, <span class="math inline">\(X = -\ln(1 - U)\)</span> gera uma exponencial
 Além disso, se <span class="math inline">\(X\)</span> é exponencial de taxa 1, então <span class="math inline">\(\frac{1}{\lambda}X\)</span> é exponencial de
 taxa <span class="math inline">\(\lambda\)</span>; logo, uma exponencial de taxa <span class="math inline">\(\lambda\)</span> gera-se por
 <span class="math display">\[X = -\frac{1}{\lambda}\ln(U).\]</span></p>
-<div class="sourceCode" id="cb299"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb307"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">lambda</span> <span class="op">&lt;-</span> <span class="fl">3</span>; <span class="va">n</span> <span class="op">&lt;-</span> <span class="fl">10000</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span></span>
 <span><span class="va">simlist</span> <span class="op">&lt;-</span> <span class="op">-</span><span class="fu"><a href="https://rdrr.io/r/base/Log.html">log</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html">runif</a></span><span class="op">(</span><span class="va">n</span><span class="op">)</span><span class="op">)</span> <span class="op">/</span> <span class="va">lambda</span></span>
@@ -583,7 +583,7 @@ métodos — o de <strong>aceitação-rejeição</strong> — que dedicamos o pr
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Introdução ao R e à Simulação Estatística</strong>: Um Laboratório de Estatística Computacional" was written by Renato de Paula and Nuno Brites. It was last built on 12 de July de 2026.</p>
+    <p>"<strong>Introdução ao R e à Simulação Estatística</strong>: Um Laboratório de Estatística Computacional" was written by Renato de Paula and Nuno Brites. It was last built on 15 de July de 2026.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

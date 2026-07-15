@@ -96,7 +96,7 @@ Grandes Números e do Teorema do Limite Central por simulação.</p>
 </div>
 <p><strong>1.</strong> Com <code>set.seed(123)</code>, simule 1000 lançamentos de uma moeda com probabilidade 0,5
 de sair cara. Conte o número de caras e faça um gráfico de barras dos resultados.</p>
-<div class="sourceCode" id="cb279"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb287"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span></span>
 <span><span class="va">n</span> <span class="op">&lt;-</span> <span class="fl">1000</span></span>
 <span><span class="va">p</span> <span class="op">&lt;-</span> <span class="fl">0.5</span></span>
@@ -108,14 +108,14 @@ de sair cara. Conte o número de caras e faça um gráfico de barras dos resulta
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/barplot.html">barplot</a></span><span class="op">(</span><span class="va">freq_relativa</span>, col <span class="op">=</span> <span class="st">"lightblue"</span><span class="op">)</span></span></code></pre></div>
 <p><strong>2.</strong> Com <code>set.seed(123)</code>, gere 5000 observações de uma binomial com <span class="math inline">\(n = 10\)</span> e
 <span class="math inline">\(p = 0{,}3\)</span>. Calcule a média e a variância.</p>
-<div class="sourceCode" id="cb280"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb288"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span></span>
 <span><span class="va">amostra</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Binomial.html">rbinom</a></span><span class="op">(</span><span class="fl">5000</span>, <span class="fl">10</span>, <span class="fl">0.3</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">amostra</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/stats/cor.html">var</a></span><span class="op">(</span><span class="va">amostra</span><span class="op">)</span></span></code></pre></div>
 <p><strong>3.</strong> Com <code>set.seed(123)</code>, gere 2300 observações de uma Poisson com <span class="math inline">\(\lambda = 4\)</span>.
 Calcule a média e o desvio padrão.</p>
-<div class="sourceCode" id="cb281"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb289"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span></span>
 <span><span class="va">amostra</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Poisson.html">rpois</a></span><span class="op">(</span><span class="fl">2300</span>, <span class="fl">4</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">amostra</span><span class="op">)</span></span>
@@ -124,7 +124,7 @@ Calcule a média e o desvio padrão.</p>
 com probabilidade 0,1 de um produto ser defeituoso. Com <code>set.seed(123)</code>, gere 10 000
 observações de <span class="math inline">\(X\)</span>, conte os lotes com exatamente 5 defeituosos e compare a proporção
 com <span class="math inline">\(P(X = 5)\)</span> para <span class="math inline">\(X \sim \text{Binomial}(50, 0{,}1)\)</span>.</p>
-<div class="sourceCode" id="cb282"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb290"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span></span>
 <span><span class="va">amostra</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Binomial.html">rbinom</a></span><span class="op">(</span><span class="fl">10000</span>, <span class="fl">50</span>, <span class="fl">0.1</span><span class="op">)</span></span>
 <span></span>
@@ -138,7 +138,7 @@ com <span class="math inline">\(P(X = 5)\)</span> para <span class="math inline"
 <li>Use a função de distribuição empírica para estimar <span class="math inline">\(P(X \leq 10)\)</span> e compare com o
 valor teórico.</li>
 </ol>
-<div class="sourceCode" id="cb283"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb291"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span></span>
 <span><span class="va">amostra</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Binomial.html">rbinom</a></span><span class="op">(</span><span class="fl">5000</span>, <span class="fl">20</span>, <span class="fl">0.7</span><span class="op">)</span></span>
 <span></span>
@@ -153,7 +153,7 @@ valor teórico.</li>
 <li>Use a função de distribuição empírica para estimar <span class="math inline">\(P(Y &gt; 5)\)</span> e compare com o valor
 teórico.</li>
 </ol>
-<div class="sourceCode" id="cb284"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb292"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">543</span><span class="op">)</span></span>
 <span><span class="va">amostra</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Poisson.html">rpois</a></span><span class="op">(</span><span class="fl">2400</span>, <span class="fl">6</span><span class="op">)</span></span>
 <span></span>
@@ -164,7 +164,7 @@ teórico.</li>
 <span><span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>empirica <span class="op">=</span> <span class="fl">1</span> <span class="op">-</span> <span class="fu">Fn</span><span class="op">(</span><span class="fl">5</span><span class="op">)</span>, teorica <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Poisson.html">ppois</a></span><span class="op">(</span><span class="fl">5</span>, <span class="fl">6</span>, lower.tail <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <p><strong>7.</strong> Com <code>set.seed(345)</code>, gere 3450 observações de <span class="math inline">\(Z \sim U(0, 1)\)</span>. Estime
 <span class="math inline">\(P(Z \leq 0{,}5)\)</span> pela função de distribuição empírica e compare com o valor teórico.</p>
-<div class="sourceCode" id="cb285"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb293"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">345</span><span class="op">)</span></span>
 <span><span class="va">amostra</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html">runif</a></span><span class="op">(</span><span class="fl">3450</span>, <span class="fl">0</span>, <span class="fl">1</span><span class="op">)</span></span>
 <span></span>
@@ -197,7 +197,7 @@ teórico.</li>
 <span class="math inline">\(n = 100, 1000, 10\,000, 100\,000\)</span> de <span class="math inline">\(X \sim \text{Poisson}(\lambda = 3)\)</span>. Para cada
 dimensão, calcule a média amostral e compare-a com o valor esperado teórico. Comente a
 convergência (Lei dos Grandes Números).</p>
-<div class="sourceCode" id="cb286"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb294"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span></span>
 <span><span class="va">tamanhos</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">100</span>, <span class="fl">1000</span>, <span class="fl">10000</span>, <span class="fl">100000</span><span class="op">)</span></span>
 <span><span class="va">lambda</span> <span class="op">&lt;-</span> <span class="fl">3</span></span>
@@ -219,7 +219,7 @@ calcule a proporção de satisfeitos e compare-a com a probabilidade teórica (0
 <p><strong>14.</strong> Com <code>set.seed(1058)</code>, gere 9060 amostras de dimensão 9 de
 <span class="math inline">\(X \sim \text{Binomial}(41, 0{,}81)\)</span>. Calcule a média de cada amostra, obtendo uma
 amostra de médias; calcule ainda <span class="math inline">\(E(X)\)</span> e compare-o com a média das médias.</p>
-<div class="sourceCode" id="cb287"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb295"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">1058</span><span class="op">)</span></span>
 <span><span class="va">m</span> <span class="op">&lt;-</span> <span class="fl">9060</span>      <span class="co"># número de amostras</span></span>
 <span><span class="va">n</span> <span class="op">&lt;-</span> <span class="fl">9</span>         <span class="co"># dimensão de cada amostra</span></span>
@@ -243,7 +243,7 @@ Teorema do Limite Central.</p>
 <li>Faça o histograma das médias e sobreponha uma normal de média <span class="math inline">\(E(X)\)</span> e desvio padrão
 <span class="math inline">\(\sqrt{V(X)/n}\)</span>.</li>
 </ol>
-<div class="sourceCode" id="cb288"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb296"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">1430</span><span class="op">)</span></span>
 <span><span class="va">m</span> <span class="op">&lt;-</span> <span class="fl">8000</span>; <span class="va">n</span> <span class="op">&lt;-</span> <span class="fl">100</span></span>
 <span><span class="va">a</span> <span class="op">&lt;-</span> <span class="fl">5</span>; <span class="va">b</span> <span class="op">&lt;-</span> <span class="fl">20</span></span>
@@ -329,7 +329,7 @@ distribuição, a começar pelo método da transformada inversa.</p>
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Introdução ao R e à Simulação Estatística</strong>: Um Laboratório de Estatística Computacional" was written by Renato de Paula and Nuno Brites. It was last built on 12 de July de 2026.</p>
+    <p>"<strong>Introdução ao R e à Simulação Estatística</strong>: Um Laboratório de Estatística Computacional" was written by Renato de Paula and Nuno Brites. It was last built on 15 de July de 2026.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

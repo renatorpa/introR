@@ -113,7 +113,7 @@ decimal, acentos), e a guardar resultados de volta em disco.</p>
 <p>A função <code><a href="https://rdrr.io/r/base/scan.html">scan()</a></code> lê valores da entrada padrão (o teclado) ou de um ficheiro e
 devolve-os num vetor. É útil para introduzir manualmente pequenas quantidades de
 dados:</p>
-<div class="sourceCode" id="cb113"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb121"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Pede ao utilizador uma série de números</span></span>
 <span><span class="va">numeros</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/scan.html">scan</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <p>Depois de escrever <code><a href="https://rdrr.io/r/base/scan.html">scan()</a></code> e premir <em>Enter</em>, introduzem-se os valores separados por
@@ -132,12 +132,12 @@ funções que o gerem:</p>
 <li>
 <code>setwd("caminho/da/pasta")</code> — define um novo diretório de trabalho.</li>
 </ul>
-<div class="sourceCode" id="cb114"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb122"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/getwd.html">getwd</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">## [1] "C:/Users/Utilizador/Documents"</span></span></code></pre></div>
 <p>Com o diretório bem definido, se o ficheiro <code>dados.csv</code> estiver nessa pasta, lê-se
 simplesmente pelo nome, sem o caminho completo:</p>
-<div class="sourceCode" id="cb115"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb123"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">dados</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.csv</a></span><span class="op">(</span><span class="st">"dados.csv"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">dados</span><span class="op">)</span>   <span class="co"># mostra as primeiras linhas</span></span></code></pre></div>
 <div class="dica">
@@ -156,7 +156,7 @@ tabular. Importa os dados e permite configurá-los ao pormenor. (Pode descarrega
 ficheiro <code>dados.txt</code> a partir do
 <a href="https://renatorpaula.wixsite.com/renato/laboratorio-estatistica">site da disciplina</a>
 para praticar.)</p>
-<div class="sourceCode" id="cb116"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb124"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">dados</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.table</a></span><span class="op">(</span>file <span class="op">=</span> <span class="st">"dados.txt"</span>, header <span class="op">=</span> <span class="cn">TRUE</span>, sep <span class="op">=</span> <span class="st">""</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">dados</span><span class="op">)</span></span></code></pre></div>
 <p>Os seus argumentos mais usados são:</p>
@@ -191,14 +191,14 @@ já a seguir. Confundir os dois é uma das causas mais comuns de leituras que �
 bem” mas produzem uma única coluna com tudo lá dentro.</p>
 </div>
 <p>Para consultar todos os argumentos e os seus valores por omissão:</p>
-<div class="sourceCode" id="cb117"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb125"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/args.html">args</a></span><span class="op">(</span><span class="va">read.table</span><span class="op">)</span></span>
 <span><span class="co">## function (file, header = FALSE, sep = "", quote = "\"'", dec = ".",</span></span>
 <span><span class="co">##     numerals = c("allow.loss", "warn.loss", "no.loss"), row.names,</span></span>
 <span><span class="co">##     col.names, as.is = !stringsAsFactors, na.strings = "NA", ...)</span></span>
 <span><span class="co">## NULL</span></span></code></pre></div>
 <p>Se o ficheiro for um CSV, basta indicar o separador apropriado:</p>
-<div class="sourceCode" id="cb118"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb126"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">dados_csv</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.table</a></span><span class="op">(</span><span class="st">"dados.csv"</span>, header <span class="op">=</span> <span class="cn">TRUE</span>, sep <span class="op">=</span> <span class="st">","</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div id="a-função-read.csv" class="section level2" number="8.4">
@@ -209,7 +209,7 @@ bem” mas produzem uma única coluna com tudo lá dentro.</p>
 ficheiros de texto em que cada linha é um registo e os valores são separados por
 vírgulas. Na prática, é a <code><a href="https://rdrr.io/r/utils/read.table.html">read.table()</a></code> com outros valores por omissão: separador
 <code>","</code> e <code>header = TRUE</code>.</p>
-<div class="sourceCode" id="cb119"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb127"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">dados_csv</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.csv</a></span><span class="op">(</span><span class="st">"dados.csv"</span>, header <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div id="a-função-read.csv2" class="section level2" number="8.5">
@@ -220,7 +220,7 @@ vírgulas. Na prática, é a <code><a href="https://rdrr.io/r/utils/read.table.h
 e vírgula</strong> (<code>;</code>) e separador decimal <strong>vírgula</strong> (<code>,</code>). É o formato que a maioria
 dos programas exporta em Portugal, precisamente porque cá a vírgula é o separador
 decimal.</p>
-<div class="sourceCode" id="cb120"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb128"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">dados_csv2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.csv2</a></span><span class="op">(</span><span class="st">"dados.csv"</span>, header <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 <div class="nota">
 <p>Esta distinção é essencial em Portugal. Um valor como <code>1.234,56</code> num ficheiro
@@ -236,7 +236,7 @@ portugueses leem-se, quase sempre, com <code><a href="https://rdrr.io/r/utils/re
 </h2>
 <p>Para ler ficheiros Excel (<code>.xls</code> e <code>.xlsx</code>) usamos a função <code><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_excel()</a></code> do pacote
 <code>readxl</code>, que precisa de ser instalado e carregado antes da primeira utilização:</p>
-<div class="sourceCode" id="cb121"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb129"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"readxl"</span><span class="op">)</span>   <span class="co"># apenas uma vez</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://readxl.tidyverse.org">readxl</a></span><span class="op">)</span></span>
 <span></span>
@@ -268,7 +268,7 @@ omissão).</li>
 </ul>
 <p>Suponha um ficheiro <code>instagram.xlsx</code>. Para ler a folha <code>Sheet1</code> e guardá-la numa
 <em>data frame</em> chamada <code>dados_instagram</code>:</p>
-<div class="sourceCode" id="cb122"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb130"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">dados_instagram</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_excel</a></span><span class="op">(</span>path <span class="op">=</span> <span class="st">"instagram.xlsx"</span>,</span>
 <span>                              sheet <span class="op">=</span> <span class="st">"Sheet1"</span>,</span>
 <span>                              col_names <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
@@ -285,7 +285,7 @@ argumentos (separador, decimal, codificação) sem tentativa e erro.</p>
 </h2>
 <p>O R também lê dados diretamente da internet. Basta passar o endereço do ficheiro à
 função de leitura apropriada ao formato:</p>
-<div class="sourceCode" id="cb123"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb131"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">url</span> <span class="op">&lt;-</span> <span class="st">"https://exemplo.com/dados.csv"</span></span>
 <span><span class="va">dados_online</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.table</a></span><span class="op">(</span><span class="va">url</span>, header <span class="op">=</span> <span class="cn">TRUE</span>, sep <span class="op">=</span> <span class="st">","</span><span class="op">)</span></span></code></pre></div>
 </div>
@@ -296,7 +296,7 @@ função de leitura apropriada ao formato:</p>
 <p>Ler dados é só metade da história: depois de os analisar, queremos muitas vezes
 <strong>guardar</strong> o resultado. As funções <code><a href="https://rdrr.io/r/utils/write.table.html">write.table()</a></code> e <code><a href="https://rdrr.io/r/utils/write.table.html">write.csv()</a></code> fazem o percurso
 inverso das que vimos, escrevendo uma <em>data frame</em> num ficheiro de texto:</p>
-<div class="sourceCode" id="cb124"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb132"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/write.table.html">write.csv</a></span><span class="op">(</span><span class="va">dados</span>, file <span class="op">=</span> <span class="st">"resultado.csv"</span>, row.names <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
 <p>O argumento <code>row.names = FALSE</code> evita que o R acrescente uma coluna extra com os
 números das linhas — um pormenor pequeno, mas que poupa confusão a quem voltar a ler
@@ -358,7 +358,7 @@ de instalar o pacote <code>readxl</code>) e responda:</p>
 Para as variáveis numéricas, agrupe em classes. O código seguinte fá-lo para o
 <code>indice_influencia</code>, usando a Regra de Sturges para o número de classes:</p></li>
 </ol>
-<div class="sourceCode" id="cb125"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb133"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># ---------------------------------</span></span>
 <span><span class="co"># Índice de influência</span></span>
 <span><span class="co"># ---------------------------------</span></span>
@@ -471,7 +471,7 @@ muito mais legíveis.</p>
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Introdução ao R e à Simulação Estatística</strong>: Um Laboratório de Estatística Computacional" was written by Renato de Paula and Nuno Brites. It was last built on 12 de July de 2026.</p>
+    <p>"<strong>Introdução ao R e à Simulação Estatística</strong>: Um Laboratório de Estatística Computacional" was written by Renato de Paula and Nuno Brites. It was last built on 15 de July de 2026.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

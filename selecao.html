@@ -101,12 +101,12 @@ agora usá-las para dirigir o programa. As estruturas mais comuns são o <code>i
 <p>O <code>if</code> é a estrutura mais elementar: executa um bloco de código <strong>apenas se</strong> uma
 condição for verdadeira. Se a condição for falsa, o bloco é simplesmente ignorado
 e o programa continua.</p>
-<div class="sourceCode" id="cb82"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb90"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw">if</span> <span class="op">(</span><span class="va">condição</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="co"># código executado apenas se a condição for TRUE</span></span>
 <span><span class="op">}</span></span></code></pre></div>
 <p>Um exemplo concreto: verificar se alguém é maior de idade.</p>
-<div class="sourceCode" id="cb83"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb91"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">idade</span> <span class="op">&lt;-</span> <span class="fl">18</span></span>
 <span></span>
 <span><span class="kw">if</span> <span class="op">(</span><span class="va">idade</span> <span class="op">&gt;=</span> <span class="fl">18</span><span class="op">)</span> <span class="op">{</span></span>
@@ -128,14 +128,14 @@ pontuação desde já — esquecer uma chaveta é um dos erros mais frequentes.<
 <p>O <code>if</code> sozinho responde a “faz isto <em>se</em>…”. Mas muitas vezes queremos também
 dizer “…<em>caso contrário</em>, faz aquilo”. Para isso serve o <code>else</code>, que
 acrescenta um caminho alternativo, executado quando a condição é falsa.</p>
-<div class="sourceCode" id="cb84"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb92"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw">if</span> <span class="op">(</span><span class="va">condição</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="co"># código executado se a condição for TRUE</span></span>
 <span><span class="op">}</span> <span class="kw">else</span> <span class="op">{</span></span>
 <span>  <span class="co"># código executado se a condição for FALSE</span></span>
 <span><span class="op">}</span></span></code></pre></div>
 <p>Reformulando o exemplo anterior para cobrir os dois casos:</p>
-<div class="sourceCode" id="cb85"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb93"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">idade</span> <span class="op">&lt;-</span> <span class="fl">16</span></span>
 <span></span>
 <span><span class="kw">if</span> <span class="op">(</span><span class="va">idade</span> <span class="op">&gt;=</span> <span class="fl">18</span><span class="op">)</span> <span class="op">{</span></span>
@@ -155,7 +155,7 @@ Note que exatamente um dos dois blocos é executado — nunca ambos, nunca nenhu
 “Insuficiente” — três hipóteses, não duas. O <code>else if</code> permite encadear várias
 condições. O R avalia-as por ordem e, assim que uma é verdadeira, executa o
 respetivo bloco e ignora todos os restantes.</p>
-<div class="sourceCode" id="cb86"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb94"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw">if</span> <span class="op">(</span><span class="va">condição1</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="co"># se condição1 for TRUE</span></span>
 <span><span class="op">}</span> <span class="kw">else</span> <span class="kw">if</span> <span class="op">(</span><span class="va">condição2</span><span class="op">)</span> <span class="op">{</span></span>
@@ -164,7 +164,7 @@ respetivo bloco e ignora todos os restantes.</p>
 <span>  <span class="co"># se nenhuma das anteriores for TRUE</span></span>
 <span><span class="op">}</span></span></code></pre></div>
 <p>Classifiquemos uma nota:</p>
-<div class="sourceCode" id="cb87"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb95"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">nota</span> <span class="op">&lt;-</span> <span class="fl">85</span></span>
 <span></span>
 <span><span class="kw">if</span> <span class="op">(</span><span class="va">nota</span> <span class="op">&gt;=</span> <span class="fl">90</span><span class="op">)</span> <span class="op">{</span></span>
@@ -194,10 +194,10 @@ seria absurdo.</p>
 <p>É aqui que entra a função <code><a href="https://rdrr.io/r/base/ifelse.html">ifelse()</a></code>, a versão <strong>vetorizada</strong> da decisão. Aplica
 uma condição a cada elemento de um vetor de uma só vez, devolvendo um valor
 consoante a condição seja verdadeira ou falsa:</p>
-<div class="sourceCode" id="cb88"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb96"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">resultado</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html">ifelse</a></span><span class="op">(</span><span class="va">condição</span>, <span class="va">valor_se_true</span>, <span class="va">valor_se_false</span><span class="op">)</span></span></code></pre></div>
 <p>Vejamos:</p>
-<div class="sourceCode" id="cb89"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb97"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">valores</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">4</span>, <span class="fl">6</span>, <span class="fl">9</span>, <span class="fl">3</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/ifelse.html">ifelse</a></span><span class="op">(</span><span class="va">valores</span> <span class="op">&gt;</span> <span class="fl">5</span>, <span class="st">"maior que 5"</span>, <span class="st">"não é maior que 5"</span><span class="op">)</span></span>
 <span><span class="co">## [1] "não é maior que 5" "maior que 5"       "maior que 5"      </span></span>
@@ -221,32 +221,32 @@ elemento, use <code><a href="https://rdrr.io/r/base/ifelse.html">ifelse()</a></c
 <p>Ler e depurar código de decisão é tão importante como escrevê-lo. Os exemplos
 seguintes treinam esse olhar crítico — começando por identificar erros.</p>
 <p><strong>Exemplo 1.</strong> Que erro há no código abaixo?</p>
-<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb90-1"><a href="selecao.html#cb90-1" tabindex="-1"></a><span class="cf">if</span> (x <span class="sc">%%</span> <span class="dv">2</span> <span class="ot">=</span> <span class="dv">0</span>) {</span>
-<span id="cb90-2"><a href="selecao.html#cb90-2" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">"Par"</span>)</span>
-<span id="cb90-3"><a href="selecao.html#cb90-3" tabindex="-1"></a>} <span class="cf">else</span> {</span>
-<span id="cb90-4"><a href="selecao.html#cb90-4" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">"Ímpar"</span>)</span>
-<span id="cb90-5"><a href="selecao.html#cb90-5" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb98-1"><a href="selecao.html#cb98-1" tabindex="-1"></a><span class="cf">if</span> (x <span class="sc">%%</span> <span class="dv">2</span> <span class="ot">=</span> <span class="dv">0</span>) {</span>
+<span id="cb98-2"><a href="selecao.html#cb98-2" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">"Par"</span>)</span>
+<span id="cb98-3"><a href="selecao.html#cb98-3" tabindex="-1"></a>} <span class="cf">else</span> {</span>
+<span id="cb98-4"><a href="selecao.html#cb98-4" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">"Ímpar"</span>)</span>
+<span id="cb98-5"><a href="selecao.html#cb98-5" tabindex="-1"></a>}</span></code></pre></div>
 <p>O erro está no <code>=</code>: dentro da condição queremos <strong>testar</strong> a igualdade, não
 atribuir. A forma correta usa <code>==</code>:</p>
-<div class="sourceCode" id="cb91"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb99"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw">if</span> <span class="op">(</span><span class="va">x</span> <span class="op"><a href="https://rdrr.io/r/base/Arithmetic.html">%%</a></span> <span class="fl">2</span> <span class="op">==</span> <span class="fl">0</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="st">"Par"</span><span class="op">)</span></span>
 <span><span class="op">}</span> <span class="kw">else</span> <span class="op">{</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="st">"Ímpar"</span><span class="op">)</span></span>
 <span><span class="op">}</span></span></code></pre></div>
 <p><strong>Exemplo 2.</strong> Que erros há neste código?</p>
-<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb92-1"><a href="selecao.html#cb92-1" tabindex="-1"></a><span class="cf">if</span> (a <span class="sc">&gt;</span> <span class="dv">0</span>) {</span>
-<span id="cb92-2"><a href="selecao.html#cb92-2" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">"Positivo"</span>)</span>
-<span id="cb92-3"><a href="selecao.html#cb92-3" tabindex="-1"></a>  <span class="cf">if</span> (a <span class="sc">%%</span> <span class="dv">5</span> <span class="ot">=</span> <span class="dv">0</span>)</span>
-<span id="cb92-4"><a href="selecao.html#cb92-4" tabindex="-1"></a>    <span class="fu">print</span>(<span class="st">"Divisível por 5"</span>)</span>
-<span id="cb92-5"><a href="selecao.html#cb92-5" tabindex="-1"></a>} <span class="cf">else</span> <span class="cf">if</span> (a <span class="sc">==</span> <span class="dv">0</span>)</span>
-<span id="cb92-6"><a href="selecao.html#cb92-6" tabindex="-1"></a>    <span class="fu">print</span>(<span class="st">"Zero"</span>)</span>
-<span id="cb92-7"><a href="selecao.html#cb92-7" tabindex="-1"></a>  <span class="cf">else</span> <span class="cf">if</span> {</span>
-<span id="cb92-8"><a href="selecao.html#cb92-8" tabindex="-1"></a>    <span class="fu">print</span>(<span class="st">"Negativo"</span>)</span>
-<span id="cb92-9"><a href="selecao.html#cb92-9" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb100-1"><a href="selecao.html#cb100-1" tabindex="-1"></a><span class="cf">if</span> (a <span class="sc">&gt;</span> <span class="dv">0</span>) {</span>
+<span id="cb100-2"><a href="selecao.html#cb100-2" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">"Positivo"</span>)</span>
+<span id="cb100-3"><a href="selecao.html#cb100-3" tabindex="-1"></a>  <span class="cf">if</span> (a <span class="sc">%%</span> <span class="dv">5</span> <span class="ot">=</span> <span class="dv">0</span>)</span>
+<span id="cb100-4"><a href="selecao.html#cb100-4" tabindex="-1"></a>    <span class="fu">print</span>(<span class="st">"Divisível por 5"</span>)</span>
+<span id="cb100-5"><a href="selecao.html#cb100-5" tabindex="-1"></a>} <span class="cf">else</span> <span class="cf">if</span> (a <span class="sc">==</span> <span class="dv">0</span>)</span>
+<span id="cb100-6"><a href="selecao.html#cb100-6" tabindex="-1"></a>    <span class="fu">print</span>(<span class="st">"Zero"</span>)</span>
+<span id="cb100-7"><a href="selecao.html#cb100-7" tabindex="-1"></a>  <span class="cf">else</span> <span class="cf">if</span> {</span>
+<span id="cb100-8"><a href="selecao.html#cb100-8" tabindex="-1"></a>    <span class="fu">print</span>(<span class="st">"Negativo"</span>)</span>
+<span id="cb100-9"><a href="selecao.html#cb100-9" tabindex="-1"></a>}</span></code></pre></div>
 <p>Há vários problemas: o <code>=</code> em vez de <code>==</code>, chavetas em falta e um <code>else if</code> sem
 condição (que devia ser apenas <code>else</code>). A versão corrigida:</p>
-<div class="sourceCode" id="cb93"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb101"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw">if</span> <span class="op">(</span><span class="va">a</span> <span class="op">&gt;</span> <span class="fl">0</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="st">"Positivo"</span><span class="op">)</span></span>
 <span>  <span class="kw">if</span> <span class="op">(</span><span class="va">a</span> <span class="op"><a href="https://rdrr.io/r/base/Arithmetic.html">%%</a></span> <span class="fl">5</span> <span class="op">==</span> <span class="fl">0</span><span class="op">)</span> <span class="op">{</span></span>
@@ -264,7 +264,7 @@ surpresas quando mais tarde acrescentamos linhas ao bloco, e previne muitos dos
 erros que vimos acima.</p>
 </div>
 <p><strong>Exemplo 3.</strong> Quais são os valores de <code>x</code> e <code>y</code> no fim da execução?</p>
-<div class="sourceCode" id="cb94"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb102"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fl">1</span></span>
 <span><span class="va">y</span> <span class="op">&lt;-</span> <span class="fl">0</span></span>
 <span><span class="kw">if</span> <span class="op">(</span><span class="va">x</span> <span class="op">==</span> <span class="fl">1</span><span class="op">)</span> <span class="op">{</span></span>
@@ -277,7 +277,7 @@ erros que vimos acima.</p>
 (<code>x == 1</code>) é verdadeira, logo <code>y</code> passa a <span class="math inline">\(-1\)</span>. A segunda (<code>y == 1</code>) é falsa
 (porque <code>y</code> vale agora <span class="math inline">\(-1\)</span>), logo <code>x</code> mantém-se em 1. No fim: <code>x = 1</code> e <code>y = -1</code>.</p>
 <p><strong>Exemplo 4.</strong> Considere o programa seguinte.</p>
-<div class="sourceCode" id="cb95"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb103"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw">if</span> <span class="op">(</span><span class="va">x</span> <span class="op">==</span> <span class="fl">1</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="va">x</span> <span class="op">&lt;-</span> <span class="va">x</span> <span class="op">+</span> <span class="fl">1</span></span>
 <span>  <span class="kw">if</span> <span class="op">(</span><span class="va">x</span> <span class="op">==</span> <span class="fl">1</span><span class="op">)</span> <span class="op">{</span></span>
@@ -373,7 +373,7 @@ Restrição”.</p>
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Introdução ao R e à Simulação Estatística</strong>: Um Laboratório de Estatística Computacional" was written by Renato de Paula and Nuno Brites. It was last built on 12 de July de 2026.</p>
+    <p>"<strong>Introdução ao R e à Simulação Estatística</strong>: Um Laboratório de Estatística Computacional" was written by Renato de Paula and Nuno Brites. It was last built on 15 de July de 2026.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

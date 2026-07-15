@@ -43,7 +43,35 @@
 </form>
 
       <nav aria-label="Table of contents"><h2>Table of contents</h2>
-        <ul class="book-toc list-unstyled"><li><a class="" href="index.html"><span class="header-section-number">Capítulo 3</span> O R como calculadora</a></li></ul>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">Prefácio</a></li>
+<li><a class="" href="intro.html"><span class="header-section-number">1</span> Estatística, computação e simulação</a></li>
+<li><a class="" href="rrstudio.html"><span class="header-section-number">2</span> O R e o RStudio</a></li>
+<li><a class="active" href="calculadora.html"><span class="header-section-number">3</span> O R como calculadora</a></li>
+<li><a class="" href="estruturas.html"><span class="header-section-number">4</span> Estruturas de dados</a></li>
+<li><a class="" href="selecao.html"><span class="header-section-number">5</span> Estruturas de decisão</a></li>
+<li><a class="" href="funcoes.html"><span class="header-section-number">6</span> Funções</a></li>
+<li><a class="" href="scripts.html"><span class="header-section-number">7</span> Scripts em R</a></li>
+<li><a class="" href="leitura.html"><span class="header-section-number">8</span> Leitura de dados</a></li>
+<li><a class="" href="pipe.html"><span class="header-section-number">9</span> O operador pipe</a></li>
+<li><a class="" href="while.html"><span class="header-section-number">10</span> O ciclo while</a></li>
+<li><a class="" href="for.html"><span class="header-section-number">11</span> O ciclo for</a></li>
+<li><a class="" href="apply.html"><span class="header-section-number">12</span> A família apply</a></li>
+<li><a class="" href="revisao.html"><span class="header-section-number">13</span> Exercícios de revisão</a></li>
+<li><a class="" href="graficos.html"><span class="header-section-number">14</span> Gráficos com o R base</a></li>
+<li><a class="" href="manipulacao.html"><span class="header-section-number">15</span> Manipulação de dados</a></li>
+<li><a class="" href="ggplot.html"><span class="header-section-number">16</span> O pacote ggplot2</a></li>
+<li><a class="" href="sample.html"><span class="header-section-number">17</span> A função sample()</a></li>
+<li><a class="" href="probabilidade.html"><span class="header-section-number">18</span> Probabilidade e variáveis aleatórias</a></li>
+<li><a class="" href="simulacao.html"><span class="header-section-number">19</span> Simulação</a></li>
+<li><a class="" href="distribuicoes.html"><span class="header-section-number">20</span> Distribuições de probabilidade</a></li>
+<li><a class="" href="exercicios-extra.html"><span class="header-section-number">21</span> Exercícios extra</a></li>
+<li><a class="" href="transformada.html"><span class="header-section-number">22</span> Método da transformada inversa</a></li>
+<li><a class="" href="aceitacao-rejeicao.html"><span class="header-section-number">23</span> Método da aceitação-rejeição</a></li>
+<li><a class="" href="teoremas-limites.html"><span class="header-section-number">24</span> Teoremas limites</a></li>
+<li><a class="" href="calculo-integrais.html"><span class="header-section-number">25</span> Cálculo de integrais por Monte Carlo</a></li>
+<li><a class="" href="solucoes.html"><span class="header-section-number">26</span> Resoluções dos exercícios</a></li>
+</ul>
 
         <div class="book-extra">
           
@@ -62,7 +90,7 @@
 <span class="header-section-number">3.1</span> A consola e o primeiro comando<a class="anchor" aria-label="anchor" href="#a-consola-e-o-primeiro-comando"><i class="fas fa-link"></i></a>
 </h2>
 <p>O R aceita comandos numa interface de linha de comando, assinalada pelo símbolo <code>&gt;</code>, a que chamamos <strong>prompt</strong>. Quando escrevemos diretamente na <strong>Consola</strong>, basta escrever o comando a seguir ao <em>prompt</em> e pressionar <code>Enter</code>: o R interpreta o comando, executa-o e mostra o resultado.</p>
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="st">"O meu primeiro comando em R!"</span><span class="op">)</span></span>
 <span><span class="co">## [1] "O meu primeiro comando em R!"</span></span></code></pre></div>
 <p>No RStudio, contudo, é comum escrevermos os comandos num <strong>script</strong> e enviá-los depois para a Consola. Nesse caso, colocamos o cursor na linha que queremos executar e usamos <code>Ctrl + Enter</code> no Windows ou no Linux, ou <code>Cmd + Enter</code> no macOS.</p>
@@ -76,7 +104,7 @@
 <span class="header-section-number">3.2</span> Comentários<a class="anchor" aria-label="anchor" href="#coment%C3%A1rios"><i class="fas fa-link"></i></a>
 </h2>
 <p>O carácter <code>#</code> inicia um <strong>comentário</strong>: tudo o que vem depois dele, na mesma linha, é ignorado pelo R. Os comentários não servem para o computador, servem para nós e para quem, mais tarde, ler o nosso código.</p>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Este é um comentário: o R ignora-o</span></span>
 <span><span class="fl">2</span> <span class="op">+</span> <span class="fl">2</span>   <span class="co"># o R calcula 2 mais 2</span></span>
 <span><span class="co">## [1] 4</span></span></code></pre></div>
@@ -89,10 +117,10 @@
 <span class="header-section-number">3.3</span> Pedir ajuda<a class="anchor" aria-label="anchor" href="#pedir-ajuda"><i class="fas fa-link"></i></a>
 </h2>
 <p>Ninguém decora todas as funções do R, nem precisa de o fazer. O essencial é saber consultar a documentação. Se conhece o nome de uma função, basta precedê-lo de um ponto de interrogação para abrir a respetiva página de ajuda:</p>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="op">?</span><span class="va">sum</span></span></code></pre></div>
 <p>A ajuda descreve a finalidade da função, os seus argumentos, isto é, os valores ou opções que lhe fornecemos para executar uma tarefa, e o tipo de resultado que devolve. Para além disso, muitas funções incluem exemplos prontos a executar, que podem ser consultados com <code><a href="https://rdrr.io/r/utils/example.html">example()</a></code>:</p>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/example.html">example</a></span><span class="op">(</span><span class="va">sum</span><span class="op">)</span></span></code></pre></div>
 <div class="nota">
 <p>No comando <code>example(sum)</code>, o argumento da função <code><a href="https://rdrr.io/r/utils/example.html">example()</a></code> é <code>sum</code>. Isto significa que estamos a pedir ao R para mostrar exemplos de utilização da função <code><a href="https://rdrr.io/r/base/sum.html">sum()</a></code>.</p>
@@ -114,11 +142,11 @@
 <span class="header-section-number">3.4.1</span> Atribuição<a class="anchor" aria-label="anchor" href="#atribui%C3%A7%C3%A3o"><i class="fas fa-link"></i></a>
 </h3>
 <p>Atribuir um valor a uma variável faz-se com o operador <code>&lt;-</code> (uma seta que se lê “recebe”). A expressão seguinte cria uma variável chamada <code>x</code> e guarda-lhe o valor 10:</p>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fl">10</span></span></code></pre></div>
 <p>O operador <code>&lt;-</code> guarda o valor do lado direito na variável do lado esquerdo. Do lado esquerdo deve estar apenas um nome de variável. E, uma vez criada, a
 variável pode ser reutilizada:</p>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">a</span> <span class="op">&lt;-</span> <span class="fl">10</span></span>
 <span><span class="va">b</span> <span class="op">&lt;-</span> <span class="va">a</span> <span class="op">+</span> <span class="fl">1</span>   <span class="co"># b recebe o valor de a mais 1</span></span>
 <span><span class="va">b</span></span>
@@ -127,7 +155,7 @@ variável pode ser reutilizada:</p>
 <p>Uma atribuição <strong>não é</strong> uma equação matemática. Escrever <code>a + 2 &lt;- 10</code> não faz sentido: do lado esquerdo tem de estar um nome, não uma expressão a calcular. Embora o R também aceite <code>=</code> e <code>-&gt;</code> para atribuir, recomendamos o uso de <code>&lt;-</code>, para não confundir a atribuição (<code>&lt;-</code>) com o teste de igualdade (<code>==</code>), que veremos mais adiante.</p>
 </div>
 <p>Podemos guardar não só um número, mas uma sequência de valores. A função <code><a href="https://rdrr.io/r/base/c.html">c()</a></code> (de <em>combine</em>, combinar) junta vários valores num <strong>vetor</strong>:</p>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">X</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">12</span>, <span class="fl">22</span>, <span class="fl">32</span><span class="op">)</span></span>
 <span><span class="va">X</span></span>
 <span><span class="co">## [1]  2 12 22 32</span></span></code></pre></div>
@@ -137,7 +165,7 @@ diferentes. Este é um dos erros mais comuns de quem começa, por isso convém
 gravá-lo desde já.</p>
 </div>
 <p>Para ver todos os objetos que existem atualmente na memória da sessão, usamos <code><a href="https://rdrr.io/r/base/ls.html">ls()</a></code> (ou consultamos o separador <em>Environment</em> no RStudio):</p>
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/ls.html">ls</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div id="regras-para-nomear-variáveis" class="section level3" number="3.4.2">
@@ -181,7 +209,7 @@ gravá-lo desde já.</p>
 <strong>listas</strong>: coleções que podem reunir objetos de tipos diferentes.</li>
 </ul>
 <p>A distinção entre tipos de dados e estruturas de dados tornar-se-á mais clara com a prática. Para já, basta reter a ideia essencial: antes de operar sobre um objeto, é importante saber que tipo de informação ele contém e como essa informação está organizada.</p>
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">a</span> <span class="op">&lt;-</span> <span class="fl">3.14</span>                <span class="co"># numeric</span></span>
 <span><span class="va">b</span> <span class="op">&lt;-</span> <span class="st">"Programação R"</span>     <span class="co"># character</span></span>
 <span><span class="va">c</span> <span class="op">&lt;-</span> <span class="fl">3</span> <span class="op">&lt;</span> <span class="fl">2</span>               <span class="co"># logical (resultado de uma comparação)</span></span>
@@ -192,7 +220,7 @@ gravá-lo desde já.</p>
 </h3>
 <p>Uma característica cómoda do R é a <strong>tipagem dinâmica</strong>. Isto significa que não precisamos de declarar antecipadamente o tipo de uma variável. O R identifica o tipo a partir do valor que lhe atribuímos.</p>
 <p>Por exemplo, se guardarmos um número, o objeto será tratado como numérico; se guardarmos texto, será tratado como texto; se guardarmos <code>TRUE</code> ou <code>FALSE</code>, será tratado como lógico. A função <code><a href="https://rdrr.io/r/base/class.html">class()</a></code> permite consultar a classe de um objeto:</p>
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fl">5</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
 <span><span class="co">## [1] "numeric"</span></span>
@@ -206,7 +234,7 @@ gravá-lo desde já.</p>
 <span><span class="co">## [1] "logical"</span></span></code></pre></div>
 <p>A classe indica como o R deve interpretar e manipular um objeto. Em muitos casos, esta informação é suficiente para o utilizador. No entanto, existe também a função <code><a href="https://rdrr.io/r/base/typeof.html">typeof()</a></code>, que mostra o tipo de armazenamento interno, isto é, a forma como o objeto é guardado na memória.</p>
 <p>Nem sempre <code><a href="https://rdrr.io/r/base/class.html">class()</a></code> e <code><a href="https://rdrr.io/r/base/typeof.html">typeof()</a></code> devolvem a mesma resposta:</p>
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fl">1</span><span class="op">:</span><span class="fl">10</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
 <span><span class="co">## [1] "integer"</span></span>
@@ -235,7 +263,7 @@ gravá-lo desde já.</p>
 </h3>
 <p>Muitas vezes, sobretudo quando importamos dados de fontes externas, os valores chegam ao R com um tipo diferente daquele que esperávamos. Um número pode vir guardado como texto, uma variável categórica pode ser lida como texto, ou um valor lógico pode aparecer codificado como <code>"sim"</code> e <code>"não"</code>. Nestes casos, precisamos de converter explicitamente os objetos para o tipo adequado.</p>
 <p>As funções da família <code>as.*()</code> permitem fazer essas conversões:</p>
-<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">b</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html">as.character</a></span><span class="op">(</span><span class="fl">15</span><span class="op">)</span>   <span class="co"># de número para texto</span></span>
 <span><span class="va">b</span></span>
 <span><span class="co">## [1] "15"</span></span>
@@ -248,7 +276,7 @@ gravá-lo desde já.</p>
 <span><span class="va">w</span></span>
 <span><span class="co">## [1] 10</span></span></code></pre></div>
 <p>No segundo exemplo, repare que <code>as.integer(1.5)</code> devolve 1. Isto acontece porque a conversão para inteiro remove a parte decimal, não se trata de um arredondamento.</p>
-<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/integer.html">as.integer</a></span><span class="op">(</span><span class="fl">1.9</span><span class="op">)</span></span>
 <span><span class="co">## [1] 1</span></span></code></pre></div>
 <p>Por isso, as conversões devem ser feitas com cuidado. Quando pedimos ao R para alterar o tipo de um objeto, estamos também a alterar a forma como esse objeto será interpretado em cálculos, gráficos e análises posteriores.</p>
@@ -323,7 +351,7 @@ gravá-lo desde já.</p>
 \]</span></p>
 <p>pelo que <code>5 %/% 2</code> devolve <code>2</code> e <code>5 %% 2</code> devolve <code>1</code>.</p>
 <p>Vejamos alguns exemplos, incluindo funções matemáticas comuns:</p>
-<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fl">5</span> <span class="op">*</span> <span class="fl">21</span></span>
 <span><span class="co">## [1] 105</span></span>
 <span></span>
@@ -350,7 +378,7 @@ gravá-lo desde já.</p>
 </h3>
 <p>Tal como na matemática, as operações aritméticas em R obedecem a uma ordem de prioridade. As potências são avaliadas primeiro, depois vêm as multiplicações e divisões, por fim, as adições e subtrações.</p>
 <p>Os parênteses permitem alterar esta ordem. Mesmo quando não são estritamente necessários, podem tornar o código mais claro e reduzir o risco de interpretações erradas.</p>
-<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fl">19</span> <span class="op">+</span> <span class="fl">26</span><span class="op">/</span><span class="fl">4</span> <span class="op">-</span> <span class="fl">2</span><span class="op">*</span><span class="fl">10</span></span>
 <span><span class="co">## [1] 5.5</span></span>
 <span></span>
@@ -363,7 +391,7 @@ gravá-lo desde já.</p>
 <span class="header-section-number">3.6.2</span> Controlar os dígitos apresentados<a class="anchor" aria-label="anchor" href="#controlar-os-d%C3%ADgitos-apresentados"><i class="fas fa-link"></i></a>
 </h3>
 <p>Por vezes queremos ver mais, ou menos, casas decimais no resultado apresentado pelo R. A opção global <code>digits</code> controla o número de algarismos significativos que o R mostra no ecrã:</p>
-<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Log.html">exp</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span></span>
 <span><span class="co">## [1] 2.718282</span></span>
 <span></span>
@@ -384,7 +412,7 @@ gravá-lo desde já.</p>
 <span class="header-section-number">3.7</span> Objetos predefinidos e valores especiais<a class="anchor" aria-label="anchor" href="#objetos-predefinidos-e-valores-especiais"><i class="fas fa-link"></i></a>
 </h2>
 <p>O R inclui alguns objetos predefinidos úteis. Um exemplo importante é <code>pi</code>, que representa o número <span class="math inline">\(\pi\)</span>. Além disso, o R dispõe de valores especiais para representar resultados que não pertencem à aritmética usual, como infinitos, resultados indefinidos e valores ausentes.</p>
-<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">pi</span></span>
 <span><span class="co">## [1] 3.141593</span></span>
 <span></span>
@@ -413,11 +441,11 @@ gravá-lo desde já.</p>
 </h3>
 <p>Os valores ausentes são frequentes em dados reais: questionários com perguntas por responder, sensores que falharam, registos incompletos ou medições que não chegaram a ser feitas. Por isso, o R trata estes casos com prudência.</p>
 <p>Por omissão, qualquer cálculo que envolva um <code>NA</code> devolve também <code>NA</code>. A razão é simples: se um dos valores é desconhecido, o resultado do cálculo pode também ser desconhecido. No caso da média, por exemplo, não podemos determinar o seu valor exato sem saber todos os valores que entram no cálculo.</p>
-<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">3</span>, <span class="cn">NA</span>, <span class="fl">5</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">## [1] NA</span></span></code></pre></div>
 <p>Quando queremos calcular uma estatística ignorando os valores em falta, usamos o argumento <code>na.rm = TRUE</code>, abreviatura de remove <code>NA</code>. Este argumento está disponível em muitas funções de resumo:</p>
-<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">3</span>, <span class="cn">NA</span>, <span class="fl">5</span><span class="op">)</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
 <span><span class="co">## [1] 2.75</span></span>
 <span></span>
@@ -426,7 +454,7 @@ gravá-lo desde já.</p>
 <div class="atencao">
 <p>Não devemos testar valores ausentes com o operador de igualdade. A expressão <code>x == NA</code> não devolve simplesmente <code>TRUE</code> ou <code>FALSE</code>, devolve <code>NA</code>, porque comparar um valor com uma informação desconhecida produz, também ela, uma resposta desconhecida. Para detetar valores em falta, usamos a função <code><a href="https://rdrr.io/r/base/NA.html">is.na()</a></code>.</p>
 </div>
-<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">y</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span>, <span class="cn">NA</span>, <span class="fl">4</span>, <span class="fl">5</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">y</span> <span class="op">==</span> <span class="cn">NA</span>        <span class="co"># não funciona como se poderia esperar</span></span>
@@ -462,7 +490,7 @@ gravá-lo desde já.</p>
 <span class="header-section-number">3.8.1</span> Apresentar objetos com <code>print()</code><a class="anchor" aria-label="anchor" href="#apresentar-objetos-com-print"><i class="fas fa-link"></i></a>
 </h3>
 <p>A função <code><a href="https://rdrr.io/r/base/print.html">print()</a></code> apresenta na Consola o objeto que lhe é fornecido:</p>
-<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">mensagem</span> <span class="op">&lt;-</span> <span class="st">"O meu primeiro programa em R"</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">mensagem</span><span class="op">)</span></span>
 <span><span class="co">## [1] "O meu primeiro programa em R"</span></span></code></pre></div>
@@ -473,22 +501,22 @@ gravá-lo desde já.</p>
 <span class="header-section-number">3.8.2</span> Combinar texto com <code>paste()</code> e <code>paste0()</code><a class="anchor" aria-label="anchor" href="#combinar-texto-com-paste-e-paste0"><i class="fas fa-link"></i></a>
 </h3>
 <p>A função <code><a href="https://rdrr.io/r/base/paste.html">paste()</a></code> permite juntar vários textos ou valores. Por omissão, acrescenta um espaço entre os elementos:</p>
-<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">nome1</span> <span class="op">&lt;-</span> <span class="st">"Faculdade"</span></span>
 <span><span class="va">nome2</span> <span class="op">&lt;-</span> <span class="st">"Ciências"</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="va">nome1</span>, <span class="va">nome2</span><span class="op">)</span></span>
 <span><span class="co">## [1] "Faculdade Ciências"</span></span></code></pre></div>
 <p>Podemos escolher outro separador através do argumento <code>sep</code>:</p>
-<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb27"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="st">"2026"</span>, <span class="st">"07"</span>, <span class="st">"15"</span>, sep <span class="op">=</span> <span class="st">"-"</span><span class="op">)</span></span>
 <span><span class="co">## [1] "2026-07-15"</span></span></code></pre></div>
 <p>A função <code><a href="https://rdrr.io/r/base/paste.html">paste0()</a></code> funciona de forma semelhante, mas não acrescenta qualquer separador:</p>
-<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb28"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="st">"Capítulo"</span>, <span class="fl">3</span><span class="op">)</span></span>
 <span><span class="co">## [1] "Capítulo3"</span></span></code></pre></div>
 <p>Se quisermos incluir um espaço, temos de o escrever explicitamente:</p>
-<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb29"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="st">"Capítulo "</span>, <span class="fl">3</span><span class="op">)</span></span>
 <span><span class="co">## [1] "Capítulo 3"</span></span></code></pre></div>
 </div>
@@ -497,7 +525,7 @@ gravá-lo desde já.</p>
 <span class="header-section-number">3.8.3</span> Apresentar mensagens com <code>cat()</code><a class="anchor" aria-label="anchor" href="#apresentar-mensagens-com-cat"><i class="fas fa-link"></i></a>
 </h3>
 <p>A função <code><a href="https://rdrr.io/r/base/cat.html">cat()</a></code> é particularmente útil para produzir mensagens mais naturais, sem as aspas e a indicação <code>[1]</code> apresentadas por <code><a href="https://rdrr.io/r/base/print.html">print()</a></code>:</p>
-<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb30"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">nome</span> <span class="op">&lt;-</span> <span class="st">"Ana"</span></span>
 <span><span class="va">idade</span> <span class="op">&lt;-</span> <span class="fl">20</span></span>
 <span></span>
@@ -510,19 +538,19 @@ gravá-lo desde já.</p>
 <span class="header-section-number">3.8.4</span> Pedir informação com <code>readline()</code><a class="anchor" aria-label="anchor" href="#pedir-informa%C3%A7%C3%A3o-com-readline"><i class="fas fa-link"></i></a>
 </h3>
 <p>A função <code><a href="https://rdrr.io/r/base/readline.html">readline()</a></code> permite criar programas interativos, isto é, programas que pedem informação a quem os executa:</p>
-<div class="sourceCode" id="cb27"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb31"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">nome</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/readline.html">readline</a></span><span class="op">(</span>prompt <span class="op">=</span> <span class="st">"Qual é o seu nome? "</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"Olá,"</span>, <span class="va">nome</span>, <span class="st">"!\n"</span><span class="op">)</span></span></code></pre></div>
 <p>O argumento <code>prompt</code> define a mensagem apresentada antes de o utilizador escrever a resposta.</p>
 <p>Tudo o que é introduzido através de <code><a href="https://rdrr.io/r/base/readline.html">readline()</a></code> chega ao R como <strong>texto</strong>, mesmo quando o utilizador escreve um número. Por isso, quando pretendemos fazer cálculos com a resposta, precisamos de a converter:</p>
-<div class="sourceCode" id="cb28"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb32"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">n</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/readline.html">readline</a></span><span class="op">(</span>prompt <span class="op">=</span> <span class="st">"Introduza um número inteiro: "</span><span class="op">)</span></span>
 <span><span class="va">n</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/integer.html">as.integer</a></span><span class="op">(</span><span class="va">n</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">n</span> <span class="op">+</span> <span class="fl">1</span><span class="op">)</span></span></code></pre></div>
 <p>Neste exemplo, <code><a href="https://rdrr.io/r/base/integer.html">as.integer()</a></code> converte o texto introduzido pelo utilizador num número inteiro.</p>
 <p>Um programa um pouco mais completo pode verificar se a conversão foi possível:</p>
-<div class="sourceCode" id="cb29"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb33"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">idade</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/readline.html">readline</a></span><span class="op">(</span>prompt <span class="op">=</span> <span class="st">"Introduza a sua idade: "</span><span class="op">)</span></span>
 <span><span class="va">idade</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html">as.numeric</a></span><span class="op">(</span><span class="va">idade</span><span class="op">)</span></span>
 <span></span>
@@ -592,7 +620,7 @@ gravá-lo desde já.</p>
 </tbody>
 </table></div>
 <p>Vejamos alguns exemplos:</p>
-<div class="sourceCode" id="cb30"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb34"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fl">2</span> <span class="op">&gt;</span> <span class="fl">1</span></span>
 <span><span class="co">## [1] TRUE</span></span>
 <span></span>
@@ -605,7 +633,7 @@ gravá-lo desde já.</p>
 <span><span class="fl">5</span> <span class="op">&lt;=</span> <span class="fl">3</span></span>
 <span><span class="co">## [1] FALSE</span></span></code></pre></div>
 <p>Cada expressão é avaliada pelo R e produz um valor lógico. Estes resultados podem depois ser guardados em objetos e reutilizados noutras operações:</p>
-<div class="sourceCode" id="cb31"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb35"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">idade</span> <span class="op">&lt;-</span> <span class="fl">20</span></span>
 <span><span class="va">maior_de_idade</span> <span class="op">&lt;-</span> <span class="va">idade</span> <span class="op">&gt;=</span> <span class="fl">18</span></span>
 <span></span>
@@ -613,7 +641,7 @@ gravá-lo desde já.</p>
 <span><span class="co">## [1] TRUE</span></span></code></pre></div>
 <div class="atencao">
 <p>Não confunda <code>=</code> com <code>==</code>. O operador <code>==</code> compara dois valores e testa se são iguais. O sinal <code>=</code> pode ser usado para atribuição em determinados contextos, embora neste livro utilizemos preferencialmente <code>&lt;-</code> para criar objetos.</p>
-<div class="sourceCode" id="cb32"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb36"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fl">5</span>      <span class="co"># atribuição</span></span>
 <span><span class="va">x</span> <span class="op">==</span> <span class="fl">5</span>      <span class="co"># teste de igualdade</span></span>
 <span><span class="co">## [1] TRUE</span></span></code></pre></div>
@@ -632,7 +660,7 @@ gravá-lo desde já.</p>
 <li>
 <code>!</code> representa o <strong>não</strong> lógico e inverte um valor lógico.</li>
 </ul>
-<div class="sourceCode" id="cb33"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb37"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="op">(</span><span class="fl">5</span> <span class="op">&gt;</span> <span class="fl">3</span><span class="op">)</span> <span class="op">&amp;</span> <span class="op">(</span><span class="fl">4</span> <span class="op">&gt;</span> <span class="fl">2</span><span class="op">)</span>   <span class="co"># ambas as condições são verdadeiras</span></span>
 <span><span class="co">## [1] TRUE</span></span>
 <span></span>
@@ -642,7 +670,7 @@ gravá-lo desde já.</p>
 <span><span class="op">!</span><span class="op">(</span><span class="fl">5</span> <span class="op">&gt;</span> <span class="fl">3</span><span class="op">)</span>            <span class="co"># inverte TRUE em FALSE</span></span>
 <span><span class="co">## [1] FALSE</span></span></code></pre></div>
 <p>Estes operadores tornam-se particularmente úteis quando queremos verificar várias condições em simultâneo. Por exemplo:</p>
-<div class="sourceCode" id="cb34"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb38"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">idade</span> <span class="op">&lt;-</span> <span class="fl">20</span></span>
 <span><span class="va">tem_documento</span> <span class="op">&lt;-</span> <span class="cn">TRUE</span></span>
 <span></span>
@@ -682,11 +710,52 @@ estiver entre 0 e 100 (inclusive), ou <code>FALSE</code> caso contrário.</p>
 </div>
 </div>
   <div class="chapter-nav">
-<div class="empty"></div>
-<div class="empty"></div>
+<div class="prev"><a href="rrstudio.html"><span class="header-section-number">2</span> O R e o RStudio</a></div>
+<div class="next"><a href="estruturas.html"><span class="header-section-number">4</span> Estruturas de dados</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
-      <div id="book-on-this-page"></div>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#calculadora"><span class="header-section-number">3</span> O R como calculadora</a></li>
+<li><a class="nav-link" href="#a-consola-e-o-primeiro-comando"><span class="header-section-number">3.1</span> A consola e o primeiro comando</a></li>
+<li><a class="nav-link" href="#coment%C3%A1rios"><span class="header-section-number">3.2</span> Comentários</a></li>
+<li><a class="nav-link" href="#pedir-ajuda"><span class="header-section-number">3.3</span> Pedir ajuda</a></li>
+<li>
+<a class="nav-link" href="#objetos-e-vari%C3%A1veis"><span class="header-section-number">3.4</span> Objetos e variáveis</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#atribui%C3%A7%C3%A3o"><span class="header-section-number">3.4.1</span> Atribuição</a></li>
+<li><a class="nav-link" href="#regras-para-nomear-vari%C3%A1veis"><span class="header-section-number">3.4.2</span> Regras para nomear variáveis</a></li>
+</ul>
+</li>
+<li>
+<a class="nav-link" href="#tipos-de-dados"><span class="header-section-number">3.5</span> Tipos de dados</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#tipagem-din%C3%A2mica"><span class="header-section-number">3.5.1</span> Tipagem dinâmica</a></li>
+<li><a class="nav-link" href="#converter-entre-tipos"><span class="header-section-number">3.5.2</span> Converter entre tipos</a></li>
+</ul>
+</li>
+<li>
+<a class="nav-link" href="#operadores-aritm%C3%A9ticos"><span class="header-section-number">3.6</span> Operadores aritméticos</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#prioridade-das-opera%C3%A7%C3%B5es"><span class="header-section-number">3.6.1</span> Prioridade das operações</a></li>
+<li><a class="nav-link" href="#controlar-os-d%C3%ADgitos-apresentados"><span class="header-section-number">3.6.2</span> Controlar os dígitos apresentados</a></li>
+</ul>
+</li>
+<li>
+<a class="nav-link" href="#objetos-predefinidos-e-valores-especiais"><span class="header-section-number">3.7</span> Objetos predefinidos e valores especiais</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#lidar-com-valores-ausentes"><span class="header-section-number">3.7.1</span> Lidar com valores ausentes</a></li></ul>
+</li>
+<li>
+<a class="nav-link" href="#apresentar-e-combinar-texto"><span class="header-section-number">3.8</span> Apresentar e combinar texto</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#apresentar-objetos-com-print"><span class="header-section-number">3.8.1</span> Apresentar objetos com print()</a></li>
+<li><a class="nav-link" href="#combinar-texto-com-paste-e-paste0"><span class="header-section-number">3.8.2</span> Combinar texto com paste() e paste0()</a></li>
+<li><a class="nav-link" href="#apresentar-mensagens-com-cat"><span class="header-section-number">3.8.3</span> Apresentar mensagens com cat()</a></li>
+<li><a class="nav-link" href="#pedir-informa%C3%A7%C3%A3o-com-readline"><span class="header-section-number">3.8.4</span> Pedir informação com readline()</a></li>
+</ul>
+</li>
+<li>
+<a class="nav-link" href="#operadores-l%C3%B3gicos-e-relacionais"><span class="header-section-number">3.9</span> Operadores lógicos e relacionais</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#operadores-relacionais"><span class="header-section-number">3.9.1</span> Operadores relacionais</a></li>
+<li><a class="nav-link" href="#operadores-l%C3%B3gicos"><span class="header-section-number">3.9.2</span> Operadores lógicos</a></li>
+</ul>
+</li>
+<li><a class="nav-link" href="#exerc%C3%ADcios"><span class="header-section-number">3.10</span> Exercícios</a></li>
+</ul>
 
       <div class="book-extra">
         <ul class="list-unstyled">

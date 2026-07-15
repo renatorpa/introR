@@ -107,7 +107,7 @@ tornam a nossa análise reprodutível.</p>
 o atalho <code>Ctrl+Shift+N</code> / <code>Cmd+Shift+N</code>). Escreve-se o código no editor e guarda-se
 o ficheiro com a extensão <code>.R</code>.</p>
 <p>Guarde, por exemplo, o código seguinte num ficheiro chamado <code>meu_script.R</code>:</p>
-<div class="sourceCode" id="cb107"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb115"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">produto</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="kw"><a href="https://rdrr.io/r/base/function.html">return</a></span><span class="op">(</span><span class="va">x</span> <span class="op">*</span> <span class="va">y</span><span class="op">)</span></span>
 <span><span class="op">}</span></span></code></pre></div>
@@ -121,10 +121,10 @@ função e poder usá-la são dois passos distintos.</p>
 <p>Para correr um script guardado, usamos a função <code><a href="https://rdrr.io/r/base/source.html">source()</a></code>, na consola ou dentro de
 outro script. O R lê o ficheiro e executa, uma a uma, todas as suas linhas.</p>
 <p>Se o ficheiro <code>meu_script.R</code> estiver no <strong>diretório de trabalho atual</strong>, basta:</p>
-<div class="sourceCode" id="cb108"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb116"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/source.html">source</a></span><span class="op">(</span><span class="st">"meu_script.R"</span><span class="op">)</span></span></code></pre></div>
 <p>Se estiver noutra pasta, indicamos o caminho completo:</p>
-<div class="sourceCode" id="cb109"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb117"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/source.html">source</a></span><span class="op">(</span><span class="st">"/caminho/para/o/seu/script/meu_script.R"</span><span class="op">)</span></span></code></pre></div>
 <div id="o-que-acontece-quando-executamos-um-script" class="section level3" number="7.2.1">
 <h3>
@@ -133,7 +133,7 @@ outro script. O R lê o ficheiro e executa, uma a uma, todas as suas linhas.</p>
 <p>Ao chamar <code><a href="https://rdrr.io/r/base/source.html">source()</a></code>, todas as funções, variáveis e resultados definidos no script
 passam a estar disponíveis no ambiente de trabalho. Depois de executar o
 <code>meu_script.R</code> acima, a função <code>produto()</code> fica pronta a usar:</p>
-<div class="sourceCode" id="cb110"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb118"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">produto</span><span class="op">(</span><span class="fl">2</span>, <span class="fl">3</span><span class="op">)</span></span>
 <span><span class="co">## [1] 6</span></span></code></pre></div>
 <p>É esta a lógica que torna os scripts tão úteis: escrevemos e testamos um conjunto de
@@ -161,12 +161,12 @@ menos que indiquemos um caminho completo. Duas funções bastam para o gerir:</p
 <code>setwd("caminho/da/pasta")</code> — muda o diretório de trabalho para o caminho
 indicado.</li>
 </ul>
-<div class="sourceCode" id="cb111"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb119"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/getwd.html">getwd</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">## [1] "C:/Users/Utilizador/Documents"</span></span></code></pre></div>
 <p>Com o diretório de trabalho bem definido, referimo-nos aos ficheiros pelo nome, sem
 escrever o caminho todo. Se <code>dados.csv</code> estiver no diretório de trabalho:</p>
-<div class="sourceCode" id="cb112"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb120"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">dados</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.csv</a></span><span class="op">(</span><span class="st">"dados.csv"</span><span class="op">)</span></span></code></pre></div>
 <div class="atencao">
 <p>Evite espalhar chamadas a <code>setwd("C:/Users/...")</code> pelos seus scripts. Um caminho
@@ -260,7 +260,7 @@ R <strong>dados reais</strong>, guardados em ficheiros de texto, CSV ou Excel.</
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Introdução ao R e à Simulação Estatística</strong>: Um Laboratório de Estatística Computacional" was written by Renato de Paula and Nuno Brites. It was last built on 12 de July de 2026.</p>
+    <p>"<strong>Introdução ao R e à Simulação Estatística</strong>: Um Laboratório de Estatística Computacional" was written by Renato de Paula and Nuno Brites. It was last built on 15 de July de 2026.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

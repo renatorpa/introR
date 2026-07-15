@@ -167,7 +167,7 @@ que <strong>diminui</strong> claramente à medida que <span class="math inline">
 </tbody>
 </table></div>
 <p>Para gerar uma amostra uniforme em <span class="math inline">\([0, 1]\)</span> usa-se a função <code><a href="https://rdrr.io/r/stats/Uniform.html">runif()</a></code>:</p>
-<div class="sourceCode" id="cb241"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb249"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html">runif</a></span><span class="op">(</span><span class="fl">100</span>, min <span class="op">=</span> <span class="fl">0</span>, max <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span></code></pre></div>
 <p>Aqui não havia necessidade real de simular, pois conhecíamos a média analiticamente —
 o exemplo serve apenas para mostrar que a simulação reproduz a teoria. A lição a reter
@@ -192,7 +192,7 @@ que segue uma distribuição <strong>gama</strong> de forma <span class="math in
 <p>A solução analítica exigiria um integral duplo sobre uma região não retangular. A
 simulação resolve o problema em poucas linhas: geramos muitos pares <span class="math inline">\((X, Y)\)</span>, calculamos
 <span class="math inline">\(Z = |X - Y|\)</span> em cada um, e estimamos <span class="math inline">\(E(|X - Y|)\)</span> pela média dos valores de <span class="math inline">\(Z\)</span>.</p>
-<div class="sourceCode" id="cb242"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb250"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Tempos para atender 10 clientes: soma de 10 exponenciais = Gama(forma=10, taxa=0.3)</span></span>
@@ -204,7 +204,7 @@ simulação resolve o problema em poucas linhas: geramos muitos pares <span clas
 <span><span class="co">## [1] 11.76</span></span></code></pre></div>
 <p>A simulação estima um tempo médio de espera de cerca de 11,7 minutos. O histograma
 mostra a distribuição completa desses tempos:</p>
-<div class="sourceCode" id="cb243"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb251"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/hist.html">hist</a></span><span class="op">(</span><span class="va">z</span>,</span>
 <span>     main <span class="op">=</span> <span class="st">"Tempo de espera"</span>,</span>
 <span>     xlab <span class="op">=</span> <span class="st">"Tempo de espera (minutos)"</span>,</span>
@@ -265,7 +265,7 @@ delicada — os geradores usados na prática têm períodos astronomicamente lon
 <p>No R, a semente do gerador fixa-se com <code><a href="https://rdrr.io/r/base/Random.html">set.seed()</a></code>. Executar <code><a href="https://rdrr.io/r/base/Random.html">set.seed()</a></code> com o mesmo
 número antes de uma operação aleatória garante que ela produz sempre os mesmos
 resultados:</p>
-<div class="sourceCode" id="cb244"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb252"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">100</span>, <span class="fl">5</span><span class="op">)</span></span>
 <span><span class="co">## [1] 31 79 51 14 67</span></span></code></pre></div>
@@ -350,7 +350,7 @@ o vocabulário indispensável de qualquer simulação.</p>
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Introdução ao R e à Simulação Estatística</strong>: Um Laboratório de Estatística Computacional" was written by Renato de Paula and Nuno Brites. It was last built on 12 de July de 2026.</p>
+    <p>"<strong>Introdução ao R e à Simulação Estatística</strong>: Um Laboratório de Estatística Computacional" was written by Renato de Paula and Nuno Brites. It was last built on 15 de July de 2026.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

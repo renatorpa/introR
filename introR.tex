@@ -141,7 +141,7 @@
 \makeatother
 \subtitle{Um Laboratório de Estatística Computacional}
 \author{Renato de Paula and Nuno Brites}
-\date{12 de July de 2026}
+\date{15 de July de 2026}
 
 \begin{document}
 \maketitle
@@ -349,13 +349,13 @@ No capítulo anterior vimos por que razão a estatística moderna é inseparáve
 
 Trabalhar com R implica, na prática, instalar dois programas complementares. O primeiro é o \textbf{R}, isto é, o motor que executa os cálculos, interpreta os comandos e contém as funções fundamentais da linguagem. O segundo é o \textbf{RStudio}, uma interface que torna a escrita, a organização e a execução do código muito mais cómodas.
 
-O objectivo deste capítulo é simples: instalar o R, instalar o RStudio e fazer uma primeira visita guiada ao ambiente onde iremos trabalhar ao longo do livro. No fim, o leitor terá um pequeno laboratório de estatística computacional a funcionar no seu computador e estará pronto para escrever os primeiros comandos.
+O objetivo deste capítulo é simples: instalar o R, instalar o RStudio e fazer uma primeira visita guiada ao ambiente onde iremos trabalhar ao longo do livro. No fim, o leitor terá um pequeno laboratório de estatística computacional a funcionar no seu computador e estará pronto para escrever os primeiros comandos.
 
 \section{Instalação}\label{instalauxe7uxe3o}
 
 \subsection{Instalar o R}\label{instalar-o-r}
 
-A versão base do R, que inclui o conjunto fundamental de funções, descarrega-se do sítio oficial do projecto:
+A versão base do R, que inclui o conjunto fundamental de funções, descarrega-se do sítio oficial do projeto:
 
 \begin{quote}
 \url{https://www.r-project.org/}
@@ -365,7 +365,7 @@ A partir dessa página, basta seguir a ligação para o \textbf{CRAN} (\emph{Com
 
 \subsection{Instalar o RStudio}\label{instalar-o-rstudio}
 
-Poderíamos trabalhar apenas com o R base, mas escrever código dessa forma é pouco confortável. Por isso, instala-se quase sempre um \textbf{ambiente de desenvolvimento integrado} -- em inglês, \emph{Integrated Development Environment} ou \textbf{IDE}. Um IDE ajuda a escrever, guardar e organizar scripts, executar comandos, visualizar objectos, consultar gráficos e acompanhar os resultados.
+Poderíamos trabalhar apenas com o R base, mas escrever código dessa forma é pouco confortável. Por isso, instala-se quase sempre um \textbf{ambiente de desenvolvimento integrado} -- em inglês, \emph{Integrated Development Environment} ou \textbf{IDE}. Um IDE ajuda a escrever, guardar e organizar scripts, executar comandos, visualizar objetos, consultar gráficos e acompanhar os resultados.
 
 A escolha habitual para trabalhar com R é o \textbf{RStudio Desktop}, gratuito e disponível em:
 
@@ -379,7 +379,7 @@ A ordem importa: instale \textbf{primeiro} o R e \textbf{só depois} o RStudio. 
 
 Além do conjunto base de funções, o R oferece milhares de \textbf{pacotes} adicionais,
 desenvolvidos e partilhados pela comunidade. Um pacote é uma coleção de funções e
-dados que acrescenta novas capacidades ao R -- desde gráficos elegantes até
+dados que acrescenta novas capacidades ao R, desde gráficos elegantes até
 modelos estatísticos sofisticados.
 
 Instalar um pacote faz-se uma única vez, com a função \texttt{install.packages()}
@@ -400,9 +400,9 @@ Para ver todos os pacotes já instalados no seu sistema:
 \end{Shaded}
 
 Distinga bem dois passos que são frequentemente confundidos. \textbf{Instalar} um
-pacote (com \texttt{install.packages()}) faz-se uma vez só -- descarrega o pacote para o
+pacote (com \texttt{install.packages()}) faz-se uma vez só, descarrega o pacote para o
 computador. \textbf{Carregar} um pacote (com \texttt{library()}) faz-se em cada sessão em que
-o queremos usar -- torna as suas funções disponíveis. É como comprar um livro
+o queremos usar, torna as suas funções disponíveis. É como comprar um livro
 (uma vez) e depois tirá-lo da estante sempre que precisamos dele.
 
 \begin{Shaded}
@@ -420,7 +420,7 @@ ambiente.
 
 \textbf{O Editor de \emph{scripts}} (por omissão, no canto superior esquerdo) é onde
 escrevemos e guardamos o nosso código. Um \emph{script} é um ficheiro de texto com uma
-sequência de comandos -- o ``guião'' da nossa análise. O editor oferece realce de
+sequência de comandos, o ``guião'' da nossa análise. O editor oferece realce de
 sintaxe (que colore o código para o tornar legível), completamento automático e a
 possibilidade de executar linhas ou blocos de código diretamente. É aqui que
 deve escrever o código que quer conservar.
@@ -432,7 +432,7 @@ consola não fica guardado. Pense na consola como uma folha de rascunho e no
 editor como o caderno definitivo.
 
 \textbf{O painel \emph{Environment}/\emph{History}} (canto superior direito) mostra, no
-separador \emph{Environment}, todos os objetos atualmente na memória da sessão -- os
+separador \emph{Environment}, todos os objetos atualmente na memória da sessão, os
 dados e variáveis que fomos criando. O separador \emph{History} guarda o histórico de
 comandos executados, permitindo recuperá-los facilmente.
 
@@ -494,7 +494,7 @@ Há também uma razão matemática para começar por aqui. A estatística está 
 
 \section{A consola e o primeiro comando}\label{a-consola-e-o-primeiro-comando}
 
-O R aceita comandos numa interface de linha de comando, assinalada pelo símbolo \texttt{\textgreater{}}, a que chamamos \textbf{prompt}. Quando escrevemos directamente na \textbf{Consola}, basta escrever o comando a seguir ao \emph{prompt} e pressionar \texttt{Enter}: o R interpreta o comando, executa-o e mostra o resultado.
+O R aceita comandos numa interface de linha de comando, assinalada pelo símbolo \texttt{\textgreater{}}, a que chamamos \textbf{prompt}. Quando escrevemos diretamente na \textbf{Consola}, basta escrever o comando a seguir ao \emph{prompt} e pressionar \texttt{Enter}: o R interpreta o comando, executa-o e mostra o resultado.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -509,9 +509,9 @@ Ao longo do livro, o código que escrevemos aparece em caixas próprias. Quando 
 
 O \texttt{{[}1{]}} que precede o resultado indica a posição do primeiro elemento mostrado nessa linha. Para um único valor parece supérfluo, mas quando o R devolve muitos valores, esta numeração ajuda-nos a localizá-los.
 
-\section{Comentários: escrever para humanos}\label{comentuxe1rios-escrever-para-humanos}
+\section{Comentários}\label{comentuxe1rios}
 
-O carácter \texttt{\#} inicia um \textbf{comentário}: tudo o que vem depois dele, na mesma linha, é ignorado pelo R. Os comentários não servem para o computador -- servem para nós e para quem, mais tarde, ler o nosso código (muitas vezes, esse alguém somos nós próprios, uns meses depois).
+O carácter \texttt{\#} inicia um \textbf{comentário}: tudo o que vem depois dele, na mesma linha, é ignorado pelo R. Os comentários não servem para o computador, servem para nós e para quem, mais tarde, ler o nosso código.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -525,7 +525,7 @@ Comente o \emph{porquê}, não o \emph{quê}. Uma linha como \texttt{x\ \textles
 
 \section{Pedir ajuda}\label{pedir-ajuda}
 
-Ninguém decora todas as funções do R, nem precisa de o fazer. O essencial é saber consultar a documentação. Se conhece o nome de uma função, basta precedê-lo de um ponto de interrogação para abrir a respectiva página de ajuda:
+Ninguém decora todas as funções do R, nem precisa de o fazer. O essencial é saber consultar a documentação. Se conhece o nome de uma função, basta precedê-lo de um ponto de interrogação para abrir a respetiva página de ajuda:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -533,7 +533,7 @@ Ninguém decora todas as funções do R, nem precisa de o fazer. O essencial é 
 \end{Highlighting}
 \end{Shaded}
 
-A ajuda descreve o que a função faz, quais são os seus argumentos (isto é, os valores ou opções que fornecemos à função para ela executar uma tarefa) e o que devolve. Para além disso, muitas funções trazem exemplos prontos a correr, que podem ser vistos com \texttt{example()}:
+A ajuda descreve a finalidade da função, os seus argumentos, isto é, os valores ou opções que lhe fornecemos para executar uma tarefa, e o tipo de resultado que devolve. Para além disso, muitas funções incluem exemplos prontos a executar, que podem ser consultados com \texttt{example()}:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -543,15 +543,17 @@ A ajuda descreve o que a função faz, quais são os seus argumentos (isto é, o
 
 No comando \texttt{example(sum)}, o argumento da função \texttt{example()} é \texttt{sum}. Isto significa que estamos a pedir ao R para mostrar exemplos de utilização da função \texttt{sum()}.
 
-Aprender a ler estas páginas é uma das competências mais rentáveis para quem programa em R.
+Aprender a ler a documentação é uma das competências mais importantes para quem programa em R: permite ganhar autonomia, esclarecer dúvidas e descobrir novas formas de usar as funções.
 
 \section{Objetos e variáveis}\label{objetos-e-variuxe1veis}
 
-Chegamos ao salto referido na abertura. Em R, tudo o que criamos ou carregamos numa sessão é um \textbf{objeto}: um número, um texto, um vetor, uma tabela ou até uma função. Um objeto é uma unidade de informação guardada na memória.
+Em R, calcular é apenas o primeiro passo. O passo seguinte é guardar resultados para os podermos usar mais tarde. Para isso, precisamos de compreender duas ideias fundamentais: \textbf{objetos} e \textbf{variáveis}.
 
-Uma \textbf{variável} é simplesmente um \emph{nome} que associamos a um objeto. Ao criar uma variável, criamos um rótulo que nos permite aceder ao objecto guardado na memória sempre que quisermos, sem ter de o recalcular ou escrever novamente.
+Tudo o que criamos ou carregamos numa sessão de R é um \textbf{objeto}: um número, um texto, um vetor, uma tabela ou até uma função. Um objeto é uma unidade de informação guardada na memória.
 
-Nesta descrição usamos a ideia de ``rótulo'' apenas como uma imagem intuitiva. Em linguagens de programação, é comum falar de nomes, referências e ponteiros para descrever a relação entre uma variável e o objeto armazenado na memória. No R, porém, o funcionamento interno da memória é mais subtil e não será necessário estudar ponteiros neste livro. Para os nossos objetivos, basta compreender que um nome permite guardar, recuperar e reutilizar um objeto. Leitores interessados numa descrição mais avançada podem consultar \emph{Advanced R}, de Hadley Wickham, em particular os capítulos sobre nomes, valores e memória.
+Uma \textbf{variável} é o nome que associamos a um objeto. Ao criar uma variável, damos um nome a uma informação que ficou guardada na memória, o que nos permite recuperá-la e reutilizá-la sempre que quisermos, sem ter de a recalcular ou escrever novamente.
+
+Nesta descrição, usamos a ideia de ``nome'' de forma intuitiva. Em linguagens de programação, é comum falar de nomes, referências e ponteiros para descrever a relação entre uma variável e a informação armazenada na memória. No R, porém, a gestão interna da memória é mais subtil, e não será necessário estudar ponteiros neste livro. Para os nossos objetivos, basta compreender que uma variável permite guardar, recuperar e reutilizar um objeto. Leitores interessados numa descrição mais avançada podem consultar \emph{Advanced R}, de Hadley Wickham.
 
 \subsection{Atribuição}\label{atribuiuxe7uxe3o}
 
@@ -601,55 +603,47 @@ Para ver todos os objetos que existem atualmente na memória da sessão, usamos 
 
 \subsection{Regras para nomear variáveis}\label{regras-para-nomear-variuxe1veis}
 
-A escolha dos nomes das variáveis não é só uma questão de gosto: bons nomes
-tornam o código legível, e o R impõe algumas regras.
+A escolha dos nomes das variáveis não é só uma questão de gosto: bons nomes tornam o código legível, e o R impõe algumas regras.
 
 Um nome de variável deve começar por uma letra, embora o R também aceite alguns nomes começados por ponto. Depois do primeiro carácter, o nome pode conter letras, números, pontos e sublinhados. Não pode conter espaços nem caracteres especiais como \texttt{@}, \texttt{\#}, \texttt{\$} ou \texttt{\%}. Assim, \texttt{nome\_cliente2} é válido; \texttt{2nome} ou \texttt{nome\ cliente} não são.
 
-Também não podemos usar \textbf{palavras reservadas} -- termos com significado especial no R, como \texttt{if}, \texttt{else}, \texttt{for}, \texttt{while}, \texttt{TRUE}, \texttt{FALSE}, \texttt{function}.
-
-E, como já vimos, o R distingue maiúsculas de minúsculas:
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{idade }\OtherTok{\textless{}{-}} \DecValTok{20}
-\NormalTok{Idade }\OtherTok{\textless{}{-}} \DecValTok{30}
-\end{Highlighting}
-\end{Shaded}
-
-Aqui, \texttt{idade} e \texttt{Idade} são duas variáveis distintas.
+Também não podemos usar \textbf{palavras reservadas}, termos com significado especial no R, como \texttt{if}, \texttt{else}, \texttt{for}, \texttt{while}, \texttt{TRUE}, \texttt{FALSE}, \texttt{function}.
 
 Embora o R permita nomes de objetos que começam por ponto, como \texttt{.valor} ou \texttt{.dados}, convém evitar essa prática nesta fase. Em sistemas como macOS e Linux, ficheiros ou pastas cujo nome começa por ponto são tratados como ficheiros ocultos. Por exemplo, um ficheiro chamado \texttt{.dados.csv} pode não aparecer normalmente no Finder. Para evitar confusões, neste livro usaremos nomes simples e explícitos, sem ponto inicial.
 
-Prefira nomes que descrevam o conteúdo. \texttt{nota\_final} diz-nos muito mais do que \texttt{x}. Uma convenção comum e legível é usar minúsculas e separar palavras com sublinhados: \texttt{faculdade\_de\_ciencias}. Código escrito para ser lido é código que se consegue corrigir e reutilizar.
+Prefira nomes que descrevam o conteúdo. \texttt{nota\_final} diz-nos muito mais do que \texttt{x}. Uma convenção comum e legível é usar minúsculas e separar palavras com sublinhados: \texttt{faculdade\_de\_ciencias}.
 
 \section{Tipos de dados}\label{tipos-de-dados}
 
-Nem todos os valores são da mesma natureza. Um número comporta-se de forma
-diferente de um texto, e ambos diferem de um valor lógico. Em R, os principais
-tipos de dados que vamos encontrar são:
+Nem todos os valores têm a mesma natureza. Um número, um texto e um valor lógico comportam-se de formas diferentes e permitem operações diferentes. Em R, é importante reconhecer estas diferenças, porque o tipo de dado determina o que podemos fazer com um objeto.
+
+Neste primeiro contacto, vamos encontrar sobretudo três tipos básicos:
 
 \begin{itemize}
 \tightlist
 \item
-  \textbf{Numeric} -- números, inteiros ou decimais. Exemplos: \texttt{42}, \texttt{3.14}.
+  \textbf{numeric}: números, inteiros ou decimais. Exemplos: \texttt{42}, \texttt{3.14};
 \item
-  \textbf{Character} -- texto (cadeias de carateres). Exemplo: \texttt{"Olá"}.
+  \textbf{character}: texto, também chamado cadeia de caracteres. Exemplo: \texttt{"Olá"};
 \item
-  \textbf{Logical} -- valores lógicos, \texttt{TRUE} ou \texttt{FALSE}.
-\item
-  \textbf{Vetors} -- coleções de elementos do mesmo tipo, como \texttt{c(1,\ 2,\ 3)}.
-\item
-  \textbf{Factors} -- variáveis categóricas (por exemplo, ``baixo'', ``médio'', ``alto'').
-\item
-  \textbf{Data frames} -- tabelas com linhas e colunas, ao estilo de uma folha de
-  cálculo.
-\item
-  \textbf{Lists} -- coleções que podem misturar elementos de tipos diferentes.
+  \textbf{logical}: valores lógicos, isto é, \texttt{TRUE} ou \texttt{FALSE}.
 \end{itemize}
 
-Os quatro primeiros aparecem já neste capítulo; os restantes serão o tema do
-Capítulo~\ref{estruturas}. Um primeiro contacto:
+Para além destes tipos básicos, o R organiza valores em estruturas mais ricas. Algumas aparecerão já neste capítulo, enquanto outras serão estudadas com detalhe no Capítulo \ref{estruturas}:
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{vetores}: coleções de elementos do mesmo tipo, como \texttt{c(1,\ 2,\ 3)};
+\item
+  \textbf{fatores}: estruturas usadas para representar variáveis categóricas, como \texttt{"baixo"}, \texttt{"médio"} e \texttt{"alto"};
+\item
+  \textbf{data frames}: tabelas com linhas e colunas, semelhantes às de uma folha de cálculo;
+\item
+  \textbf{listas}: coleções que podem reunir objetos de tipos diferentes.
+\end{itemize}
+
+A distinção entre tipos de dados e estruturas de dados tornar-se-á mais clara com a prática. Para já, basta reter a ideia essencial: antes de operar sobre um objeto, é importante saber que tipo de informação ele contém e como essa informação está organizada.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -662,9 +656,9 @@ Capítulo~\ref{estruturas}. Um primeiro contacto:
 
 \subsection{Tipagem dinâmica}\label{tipagem-dinuxe2mica}
 
-Uma característica cómoda do R é a \textbf{tipagem dinâmica}: não precisamos de
-declarar o tipo de uma variável, o R deduz-o a partir do valor que lhe
-atribuímos. A função \texttt{class()} diz-nos o tipo (a \emph{classe}) de um objeto:
+Uma característica cómoda do R é a \textbf{tipagem dinâmica}. Isto significa que não precisamos de declarar antecipadamente o tipo de uma variável. O R identifica o tipo a partir do valor que lhe atribuímos.
+
+Por exemplo, se guardarmos um número, o objeto será tratado como numérico; se guardarmos texto, será tratado como texto; se guardarmos \texttt{TRUE} ou \texttt{FALSE}, será tratado como lógico. A função \texttt{class()} permite consultar a classe de um objeto:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -682,36 +676,42 @@ atribuímos. A função \texttt{class()} diz-nos o tipo (a \emph{classe}) de um 
 \end{Highlighting}
 \end{Shaded}
 
-Existe ainda a função \texttt{typeof()}, que revela o tipo de armazenamento interno, o modo como o R guarda o objeto na memória. Nem sempre coincide com \texttt{class()}, e essa distinção é por vezes reveladora:
+A classe indica como o R deve interpretar e manipular um objeto. Em muitos casos, esta informação é suficiente para o utilizador. No entanto, existe também a função \texttt{typeof()}, que mostra o tipo de armazenamento interno, isto é, a forma como o objeto é guardado na memória.
+
+Nem sempre \texttt{class()} e \texttt{typeof()} devolvem a mesma resposta:
 
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{x }\OtherTok{\textless{}{-}} \DecValTok{1}\SpecialCharTok{:}\DecValTok{10}
 \FunctionTok{class}\NormalTok{(x)}
 \DocumentationTok{\#\# [1] "integer"}
+
 \FunctionTok{typeof}\NormalTok{(x)}
 \DocumentationTok{\#\# [1] "integer"}
 
 \NormalTok{y }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\FloatTok{1.1}\NormalTok{, }\FloatTok{2.2}\NormalTok{, }\FloatTok{3.3}\NormalTok{)}
 \FunctionTok{class}\NormalTok{(y)}
 \DocumentationTok{\#\# [1] "numeric"}
+
 \FunctionTok{typeof}\NormalTok{(y)}
 \DocumentationTok{\#\# [1] "double"}
 
 \NormalTok{z }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(}\AttributeTok{a =} \DecValTok{1}\SpecialCharTok{:}\DecValTok{3}\NormalTok{, }\AttributeTok{b =} \FunctionTok{c}\NormalTok{(}\StringTok{"A"}\NormalTok{, }\StringTok{"B"}\NormalTok{, }\StringTok{"C"}\NormalTok{))}
 \FunctionTok{class}\NormalTok{(z)}
 \DocumentationTok{\#\# [1] "data.frame"}
+
 \FunctionTok{typeof}\NormalTok{(z)}
 \DocumentationTok{\#\# [1] "list"}
 \end{Highlighting}
 \end{Shaded}
 
-Repare no último caso: uma tabela (\texttt{data.frame}) tem classe \texttt{"data.frame"} mas, internamente, é armazenada como uma \textbf{lista}. Voltaremos a este facto quando estudarmos as estruturas de dados.
+No último exemplo, \texttt{z} tem classe \texttt{"data.frame"}, pois é assim que o R o apresenta e manipula ao nível do utilizador. Internamente, porém, um \texttt{data.frame} é armazenado como uma lista de colunas. Esta distinção entre a forma como um objeto é usado e a forma como é guardado ficará mais clara quando estudarmos as estruturas de dados.
 
 \subsection{Converter entre tipos}\label{converter-entre-tipos}
 
-Muitas vezes, sobretudo quando importamos dados de fontes externas, um valor
-chega-nos com o tipo ``errado'': um número guardado como texto, por exemplo. As funções da família \texttt{as.*()} convertem entre tipos:
+Muitas vezes, sobretudo quando importamos dados de fontes externas, os valores chegam ao R com um tipo diferente daquele que esperávamos. Um número pode vir guardado como texto, uma variável categórica pode ser lida como texto, ou um valor lógico pode aparecer codificado como \texttt{"sim"} e \texttt{"não"}. Nestes casos, precisamos de converter explicitamente os objetos para o tipo adequado.
+
+As funções da família \texttt{as.*()} permitem fazer essas conversões:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -719,7 +719,7 @@ chega-nos com o tipo ``errado'': um número guardado como texto, por exemplo. As
 \NormalTok{b}
 \DocumentationTok{\#\# [1] "15"}
 
-\NormalTok{y }\OtherTok{\textless{}{-}} \FunctionTok{as.integer}\NormalTok{(}\FloatTok{1.5}\NormalTok{)    }\CommentTok{\# de decimal para inteiro (trunca)}
+\NormalTok{y }\OtherTok{\textless{}{-}} \FunctionTok{as.integer}\NormalTok{(}\FloatTok{1.5}\NormalTok{)    }\CommentTok{\# de decimal para inteiro}
 \NormalTok{y}
 \DocumentationTok{\#\# [1] 1}
 
@@ -729,9 +729,20 @@ chega-nos com o tipo ``errado'': um número guardado como texto, por exemplo. As
 \end{Highlighting}
 \end{Shaded}
 
+No segundo exemplo, repare que \texttt{as.integer(1.5)} devolve 1. Isto acontece porque a conversão para inteiro remove a parte decimal, não se trata de um arredondamento.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{as.integer}\NormalTok{(}\FloatTok{1.9}\NormalTok{)}
+\DocumentationTok{\#\# [1] 1}
+\end{Highlighting}
+\end{Shaded}
+
+Por isso, as conversões devem ser feitas com cuidado. Quando pedimos ao R para alterar o tipo de um objeto, estamos também a alterar a forma como esse objeto será interpretado em cálculos, gráficos e análises posteriores.
+
 \section{Operadores aritméticos}\label{operadores-aritmuxe9ticos}
 
-Com valores para manipular, vejamos as operações que os combinam. Os operadores aritméticos do R são os que seria de esperar, com dois acréscimos úteis: a divisão inteira e o resto.
+Depois de criarmos valores e objetos, precisamos de os combinar. Em R, as operações aritméticas básicas escrevem-se de forma muito próxima da notação matemática habitual. Podemos somar, subtrair, multiplicar, dividir e calcular potências. Além disso, o R inclui dois operadores particularmente úteis em programação: a \textbf{divisão inteira} e o \textbf{resto da divisão}.
 
 {\def\LTcaptype{none} % do not increment counter
 \begin{longtable}[]{@{}lll@{}}
@@ -741,17 +752,25 @@ Operador & Descrição & Exemplo \\
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
-\texttt{+} & Adição & \texttt{5\ +\ 2} dá \texttt{7} \\
-\texttt{-} & Subtração & \texttt{5\ -\ 2} dá \texttt{3} \\
-\texttt{*} & Multiplicação & \texttt{5\ *\ 2} dá \texttt{10} \\
-\texttt{/} & Divisão & \texttt{5\ /\ 2} dá \texttt{2.5} \\
-\texttt{\%/\%} & Divisão inteira & \texttt{5\ \%/\%\ 2} dá \texttt{2} \\
-\texttt{\%\%} & Resto da divisão & \texttt{5\ \%\%\ 2} dá \texttt{1} \\
-\texttt{\^{}} & Potência & \texttt{5\ \^{}\ 2} dá \texttt{25} \\
+\texttt{+} & Adição & \texttt{5\ +\ 2} devolve \texttt{7} \\
+\texttt{-} & Subtração & \texttt{5\ -\ 2} devolve \texttt{3} \\
+\texttt{*} & Multiplicação & \texttt{5\ *\ 2} devolve \texttt{10} \\
+\texttt{/} & Divisão & \texttt{5\ /\ 2} devolve \texttt{2.5} \\
+\texttt{\%/\%} & Divisão inteira & \texttt{5\ \%/\%\ 2} devolve \texttt{2} \\
+\texttt{\%\%} & Resto da divisão & \texttt{5\ \%\%\ 2} devolve \texttt{1} \\
+\texttt{\^{}} & Potência & \texttt{5\ \^{}\ 2} devolve \texttt{25} \\
 \end{longtable}
 }
 
-Alguns exemplos, incluindo funções matemáticas comuns:
+A divisão inteira, \texttt{\%/\%}, devolve apenas a parte inteira do quociente. O operador \texttt{\%\%} devolve o resto da divisão. Assim,
+
+\[
+5 = 2 \times 2 + 1,
+\]
+
+pelo que \texttt{5\ \%/\%\ 2} devolve \texttt{2} e \texttt{5\ \%\%\ 2} devolve \texttt{1}.
+
+Vejamos alguns exemplos, incluindo funções matemáticas comuns:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -775,11 +794,13 @@ Alguns exemplos, incluindo funções matemáticas comuns:
 \end{Highlighting}
 \end{Shaded}
 
-Os operadores \texttt{\%\%} e \texttt{\%/\%} são mais úteis do que parecem. O resto \texttt{\%\%} responde a perguntas como ``este número é par?'' (\texttt{n\ \%\%\ 2\ ==\ 0}) ou ``esta hora, somadas algumas horas, dá que horas no relógio de 24?'' -- questões que aparecerão nos exercícios. Vale a pena habituar-se a eles.
+Os operadores \texttt{\%\%} e \texttt{\%/\%} são mais úteis do que podem parecer à primeira vista. O resto da divisão permite, por exemplo, verificar se um número é par, usando \texttt{n\ \%\%\ 2\ ==\ 0}, ou trabalhar com ciclos que se repetem, como as horas num relógio de 24 horas. Estes operadores voltarão a aparecer em exercícios e pequenos programas ao longo do livro.
 
 \subsection{Prioridade das operações}\label{prioridade-das-operauxe7uxf5es}
 
-Como na matemática, as operações têm uma ordem de prioridade: primeiro potências, depois multiplicações e divisões, e só então adições e subtrações. Os parênteses alteram essa ordem e, na dúvida, tornam o código mais claro:
+Tal como na matemática, as operações aritméticas em R obedecem a uma ordem de prioridade. As potências são avaliadas primeiro, depois vêm as multiplicações e divisões, por fim, as adições e subtrações.
+
+Os parênteses permitem alterar esta ordem. Mesmo quando não são estritamente necessários, podem tornar o código mais claro e reduzir o risco de interpretações erradas.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -791,9 +812,11 @@ Como na matemática, as operações têm uma ordem de prioridade: primeiro potê
 \end{Highlighting}
 \end{Shaded}
 
+No primeiro exemplo, o R calcula primeiro \texttt{26/4} e \texttt{2*10}, e só depois realiza a adição e a subtração. No segundo exemplo, os parênteses obrigam o R a calcular primeiro \texttt{19\ +\ 26} e \texttt{4\ -\ 2}.
+
 \subsection{Controlar os dígitos apresentados}\label{controlar-os-duxedgitos-apresentados}
 
-Por vezes queremos ver mais (ou menos) casas decimais. A opção global \texttt{digits} controla quantos algarismos significativos o R apresenta:
+Por vezes queremos ver mais, ou menos, casas decimais no resultado apresentado pelo R. A opção global \texttt{digits} controla o número de algarismos significativos que o R mostra no ecrã:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -810,12 +833,11 @@ Por vezes queremos ver mais (ou menos) casas decimais. A opção global \texttt{
 \end{Highlighting}
 \end{Shaded}
 
-Isto altera apenas a \emph{apresentação}: internamente, o R continua a guardar o valor com toda a precisão disponível. Mudar \texttt{digits} nunca arredonda os cálculos, apenas o que vemos no ecrã.
+A opção \texttt{digits} altera apenas a forma como os resultados são apresentados. Internamente, o R continua a guardar os valores com a precisão disponível. Portanto, mudar \texttt{digits} não altera os cálculos nem arredonda os valores guardados, altera apenas aquilo que vemos no ecrã.
 
 \section{Objetos predefinidos e valores especiais}\label{objetos-predefinidos-e-valores-especiais}
 
-O R traz consigo constantes matemáticas úteis, como \texttt{pi} (o número \(\pi\)), e
-representações para situações que a aritmética habitual não cobre.
+O R inclui alguns objetos predefinidos úteis. Um exemplo importante é \texttt{pi}, que representa o número \(\pi\). Além disso, o R dispõe de valores especiais para representar resultados que não pertencem à aritmética usual, como infinitos, resultados indefinidos e valores ausentes.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -837,24 +859,24 @@ representações para situações que a aritmética habitual não cobre.
 \end{Highlighting}
 \end{Shaded}
 
-Estes resultados especiais têm nomes e significados precisos, que importa
-distinguir:
+Estes valores especiais têm significados distintos:
 
 \begin{itemize}
-\tightlist
 \item
-  \textbf{\texttt{Inf}} (e \textbf{\texttt{-Inf}}) representam o infinito, resultado de operações como dividir por zero.
+  \texttt{Inf} e \texttt{-Inf} representam infinito positivo e infinito negativo, respetivamente. Surgem, por exemplo, em operações como \texttt{1/0} e \texttt{-1/0}.
 \item
-  \textbf{\texttt{NaN}} (\emph{Not a Number}) representa um resultado numérico \textbf{indefinido}, como \texttt{0/0} ou a raiz quadrada de um número negativo. É um número que não é número.
+  \texttt{NaN} significa \emph{Not a Number}. Representa um resultado numérico indefinido, como \texttt{0/0} ou a raiz quadrada de um número negativo no conjunto dos números reais.
 \item
-  \textbf{\texttt{NA}} (\emph{Not Available}) representa um valor \textbf{ausente}, um dado que não foi medido ou que está em falta. Ao contrário de \texttt{NaN}, o \texttt{NA} não é necessariamente numérico: pode representar qualquer tipo de dado em falta.
+  \texttt{NA} significa \emph{Not Available}. Representa um valor ausente, isto é, uma informação que não foi observada, registada ou disponibilizada. Ao contrário de \texttt{NaN}, o \texttt{NA} não se limita a valores numéricos: pode representar dados em falta de vários tipos.
 \end{itemize}
 
-A distinção entre \texttt{NaN} e \texttt{NA} é subtil mas importante: o primeiro é fruto de uma conta impossível; o segundo, de informação que simplesmente não temos.
+A distinção entre \texttt{NaN} e \texttt{NA} é subtil, mas importante. O \texttt{NaN} resulta de uma operação numérica indefinida. O \texttt{NA} representa informação em falta.
 
 \subsection{Lidar com valores ausentes}\label{lidar-com-valores-ausentes}
 
-Os valores ausentes são frequentes em dados reais: questionários com perguntas por responder, sensores que falharam, registos incompletos ou medições que não chegaram a ser feitas. Por isso, o R trata estes casos com prudência. Por omissão, qualquer cálculo que envolva um \texttt{NA} devolve também \texttt{NA}. A razão é simples: se um dos valores é desconhecido, o resultado do cálculo pode também ser desconhecido. No caso da média, por exemplo, não podemos determinar o seu valor exacto sem saber todos os valores que entram no cálculo.
+Os valores ausentes são frequentes em dados reais: questionários com perguntas por responder, sensores que falharam, registos incompletos ou medições que não chegaram a ser feitas. Por isso, o R trata estes casos com prudência.
+
+Por omissão, qualquer cálculo que envolva um \texttt{NA} devolve também \texttt{NA}. A razão é simples: se um dos valores é desconhecido, o resultado do cálculo pode também ser desconhecido. No caso da média, por exemplo, não podemos determinar o seu valor exato sem saber todos os valores que entram no cálculo.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -863,9 +885,7 @@ Os valores ausentes são frequentes em dados reais: questionários com perguntas
 \end{Highlighting}
 \end{Shaded}
 
-Quando queremos, ainda assim, calcular ignorando os valores em falta, usamos o
-argumento \texttt{na.rm\ =\ TRUE} (\emph{remove NA}), disponível na maioria das funções de
-resumo:
+Quando queremos calcular uma estatística ignorando os valores em falta, usamos o argumento \texttt{na.rm\ =\ TRUE}, abreviatura de remove \texttt{NA}. Este argumento está disponível em muitas funções de resumo:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -877,9 +897,7 @@ resumo:
 \end{Highlighting}
 \end{Shaded}
 
-Não se pode testar a ausência com o operador de igualdade. \texttt{x\ ==\ NA} \textbf{não}
-devolve \texttt{TRUE}/\texttt{FALSE} -- devolve \texttt{NA}, porque comparar algo com um valor
-desconhecido é, ele próprio, desconhecido. Para detetar valores em falta, usamos a função \texttt{is.na()}:
+Não devemos testar valores ausentes com o operador de igualdade. A expressão \texttt{x\ ==\ NA} não devolve simplesmente \texttt{TRUE} ou \texttt{FALSE}, devolve \texttt{NA}, porque comparar um valor com uma informação desconhecida produz, também ela, uma resposta desconhecida. Para detetar valores em falta, usamos a função \texttt{is.na()}.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -893,129 +911,170 @@ desconhecido é, ele próprio, desconhecido. Para detetar valores em falta, usam
 \end{Highlighting}
 \end{Shaded}
 
-Existe ainda \texttt{is.nan()}, específica para detetar \texttt{NaN}. Note a relação entre as duas: \texttt{is.na()} deteta tanto \texttt{NA} como \texttt{NaN} (afinal, um \texttt{NaN} também não é um valor disponível), ao passo que \texttt{is.nan()} só deteta \texttt{NaN}.
+Existe também a função \texttt{is.nan()}, usada especificamente para detetar valores \texttt{NaN}. A relação entre as duas funções é a seguinte: \texttt{is.na()} deteta tanto \texttt{NA} como \texttt{NaN}, porque ambos representam ausência de um valor utilizável, \texttt{is.nan()} deteta apenas \texttt{NaN}.
 
-\section{Exibir e combinar texto}\label{exibir-e-combinar-texto}
+\section{Apresentar e combinar texto}\label{apresentar-e-combinar-texto}
 
-Para além de calcular, precisamos frequentemente de \textbf{comunicar} resultados -- mostrá-los ao utilizador, combiná-los com texto explicativo, ou pedir dados a quem executa o programa. Algumas funções essenciais para isso:
+Para além de efetuar cálculos, um programa precisa frequentemente de \textbf{comunicar resultados}. Podemos querer mostrar uma mensagem na Consola, combinar valores com texto explicativo ou pedir informação a quem executa o programa.
+
+O R dispõe de várias funções para estas tarefas:
 
 \begin{itemize}
 \tightlist
 \item
-  \texttt{print()} -- exibe valores e resultados na consola.
+  \texttt{print()} apresenta um objeto ou resultado na Consola;
 \item
-  \texttt{readline()} -- recebe uma entrada escrita pelo utilizador via teclado.
+  \texttt{paste()} combina textos e valores, usando, por omissão, um espaço como separador;
 \item
-  \texttt{paste()} -- junta (concatena) textos, com um separador (por omissão, um
-  espaço).
+  \texttt{paste0()} combina textos e valores sem acrescentar qualquer separador;
 \item
-  \texttt{paste0()} -- como \texttt{paste()}, mas sem separador.
+  \texttt{cat()} combina e apresenta texto e valores de forma direta;
 \item
-  \texttt{cat()} -- junta e exibe textos e valores de forma direta, sem as aspas de
-  \texttt{print()}.
+  \texttt{readline()} solicita ao utilizador que introduza uma resposta através do teclado.
 \end{itemize}
 
-Um primeiro exemplo, combinando duas palavras:
+\subsection{\texorpdfstring{Apresentar objetos com \texttt{print()}}{Apresentar objetos com print()}}\label{apresentar-objetos-com-print}
+
+A função \texttt{print()} apresenta na Consola o objeto que lhe é fornecido:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{nome1 }\OtherTok{\textless{}{-}} \StringTok{"faculdade"}
-\NormalTok{nome2 }\OtherTok{\textless{}{-}} \StringTok{"ciências"}
-\FunctionTok{print}\NormalTok{(}\FunctionTok{paste}\NormalTok{(nome1, nome2))}
-\DocumentationTok{\#\# [1] "faculdade ciências"}
+\NormalTok{mensagem }\OtherTok{\textless{}{-}} \StringTok{"O meu primeiro programa em R"}
+\FunctionTok{print}\NormalTok{(mensagem)}
+\DocumentationTok{\#\# [1] "O meu primeiro programa em R"}
 \end{Highlighting}
 \end{Shaded}
 
-A função \texttt{readline()} permite escrever programas interativos, que pedem
-informação a quem os executa. O que o utilizador escreve chega sempre como
-\textbf{texto}, pelo que muitas vezes é preciso convertê-lo com \texttt{as.numeric()} ou
-\texttt{as.integer()}:
+A indicação \texttt{{[}1{]}} mostra a posição do primeiro elemento apresentado. Neste caso, o objeto contém apenas um elemento, que começa na posição 1.
+
+\subsection{\texorpdfstring{Combinar texto com \texttt{paste()} e \texttt{paste0()}}{Combinar texto com paste() e paste0()}}\label{combinar-texto-com-paste-e-paste0}
+
+A função \texttt{paste()} permite juntar vários textos ou valores. Por omissão, acrescenta um espaço entre os elementos:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{n }\OtherTok{\textless{}{-}} \FunctionTok{readline}\NormalTok{(}\AttributeTok{prompt =} \StringTok{"Digite um número: "}\NormalTok{)}
-\NormalTok{n }\OtherTok{\textless{}{-}} \FunctionTok{as.integer}\NormalTok{(n)   }\CommentTok{\# converte o texto num inteiro}
+\NormalTok{nome1 }\OtherTok{\textless{}{-}} \StringTok{"Faculdade"}
+\NormalTok{nome2 }\OtherTok{\textless{}{-}} \StringTok{"Ciências"}
+
+\FunctionTok{paste}\NormalTok{(nome1, nome2)}
+\DocumentationTok{\#\# [1] "Faculdade Ciências"}
+\end{Highlighting}
+\end{Shaded}
+
+Podemos escolher outro separador através do argumento \texttt{sep}:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{paste}\NormalTok{(}\StringTok{"2026"}\NormalTok{, }\StringTok{"07"}\NormalTok{, }\StringTok{"15"}\NormalTok{, }\AttributeTok{sep =} \StringTok{"{-}"}\NormalTok{)}
+\DocumentationTok{\#\# [1] "2026{-}07{-}15"}
+\end{Highlighting}
+\end{Shaded}
+
+A função \texttt{paste0()} funciona de forma semelhante, mas não acrescenta qualquer separador:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{paste0}\NormalTok{(}\StringTok{"Capítulo"}\NormalTok{, }\DecValTok{3}\NormalTok{)}
+\DocumentationTok{\#\# [1] "Capítulo3"}
+\end{Highlighting}
+\end{Shaded}
+
+Se quisermos incluir um espaço, temos de o escrever explicitamente:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{paste0}\NormalTok{(}\StringTok{"Capítulo "}\NormalTok{, }\DecValTok{3}\NormalTok{)}
+\DocumentationTok{\#\# [1] "Capítulo 3"}
+\end{Highlighting}
+\end{Shaded}
+
+\subsection{\texorpdfstring{Apresentar mensagens com \texttt{cat()}}{Apresentar mensagens com cat()}}\label{apresentar-mensagens-com-cat}
+
+A função \texttt{cat()} é particularmente útil para produzir mensagens mais naturais, sem as aspas e a indicação \texttt{{[}1{]}} apresentadas por \texttt{print()}:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{nome }\OtherTok{\textless{}{-}} \StringTok{"Ana"}
+\NormalTok{idade }\OtherTok{\textless{}{-}} \DecValTok{20}
+
+\FunctionTok{cat}\NormalTok{(nome, }\StringTok{"tem"}\NormalTok{, idade, }\StringTok{"anos.}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\DocumentationTok{\#\# Ana tem 20 anos.}
+\end{Highlighting}
+\end{Shaded}
+
+A sequência \texttt{\textbackslash{}n} representa uma mudança de linha. Ao contrário de \texttt{print()}, a função \texttt{cat()} não muda automaticamente de linha no fim da mensagem.
+
+\subsection{\texorpdfstring{Pedir informação com \texttt{readline()}}{Pedir informação com readline()}}\label{pedir-informauxe7uxe3o-com-readline}
+
+A função \texttt{readline()} permite criar programas interativos, isto é, programas que pedem informação a quem os executa:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{nome }\OtherTok{\textless{}{-}} \FunctionTok{readline}\NormalTok{(}\AttributeTok{prompt =} \StringTok{"Qual é o seu nome? "}\NormalTok{)}
+\FunctionTok{cat}\NormalTok{(}\StringTok{"Olá,"}\NormalTok{, nome, }\StringTok{"!}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+O argumento \texttt{prompt} define a mensagem apresentada antes de o utilizador escrever a resposta.
+
+Tudo o que é introduzido através de \texttt{readline()} chega ao R como \textbf{texto}, mesmo quando o utilizador escreve um número. Por isso, quando pretendemos fazer cálculos com a resposta, precisamos de a converter:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{n }\OtherTok{\textless{}{-}} \FunctionTok{readline}\NormalTok{(}\AttributeTok{prompt =} \StringTok{"Introduza um número inteiro: "}\NormalTok{)}
+\NormalTok{n }\OtherTok{\textless{}{-}} \FunctionTok{as.integer}\NormalTok{(n)}
+
 \FunctionTok{print}\NormalTok{(n }\SpecialCharTok{+} \DecValTok{1}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
-Um exemplo mais completo, que usa \texttt{cat()} para uma saudação e trata uma entrada
-inválida:
+Neste exemplo, \texttt{as.integer()} converte o texto introduzido pelo utilizador num número inteiro.
+
+Um programa um pouco mais completo pode verificar se a conversão foi possível:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{idade }\OtherTok{\textless{}{-}} \FunctionTok{readline}\NormalTok{(}\AttributeTok{prompt =} \StringTok{"Digite a sua idade: "}\NormalTok{)}
+\NormalTok{idade }\OtherTok{\textless{}{-}} \FunctionTok{readline}\NormalTok{(}\AttributeTok{prompt =} \StringTok{"Introduza a sua idade: "}\NormalTok{)}
 \NormalTok{idade }\OtherTok{\textless{}{-}} \FunctionTok{as.numeric}\NormalTok{(idade)}
 
 \ControlFlowTok{if}\NormalTok{ (}\FunctionTok{is.na}\NormalTok{(idade)) \{}
-  \FunctionTok{cat}\NormalTok{(}\StringTok{"Entrada inválida. Insira um valor numérico.}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+  \FunctionTok{cat}\NormalTok{(}\StringTok{"Entrada inválida. Introduza um valor numérico.}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
 \NormalTok{\} }\ControlFlowTok{else}\NormalTok{ \{}
   \FunctionTok{cat}\NormalTok{(}\StringTok{"Tem"}\NormalTok{, idade, }\StringTok{"anos.}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
 \NormalTok{\}}
 \end{Highlighting}
 \end{Shaded}
 
-A função \texttt{readline()} destina-se a uso interactivo, isto é, a situações em que existe uma consola à espera da resposta do utilizador. Por isso, estes exemplos devem ser experimentados directamente na Consola. Num documento compilado, como um ficheiro R Markdown ou bookdown, ou num script executado de forma não interactiva, não há oportunidade para responder ao pedido, e o código pode ficar bloqueado ou falhar.
+Se o utilizador escrever algo que não possa ser convertido num número, \texttt{as.numeric()} devolve \texttt{NA}. A condição \texttt{is.na(idade)} permite detetar essa situação e apresentar uma mensagem adequada.
 
-\subsection{\texorpdfstring{A função \texttt{paste()} com mais detalhe}{A função paste() com mais detalhe}}\label{a-funuxe7uxe3o-paste-com-mais-detalhe}
-
-A função \texttt{paste()} é muito versátil. Aceita vários argumentos,
-combina vetores elemento a elemento e deixa-nos escolher o separador:
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{\# Vários argumentos}
-\FunctionTok{paste}\NormalTok{(}\StringTok{"Data"}\NormalTok{, }\StringTok{"Science"}\NormalTok{, }\StringTok{"com"}\NormalTok{, }\StringTok{"R"}\NormalTok{)}
-\DocumentationTok{\#\# [1] "Data Science com R"}
-
-\CommentTok{\# Separador específico}
-\FunctionTok{paste}\NormalTok{(}\StringTok{"2026"}\NormalTok{, }\StringTok{"04"}\NormalTok{, }\StringTok{"28"}\NormalTok{, }\AttributeTok{sep =} \StringTok{"{-}"}\NormalTok{)}
-\DocumentationTok{\#\# [1] "2026{-}04{-}28"}
-
-\CommentTok{\# Combinação elemento a elemento de dois vetores}
-\NormalTok{nomes  }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"Ana"}\NormalTok{, }\StringTok{"Bruno"}\NormalTok{, }\StringTok{"Carlos"}\NormalTok{)}
-\NormalTok{apelidos }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"Silva"}\NormalTok{, }\StringTok{"Oliveira"}\NormalTok{, }\StringTok{"Santos"}\NormalTok{)}
-\FunctionTok{paste}\NormalTok{(nomes, apelidos)}
-\DocumentationTok{\#\# [1] "Ana Silva"      "Bruno Oliveira" "Carlos Santos"}
-
-\CommentTok{\# Colar texto a cada elemento de um vetor}
-\FunctionTok{paste}\NormalTok{(}\StringTok{"Número"}\NormalTok{, }\DecValTok{1}\SpecialCharTok{:}\DecValTok{3}\NormalTok{)}
-\DocumentationTok{\#\# [1] "Número 1" "Número 2" "Número 3"}
-
-\CommentTok{\# Sem separador, com paste0()}
-\FunctionTok{paste0}\NormalTok{(}\StringTok{"Olá"}\NormalTok{, }\StringTok{"Mundo"}\NormalTok{)}
-\DocumentationTok{\#\# [1] "OláMundo"}
-\end{Highlighting}
-\end{Shaded}
+A função \texttt{readline()} destina-se a situações interativas, nas quais existe uma Consola à espera da resposta do utilizador. Estes exemplos devem, por isso, ser experimentados diretamente na Consola ou num script executado interativamente. Durante a compilação automática de um documento R Markdown não existe oportunidade para responder ao pedido, pelo que o código pode ficar bloqueado ou falhar.
 
 \section{Operadores lógicos e relacionais}\label{operadores-luxf3gicos-e-relacionais}
 
-Terminamos com os operadores que permitem ao R \textbf{tomar decisões}: comparar valores e combinar condições. São a base das estruturas de decisão do Capítulo~\ref{selecao}, por isso este é o primeiro passo para escrever
-programas que reagem aos dados.
+Terminamos este capítulo com os operadores que permitem comparar valores e combinar condições. Estes operadores devolvem resultados lógicos, isto é, \texttt{TRUE} ou \texttt{FALSE}, e constituem a base das estruturas de decisão que estudaremos no Capítulo~\ref{selecao}.
 
 \subsection{Operadores relacionais}\label{operadores-relacionais}
 
-Os operadores relacionais comparam valores e devolvem um valor lógico
-(\texttt{TRUE} ou \texttt{FALSE}):
+Os operadores relacionais comparam dois valores e indicam se a relação considerada é verdadeira ou falsa.
 
 {\def\LTcaptype{none} % do not increment counter
 \begin{longtable}[]{@{}ll@{}}
 \toprule\noalign{}
-Operador & Testa se\ldots{} \\
+Operador & Significado \\
 \midrule\noalign{}
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
 \texttt{a\ ==\ b} & \texttt{a} é igual a \texttt{b} \\
 \texttt{a\ !=\ b} & \texttt{a} é diferente de \texttt{b} \\
-\texttt{a\ \textgreater{}\ b} & \texttt{a} é maior que \texttt{b} \\
-\texttt{a\ \textless{}\ b} & \texttt{a} é menor que \texttt{b} \\
+\texttt{a\ \textgreater{}\ b} & \texttt{a} é maior do que \texttt{b} \\
+\texttt{a\ \textless{}\ b} & \texttt{a} é menor do que \texttt{b} \\
 \texttt{a\ \textgreater{}=\ b} & \texttt{a} é maior ou igual a \texttt{b} \\
 \texttt{a\ \textless{}=\ b} & \texttt{a} é menor ou igual a \texttt{b} \\
 \end{longtable}
 }
 
-Alguns exemplos:
+Vejamos alguns exemplos:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1027,33 +1086,54 @@ Alguns exemplos:
 
 \DecValTok{1} \SpecialCharTok{!=} \DecValTok{2}
 \DocumentationTok{\#\# [1] TRUE}
+
+\DecValTok{5} \SpecialCharTok{\textless{}=} \DecValTok{3}
+\DocumentationTok{\#\# [1] FALSE}
 \end{Highlighting}
 \end{Shaded}
 
-Não confunda \texttt{=} com \texttt{==}. Um só sinal de igual (\texttt{=}) é uma \textbf{atribuição}; dois sinais de igual (\texttt{==}) formam um \textbf{teste de igualdade}. Trocar um pelo outro é uma fonte frequente de erros e, felizmente, uma das mais fáceis de corrigir quando aprendemos a reconhecê-la.
+Cada expressão é avaliada pelo R e produz um valor lógico. Estes resultados podem depois ser guardados em objetos e reutilizados noutras operações:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{idade }\OtherTok{\textless{}{-}} \DecValTok{20}
+\NormalTok{maior\_de\_idade }\OtherTok{\textless{}{-}}\NormalTok{ idade }\SpecialCharTok{\textgreater{}=} \DecValTok{18}
+
+\NormalTok{maior\_de\_idade}
+\DocumentationTok{\#\# [1] TRUE}
+\end{Highlighting}
+\end{Shaded}
+
+Não confunda \texttt{=} com \texttt{==}. O operador \texttt{==} compara dois valores e testa se são iguais. O sinal \texttt{=} pode ser usado para atribuição em determinados contextos, embora neste livro utilizemos preferencialmente \texttt{\textless{}-} para criar objetos.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x }\OtherTok{\textless{}{-}} \DecValTok{5}      \CommentTok{\# atribuição}
+\NormalTok{x }\SpecialCharTok{==} \DecValTok{5}      \CommentTok{\# teste de igualdade}
+\DocumentationTok{\#\# [1] TRUE}
+\end{Highlighting}
+\end{Shaded}
 
 \subsection{Operadores lógicos}\label{operadores-luxf3gicos}
 
-Os operadores lógicos combinam ou invertem condições:
+Os operadores lógicos permitem combinar ou inverter condições:
 
 \begin{itemize}
 \tightlist
 \item
-  \texttt{\&} (\textbf{e} lógico): devolve \texttt{TRUE} apenas se \textbf{todas} as condições forem
-  verdadeiras.
+  \texttt{\&} representa o \textbf{e} lógico e devolve \texttt{TRUE} quando ambas as condições são verdadeiras;
 \item
-  \texttt{\textbar{}} (\textbf{ou} lógico): devolve \texttt{TRUE} se \textbf{pelo menos uma} condição for
-  verdadeira.
+  \texttt{\textbar{}} representa o \textbf{ou} lógico e devolve \texttt{TRUE} quando pelo menos uma das condições é verdadeira;
 \item
-  \texttt{!} (\textbf{não} lógico): inverte o valor lógico.
+  \texttt{!} representa o \textbf{não} lógico e inverte um valor lógico.
 \end{itemize}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{(}\DecValTok{5} \SpecialCharTok{\textgreater{}} \DecValTok{3}\NormalTok{) }\SpecialCharTok{\&}\NormalTok{ (}\DecValTok{4} \SpecialCharTok{\textgreater{}} \DecValTok{2}\NormalTok{)   }\CommentTok{\# ambas verdadeiras}
+\NormalTok{(}\DecValTok{5} \SpecialCharTok{\textgreater{}} \DecValTok{3}\NormalTok{) }\SpecialCharTok{\&}\NormalTok{ (}\DecValTok{4} \SpecialCharTok{\textgreater{}} \DecValTok{2}\NormalTok{)   }\CommentTok{\# ambas as condições são verdadeiras}
 \DocumentationTok{\#\# [1] TRUE}
 
-\NormalTok{(}\DecValTok{5} \SpecialCharTok{\textless{}} \DecValTok{3}\NormalTok{) }\SpecialCharTok{|}\NormalTok{ (}\DecValTok{4} \SpecialCharTok{\textgreater{}} \DecValTok{2}\NormalTok{)   }\CommentTok{\# basta uma ser verdadeira}
+\NormalTok{(}\DecValTok{5} \SpecialCharTok{\textless{}} \DecValTok{3}\NormalTok{) }\SpecialCharTok{|}\NormalTok{ (}\DecValTok{4} \SpecialCharTok{\textgreater{}} \DecValTok{2}\NormalTok{)   }\CommentTok{\# pelo menos uma condição é verdadeira}
 \DocumentationTok{\#\# [1] TRUE}
 
 \SpecialCharTok{!}\NormalTok{(}\DecValTok{5} \SpecialCharTok{\textgreater{}} \DecValTok{3}\NormalTok{)            }\CommentTok{\# inverte TRUE em FALSE}
@@ -1061,7 +1141,24 @@ Os operadores lógicos combinam ou invertem condições:
 \end{Highlighting}
 \end{Shaded}
 
-Com estas peças, valores, nomes, operações e comparações, temos já o vocabulário elementar de um programa. Nos exercícios que se seguem, vamos combiná-las para resolver pequenos problemas. No próximo capítulo, aprenderemos a organizar os valores em estruturas mais ricas, que nos permitirão trabalhar com conjuntos de dados a sério.
+Estes operadores tornam-se particularmente úteis quando queremos verificar várias condições em simultâneo. Por exemplo:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{idade }\OtherTok{\textless{}{-}} \DecValTok{20}
+\NormalTok{tem\_documento }\OtherTok{\textless{}{-}} \ConstantTok{TRUE}
+
+\NormalTok{pode\_inscrever }\OtherTok{\textless{}{-}}\NormalTok{ (idade }\SpecialCharTok{\textgreater{}=} \DecValTok{18}\NormalTok{) }\SpecialCharTok{\&}\NormalTok{ tem\_documento}
+\NormalTok{pode\_inscrever}
+\DocumentationTok{\#\# [1] TRUE}
+\end{Highlighting}
+\end{Shaded}
+
+Neste caso, \texttt{pode\_inscrever} só será \texttt{TRUE} se a pessoa tiver pelo menos 18 anos e possuir o documento necessário.
+
+Os parênteses ajudam a tornar as expressões lógicas mais claras e evitam ambiguidades. Quando combinamos várias comparações, é recomendável escrever cada condição entre parênteses.
+
+Com valores, objetos, operações e comparações, dispomos já do vocabulário elementar necessário para construir pequenos programas. Nos exercícios seguintes, combinaremos estas ideias para resolver problemas simples. No próximo capítulo, aprenderemos a organizar vários valores em estruturas de dados, o que nos permitirá trabalhar de forma sistemática com conjuntos de dados.
 
 \section{Exercícios}\label{exercuxedcios}
 

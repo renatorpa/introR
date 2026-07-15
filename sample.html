@@ -90,7 +90,7 @@ com fórmulas, podemos <em>fazê-lo acontecer</em> milhares de vezes e medir o r
 <p>A ferramenta mais elementar para gerar acaso no R é a função <code><a href="https://rdrr.io/r/base/sample.html">sample()</a></code>, que extrai
 elementos ao acaso de um conjunto. Com ela lançam-se dados e moedas, baralham-se
 cartas, sorteiam-se amostras — os alicerces de quase todas as simulações que se seguem.</p>
-<div class="sourceCode" id="cb224"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb232"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">size</span>, replace <span class="op">=</span> <span class="cn">FALSE</span>, prob <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span></code></pre></div>
 <ul>
 <li>
@@ -115,13 +115,13 @@ reprodutíveis com <code><a href="https://rdrr.io/r/base/Random.html">set.seed()
 </h2>
 <p><strong>Sem reposição.</strong> Cada elemento sai no máximo uma vez, como ao retirar bolas de um saco
 sem as repor. Extraiamos 5 números de uma população de 1 a 10:</p>
-<div class="sourceCode" id="cb225"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb233"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">pop</span> <span class="op">&lt;-</span> <span class="fl">1</span><span class="op">:</span><span class="fl">10</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="va">pop</span>, size <span class="op">=</span> <span class="fl">5</span>, replace <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
 <span><span class="co">## [1]  5  2  4 10  8      # um resultado possível</span></span></code></pre></div>
 <p><strong>Com reposição.</strong> Cada elemento pode sair mais do que uma vez, como ao lançar
 repetidamente o mesmo dado. É <code>replace = TRUE</code> que permite repetições:</p>
-<div class="sourceCode" id="cb226"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb234"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="va">pop</span>, size <span class="op">=</span> <span class="fl">5</span>, replace <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
 <span><span class="co">## [1] 6 8 9 9 6           # o 6 e o 9 repetem-se</span></span></code></pre></div>
 <div class="atencao">
@@ -133,7 +133,7 @@ quanto quisermos.</p>
 <p><strong>Com probabilidades diferentes.</strong> O argumento <code>prob</code> permite que uns elementos sejam
 mais prováveis do que outros — indispensável para simular dados ou moedas
 enviesados. Aqui, os dois últimos valores têm metade da probabilidade dos restantes:</p>
-<div class="sourceCode" id="cb227"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb235"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">prob</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0.1</span>, <span class="fl">0.1</span>, <span class="fl">0.1</span>, <span class="fl">0.1</span>, <span class="fl">0.1</span>, <span class="fl">0.1</span>, <span class="fl">0.1</span>, <span class="fl">0.1</span>, <span class="fl">0.05</span>, <span class="fl">0.05</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="va">pop</span>, size <span class="op">=</span> <span class="fl">5</span>, prob <span class="op">=</span> <span class="va">prob</span><span class="op">)</span></span>
 <span><span class="co">## [1] 2 4 6 5 3           # um resultado possível</span></span></code></pre></div>
@@ -156,7 +156,7 @@ semente, obtemos sempre a mesma sequência.</p>
 <p>A função <code><a href="https://rdrr.io/r/base/Random.html">set.seed()</a></code> fixa essa semente. Executar <code><a href="https://rdrr.io/r/base/Random.html">set.seed()</a></code> com o mesmo número antes
 de uma simulação garante que ela produz exatamente o mesmo resultado de cada vez — em
 qualquer computador:</p>
-<div class="sourceCode" id="cb228"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb236"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">42</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span>, size <span class="op">=</span> <span class="fl">5</span><span class="op">)</span></span>
 <span><span class="co">## [1] 1 5 10 8 2</span></span>
@@ -239,7 +239,7 @@ capítulo.</p>
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Introdução ao R e à Simulação Estatística</strong>: Um Laboratório de Estatística Computacional" was written by Renato de Paula and Nuno Brites. It was last built on 12 de July de 2026.</p>
+    <p>"<strong>Introdução ao R e à Simulação Estatística</strong>: Um Laboratório de Estatística Computacional" was written by Renato de Paula and Nuno Brites. It was last built on 15 de July de 2026.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

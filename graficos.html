@@ -106,7 +106,7 @@ quantitativas; dispersão e linhas para relações entre variáveis.</p>
 <p>Um <strong>gráfico de barras</strong> representa uma variável categórica: cada barra corresponde a
 uma categoria e a sua altura indica a frequência (absoluta ou relativa) dessa
 categoria. A largura das barras é constante e não tem significado estatístico.</p>
-<div class="sourceCode" id="cb174"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb182"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/barplot.html">barplot</a></span><span class="op">(</span><span class="va">altura</span>,</span>
 <span>        names.arg <span class="op">=</span> <span class="cn">NULL</span>,   <span class="co"># rótulos do eixo x</span></span>
 <span>        main <span class="op">=</span> <span class="cn">NULL</span>,        <span class="co"># título</span></span>
@@ -116,7 +116,7 @@ categoria. A largura das barras é constante e não tem significado estatístico
 <p>O argumento <code>altura</code> pode ser um vetor de frequências (gráfico simples) ou uma matriz
 (barras agrupadas ou empilhadas). O caminho habitual é obter as frequências com
 <code><a href="https://rdrr.io/r/base/table.html">table()</a></code> e passá-las a <code><a href="https://rdrr.io/r/graphics/barplot.html">barplot()</a></code>:</p>
-<div class="sourceCode" id="cb175"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb183"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Cores preferidas de nove pessoas</span></span>
 <span><span class="va">cores</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Azul"</span>, <span class="st">"Vermelho"</span>, <span class="st">"Verde"</span>, <span class="st">"Azul"</span>, <span class="st">"Verde"</span>,</span>
 <span>           <span class="st">"Vermelho"</span>, <span class="st">"Azul"</span>, <span class="st">"Verde"</span>, <span class="st">"Azul"</span><span class="op">)</span></span>
@@ -136,7 +136,7 @@ Figura 14.1: Gráfico de barras com frequências absolutas.
 </p>
 </div>
 <p>Para representar as <strong>frequências relativas</strong>, basta dividir pela dimensão da amostra:</p>
-<div class="sourceCode" id="cb176"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb184"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">frequencia_relativa</span> <span class="op">&lt;-</span> <span class="va">frequencia_absoluta</span> <span class="op">/</span> <span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">cores</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/barplot.html">barplot</a></span><span class="op">(</span><span class="va">frequencia_relativa</span>,</span>
@@ -158,7 +158,7 @@ de dimensões diferentes, para as quais as frequências absolutas seriam enganad
 </div>
 <p>O argumento <code>horiz = TRUE</code> desenha as barras na horizontal, o que ajuda quando os
 rótulos das categorias são longos:</p>
-<div class="sourceCode" id="cb177"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb185"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/barplot.html">barplot</a></span><span class="op">(</span><span class="va">frequencia_absoluta</span>,</span>
 <span>        main <span class="op">=</span> <span class="st">"Cores preferidas"</span>,</span>
 <span>        xlab <span class="op">=</span> <span class="st">"Frequência absoluta"</span>,</span>
@@ -177,7 +177,7 @@ Figura 14.3: Gráfico de barras horizontal.
 <p>Quando queremos comparar <strong>duas variáveis</strong> ao mesmo tempo, organizamos os dados numa
 matriz. Comparemos, por exemplo, a quantidade de amostras de dois tipos de rocha em
 três regiões:</p>
-<div class="sourceCode" id="cb178"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb186"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">regioes</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Região 1"</span>, <span class="st">"Região 2"</span>, <span class="st">"Região 3"</span><span class="op">)</span></span>
 <span><span class="va">granito</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">15</span>, <span class="fl">10</span>, <span class="fl">25</span><span class="op">)</span></span>
 <span><span class="va">basalto</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">20</span>, <span class="fl">15</span>, <span class="fl">10</span><span class="op">)</span></span>
@@ -202,7 +202,7 @@ Figura 14.4: Barras agrupadas: cada região mostra os dois tipos de rocha lado a
 barras lado a lado; <code>legend.text</code> gera a legenda. Removendo <code>beside = TRUE</code>, as barras
 passam a estar <strong>empilhadas</strong> — cada barra mostra o total da região, repartido pelos
 dois tipos de rocha:</p>
-<div class="sourceCode" id="cb179"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb187"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/barplot.html">barplot</a></span><span class="op">(</span><span class="va">dados_rochas</span>,</span>
 <span>        names.arg <span class="op">=</span> <span class="va">regioes</span>,</span>
 <span>        col <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"lightblue"</span>, <span class="st">"lightcoral"</span><span class="op">)</span>,</span>
@@ -224,9 +224,9 @@ Figura 14.5: As mesmas barras, agora empilhadas.
 </h2>
 <p>O <strong>gráfico circular</strong> (ou de setores) mostra a proporção de cada categoria face ao
 total: cada fatia é proporcional à percentagem que representa.</p>
-<div class="sourceCode" id="cb180"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb188"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/pie.html">pie</a></span><span class="op">(</span><span class="va">x</span>, labels <span class="op">=</span> <span class="cn">NULL</span>, main <span class="op">=</span> <span class="cn">NULL</span>, col <span class="op">=</span> <span class="cn">NULL</span>, radius <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span></code></pre></div>
-<div class="sourceCode" id="cb181"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb189"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/pie.html">pie</a></span><span class="op">(</span><span class="va">frequencia_relativa</span>,</span>
 <span>    main <span class="op">=</span> <span class="st">"Cores preferidas"</span>,</span>
 <span>    col <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"steelblue"</span>, <span class="st">"seagreen"</span>, <span class="st">"firebrick"</span><span class="op">)</span>,</span>
@@ -255,14 +255,14 @@ Divide-se o eixo horizontal em classes (intervalos) e desenha-se, sobre cada cla
 um retângulo cuja altura traduz a frequência das observações nela contidas. É a forma
 mais direta de ver a <strong>distribuição</strong> dos dados: onde se concentram, se são simétricos,
 se têm valores atípicos.</p>
-<div class="sourceCode" id="cb182"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb190"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/hist.html">hist</a></span><span class="op">(</span><span class="va">x</span>, breaks <span class="op">=</span> <span class="st">"Sturges"</span>,</span>
 <span>     main <span class="op">=</span> <span class="cn">NULL</span>, xlab <span class="op">=</span> <span class="cn">NULL</span>, ylab <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>     col <span class="op">=</span> <span class="cn">NULL</span>, border <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span></code></pre></div>
 <p>O argumento <code>breaks</code> controla as classes: pode ser um número, ou um método automático
 (<code>"Sturges"</code>, <code>"Scott"</code>, <code>"FD"</code>). Por omissão, o R usa a regra de Sturges e classes do
 tipo <span class="math inline">\((a, b]\)</span> (abertas à esquerda, fechadas à direita).</p>
-<div class="sourceCode" id="cb183"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb191"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Massa (kg) de 40 bicicletas</span></span>
 <span><span class="va">bicicletas</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">4.3</span>, <span class="fl">6.8</span>, <span class="fl">9.2</span>, <span class="fl">7.2</span>, <span class="fl">8.7</span>, <span class="fl">8.6</span>, <span class="fl">6.6</span>, <span class="fl">5.2</span>, <span class="fl">8.1</span>, <span class="fl">10.9</span>,</span>
 <span>                <span class="fl">7.4</span>, <span class="fl">4.5</span>, <span class="fl">3.8</span>, <span class="fl">7.6</span>, <span class="fl">6.8</span>, <span class="fl">7.8</span>, <span class="fl">8.4</span>, <span class="fl">7.5</span>, <span class="fl">10.5</span>, <span class="fl">6.0</span>,</span>
@@ -286,7 +286,7 @@ Figura 14.7: Histograma da massa de 40 bicicletas (frequências absolutas).
 </div>
 <p>Guardar o resultado de <code><a href="https://rdrr.io/r/graphics/hist.html">hist()</a></code> num objeto (aqui, <code>h</code>) dá acesso aos valores usados na
 sua construção — os limites das classes e as contagens:</p>
-<div class="sourceCode" id="cb184"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb192"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">h</span><span class="op">$</span><span class="va">breaks</span>    <span class="co"># limites das classes</span></span>
 <span><span class="co">## [1]  3  4  5  6  7  8  9 10 11</span></span>
 <span></span>
@@ -298,7 +298,7 @@ sua construção — os limites das classes e as contagens:</p>
 </h3>
 <p>Com o argumento <code>freq = FALSE</code>, o histograma passa a representar a <strong>densidade</strong> em
 vez das contagens:</p>
-<div class="sourceCode" id="cb185"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb193"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/hist.html">hist</a></span><span class="op">(</span><span class="va">bicicletas</span>,</span>
 <span>     main <span class="op">=</span> <span class="st">"Massa das bicicletas"</span>,</span>
 <span>     xlab <span class="op">=</span> <span class="st">"Massa (kg)"</span>,</span>
@@ -334,7 +334,7 @@ permite sobrepor ao histograma uma curva de densidade, como fizemos com
 quartis. A caixa vai do primeiro quartil (<span class="math inline">\(Q_1\)</span>) ao terceiro (<span class="math inline">\(Q_3\)</span>), com um traço na
 mediana (<span class="math inline">\(Q_2\)</span>); os “bigodes” estendem-se a partir da caixa e os pontos para lá deles
 assinalam possíveis valores atípicos.</p>
-<div class="sourceCode" id="cb186"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb194"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/boxplot.html">boxplot</a></span><span class="op">(</span><span class="va">x</span>,</span>
 <span>        main <span class="op">=</span> <span class="cn">NULL</span>, xlab <span class="op">=</span> <span class="cn">NULL</span>, ylab <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>        col <span class="op">=</span> <span class="cn">NULL</span>, border <span class="op">=</span> <span class="cn">NULL</span>,</span>
@@ -347,7 +347,7 @@ que ainda esteja dentro de <span class="math inline">\(1.5 \times \text{AIQ}\)</
 dos bigodes são desenhadas individualmente e interpretadas como candidatas a valores
 atípicos. É esta regra que torna a caixa de bigodes tão útil para detetar <em>outliers</em>.</p>
 </div>
-<div class="sourceCode" id="cb187"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb195"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/boxplot.html">boxplot</a></span><span class="op">(</span><span class="va">bicicletas</span>,</span>
 <span>        main <span class="op">=</span> <span class="st">"Massa das bicicletas"</span>,</span>
 <span>        ylab <span class="op">=</span> <span class="st">"Massa (kg)"</span>,</span>
@@ -361,7 +361,7 @@ Figura 14.9: Caixa de bigodes da massa das bicicletas.
 </div>
 <p>O argumento <code>horizontal = TRUE</code> roda o gráfico, e a função <code>par(mfrow = ...)</code> permite
 dispor vários gráficos no mesmo painel:</p>
-<div class="sourceCode" id="cb188"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb196"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span><span class="op">(</span>mfrow <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span>                                    <span class="co"># painel de 1 linha, 2 colunas</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/boxplot.html">boxplot</a></span><span class="op">(</span><span class="va">bicicletas</span>, main <span class="op">=</span> <span class="st">"Vertical"</span>, col <span class="op">=</span> <span class="st">"lightblue"</span><span class="op">)</span></span>
@@ -372,13 +372,13 @@ dispor vários gráficos no mesmo painel:</p>
 Figura 14.10: Dois gráficos no mesmo painel, com par(mfrow).
 </p>
 </div>
-<div class="sourceCode" id="cb189"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb197"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span><span class="op">(</span>mfrow <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">1</span><span class="op">)</span><span class="op">)</span>                                    <span class="co"># repor o painel original</span></span></code></pre></div>
 <p>O verdadeiro valor da caixa de bigodes revela-se ao <strong>comparar grupos</strong>. Usando a
 notação de fórmula <code>variável ~ grupo</code>, comparamos o comprimento da sépala entre as
 três espécies de íris:</p>
-<div class="sourceCode" id="cb190"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb198"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/boxplot.html">boxplot</a></span><span class="op">(</span><span class="va">Sepal.Length</span> <span class="op">~</span> <span class="va">Species</span>,</span>
 <span>        data <span class="op">=</span> <span class="va">iris</span>,</span>
 <span>        main <span class="op">=</span> <span class="st">"Comprimento da sépala por espécie"</span>,</span>
@@ -401,13 +401,13 @@ as mais curtas, e a dispersão dentro de cada espécie é relativamente semelhan
 <p>O <strong>gráfico de dispersão</strong> representa duas variáveis quantitativas, uma em cada eixo, e
 é a ferramenta natural para investigar a <strong>relação</strong> entre elas: se crescem juntas, se
 uma decresce quando a outra cresce, se há agrupamentos ou pontos afastados.</p>
-<div class="sourceCode" id="cb191"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb199"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span>,</span>
 <span>     main <span class="op">=</span> <span class="cn">NULL</span>, xlab <span class="op">=</span> <span class="cn">NULL</span>, ylab <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>     col <span class="op">=</span> <span class="cn">NULL</span>,   <span class="co"># cor dos pontos</span></span>
 <span>     pch <span class="op">=</span> <span class="cn">NULL</span>,   <span class="co"># símbolo (ex.: 19 = ponto cheio)</span></span>
 <span>     cex <span class="op">=</span> <span class="fl">1</span><span class="op">)</span>      <span class="co"># tamanho dos pontos</span></span></code></pre></div>
-<div class="sourceCode" id="cb192"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb200"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span></span>
 <span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="fl">100</span><span class="op">)</span></span>
 <span><span class="va">y</span> <span class="op">&lt;-</span> <span class="va">x</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="fl">100</span>, sd <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span></span>
@@ -426,7 +426,7 @@ Figura 14.12: Gráfico de dispersão de duas variáveis relacionadas.
 </div>
 <p>Podemos acrescentar a <strong>reta de regressão</strong> dos mínimos quadrados com <code><a href="https://rdrr.io/r/graphics/abline.html">abline()</a></code>
 aplicada a um modelo linear <code><a href="https://rdrr.io/r/stats/lm.html">lm()</a></code>, o que ajuda a ver a tendência global:</p>
-<div class="sourceCode" id="cb193"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb201"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span>,</span>
 <span>     main <span class="op">=</span> <span class="st">"Dispersão com reta de regressão"</span>,</span>
 <span>     xlab <span class="op">=</span> <span class="st">"Variável X"</span>,</span>
@@ -443,7 +443,7 @@ Figura 14.13: O mesmo gráfico com a reta de regressão dos mínimos quadrados.
 </div>
 <p>Quando há <strong>grupos</strong> nos dados, podemos distingui-los por cor, acrescentando pontos com
 <code><a href="https://rdrr.io/r/graphics/points.html">points()</a></code> e identificando-os com uma legenda:</p>
-<div class="sourceCode" id="cb194"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb202"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span></span>
 <span><span class="va">x1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="fl">50</span>, mean <span class="op">=</span> <span class="fl">5</span><span class="op">)</span>; <span class="va">y1</span> <span class="op">&lt;-</span> <span class="fl">3</span> <span class="op">*</span> <span class="va">x1</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="fl">50</span><span class="op">)</span></span>
 <span><span class="va">x2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="fl">50</span>, mean <span class="op">=</span> <span class="fl">7</span><span class="op">)</span>; <span class="va">y2</span> <span class="op">&lt;-</span> <span class="fl">3</span> <span class="op">*</span> <span class="va">x2</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="fl">50</span><span class="op">)</span></span>
@@ -477,12 +477,12 @@ limites, ficam invisíveis. Por isso definimos <code>xlim</code> e <code>ylim</c
 <p>O <strong>gráfico de linhas</strong> liga os pontos por segmentos e é indicado para mostrar a
 evolução de uma variável ao longo de uma sequência ordenada — em especial o tempo
 (séries temporais). Obtém-se com <code><a href="https://rdrr.io/r/graphics/plot.default.html">plot()</a></code> e o argumento <code>type</code>:</p>
-<div class="sourceCode" id="cb195"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb203"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span>,</span>
 <span>     type <span class="op">=</span> <span class="st">"l"</span>,   <span class="co"># "l" = linha, "p" = pontos, "b"/"o" = ambos</span></span>
 <span>     lty <span class="op">=</span> <span class="fl">1</span>,      <span class="co"># tipo de traço (1 = contínuo, 2 = tracejado)</span></span>
 <span>     lwd <span class="op">=</span> <span class="fl">1</span><span class="op">)</span>      <span class="co"># espessura da linha</span></span></code></pre></div>
-<div class="sourceCode" id="cb196"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb204"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">tempo</span> <span class="op">&lt;-</span> <span class="fl">1</span><span class="op">:</span><span class="fl">10</span></span>
 <span><span class="va">valores</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">3</span>, <span class="fl">5</span>, <span class="fl">7</span>, <span class="fl">9</span>, <span class="fl">11</span>, <span class="fl">10</span>, <span class="fl">8</span>, <span class="fl">6</span>, <span class="fl">4</span>, <span class="fl">2</span><span class="op">)</span></span>
 <span></span>
@@ -522,7 +522,7 @@ e B), com 100 amostras de cada. Gere os dados com <code><a href="https://rdrr.io
 diferentes), desenhe um histograma <strong>sobreposto</strong> das duas distribuições (com
 <code>add = TRUE</code>) e acrescente uma legenda. Use cores translúcidas para distinguir as
 espécies:</p>
-<div class="sourceCode" id="cb197"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb205"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">altura_A</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="fl">100</span>, mean <span class="op">=</span> <span class="fl">150</span>, sd <span class="op">=</span> <span class="fl">10</span><span class="op">)</span></span>
 <span><span class="va">altura_B</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="fl">100</span>, mean <span class="op">=</span> <span class="fl">160</span>, sd <span class="op">=</span> <span class="fl">15</span><span class="op">)</span></span>
 <span></span>
@@ -535,7 +535,7 @@ espécies:</p>
 distribuição das notas. Gere as notas com <code>rnorm(200, mean = 14, sd = 4)</code> (use
 <code>set.seed(1234)</code>), desenhe o histograma, calcule a média, a mediana e o desvio padrão,
 e marque a média e a mediana no gráfico com <code><a href="https://rdrr.io/r/graphics/abline.html">abline()</a></code>. Junte uma legenda:</p>
-<div class="sourceCode" id="cb198"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb206"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/legend.html">legend</a></span><span class="op">(</span><span class="st">"topright"</span>,</span>
 <span>       legend <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="st">"Média:"</span>, <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="va">media_nota</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span>,</span>
 <span>                  <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="st">"Mediana:"</span>, <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="va">mediana_nota</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span>,</span>
@@ -608,7 +608,7 @@ outro nível de expressividade.</p>
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Introdução ao R e à Simulação Estatística</strong>: Um Laboratório de Estatística Computacional" was written by Renato de Paula and Nuno Brites. It was last built on 12 de July de 2026.</p>
+    <p>"<strong>Introdução ao R e à Simulação Estatística</strong>: Um Laboratório de Estatística Computacional" was written by Renato de Paula and Nuno Brites. It was last built on 15 de July de 2026.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

@@ -145,7 +145,7 @@ simulação.</p>
 <p><strong>Exemplo 1 (lançar três moedas).</strong> Simulemos o lançamento de três moedas equilibradas
 e a contagem do número de caras, <span class="math inline">\(X\)</span>. Queremos estimar <span class="math inline">\(P(X = 1)\)</span> e <span class="math inline">\(E(X)\)</span>; e depois
 repetir para uma moeda enviesada com <span class="math inline">\(P(\text{cara}) = 3/4\)</span>.</p>
-<div class="sourceCode" id="cb245"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb253"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span></span>
 <span><span class="va">n</span> <span class="op">&lt;-</span> <span class="fl">10000</span></span>
 <span><span class="va">sim1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html">numeric</a></span><span class="op">(</span><span class="va">n</span><span class="op">)</span>   <span class="co"># indicador de "saiu exatamente 1 cara"</span></span>
@@ -160,7 +160,7 @@ repetir para uma moeda enviesada com <span class="math inline">\(P(\text{cara}) 
 <span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">sim2</span><span class="op">)</span>   <span class="co"># estimativa de E(X)</span></span>
 <span><span class="co">## [1] 1.4928</span></span></code></pre></div>
 <p>Para a moeda enviesada, basta indicar as probabilidades em <code><a href="https://rdrr.io/r/base/sample.html">sample()</a></code>:</p>
-<div class="sourceCode" id="cb246"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb254"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span></span>
 <span><span class="va">n</span> <span class="op">&lt;-</span> <span class="fl">10000</span></span>
 <span><span class="va">sim1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html">numeric</a></span><span class="op">(</span><span class="va">n</span><span class="op">)</span></span>
@@ -177,7 +177,7 @@ repetir para uma moeda enviesada com <span class="math inline">\(P(\text{cara}) 
 <p>Mas o número de caras em três lançamentos é, por definição, uma
 <span class="math inline">\(\text{Binomial}(n = 3, p)\)</span>. Podemos, por isso, gerar as observações diretamente com
 <code><a href="https://rdrr.io/r/stats/Binomial.html">rbinom()</a></code>, sem o ciclo:</p>
-<div class="sourceCode" id="cb247"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb255"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span></span>
 <span><span class="va">valores</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Binomial.html">rbinom</a></span><span class="op">(</span><span class="fl">10000</span>, size <span class="op">=</span> <span class="fl">3</span>, prob <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">valores</span> <span class="op">==</span> <span class="fl">1</span><span class="op">)</span> <span class="op">/</span> <span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">valores</span><span class="op">)</span>   <span class="co"># P(X = 1)</span></span>
@@ -185,7 +185,7 @@ repetir para uma moeda enviesada com <span class="math inline">\(P(\text{cara}) 
 <span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">valores</span><span class="op">)</span>                         <span class="co"># E(X)</span></span>
 <span><span class="co">## [1] 1.4897</span></span></code></pre></div>
 <p>E, para a moeda enviesada, com <span class="math inline">\(X \sim \text{Binomial}(3, 3/4)\)</span>:</p>
-<div class="sourceCode" id="cb248"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb256"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span></span>
 <span><span class="va">valores</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Binomial.html">rbinom</a></span><span class="op">(</span><span class="fl">10000</span>, size <span class="op">=</span> <span class="fl">3</span>, prob <span class="op">=</span> <span class="fl">3</span><span class="op">/</span><span class="fl">4</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">valores</span> <span class="op">==</span> <span class="fl">1</span><span class="op">)</span> <span class="op">/</span> <span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">valores</span><span class="op">)</span></span>
@@ -196,7 +196,7 @@ repetir para uma moeda enviesada com <span class="math inline">\(P(\text{cara}) 
 distribuição exponencial de média 30 minutos. Estimemos por simulação a probabilidade
 de o autocarro chegar nos primeiros 20 minutos e comparemos com o valor exato dado por
 <code><a href="https://rdrr.io/r/stats/Exponential.html">pexp()</a></code>:</p>
-<div class="sourceCode" id="cb249"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb257"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span></span>
 <span><span class="va">valores</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Exponential.html">rexp</a></span><span class="op">(</span><span class="fl">10000</span>, rate <span class="op">=</span> <span class="fl">1</span><span class="op">/</span><span class="fl">30</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">valores</span> <span class="op">&lt;</span> <span class="fl">20</span><span class="op">)</span> <span class="op">/</span> <span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">valores</span><span class="op">)</span>   <span class="co"># estimativa de P(X &lt; 20)</span></span>
@@ -206,7 +206,7 @@ de o autocarro chegar nos primeiros 20 minutos e comparemos com o valor exato da
 <p><strong>Exemplo 3 (cartas até ao primeiro ás).</strong> Retiram-se cartas de um baralho, com
 reposição, até sair um ás. Simulemos a média e a variância do número de cartas
 necessárias:</p>
-<div class="sourceCode" id="cb250"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb258"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span></span>
 <span><span class="va">n</span> <span class="op">&lt;-</span> <span class="fl">10000</span></span>
 <span><span class="va">simlist</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html">numeric</a></span><span class="op">(</span><span class="va">n</span><span class="op">)</span></span>
@@ -227,7 +227,7 @@ necessárias:</p>
 <p>O número de provas de Bernoulli até ao primeiro sucesso (aparecer um ás, com
 <span class="math inline">\(p = 4/52\)</span>) segue uma distribuição <strong>geométrica</strong>. Como veremos, o R conta os
 <em>insucessos</em> até ao primeiro sucesso, pelo que somamos 1 para obter o número de cartas:</p>
-<div class="sourceCode" id="cb251"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb259"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span></span>
 <span><span class="va">valores</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Geometric.html">rgeom</a></span><span class="op">(</span><span class="fl">10000</span>, prob <span class="op">=</span> <span class="fl">4</span><span class="op">/</span><span class="fl">52</span><span class="op">)</span> <span class="op">+</span> <span class="fl">1</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">valores</span><span class="op">)</span></span>
@@ -254,7 +254,7 @@ observação (ou <span class="math inline">\(\frac{k}{n}\)</span> se um valor se
 <span class="header-section-number">20.2.1</span> A função <code>ecdf()</code><a class="anchor" aria-label="anchor" href="#a-fun%C3%A7%C3%A3o-ecdf"><i class="fas fa-link"></i></a>
 </h3>
 <p>No R, a função de distribuição empírica calcula-se com <code><a href="https://rdrr.io/r/stats/ecdf.html">ecdf()</a></code>:</p>
-<div class="sourceCode" id="cb252"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb260"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">dados</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">3</span>, <span class="fl">1</span>, <span class="fl">4</span>, <span class="fl">1</span>, <span class="fl">5</span>, <span class="fl">9</span>, <span class="fl">2</span>, <span class="fl">6</span>, <span class="fl">5</span>, <span class="fl">3</span>, <span class="fl">5</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">Fn</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/ecdf.html">ecdf</a></span><span class="op">(</span><span class="va">dados</span><span class="op">)</span>                 <span class="co"># cria a função de distribuição empírica</span></span>
@@ -269,7 +269,7 @@ Figura 20.1: Função de distribuição empírica de um pequeno conjunto de dado
 <p>O objeto devolvido por <code><a href="https://rdrr.io/r/stats/ecdf.html">ecdf()</a></code> é, ele próprio, uma função: <code>Fn(20)</code> devolve a proporção
 de observações <span class="math inline">\(\leq 20\)</span>. Retomando o Exemplo 2, podemos estimar <span class="math inline">\(P(X \leq 20)\)</span> e
 compará-la com o valor exato:</p>
-<div class="sourceCode" id="cb253"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb261"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span></span>
 <span><span class="va">valores</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Exponential.html">rexp</a></span><span class="op">(</span><span class="fl">10000</span>, rate <span class="op">=</span> <span class="fl">1</span><span class="op">/</span><span class="fl">30</span><span class="op">)</span></span>
 <span><span class="va">Fn</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/ecdf.html">ecdf</a></span><span class="op">(</span><span class="va">valores</span><span class="op">)</span></span>
@@ -306,7 +306,7 @@ conjunto qualquer de valores, há que usar as fórmulas gerais acima.</p>
 <p>O R não tem uma função dedicada a esta distribuição — dada a sua simplicidade —, mas a
 <code><a href="https://rdrr.io/r/base/sample.html">sample()</a></code> gera-a diretamente. Por exemplo, 15 valores de uma uniforme discreta em
 <span class="math inline">\(\{1, \ldots, 10\}\)</span>:</p>
-<div class="sourceCode" id="cb254"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb262"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span>, size <span class="op">=</span> <span class="fl">15</span>, replace <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
 <span><span class="co">## [1] 2 3 4 4 4 5 7 9 4 2 6 7 1 6 9</span></span></code></pre></div>
 <div id="exercícios-25" class="section level3" number="20.4.1">
@@ -445,7 +445,7 @@ onde <span class="math inline">\(\binom{n}{x} = \dfrac{n!}{x!\,(n-x)!}\)</span> 
 <h3>
 <span class="header-section-number">20.6.2</span> Função massa de probabilidade (teórica)<a class="anchor" aria-label="anchor" href="#fun%C3%A7%C3%A3o-massa-de-probabilidade-te%C3%B3rica"><i class="fas fa-link"></i></a>
 </h3>
-<div class="sourceCode" id="cb255"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb263"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">n</span> <span class="op">&lt;-</span> <span class="fl">20</span>; <span class="va">p</span> <span class="op">&lt;-</span> <span class="fl">0.1</span></span>
 <span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fl">0</span><span class="op">:</span><span class="fl">20</span></span>
 <span><span class="va">teorico</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">x</span>, y <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Binomial.html">dbinom</a></span><span class="op">(</span><span class="va">x</span>, size <span class="op">=</span> <span class="va">n</span>, prob <span class="op">=</span> <span class="va">p</span><span class="op">)</span><span class="op">)</span></span>
@@ -466,7 +466,7 @@ Figura 20.2: Função massa de probabilidade da Binomial(20, 0.1).
 <h3>
 <span class="header-section-number">20.6.3</span> Função massa de probabilidade (simulação)<a class="anchor" aria-label="anchor" href="#fun%C3%A7%C3%A3o-massa-de-probabilidade-simula%C3%A7%C3%A3o"><i class="fas fa-link"></i></a>
 </h3>
-<div class="sourceCode" id="cb256"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb264"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">1234</span><span class="op">)</span></span>
 <span><span class="va">n</span> <span class="op">&lt;-</span> <span class="fl">20</span>; <span class="va">p</span> <span class="op">&lt;-</span> <span class="fl">0.1</span>; <span class="va">k</span> <span class="op">&lt;-</span> <span class="fl">1000</span>            <span class="co"># k = número de simulações</span></span>
 <span></span>
@@ -490,7 +490,7 @@ Figura 20.3: Frequências relativas de uma amostra de 1000 valores da Binomial(2
 <h3>
 <span class="header-section-number">20.6.4</span> Comparação entre teoria e simulação<a class="anchor" aria-label="anchor" href="#compara%C3%A7%C3%A3o-entre-teoria-e-simula%C3%A7%C3%A3o"><i class="fas fa-link"></i></a>
 </h3>
-<div class="sourceCode" id="cb257"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb265"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">1234</span><span class="op">)</span></span>
 <span><span class="va">n</span> <span class="op">&lt;-</span> <span class="fl">20</span>; <span class="va">p</span> <span class="op">&lt;-</span> <span class="fl">0.1</span>; <span class="va">k</span> <span class="op">&lt;-</span> <span class="fl">1000</span></span>
 <span></span>
@@ -516,7 +516,7 @@ Figura 20.4: Frequências relativas simuladas (barras) e probabilidades teórica
 <h3>
 <span class="header-section-number">20.6.5</span> Função de distribuição<a class="anchor" aria-label="anchor" href="#fun%C3%A7%C3%A3o-de-distribui%C3%A7%C3%A3o"><i class="fas fa-link"></i></a>
 </h3>
-<div class="sourceCode" id="cb258"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb266"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">n</span> <span class="op">&lt;-</span> <span class="fl">20</span>; <span class="va">p</span> <span class="op">&lt;-</span> <span class="fl">0.1</span></span>
 <span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fl">0</span><span class="op">:</span><span class="va">n</span></span>
 <span><span class="va">cdf_values</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Binomial.html">pbinom</a></span><span class="op">(</span><span class="va">x</span>, size <span class="op">=</span> <span class="va">n</span>, prob <span class="op">=</span> <span class="va">p</span><span class="op">)</span></span>
@@ -535,7 +535,7 @@ Figura 20.5: Função de distribuição da Binomial(20, 0.1).
 <h3>
 <span class="header-section-number">20.6.6</span> Função de distribuição empírica<a class="anchor" aria-label="anchor" href="#fun%C3%A7%C3%A3o-de-distribui%C3%A7%C3%A3o-emp%C3%ADrica-1"><i class="fas fa-link"></i></a>
 </h3>
-<div class="sourceCode" id="cb259"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb267"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">n</span> <span class="op">&lt;-</span> <span class="fl">20</span>; <span class="va">p</span> <span class="op">&lt;-</span> <span class="fl">0.1</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">1234</span><span class="op">)</span></span>
 <span><span class="va">amostra</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Binomial.html">rbinom</a></span><span class="op">(</span><span class="fl">1000</span>, size <span class="op">=</span> <span class="va">n</span>, prob <span class="op">=</span> <span class="va">p</span><span class="op">)</span></span>
@@ -667,7 +667,7 @@ relação é simples, <span class="math inline">\(X = Y + 1\)</span>: para obter
 <p><strong>Exemplo.</strong> Seja <span class="math inline">\(X\)</span> o número de lançamentos de um dado equilibrado até sair a primeira
 face 2. Qual a probabilidade de a face 2 sair no terceiro lançamento? Como no R a
 geométrica conta insucessos, <span class="math inline">\(P(X = 3) = P(Y = 2)\)</span>:</p>
-<div class="sourceCode" id="cb260"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb268"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/Geometric.html">dgeom</a></span><span class="op">(</span><span class="fl">2</span>, prob <span class="op">=</span> <span class="fl">1</span><span class="op">/</span><span class="fl">6</span><span class="op">)</span>      <span class="co"># P(X = 3) = P(Y = 2)</span></span>
 <span><span class="co">## [1] 0.09645062</span></span></code></pre></div>
 </div>
@@ -789,7 +789,7 @@ mês, ocorrem <span class="math inline">\(3/2\)</span> por quinzena — a mesma 
 <p>O painel seguinte mostra como a forma da Poisson muda com <span class="math inline">\(\lambda\)</span> — assimétrica para
 valores pequenos, cada vez mais simétrica à medida que <span class="math inline">\(\lambda\)</span> cresce. (Usa os pacotes
 <code>ggplot2</code>, <code>latex2exp</code> e <code>gridExtra</code>.)</p>
-<div class="sourceCode" id="cb261"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb269"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span>; <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://www.stefanom.io/latex2exp/">latex2exp</a></span><span class="op">)</span>; <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">gridExtra</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">lambdas</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0.1</span>, <span class="fl">1</span>, <span class="fl">2.5</span>, <span class="fl">5</span>, <span class="fl">15</span>, <span class="fl">30</span><span class="op">)</span></span>
@@ -816,7 +816,7 @@ Figura 20.7: Função massa de probabilidade da Poisson para vários valores de 
 <h3>
 <span class="header-section-number">20.8.3</span> Função massa de probabilidade (simulação)<a class="anchor" aria-label="anchor" href="#fun%C3%A7%C3%A3o-massa-de-probabilidade-simula%C3%A7%C3%A3o-1"><i class="fas fa-link"></i></a>
 </h3>
-<div class="sourceCode" id="cb262"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb270"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">1234</span><span class="op">)</span></span>
 <span><span class="va">lambdas</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0.1</span>, <span class="fl">1</span>, <span class="fl">2.5</span>, <span class="fl">5</span>, <span class="fl">15</span>, <span class="fl">30</span><span class="op">)</span></span>
 <span><span class="va">n</span> <span class="op">&lt;-</span> <span class="fl">1000</span></span>
@@ -841,7 +841,7 @@ Figura 20.8: Amostras simuladas da Poisson para vários lambda.
 <h3>
 <span class="header-section-number">20.8.4</span> Função de distribuição<a class="anchor" aria-label="anchor" href="#fun%C3%A7%C3%A3o-de-distribui%C3%A7%C3%A3o-1"><i class="fas fa-link"></i></a>
 </h3>
-<div class="sourceCode" id="cb263"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb271"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">lambda</span> <span class="op">&lt;-</span> <span class="fl">5</span></span>
 <span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fl">0</span><span class="op">:</span><span class="fl">15</span></span>
 <span><span class="va">y</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Poisson.html">ppois</a></span><span class="op">(</span><span class="va">x</span>, lambda <span class="op">=</span> <span class="va">lambda</span><span class="op">)</span></span>
@@ -857,7 +857,7 @@ Figura 20.9: Função de distribuição da Poisson(5).
 </div>
 <p><strong>Exemplo.</strong> Numa região ocorrem, em média, 3 sismos por mês; o número mensal de sismos
 segue uma Poisson. Sendo <span class="math inline">\(X \sim \text{Poisson}(\lambda = 3)\)</span>:</p>
-<div class="sourceCode" id="cb264"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb272"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/Poisson.html">dpois</a></span><span class="op">(</span><span class="fl">2</span>, lambda <span class="op">=</span> <span class="fl">3</span><span class="op">)</span>                        <span class="co"># P(X = 2)</span></span>
 <span><span class="co">## [1] 0.2240418</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/stats/Poisson.html">ppois</a></span><span class="op">(</span><span class="fl">4</span>, lambda <span class="op">=</span> <span class="fl">3</span>, lower.tail <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>    <span class="co"># P(X &gt; 4)</span></span>
@@ -865,7 +865,7 @@ segue uma Poisson. Sendo <span class="math inline">\(X \sim \text{Poisson}(\lamb
 <p>Para a probabilidade de pelo menos 1 sismo em <strong>2 semanas</strong>, usamos a aditividade: em 2
 semanas (meio mês) o parâmetro é <span class="math inline">\(\lambda = 1{,}5\)</span>, e
 <span class="math inline">\(P(\tilde{X} \geq 1) = 1 - P(\tilde{X} = 0)\)</span>:</p>
-<div class="sourceCode" id="cb265"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb273"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fl">1</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Poisson.html">dpois</a></span><span class="op">(</span><span class="fl">0</span>, lambda <span class="op">=</span> <span class="fl">1.5</span><span class="op">)</span>                  <span class="co"># P(X &gt;= 1) em 2 semanas</span></span>
 <span><span class="co">## [1] 0.7768698</span></span></code></pre></div>
 </div>
@@ -969,7 +969,7 @@ F_X(x) = \begin{cases} 0, &amp; x \leq a \\ \frac{x-a}{b-a}, &amp; a &lt; x &lt;
 <h3>
 <span class="header-section-number">20.9.2</span> Densidade, simulação e comparação<a class="anchor" aria-label="anchor" href="#densidade-simula%C3%A7%C3%A3o-e-compara%C3%A7%C3%A3o"><i class="fas fa-link"></i></a>
 </h3>
-<div class="sourceCode" id="cb266"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb274"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">x_vals</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span>, length.out <span class="op">=</span> <span class="fl">100</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">x_vals</span>, <span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html">dunif</a></span><span class="op">(</span><span class="va">x_vals</span>, <span class="fl">0</span>, <span class="fl">1</span><span class="op">)</span>, type <span class="op">=</span> <span class="st">"l"</span>, col <span class="op">=</span> <span class="st">"red"</span>, lwd <span class="op">=</span> <span class="fl">2</span>,</span>
 <span>     main <span class="op">=</span> <span class="st">"Densidade da Uniforme(0, 1)"</span>, xlab <span class="op">=</span> <span class="st">"x"</span>, ylab <span class="op">=</span> <span class="st">"Densidade"</span><span class="op">)</span></span></code></pre></div>
@@ -979,7 +979,7 @@ F_X(x) = \begin{cases} 0, &amp; x \leq a \\ \frac{x-a}{b-a}, &amp; a &lt; x &lt;
 Figura 20.10: Densidade teórica da Uniforme(0, 1).
 </p>
 </div>
-<div class="sourceCode" id="cb267"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb275"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span></span>
 <span><span class="va">dados</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html">runif</a></span><span class="op">(</span><span class="fl">10000</span>, min <span class="op">=</span> <span class="fl">0</span>, max <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span>
 <span></span>
@@ -994,7 +994,7 @@ Figura 20.10: Densidade teórica da Uniforme(0, 1).
 Figura 20.11: Histograma de uma amostra da Uniforme(0, 1) com a densidade teórica sobreposta.
 </p>
 </div>
-<div class="sourceCode" id="cb268"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb276"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">x_vals</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span>, length.out <span class="op">=</span> <span class="fl">100</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">x_vals</span>, <span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html">punif</a></span><span class="op">(</span><span class="va">x_vals</span>, <span class="fl">0</span>, <span class="fl">1</span><span class="op">)</span>, type <span class="op">=</span> <span class="st">"l"</span>, col <span class="op">=</span> <span class="st">"blue"</span>, lwd <span class="op">=</span> <span class="fl">2</span>,</span>
 <span>     main <span class="op">=</span> <span class="st">"Função de distribuição da Uniforme(0, 1)"</span>, xlab <span class="op">=</span> <span class="st">"x"</span>, ylab <span class="op">=</span> <span class="st">"F(x)"</span><span class="op">)</span></span></code></pre></div>
@@ -1110,7 +1110,7 @@ exponenciais(<span class="math inline">\(\lambda\)</span>).</p>
 <h3>
 <span class="header-section-number">20.10.2</span> Densidade, simulação e comparação<a class="anchor" aria-label="anchor" href="#densidade-simula%C3%A7%C3%A3o-e-compara%C3%A7%C3%A3o-1"><i class="fas fa-link"></i></a>
 </h3>
-<div class="sourceCode" id="cb269"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb277"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">x_vals</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">10</span>, length.out <span class="op">=</span> <span class="fl">100</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">x_vals</span>, <span class="fu"><a href="https://rdrr.io/r/stats/Exponential.html">dexp</a></span><span class="op">(</span><span class="va">x_vals</span>, rate <span class="op">=</span> <span class="fl">1</span><span class="op">)</span>, type <span class="op">=</span> <span class="st">"l"</span>, col <span class="op">=</span> <span class="st">"red"</span>, lwd <span class="op">=</span> <span class="fl">2</span>,</span>
 <span>     main <span class="op">=</span> <span class="st">"Densidade da Exponencial(1)"</span>, xlab <span class="op">=</span> <span class="st">"x"</span>, ylab <span class="op">=</span> <span class="st">"Densidade"</span><span class="op">)</span></span></code></pre></div>
@@ -1120,7 +1120,7 @@ exponenciais(<span class="math inline">\(\lambda\)</span>).</p>
 Figura 20.13: Densidade teórica da Exponencial(1).
 </p>
 </div>
-<div class="sourceCode" id="cb270"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb278"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span></span>
 <span><span class="va">dados</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Exponential.html">rexp</a></span><span class="op">(</span><span class="fl">10000</span>, rate <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span>
 <span></span>
@@ -1135,7 +1135,7 @@ Figura 20.13: Densidade teórica da Exponencial(1).
 Figura 20.14: Histograma de uma amostra da Exponencial(1) com a densidade teórica sobreposta.
 </p>
 </div>
-<div class="sourceCode" id="cb271"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb279"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">x_vals</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">10</span>, length.out <span class="op">=</span> <span class="fl">100</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">x_vals</span>, <span class="fu"><a href="https://rdrr.io/r/stats/Exponential.html">pexp</a></span><span class="op">(</span><span class="va">x_vals</span>, rate <span class="op">=</span> <span class="fl">1</span><span class="op">)</span>, type <span class="op">=</span> <span class="st">"l"</span>, col <span class="op">=</span> <span class="st">"red"</span>, lwd <span class="op">=</span> <span class="fl">2</span>,</span>
 <span>     main <span class="op">=</span> <span class="st">"Função de distribuição da Exponencial(1)"</span>, xlab <span class="op">=</span> <span class="st">"x"</span>, ylab <span class="op">=</span> <span class="st">"F(x)"</span><span class="op">)</span></span></code></pre></div>
@@ -1235,7 +1235,7 @@ empírica.</li>
 <p>A distribuição normal é a mais importante da estatística. Vejamos alguns exemplos, a
 começar pela normal padrão <span class="math inline">\(N(\mu = 0, \sigma = 1)\)</span>, que é o que as funções assumem por
 omissão:</p>
-<div class="sourceCode" id="cb272"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb280"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">dnorm</a></span><span class="op">(</span><span class="op">-</span><span class="fl">1</span><span class="op">)</span>      <span class="co"># densidade em x = -1</span></span>
 <span><span class="co">## [1] 0.2419707</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">pnorm</a></span><span class="op">(</span><span class="op">-</span><span class="fl">1</span><span class="op">)</span>      <span class="co"># P(X &lt;= -1)</span></span>
@@ -1247,13 +1247,13 @@ omissão:</p>
 normal <span class="math inline">\(N(\mu, \sigma)\)</span> é
 <span class="math display">\[f(x) = \frac{1}{\sigma\sqrt{2\pi}}\, e^{-\frac{1}{2}\left(\frac{x - \mu}{\sigma}\right)^2},\]</span>
 pelo que o mesmo valor se obtém substituindo diretamente na fórmula:</p>
-<div class="sourceCode" id="cb273"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb281"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">mu</span> <span class="op">&lt;-</span> <span class="fl">0</span>; <span class="va">sigma</span> <span class="op">&lt;-</span> <span class="fl">1</span>; <span class="va">x</span> <span class="op">&lt;-</span> <span class="op">-</span><span class="fl">1</span></span>
 <span><span class="op">(</span><span class="fl">1</span> <span class="op">/</span> <span class="op">(</span><span class="va">sigma</span> <span class="op">*</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="fl">2</span> <span class="op">*</span> <span class="va">pi</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">*</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html">exp</a></span><span class="op">(</span><span class="op">-</span><span class="fl">1</span><span class="op">/</span><span class="fl">2</span> <span class="op">*</span> <span class="op">(</span><span class="op">(</span><span class="va">x</span> <span class="op">-</span> <span class="va">mu</span><span class="op">)</span> <span class="op">/</span> <span class="va">sigma</span><span class="op">)</span><span class="op">^</span><span class="fl">2</span><span class="op">)</span></span>
 <span><span class="co">## [1] 0.242</span></span></code></pre></div>
 <p>As funções aceitam os argumentos <code>mean</code> e <code>sd</code> para outras médias e desvios padrão, que
 podem ser passados de várias formas (por nome, abreviados ou por posição):</p>
-<div class="sourceCode" id="cb274"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb282"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">qnorm</a></span><span class="op">(</span><span class="fl">0.975</span>, mean <span class="op">=</span> <span class="fl">100</span>, sd <span class="op">=</span> <span class="fl">8</span><span class="op">)</span>   <span class="co"># todas estas três chamadas...</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">qnorm</a></span><span class="op">(</span><span class="fl">0.975</span>, m <span class="op">=</span> <span class="fl">100</span>, s <span class="op">=</span> <span class="fl">8</span><span class="op">)</span>       <span class="co"># ...são equivalentes</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">qnorm</a></span><span class="op">(</span><span class="fl">0.975</span>, <span class="fl">100</span>, <span class="fl">8</span><span class="op">)</span></span>
@@ -1266,7 +1266,7 @@ avisa, apenas devolve resultados errados.</p>
 </div>
 <p>Os cálculos de probabilidades que outrora exigiam tabelas fazem-se agora diretamente.
 Seja <span class="math inline">\(X \sim N(\mu = 100, \sigma = 10)\)</span>:</p>
-<div class="sourceCode" id="cb275"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb283"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">pnorm</a></span><span class="op">(</span><span class="fl">95</span>, <span class="fl">100</span>, <span class="fl">10</span><span class="op">)</span>                          <span class="co"># P(X &lt; 95)</span></span>
 <span><span class="co">## [1] 0.3085375</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">pnorm</a></span><span class="op">(</span><span class="fl">110</span>, <span class="fl">100</span>, <span class="fl">10</span><span class="op">)</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">pnorm</a></span><span class="op">(</span><span class="fl">90</span>, <span class="fl">100</span>, <span class="fl">10</span><span class="op">)</span>    <span class="co"># P(90 &lt; X &lt; 110)</span></span>
@@ -1277,7 +1277,7 @@ Seja <span class="math inline">\(X \sim N(\mu = 100, \sigma = 10)\)</span>:</p>
 <h3>
 <span class="header-section-number">20.11.1</span> Densidade e função de distribuição<a class="anchor" aria-label="anchor" href="#densidade-e-fun%C3%A7%C3%A3o-de-distribui%C3%A7%C3%A3o"><i class="fas fa-link"></i></a>
 </h3>
-<div class="sourceCode" id="cb276"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb284"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span><span class="op">(</span>mfrow <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">dnorm</span>, from <span class="op">=</span> <span class="op">-</span><span class="fl">3</span>, to <span class="op">=</span> <span class="fl">3</span>, xlab <span class="op">=</span> <span class="st">"x"</span>, ylab <span class="op">=</span> <span class="st">"Densidade"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/title.html">title</a></span><span class="op">(</span><span class="st">"Densidade\nN(0, 1)"</span><span class="op">)</span></span>
@@ -1289,11 +1289,11 @@ Seja <span class="math inline">\(X \sim N(\mu = 100, \sigma = 10)\)</span>:</p>
 Figura 20.16: Densidade e função de distribuição da normal padrão.
 </p>
 </div>
-<div class="sourceCode" id="cb277"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb285"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span><span class="op">(</span>mfrow <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">1</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <p>O efeito dos parâmetros vê-se bem comparando várias normais: a média desloca a curva; o
 desvio padrão controla a sua largura:</p>
-<div class="sourceCode" id="cb278"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb286"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">dnorm</a></span><span class="op">(</span><span class="va">x</span>, <span class="fl">100</span>, <span class="fl">8</span><span class="op">)</span>, <span class="fl">60</span>, <span class="fl">140</span>, ylab <span class="op">=</span> <span class="st">"f(x)"</span>, xlab <span class="op">=</span> <span class="st">"x"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">dnorm</a></span><span class="op">(</span><span class="va">x</span>, <span class="fl">90</span>, <span class="fl">8</span><span class="op">)</span>, <span class="fl">60</span>, <span class="fl">140</span>, add <span class="op">=</span> <span class="cn">TRUE</span>, col <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">dnorm</a></span><span class="op">(</span><span class="va">x</span>, <span class="fl">100</span>, <span class="fl">15</span><span class="op">)</span>, <span class="fl">60</span>, <span class="fl">140</span>, add <span class="op">=</span> <span class="cn">TRUE</span>, col <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></span>
@@ -1462,7 +1462,7 @@ método da transformada inversa.</p>
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Introdução ao R e à Simulação Estatística</strong>: Um Laboratório de Estatística Computacional" was written by Renato de Paula and Nuno Brites. It was last built on 12 de July de 2026.</p>
+    <p>"<strong>Introdução ao R e à Simulação Estatística</strong>: Um Laboratório de Estatística Computacional" was written by Renato de Paula and Nuno Brites. It was last built on 15 de July de 2026.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
