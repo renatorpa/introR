@@ -350,3 +350,9 @@ método-da-transformação-inversa-caso-contínuo
 método-da-aceitação-rejeição
 teoremas-limites-1
 cálculo-de-integrais-por-monte-carlo
+comentários
+apresentar-e-combinar-texto
+apresentar-objetos-com-print
+combinar-texto-com-paste-e-paste0
+apresentar-mensagens-com-cat
+pedir-informação-com-readline
