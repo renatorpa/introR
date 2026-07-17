@@ -91,7 +91,7 @@ um verdadeiro programa.</p>
 <p>As <strong>estruturas de decisão</strong> (ou de seleção) controlam o fluxo de execução com
 base em condições. E, felizmente, já temos as peças de que precisamos: as
 condições são exatamente as expressões lógicas que aprendemos no
-Capítulo <a href="calculadora.html#calculadora">3</a> — aquelas que devolvem <code>TRUE</code> ou <code>FALSE</code>. Vamos
+Capítulo <a href="calculadora.html#calculadora">3</a>, aquelas que devolvem <code>TRUE</code> ou <code>FALSE</code>. Vamos
 agora usá-las para dirigir o programa. As estruturas mais comuns são o <code>if</code>, o
 <code>else</code> e o <code>else if</code>.</p>
 <div id="a-condicional-if" class="section level2" number="5.1">
@@ -118,7 +118,7 @@ código dentro das chavetas.</p>
 <div class="nota">
 <p>Repare na anatomia da instrução: a condição vai entre <strong>parênteses</strong> <code>( )</code> e o
 bloco de código a executar vai entre <strong>chavetas</strong> <code><a href="https://rdrr.io/r/base/Paren.html">{ }</a></code>. Habitue-se a esta
-pontuação desde já — esquecer uma chaveta é um dos erros mais frequentes.</p>
+pontuação desde já, esquecer uma chaveta é um dos erros mais frequentes.</p>
 </div>
 </div>
 <div id="a-estrutura-if...else" class="section level2" number="5.2">
@@ -145,14 +145,14 @@ acrescenta um caminho alternativo, executado quando a condição é falsa.</p>
 <span><span class="op">}</span></span>
 <span><span class="co">## [1] "Menor de idade"</span></span></code></pre></div>
 <p>Agora, como <code>idade</code> vale 16, a condição é falsa e o R executa o bloco do <code>else</code>.
-Note que exatamente um dos dois blocos é executado — nunca ambos, nunca nenhum.</p>
+Note que exatamente um dos dois blocos é executado, nunca ambos, nunca nenhum.</p>
 </div>
 <div id="a-condicional-else-if" class="section level2" number="5.3">
 <h2>
 <span class="header-section-number">5.3</span> A condicional <code>else if</code><a class="anchor" aria-label="anchor" href="#a-condicional-else-if"><i class="fas fa-link"></i></a>
 </h2>
 <p>E quando há mais de dois caminhos? Uma nota pode ser “Excelente”, “Bom” ou
-“Insuficiente” — três hipóteses, não duas. O <code>else if</code> permite encadear várias
+“Insuficiente”, três hipóteses, não duas. O <code>else if</code> permite encadear várias
 condições. O R avalia-as por ordem e, assim que uma é verdadeira, executa o
 respetivo bloco e ignora todos os restantes.</p>
 <div class="sourceCode" id="cb94"><pre class="downlit sourceCode r">
@@ -204,14 +204,12 @@ consoante a condição seja verdadeira ou falsa:</p>
 <span><span class="co">## [4] "não é maior que 5"</span></span></code></pre></div>
 <p>A função avaliou <code>valores &gt; 5</code> para cada elemento e devolveu, elemento a elemento,
 a etiqueta correspondente. É uma ferramenta indispensável para criar novas
-variáveis a partir de condições — algo que faremos muitas vezes ao trabalhar com
+variáveis a partir de condições, algo que faremos muitas vezes ao trabalhar com
 dados.</p>
 <div class="atencao">
 <p>Não confunda <code>if</code> com <code><a href="https://rdrr.io/r/base/ifelse.html">ifelse()</a></code>. O <code>if</code> decide sobre <strong>uma</strong> condição e executa
-um <strong>bloco</strong> de código; espera uma condição de comprimento 1. O <code><a href="https://rdrr.io/r/base/ifelse.html">ifelse()</a></code> é uma
-<strong>função</strong> que percorre um vetor e devolve um vetor. Regra prática: se está a
-decidir o rumo do programa, use <code>if</code>; se está a transformar um vetor elemento a
-elemento, use <code><a href="https://rdrr.io/r/base/ifelse.html">ifelse()</a></code>.</p>
+um <strong>bloco</strong> de código, espera uma condição de comprimento 1. O <code><a href="https://rdrr.io/r/base/ifelse.html">ifelse()</a></code> é uma
+<strong>função</strong> que percorre um vetor e devolve um vetor.</p>
 </div>
 </div>
 <div id="erros-comuns-e-exemplos-de-análise" class="section level2" number="5.5">
@@ -219,7 +217,7 @@ elemento, use <code><a href="https://rdrr.io/r/base/ifelse.html">ifelse()</a></c
 <span class="header-section-number">5.5</span> Erros comuns e exemplos de análise<a class="anchor" aria-label="anchor" href="#erros-comuns-e-exemplos-de-an%C3%A1lise"><i class="fas fa-link"></i></a>
 </h2>
 <p>Ler e depurar código de decisão é tão importante como escrevê-lo. Os exemplos
-seguintes treinam esse olhar crítico — começando por identificar erros.</p>
+seguintes treinam esse olhar crítico, começando por identificar erros.</p>
 <p><strong>Exemplo 1.</strong> Que erro há no código abaixo?</p>
 <div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb98-1"><a href="selecao.html#cb98-1" tabindex="-1"></a><span class="cf">if</span> (x <span class="sc">%%</span> <span class="dv">2</span> <span class="ot">=</span> <span class="dv">0</span>) {</span>
 <span id="cb98-2"><a href="selecao.html#cb98-2" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">"Par"</span>)</span>
@@ -298,8 +296,9 @@ erros que vimos acima.</p>
 <code>x &lt;- x + 1</code>. Que valor tem <code>x</code> imediatamente a seguir? Pode a condição
 <code>if (x == 1)</code> interior alguma vez ser verdadeira nesse ponto? Percorrer o código
 “à mão”, anotando o valor das variáveis a cada passo, é a técnica mais fiável para
-responder a estas perguntas — e um hábito que vale a pena cultivar.</p>
+responder a estas perguntas, e um hábito que vale a pena cultivar.</p>
 </div>
+<p>Com isto, concluímos o estudo das estruturas de decisão fundamentais do R. Aprendemos a executar diferentes blocos de código consoante o resultado de uma condição, a encadear várias alternativas e a aplicar decisões a vetores através de <code><a href="https://rdrr.io/r/base/ifelse.html">ifelse()</a></code>. Estas ferramentas permitem construir programas que reagem aos dados e adaptam o seu comportamento às circunstâncias. No próximo capítulo, veremos como reunir instruções em <strong>funções</strong>, criando blocos de código reutilizáveis, organizados e mais fáceis de testar.</p>
 </div>
 <div id="exercícios-6" class="section level2" number="5.6">
 <h2>
@@ -373,7 +372,7 @@ Restrição”.</p>
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Introdução ao R e à Simulação Estatística</strong>: Um Laboratório de Estatística Computacional" was written by Renato de Paula and Nuno Brites. It was last built on 15 de July de 2026.</p>
+    <p>"<strong>Introdução ao R e à Simulação Estatística</strong>: Um Laboratório de Estatística Computacional" was written by Renato de Paula and Nuno Brites. It was last built on 17 de July de 2026.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

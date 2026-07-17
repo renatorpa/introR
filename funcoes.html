@@ -6,14 +6,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Capítulo 6 Funções | Introdução ao R e à Simulação Estatística</title>
 <meta name="author" content="Renato de Paula and Nuno Brites">
-<meta name="description" content="Ao longo dos capítulos anteriores usámos dezenas de funções — mean(), sum(), c(), factor(), subset(). Chegou o momento de virar a mesa e aprender a escrever as nossas próprias funções. Esta é,...">
+<meta name="description" content="Ao longo dos capítulos anteriores usámos dezenas de funções: mean(), sum(), c(), factor(), subset(). Chegou o momento agor de aprender a escrever as nossas próprias funções. Esta é, talvez, a...">
 <meta name="generator" content="bookdown 0.46 with bs4_book()">
 <meta property="og:title" content="Capítulo 6 Funções | Introdução ao R e à Simulação Estatística">
 <meta property="og:type" content="book">
-<meta property="og:description" content="Ao longo dos capítulos anteriores usámos dezenas de funções — mean(), sum(), c(), factor(), subset(). Chegou o momento de virar a mesa e aprender a escrever as nossas próprias funções. Esta é,...">
+<meta property="og:description" content="Ao longo dos capítulos anteriores usámos dezenas de funções: mean(), sum(), c(), factor(), subset(). Chegou o momento agor de aprender a escrever as nossas próprias funções. Esta é, talvez, a...">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Capítulo 6 Funções | Introdução ao R e à Simulação Estatística">
-<meta name="twitter:description" content="Ao longo dos capítulos anteriores usámos dezenas de funções — mean(), sum(), c(), factor(), subset(). Chegou o momento de virar a mesa e aprender a escrever as nossas próprias funções. Esta é,...">
+<meta name="twitter:description" content="Ao longo dos capítulos anteriores usámos dezenas de funções: mean(), sum(), c(), factor(), subset(). Chegou o momento agor de aprender a escrever as nossas próprias funções. Esta é, talvez, a...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.11.0/transition.js"></script><script src="libs/bs3compat-0.11.0/tabs.js"></script><script src="libs/bs3compat-0.11.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
@@ -82,30 +82,29 @@
 <h1>
 <span class="header-section-number">Capítulo 6</span> Funções<a class="anchor" aria-label="anchor" href="#funcoes"><i class="fas fa-link"></i></a>
 </h1>
-<p>Ao longo dos capítulos anteriores usámos dezenas de funções — <code><a href="https://rdrr.io/r/base/mean.html">mean()</a></code>, <code><a href="https://rdrr.io/r/base/sum.html">sum()</a></code>,
-<code><a href="https://rdrr.io/r/base/c.html">c()</a></code>, <code><a href="https://rdrr.io/r/base/factor.html">factor()</a></code>, <code><a href="https://rdrr.io/r/base/subset.html">subset()</a></code>. Chegou o momento de virar a mesa e aprender a
+<p>Ao longo dos capítulos anteriores usámos dezenas de funções: <code><a href="https://rdrr.io/r/base/mean.html">mean()</a></code>, <code><a href="https://rdrr.io/r/base/sum.html">sum()</a></code>,
+<code><a href="https://rdrr.io/r/base/c.html">c()</a></code>, <code><a href="https://rdrr.io/r/base/factor.html">factor()</a></code>, <code><a href="https://rdrr.io/r/base/subset.html">subset()</a></code>. Chegou o momento agor de aprender a
 escrever as <em>nossas próprias</em> funções. Esta é, talvez, a competência mais
 transformadora de toda a programação: a partir do momento em que sabemos criar
 funções, deixamos de ser apenas utilizadores da linguagem e passamos a
 estendê-la.</p>
 <p>A motivação é simples e profunda. Imagine que precisa de calcular o índice de
-massa corporal de dez pessoas. Poderia repetir a fórmula dez vezes — mas, se se
+massa corporal de dez pessoas. Poderia repetir a fórmula dez vezes , mas, se se
 enganasse na fórmula, teria de corrigir dez lugares, e se quisesse mudar algo,
 outros dez. A alternativa é escrever a fórmula <strong>uma vez</strong>, dentro de uma função,
-e chamá-la dez vezes. A este princípio dá-se por vezes o nome de “não te
-repitas”: tudo o que se repete deve ser encapsulado num só lugar.</p>
+e chamá-la dez vezes.</p>
 <p>Uma função é, então, um bloco de código com nome, que realiza uma tarefa
 específica e só corre quando é chamado. As suas vantagens resumem-se a três
 palavras:</p>
 <ul>
 <li>
-<strong>Reutilização</strong> — uma vez definida, chama-se as vezes que forem precisas, em
+<strong>Reutilização</strong> – uma vez definida, chama-se as vezes que forem precisas, em
 qualquer parte do programa.</li>
 <li>
-<strong>Modularização</strong> — divide um problema grande em peças pequenas, cada uma com
+<strong>Modularização</strong> – divide um problema grande em peças pequenas, cada uma com
 uma responsabilidade clara, tornando o código mais organizado e legível.</li>
 <li>
-<strong>Abstração</strong> — depois de escrita e testada, podemos usar a função sem voltar a
+<strong>Abstração</strong> – depois de escrita e testada, podemos usar a função sem voltar a
 pensar em como funciona por dentro. <code><a href="https://rdrr.io/r/base/mean.html">mean()</a></code> calcula uma média sem nos obrigar a
 saber como.</li>
 </ul>
@@ -123,13 +122,13 @@ saber como.</li>
 <p>Quatro elementos a identificar:</p>
 <ul>
 <li>
-<strong>Nome</strong> — o identificador pelo qual chamaremos a função (segue as regras dos
+<strong>Nome</strong> – o identificador pelo qual chamaremos a função (segue as regras dos
 nomes de variáveis do Capítulo <a href="calculadora.html#calculadora">3</a>).</li>
 <li>
-<strong>Argumentos</strong> — os valores de entrada que a função recebe. Podem ser
+<strong>Argumentos</strong> – os valores de entrada que a função recebe. Podem ser
 obrigatórios ou opcionais.</li>
 <li>
-<strong>Corpo</strong> — o bloco de código, entre chavetas, que faz o trabalho.</li>
+<strong>Corpo</strong> – o bloco de código, entre chavetas, que faz o trabalho.</li>
 <li>
 <strong>Valor devolvido</strong> — o resultado que a função entrega, indicado por
 <code><a href="https://rdrr.io/r/base/function.html">return()</a></code>.</li>
@@ -375,8 +374,8 @@ quadrada) de uma matriz dada. Teste-as com uma matriz <span class="math inline">
 generalize <code>analisa_matriz()</code> para devolver também o determinante, apenas quando a
 matriz for quadrada; caso contrário, deve informar que não é possível calculá-lo.</p>
 <p>Com as funções, fechamos a caixa de ferramentas fundamental da programação em R.
-Temos agora tudo o que é preciso — valores, estruturas de dados, decisões e
-funções — para, nos próximos capítulos, automatizar tarefas com ciclos, ler dados
+Temos agora tudo o que é preciso: valores, estruturas de dados, decisões e
+funções, para, nos próximos capítulos, automatizar tarefas com ciclos, ler dados
 reais e, finalmente, mergulhar na probabilidade e na simulação.</p>
 
 </div>
@@ -416,7 +415,7 @@ reais e, finalmente, mergulhar na probabilidade e na simulação.</p>
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Introdução ao R e à Simulação Estatística</strong>: Um Laboratório de Estatística Computacional" was written by Renato de Paula and Nuno Brites. It was last built on 15 de July de 2026.</p>
+    <p>"<strong>Introdução ao R e à Simulação Estatística</strong>: Um Laboratório de Estatística Computacional" was written by Renato de Paula and Nuno Brites. It was last built on 17 de July de 2026.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

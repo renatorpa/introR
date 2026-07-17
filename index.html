@@ -91,10 +91,8 @@ exercícios e código executável.&lt;/p&gt;">
 <p><a class="btn btn-primary" href="introR.pdf" role="button">Descarregar PDF</a>
 <a class="btn btn-primary" href="introR.epub" role="button">Descarregar EPUB</a></p>
 </div>
-<p>Este livro nasceu de uma convicção simples: aprende-se estatística a fazer
-estatística. Durante muito tempo, o ensino da disciplina viveu dividido entre, por um lado, a teoria – distribuições, teoremas, demonstrações — e, por outro, a prática, muitas vezes reduzida a exercícios de papel e lápis com números pequenos e cuidadosamente escolhidos para “dar certo”. O computador estava ausente, ou aparecia apenas no fim, como uma calculadora sofisticada.</p>
-<p>Hoje sabemos que essa separação é artificial. A estatística moderna é, em larga medida, uma ciência computacional. Quando queremos perceber como se comporta a média de uma amostra, não basta recitar o Teorema do Limite Central: podemos também gerar milhares de amostras e observar empiricamente o fenómeno que o teorema descreve. Quando um integral não tem solução fechada, podemos estimá-lo por simulação. Quando um modelo é demasiado complexo
-para a análise tradicional, simulamos. A capacidade de programar deixou de ser um extra para quem estuda estatística — passou a ser uma competência central.</p>
+<p>Este livro nasceu de uma convicção simples: aprende-se estatística fazendo estatística. Durante muito tempo, o ensino da disciplina apresentou a teoria e a prática como domínios separados. De um lado estavam as distribuições, os teoremas e as demonstrações; do outro, exercícios resolvidos com papel e lápis, muitas vezes construídos com números pequenos e cuidadosamente escolhidos para produzir resultados simples. O computador surgia pouco ou era apresentado apenas como uma calculadora mais sofisticada.</p>
+<p>Hoje, essa separação deixou de fazer sentido. A estatística moderna é, em grande medida, uma ciência computacional. Quando queremos compreender o comportamento da média amostral, podemos estudar o Teorema do Limite Central e, ao mesmo tempo, gerar milhares de amostras para observar empiricamente o fenómeno que o teorema descreve. Quando um integral não admite solução fechada, podemos aproximá-lo por simulação. Quando um modelo é demasiado complexo para ser tratado apenas por métodos analíticos, recorremos a procedimentos computacionais. Aprender a programar deixou, por isso, de ser uma competência acessória para quem estuda estatística e passou a constituir uma parte central da sua formação.</p>
 <div class="objetivo">
 <p><strong>O que este livro se propõe fazer.</strong> Levar o leitor, sem pressupor qualquer
 experiência prévia de programação, desde os primeiros comandos em R até à
@@ -108,7 +106,7 @@ estatística. Fazemo-lo mantendo sempre juntas as duas metades da disciplina: a 
 <p>Existem muitas linguagens de programação. Porquê estudar precisamente o R?</p>
 <p>O R foi concebido, desde a raiz, <em>por</em> estatísticos e <em>para</em> fazer estatística.
 Não é uma linguagem de propósito geral à qual se acrescentaram, mais tarde,
-ferramentas estatísticas; é o contrário. Trabalhar com vetores, matrizes,
+ferramentas estatísticas, é o contrário. Trabalhar com vetores, matrizes,
 tabelas de dados, distribuições de probabilidade e gráficos é, em R, natural e imediato porque foi para isso que a linguagem foi desenhada. Um cálculo que
 noutras linguagens exigiria vários passos, em R resume-se muitas vezes a uma
 única linha.</p>
@@ -126,11 +124,8 @@ noutras linguagens exigiria vários passos, em R resume-se muitas vezes a uma
 <h2>
 <span class="header-section-number">0.3</span> Para quem é este livro<a class="anchor" aria-label="anchor" href="#para-quem-%C3%A9-este-livro"><i class="fas fa-link"></i></a>
 </h2>
-<p>Escrevemos este livro a pensar em estudantes do primeiro ano de licenciaturas em
-que a estatística tem um papel central – matemática aplicada, estatística,
-ciência de dados, economia, engenharia, biologia — e, mais geralmente, em
-qualquer pessoa que queira aprender a programar em R com o objetivo de fazer
-estatística.</p>
+<p>Este livro foi escrito a pensar sobretudo em estudantes dos primeiros anos de licenciaturas nas quais a estatística desempenha um papel importante, como Matemática Aplicada, Estatística, Ciência de Dados, Economia, Engenharia, Biologia e outras áreas científicas.</p>
+<p>Destina-se também a qualquer pessoa que pretenda aprender R de forma progressiva e orientada para a análise estatística, mesmo que não tenha experiência prévia em programação.</p>
 <div class="nota">
 <p><strong>Não é preciso saber programar.</strong> Começamos do princípio, com a instalação do
 software e os primeiros cálculos, e avançamos gradualmente. Pressupomos apenas os
@@ -140,50 +135,34 @@ conhecimentos de matemática do ensino secundário e uma curiosidade genuína.</
 autossuficiente: os conceitos necessários são introduzidos à medida que fazem
 falta. Ainda assim, os leitores que estejam a estudar simultaneamente uma
 disciplina de probabilidades encontrarão aqui o complemento computacional
-ideal — o lugar onde a teoria ganha corpo.</p>
+ideal, o lugar onde a teoria ganha corpo.</p>
 </div>
 <div id="como-está-organizado" class="section level2" number="0.4">
 <h2>
 <span class="header-section-number">0.4</span> Como está organizado<a class="anchor" aria-label="anchor" href="#como-est%C3%A1-organizado"><i class="fas fa-link"></i></a>
 </h2>
-<p>O livro segue uma progressão deliberada, em que cada capítulo prepara o seguinte.</p>
-<p>Na <strong>primeira parte</strong> aprendemos a linguagem: instalamos o R e o RStudio, usamos o R como calculadora, conhecemos as estruturas de dados fundamentais (vetores, matrizes, tabelas e listas) e as ferramentas que dão vida à programação – estruturas de decisão, funções, ciclos e leitura de dados.</p>
-<p>Na <strong>segunda parte</strong> viramo-nos para a visualização e a manipulação de dados,
-aprendendo a produzir gráficos informativos e a transformar conjuntos de dados
-reais.</p>
-<p>Na <strong>terceira parte</strong> chegamos ao coração do livro: probabilidade, geração de
-números aleatórios e métodos de simulação – o método da transformada inversa, o
-método da aceitação-rejeição, a ilustração dos teoremas limite e o cálculo de
-integrais por simulação (Monte Carlo).</p>
-<p>Cada capítulo alterna explicação, código comentado e exemplos aplicados, e
-termina com uma coleção de exercícios. As soluções encontram-se no final do
-livro.</p>
+<p>O livro segue uma progressão deliberada, em que cada capítulo prepara o leitor para o seguinte.</p>
+<p>Na <strong>primeira parte</strong>, aprendemos os fundamentos da linguagem. Instalamos o R e o RStudio, usamos o R como calculadora, estudamos as principais estruturas de dados, como vetores, matrizes, tabelas e listas, e introduzimos os elementos essenciais da programação, incluindo estruturas de decisão, funções, ciclos e leitura de dados.</p>
+<p>Na <strong>segunda parte</strong>, concentramos a atenção na visualização e na manipulação de dados. Aprendemos a produzir gráficos informativos e a transformar conjuntos de dados reais de forma clara e sistemática.</p>
+<p>Na <strong>terceira parte</strong>, chegamos ao núcleo do livro: probabilidade, geração de números aleatórios e métodos de simulação. Estudamos o método da transformada inversa, o método da aceitação-rejeição, a ilustração computacional de teoremas limite e o cálculo de integrais por simulação de Monte Carlo.</p>
+<p>Cada capítulo combina explicação teórica, código comentado e exemplos aplicados. No final de cada capítulo, é apresentada uma coleção de exercícios, cujas soluções se encontram no fim do livro.</p>
 </div>
 <div id="como-tirar-o-máximo-partido" class="section level2" number="0.5">
 <h2>
 <span class="header-section-number">0.5</span> Como tirar o máximo partido<a class="anchor" aria-label="anchor" href="#como-tirar-o-m%C3%A1ximo-partido"><i class="fas fa-link"></i></a>
 </h2>
 <div class="dica">
-<p><strong>Programe enquanto lê.</strong> Não há forma de aprender a programar apenas lendo
-sobre programação, tal como não se aprende a nadar a ver vídeos de natação.
-Tenha o RStudio aberto ao lado do livro, escreva o código à medida que avança,
-experimente variações e não tenha medo dos erros — em programação, um erro é
-apenas informação sobre o que ajustar.</p>
+<p><strong>Programe enquanto lê.</strong> Não é possível aprender a programar apenas através da leitura, tal como não se aprende a nadar apenas observando outras pessoas. Mantenha o RStudio aberto enquanto acompanha o livro, escreva cada exemplo, altere os valores e experimente novas possibilidades. Não receie cometer erros. Em programação, uma mensagem de erro fornece informação útil sobre aquilo que precisa de ser compreendido ou corrigido.</p>
 </div>
-<p>As caixas coloridas ao longo do texto assinalam informação de tipos diferentes:</p>
-<ul>
-<li>As caixas de <strong>nota</strong> contêm observações e esclarecimentos úteis.</li>
-<li>As caixas de <strong>dica</strong> oferecem sugestões práticas e boas práticas.</li>
-<li>As caixas de <strong>atenção</strong> avisam para erros comuns e armadilhas frequentes.</li>
-</ul>
-<p>O código aparece em caixas próprias. Quando uma linha começa por <code>##</code>, trata-se do <strong>resultado</strong> que o R devolve – foi assim que combinámos representar aquilo que apareceria no ecrã depois de executar o comando anterior.</p>
+<p>Ao longo do livro, as caixas coloridas destacam diferentes tipos de informação. As caixas de <strong>nota</strong> apresentam observações e esclarecimentos complementares. As caixas de <strong>dica</strong> reúnem sugestões práticas e boas práticas de programação. As caixas de <strong>atenção</strong> alertam para erros comuns, interpretações incorretas e dificuldades que merecem cuidado especial.</p>
+<p>O código surge em blocos próprios. Quando uma linha começa por <code>##</code>, representa o <strong>resultado</strong> devolvido pelo R, isto é, aquilo que apareceria na Consola depois de executar o comando anterior. Desta forma, cada bloco pode ser lido como um pequeno diálogo entre o utilizador e o programa: primeiro surge a instrução que fornecemos ao R e, em seguida, a resposta produzida.</p>
 </div>
 <div id="uma-nota-final" class="section level2" number="0.6">
 <h2>
 <span class="header-section-number">0.6</span> Uma nota final<a class="anchor" aria-label="anchor" href="#uma-nota-final"><i class="fas fa-link"></i></a>
 </h2>
-<p>Um livro como este não substitui a prática paciente, nem a discussão com colegas e docentes; pretende, antes, ser um companheiro fiável nesse processo de aprendizagem. Se, ao chegar ao fim, o leitor olhar para um problema estatístico e a sua primeira reacção for “posso simular isto para perceber melhor o que acontece”, então este livro terá cumprido o seu propósito.</p>
-<p>Bom trabalho – e bem-vindo ao laboratório.</p>
+<p>Um livro como este não substitui a prática paciente, a experimentação nem a discussão com colegas e docentes. Pretende ser um companheiro fiável ao longo desse processo de aprendizagem. Se, ao chegar ao fim, o leitor olhar para um problema estatístico e pensar “posso simular isto para compreender melhor o que acontece”, então este livro terá cumprido o seu propósito.</p>
+<p>Bom trabalho. Comecemos o nosso laboratório.</p>
 
 </div>
 </div>
@@ -216,7 +195,7 @@ apenas informação sobre o que ajustar.</p>
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Introdução ao R e à Simulação Estatística</strong>: Um Laboratório de Estatística Computacional" was written by Renato de Paula and Nuno Brites. It was last built on 15 de July de 2026.</p>
+    <p>"<strong>Introdução ao R e à Simulação Estatística</strong>: Um Laboratório de Estatística Computacional" was written by Renato de Paula and Nuno Brites. It was last built on 17 de July de 2026.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

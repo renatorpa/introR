@@ -173,7 +173,7 @@ oferece atalhos poderosos para os construir:</p>
 <div class="dica">
 <p>O operador <code>:</code> e as funções <code><a href="https://rdrr.io/r/base/seq.html">seq()</a></code> e <code><a href="https://rdrr.io/r/base/rep.html">rep()</a></code> vão aparecer constantemente. Note a
 diferença subtil entre <code>times</code> e <code>each</code> em <code><a href="https://rdrr.io/r/base/rep.html">rep()</a></code>: <code>times</code> repete a sequência
-inteira; <code>each</code> repete cada elemento antes de passar ao seguinte. Confundir os
+inteira, <code>each</code> repete cada elemento antes de passar ao seguinte. Confundir os
 dois é comum, experimente ambos até a distinção ficar natural.</p>
 </div>
 </div>
@@ -250,9 +250,7 @@ dois é comum, experimente ambos até a distinção ficar natural.</p>
 <h3>
 <span class="header-section-number">4.1.4</span> Funções úteis para vetores<a class="anchor" aria-label="anchor" href="#fun%C3%A7%C3%B5es-%C3%BAteis-para-vetores"><i class="fas fa-link"></i></a>
 </h3>
-<p>Grande parte do valor dos vetores está nas dezenas de funções que operam sobre
-eles de uma só vez. Eis um catálogo das mais frequentes, aplicadas a um vetor
-numérico:</p>
+<p>Grande parte do valor dos vetores está nas dezenas de funções que operam sobre eles de uma só vez. Eis um catálogo das mais frequentes, aplicadas a um vetor numérico:</p>
 <div class="sourceCode" id="cb46"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">v</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2.2</span>, <span class="fl">1.1</span>, <span class="fl">3.3</span><span class="op">)</span></span>
 <span></span>
@@ -278,8 +276,7 @@ numérico:</p>
 <span><span class="co">## [1] 3.3 2.2 1.1</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/cumsum.html">cumsum</a></span><span class="op">(</span><span class="va">v</span><span class="op">)</span>     <span class="co"># somas acumuladas</span></span>
 <span><span class="co">## [1] 2.2 3.3 6.6</span></span></code></pre></div>
-<p>Uma função particularmente útil é <code><a href="https://rdrr.io/r/base/which.html">which()</a></code>, que devolve as <strong>posições</strong> dos
-elementos que satisfazem uma condição, e não os valores em si:</p>
+<p>Uma função particularmente útil é <code><a href="https://rdrr.io/r/base/which.html">which()</a></code>, que devolve as <strong>posições</strong> dos elementos que satisfazem uma condição, e não os valores em si:</p>
 <div class="sourceCode" id="cb47"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">y</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">8</span>, <span class="fl">3</span>, <span class="fl">5</span>, <span class="fl">7</span>, <span class="fl">6</span>, <span class="fl">6</span>, <span class="fl">8</span>, <span class="fl">9</span>, <span class="fl">2</span>, <span class="fl">3</span>, <span class="fl">9</span>, <span class="fl">4</span>, <span class="fl">10</span>, <span class="fl">4</span>, <span class="fl">11</span><span class="op">)</span></span>
 <span></span>
@@ -289,18 +286,14 @@ elementos que satisfazem uma condição, e não os valores em si:</p>
 <span><span class="va">y</span><span class="op">[</span><span class="va">y</span> <span class="op">&gt;</span> <span class="fl">5</span><span class="op">]</span>         <span class="co"># os valores em si</span></span>
 <span><span class="co">## [1]  8  7  6  6  8  9  9 10 11</span></span></code></pre></div>
 <div class="nota">
-<p>A distinção entre <em>posições</em> (<code>which(y &gt; 5)</code>) e <em>valores</em> (<code>y[y &gt; 5]</code>) é uma
-fonte comum de confusão. Guarde-a: uma pergunta como “em que dias o consumo
-excedeu a média?” pede posições; “quais foram os consumos acima da média?” pede
-valores.</p>
+<p>A distinção entre <em>posições</em> (<code>which(y &gt; 5)</code>) e <em>valores</em> (<code>y[y &gt; 5]</code>) é uma fonte comum de confusão. Guarde-a: uma pergunta como “em que dias o consumo excedeu a média?” pede posições, “quais foram os consumos acima da média?” pede valores.</p>
 </div>
 </div>
 <div id="operações-e-reciclagem" class="section level3" number="4.1.5">
 <h3>
 <span class="header-section-number">4.1.5</span> Operações e reciclagem<a class="anchor" aria-label="anchor" href="#opera%C3%A7%C3%B5es-e-reciclagem"><i class="fas fa-link"></i></a>
 </h3>
-<p>As operações aritméticas em R são <strong>vetorizadas</strong>: aplicam-se a cada elemento do
-vetor, sem necessidade de escrever ciclos. Isto torna o código curto e legível:</p>
+<p>As operações aritméticas em R são <strong>vetorizadas</strong>: aplicam-se a cada elemento do vetor, sem necessidade de escrever ciclos. Isto torna o código curto e legível:</p>
 <div class="sourceCode" id="cb48"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">v</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2.2</span>, <span class="fl">1.1</span>, <span class="fl">3.3</span><span class="op">)</span></span>
 <span></span>
@@ -334,6 +327,7 @@ não for múltiplo do menor, a reciclagem fica “incompleta” e o R emite um a
 apenas parcialmente. <strong>Leia sempre os avisos do R:</strong> um aviso de reciclagem é,
 muitas vezes, o sintoma de um vetor com o comprimento errado.</p>
 </div>
+<p>Com isto, reunimos as ideias essenciais para trabalhar com vetores em R: aprendemos a criá-los, a selecionar e modificar os seus elementos, a aplicar funções e condições e a realizar operações de forma vetorizada. Como os vetores estão na base de muitas outras estruturas de dados, é importante consolidar estas ideias antes de avançar. Os exercícios seguintes permitem praticar os conceitos apresentados e reconhecer situações em que a indexação, as funções de resumo e a regra da reciclagem podem ser úteis. Depois desta prática, passaremos aos <strong>fatores</strong>, uma estrutura especialmente concebida para representar dados categóricos.</p>
 </div>
 <div id="exercícios-1" class="section level3" number="4.1.6">
 <h3>
@@ -509,6 +503,7 @@ nível maior do que aquele?”), usamos <code>ordered = TRUE</code>:</p>
 <span><span class="co">##  [1] mulher mulher mulher mulher mulher mulher mulher mulher mulher mulher</span></span>
 <span><span class="co">## [11] homem  homem  homem  homem  homem  homem  homem  homem  homem  homem </span></span>
 <span><span class="co">## Levels: mulher homem</span></span></code></pre></div>
+<p>Com isto, reunimos as ideias fundamentais para trabalhar com fatores em R. Aprendemos a representar variáveis categóricas, a definir e ordenar os seus níveis, a alterar os respetivos rótulos e a gerar fatores com padrões regulares através da função <code><a href="https://rdrr.io/r/base/gl.html">gl()</a></code>. Estas operações serão especialmente importantes quando analisarmos tabelas de dados, construirmos gráficos ou ajustarmos modelos estatísticos. Os exercícios seguintes permitem consolidar estes conceitos antes de avançarmos para as <strong>matrizes</strong> e os <strong>arrays</strong>, estruturas destinadas a organizar dados em duas ou mais dimensões.</p>
 </div>
 <div id="exercícios-2" class="section level3" number="4.2.4">
 <h3>
@@ -778,6 +773,7 @@ Criamo-lo com <code><a href="https://rdrr.io/r/base/array.html">array()</a></cod
 <span><span class="co">## [1]  2  6 10</span></span>
 <span></span>
 <span><span class="va">A</span><span class="op">[</span>, , <span class="fl">1</span><span class="op">]</span>       <span class="co"># toda a primeira camada (uma matriz)</span></span></code></pre></div>
+<p>Com isto, reunimos os conceitos essenciais para trabalhar com matrizes e arrays em R. Aprendemos a criar estas estruturas, a aceder aos seus elementos, a nomear linhas e colunas, a realizar operações de álgebra linear e a aplicar funções ao longo das diferentes dimensões. Os exercícios seguintes permitem consolidar estas ideias antes de avançarmos para os <strong>data frames</strong>, a estrutura mais utilizada para representar conjuntos de dados organizados em linhas e colunas.</p>
 </div>
 <div id="exercícios-3" class="section level3" number="4.3.8">
 <h3>
@@ -1110,6 +1106,7 @@ sua média direta seja <code>NA</code>:</p>
 <span><span class="co">## [1] 42.13</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/colSums.html">colMeans</a></span><span class="op">(</span><span class="va">airquality</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
+<p>Com isto, reunimos as ideias fundamentais para trabalhar com data frames em R. Aprendemos a criá-los, a aceder às suas linhas e colunas, a acrescentar e remover variáveis, a combinar tabelas, a explorar a estrutura dos dados, a selecionar observações e a obter resumos estatísticos. Estas operações constituem a base de grande parte da análise de dados em R e serão retomadas em capítulos posteriores com ferramentas mais avançadas. Os exercícios seguintes permitem consolidar estes conceitos antes de avançarmos para as <strong>listas</strong>, estruturas mais flexíveis que podem reunir, num único objeto, elementos de diferentes tipos e dimensões.</p>
 </div>
 <div id="exercícios-4" class="section level3" number="4.4.10">
 <h3>
@@ -1232,6 +1229,8 @@ mala com compartimentos, <code>[[ ]]</code> tira o objeto do compartimento, ao p
 <span></span>
 <span><span class="co"># Remover um elemento</span></span>
 <span><span class="va">minha_lista</span><span class="op">$</span><span class="va">idade</span> <span class="op">&lt;-</span> <span class="cn">NULL</span></span></code></pre></div>
+<p>Com isto, concluímos o estudo das principais estruturas de dados do R. Aprendemos a organizar informação em vetores, fatores, matrizes, arrays, data frames e listas, escolhendo cada estrutura de acordo com a natureza dos dados e com o tipo de operação que pretendemos realizar. Em particular, as listas permitem reunir, num único objeto, elementos de diferentes tipos, dimensões e finalidades, sendo por isso uma das estruturas mais flexíveis da linguagem.</p>
+<p>Os exercícios seguintes permitem consolidar os conceitos apresentados ao longo desta secção. No próximo capítulo, estudaremos as <strong>estruturas de decisão</strong>, que permitem controlar a execução de um programa e escolher diferentes ações consoante as condições verificadas pelos dados.</p>
 </div>
 <div id="exercícios-5" class="section level3" number="4.5.2">
 <h3>
@@ -1402,7 +1401,7 @@ aprovados (quem entregou o projeto e teve média <span class="math inline">\(\ge
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Introdução ao R e à Simulação Estatística</strong>: Um Laboratório de Estatística Computacional" was written by Renato de Paula and Nuno Brites. It was last built on 15 de July de 2026.</p>
+    <p>"<strong>Introdução ao R e à Simulação Estatística</strong>: Um Laboratório de Estatística Computacional" was written by Renato de Paula and Nuno Brites. It was last built on 17 de July de 2026.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

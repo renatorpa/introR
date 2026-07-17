@@ -97,7 +97,7 @@
 <p>Durante grande parte do século XX, a estatística viveu com um travão permanente: a dificuldade de fazer contas. Os métodos que se ensinavam e usavam eram, muitas vezes, aqueles que se conseguiam calcular à mão ou com uma calculadora – tabelas de distribuições impressas no fim dos manuais, aproximações engenhosas, fórmulas fechadas cuidadosamente deduzidas para evitar cálculos impraticáveis.</p>
 <p>O computador mudou tudo. Aquilo que antes era impossível de calcular passou a ser uma questão de segundos. E, com isso, mudou também aquilo que faz sentido ensinar e aprender. Já não precisamos de decorar valores de tabelas nem de nos limitar aos poucos modelos que admitem solução analítica simples. Podemos explorar dados reais, ajustar modelos complexos e, sobretudo, simular.</p>
 <div class="nota">
-<p>Não estamos a dizer que a teoria deixou de importar – pelo contrário. Continuamos a precisar de compreender porque é que os métodos funcionam. O que mudou é que a teoria e o computador passaram a trabalhar em conjunto: a teoria dá-nos a compreensão; o computador dá-nos o alcance.</p>
+<p>Não estamos a dizer que a teoria deixou de importar, pelo contrário. Continuamos a precisar de compreender porque é que os métodos funcionam. O que mudou é que a teoria e o computador passaram a trabalhar em conjunto: a teoria dá-nos a compreensão, o computador dá-nos o alcance.</p>
 </div>
 </div>
 <div id="o-que-é-o-r" class="section level2" number="1.2">
@@ -135,7 +135,7 @@ introduzi-la desde já, com um exemplo minúsculo, para que o leitor perceba de 
 <div class="dica">
 <p>Ainda não é preciso perceber cada detalhe do código acima – a função <code><a href="https://rdrr.io/r/base/sample.html">sample()</a></code>, o argumento <code>replace</code>, e assim por diante. Tudo isto será explicado nos próximos capítulos. O importante, por agora, é ficar com a intuição: <strong>o computador pode repetir uma experiência aleatória tantas vezes quantas quisermos, e a partir dessas repetições estimar aquilo que nos interessa.</strong></p>
 </div>
-<p>Este pequeno exemplo já contém, em pequena escala, tudo o que faremos mais tarde de forma mais ambiciosa. Quando não soubermos calcular uma probabilidade, estimá-la-emos por simulação. Quando um integral não tiver solução fechada, aproximá-lo-emos por simulação. Quando quisermos ver um teorema a funcionar, ilustrá-lo-emos por simulação. Mas nada disto será possível sem primeiro dominarmos a linguagem – e é para isso que servem os capítulos que se seguem.</p>
+<p>Este pequeno exemplo já contém, em pequena escala, tudo o que faremos mais tarde de forma mais ambiciosa. Quando não soubermos calcular uma probabilidade, estimá-la-emos por simulação. Quando um integral não tiver solução fechada, aproximá-lo-emos por simulação. Quando quisermos ver um teorema a funcionar, ilustrá-lo-emos por simulação. Mas nada disto será possível sem primeiro dominarmos a linguagem, e é para isso que servem os capítulos que se seguem.</p>
 </div>
 <div id="o-caminho-que-vamos-percorrer" class="section level2" number="1.4">
 <h2>
@@ -144,7 +144,7 @@ introduzi-la desde já, com um exemplo minúsculo, para que o leitor perceba de 
 <p>O livro está organizado como uma subida gradual. Cada capítulo introduz uma nova ferramenta, mas essa ferramenta não aparece isolada: serve para preparar o passo seguinte. A ideia é que o leitor comece por ganhar familiaridade com o R e termine capaz de escrever pequenas simulações estatísticas de forma autónoma.</p>
 <p>Começamos por <strong>instalar e conhecer o ambiente de trabalho</strong> (Capítulo <a href="rrstudio.html#rrstudio">2</a>) e por usar o R como uma <strong>calculadora programável</strong>: uma ferramenta que calcula, guarda objectos, avalia expressões e toma decisões (Capítulo <a href="calculadora.html#calculadora">3</a>). Em seguida, aprendemos a organizar informação em <strong>estruturas de dados</strong> – vetores, matrizes, tabelas e listas (Capítulo <a href="estruturas.html#estruturas">4</a>) – e a controlar o comportamento dos programas com <strong>estruturas de selecção</strong>, <strong>funções</strong>, <strong>scripts</strong>, ciclos <code>for</code> e ciclos <code>while</code>.</p>
 <p>A segunda parte do percurso aproxima-nos dos dados reais. Aprendemos a ler informação a partir de ficheiros, a encadear operações com o operador pipe, a manipular tabelas, a produzir gráficos básicos e a construir visualizações mais elaboradas com <code>ggplot2</code>. Nesta fase, o R deixa de ser apenas uma calculadora e passa a ser um laboratório de análise de dados.</p>
-<p>A terceira parte introduz a linguagem da <strong>probabilidade</strong>. Estudamos experiências aleatórias, amostragem, distribuições de probabilidade e as funções do R associadas a essas distribuições – as famílias <code>d</code>, <code>p</code>, <code>q</code> e <code>r</code>. A partir daqui, o computador passa a ser usado não só para calcular, mas também para gerar aleatoriedade controlada.</p>
+<p>A terceira parte introduz a linguagem da <strong>probabilidade</strong>. Estudamos experiências aleatórias, amostragem, distribuições de probabilidade e as funções do R associadas a essas distribuições, as famílias <code>d</code>, <code>p</code>, <code>q</code> e <code>r</code>. A partir daqui, o computador passa a ser usado não só para calcular, mas também para gerar aleatoriedade controlada.</p>
 <p>Na parte final, todos estes elementos convergem na <strong>simulação estatística</strong>. Exploramos o método de Monte Carlo, a geração de variáveis aleatórias, a transformada inversa, o método de aceitação-rejeição e, por fim, a aproximação de integrais por simulação. O último capítulo, dedicado ao <strong>cálculo de integrais por Monte Carlo</strong>, ilustra bem o espírito do livro: usar programação, probabilidade e estatística para resolver problemas que seriam difíceis, ou mesmo impraticáveis, apenas com cálculo analítico.</p>
 <p>Assim, o percurso vai do primeiro contacto com o R até à simulação de fenómenos aleatórios e à resolução computacional de problemas estatísticos. O objectivo não é apenas aprender comandos, mas desenvolver uma forma de pensar: transformar uma pergunta quantitativa num procedimento claro, reprodutível e verificável.</p>
 <div class="dica">
@@ -181,7 +181,7 @@ introduzi-la desde já, com um exemplo minúsculo, para que o leitor perceba de 
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Introdução ao R e à Simulação Estatística</strong>: Um Laboratório de Estatística Computacional" was written by Renato de Paula and Nuno Brites. It was last built on 15 de July de 2026.</p>
+    <p>"<strong>Introdução ao R e à Simulação Estatística</strong>: Um Laboratório de Estatística Computacional" was written by Renato de Paula and Nuno Brites. It was last built on 17 de July de 2026.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
